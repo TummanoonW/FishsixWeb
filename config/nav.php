@@ -4,6 +4,14 @@
 
         public static $rootURL = "http://192.168.64.3/protoweb";
 
+        public static $pageLogin = "login.php";
+        public static $pageRegister = "register.php";
+        public static $pageProfile = "profile.php";
+        public static $pageMyCourses = "mycourses.php";
+
+        public static $routeLogIn = "route/login-register/login.php";
+        public static $routeLogOut = "route/login-register/logout.php";
+
         //navigate to Home URL
         function gotoHome(){
             header( "location: " . self::$rootURL);

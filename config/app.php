@@ -6,5 +6,6 @@
 
         public static $iconURL = "./assets/images/logo/production.svg";
         public static $iconURL2 = "./assets/images/logo/production_white.svg";
+
     }
 ?>

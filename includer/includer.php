@@ -19,9 +19,9 @@
         }
 
 
-        //Include all files within 'component' directory
-        public static function include_component($dir){
-            foreach (glob($dir . "component/*.php") as $filename){
+        //Include all files within 'component/layout' directory
+        public static function include_layout($dir){
+            foreach (glob($dir . "component/layout/*.php") as $filename){
                 include_once $filename;
             }
         }
@@ -34,11 +34,18 @@
 
             self::include_config($dir);
             self::include_structure($dir);
-            self::include_component($dir);
-
-            if (session_status() == PHP_SESSION_NONE) {
-                session_start();
-            } 
+            self::include_layout($dir);
         }
+
+        //Include specific component view given by file name
+        public static function include_view($dir, $file){
+            if(!isset($dir)){
+                $dir = "./";
+            }
+
+            include_once 'component/view/' . $file;
+        }
+
+
 
     }

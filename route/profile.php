@@ -6,6 +6,7 @@
     Includer::include_proto("../"); 
 
     $apiKey = Session::getAPIKey(); //get secret API Key
+    $auth = Session::getAuth();
 
     $api = new API($apiKey); //open API connection
     $io = new IO(); //open Input/Output receiver for certain $_GET and $_POST data

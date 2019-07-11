@@ -2,6 +2,7 @@
     class IO{
         public $id;
         public $query;
+        public $method;
         public $post;
         public $input;
 
@@ -10,6 +11,12 @@
             if(isset($_GET['q'])){
                 $q = $_GET['q'];
                 $this->query = json_decode($q);
+            }else{
+                $this->query = NULL;
+            }
+
+            if(isset($_GET['m'])){
+                $this->query = $_GET['m'];
             }else{
                 $this->query = NULL;
             }
