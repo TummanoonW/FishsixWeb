@@ -1,6 +1,6 @@
 <?php
     class Menu{
-        public static function initMenu(){
+        public static function initMenu($dir){
 ?>
             <ul class="nav navbar-nav flex-nowrap">
                 <?php 
@@ -13,11 +13,11 @@
                         </li>
                 <?php 
                     }
-                    Notification::initNotification();
+                    Notification::initNotification($dir);
                 ?>
                 <!-- // END Notifications dropdown -->
                 <!-- User dropdown -->
-                <?php UserMenu::initUserMenu(); ?>
+                <?php UserMenu::initUserMenu($dir); ?>
                 <!-- // END User dropdown -->
             </ul>
 <?php

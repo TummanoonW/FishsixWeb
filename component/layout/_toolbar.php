@@ -1,6 +1,6 @@
 <?php
     class Toolbar{ ////common toolbar HTML elements loader
-        public static function initToolbar(){  
+        public static function initToolbar($dir){  
             $auth = Session::getAuth();
 ?>
             <!-- Header -->
@@ -14,8 +14,8 @@
                                 <span class="material-icons">menu</span>
                             </button>
                             <!-- Brand -->
-                            <a href="<?php echo Nav::$rootURL; ?>" class="navbar-brand">
-                                <img src="<?php echo App::$iconURL2 ?>" class="mr-2" style="width: 48px; height: 48px;" alt="<?php echo App::$name ?>" />
+                            <a href="<?php Nav::printURL("", Nav::$rootURL); ?>" class="navbar-brand">
+                                <img src="<?php Nav::printURL("", App::$iconURL2); ?>" class="mr-2" style="width: 48px; height: 48px;" alt="<?php echo App::$name ?>" />
                                 <span class="d-none d-xs-md-block"><?php echo App::$name ?></span>
                             </a>
                             <!-- Search -->
@@ -35,7 +35,7 @@
                                 </li>
                             </ul>
                             <!-- Menu -->
-                            <?php Menu::initMenu(); ?>
+                            <?php Menu::initMenu($dir); ?>
                             <!-- // END Menu -->
                         </div>
                     </nav>

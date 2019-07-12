@@ -1,7 +1,7 @@
 <?php
     class ProfileView{ ////profile HTML elements loader
 
-        public static function initView(){
+        public static function initView($dir){
             $auth = Session::getAuth();
 ?>
             <body class=" layout-fluid">
@@ -128,7 +128,7 @@
                                                         </div>
                                                     </div>
                                                 </form>
-                                                <form action="<?php echo './' . Nav::$routeLogOut; ?>" method="POST" class="form-horizontal">
+                                                <form action="<?php Nav::printURL($dir, Nav::$routeLogOut); ?>" method="POST" class="form-horizontal">
                                                     <div class="form-group row">
                                                         <div class="col-sm-8 offset-sm-3">
                                                             <div class="media align-items-center">

@@ -1,6 +1,6 @@
 <?php
     class HomeView{
-        public static function initView(){
+        public static function initView($dir){
             $auth = Session::getAuth();
 ?>
             <body class=" layout-fluid">

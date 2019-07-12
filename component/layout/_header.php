@@ -1,7 +1,7 @@
 <?php 
     class Header{ //header elements loader
 
-        public static function initHeader($title){
+        public static function initHeader($dir, $title){
 ?>
 
             <!DOCTYPE html>

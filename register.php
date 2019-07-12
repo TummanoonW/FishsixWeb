@@ -18,11 +18,11 @@
     if(Session::checkUserExisted()){
         Nav::gotoHome();
     }else{
-        Header::initHeader("Register"); //initialize HTML header elements with 'Login' as Title
+        Header::initHeader($dir, "Register"); //initialize HTML header elements with 'Login' as Title
 
-        RegisterView::initView();
+        RegisterView::initView($dir);
 
-        Footer::initFooter(); //initialize HTML footer elements
+        Footer::initFooter($dir); //initialize HTML footer elements
     }
     
 

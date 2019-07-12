@@ -9,13 +9,15 @@
     $api = new API($apiKey);
     $io = new IO(); 
 
+    $dir = "./";
+
     if(Session::checkUserExisted()){
 
-        Header::initHeader($auth->username . " - My Courses"); 
+        Header::initHeader($dir, $auth->username . " - My Courses"); 
 
-        MyCoursesView::initView();
+        MyCoursesView::initView($dir);
 
-        Footer::initFooter(); 
+        Footer::initFooter($dir); 
 
     }else{
         Nav::gotoHome();

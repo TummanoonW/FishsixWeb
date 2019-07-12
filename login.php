@@ -13,15 +13,17 @@
     $api = new API($apiKey); //open API connection
     $io = new IO(); //open Input/Output receiver for certain $_GET and $_POST data 
 
+    $dir = "./";
+
     //check if user already logged in
     if(Session::checkUserExisted()){
         Nav::gotoHome(); //go to Profile page
     }else{
-        Header::initHeader("Login"); //initialize HTML header elements with 'Login' as Title
+        Header::initHeader($dir, "Login"); //initialize HTML header elements with 'Login' as Title
 
-        LoginView::initView(); //initialize HTML login elements
+        LoginView::initView($dir); //initialize HTML login elements
 
-        Footer::initFooter(); //initialize HTML footer elements
+        Footer::initFooter($dir); //initialize HTML footer elements
     }
     
 

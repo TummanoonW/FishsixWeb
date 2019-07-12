@@ -1,6 +1,6 @@
 <?php
     class ErrorPage{
-        public static function showError($result){
+        public static function showError($dir, $result){
 
             Header::initHeader("Error " . $result->err->code); //initialize HTML header elements with '<<someone name>> 's Profile' as Title
 

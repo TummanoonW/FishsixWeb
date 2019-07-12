@@ -13,13 +13,15 @@
     $api = new API($apiKey); //open API connection
     $io = new IO(); //open Input/Output receiver for certain $_GET and $_POST data 
 
+    $dir = "./";
+
     //check if user already logged in
     if(Session::checkUserExisted()){
-        Header::initHeader($auth->username . " - Profile"); //initialize HTML header elements with '<<someone name>> 's Profile' as Title
+        Header::initHeader($dir, $auth->username . " - Profile"); //initialize HTML header elements with '<<someone name>> 's Profile' as Title
 
-        ProfileView::initView(); //initialize HTML profile elements
+        ProfileView::initView($dir); //initialize HTML profile elements
 
-        Footer::initFooter(); //initialize HTML footer elements
+        Footer::initFooter($dir); //initialize HTML footer elements
     }else{
         Nav::gotoHome(); //return to home page
     }

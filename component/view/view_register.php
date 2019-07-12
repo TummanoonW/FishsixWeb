@@ -1,6 +1,6 @@
 <?php
     class RegisterView{
-        public static function initView(){
+        public static function initView($dir){
 ?>
             <body class="login">
             <div class="d-flex align-items-center" style="min-height: 100vh">
@@ -83,7 +83,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="card-footer text-center text-black-50">Already signed up? <a href="<?php echo './' . Nav::$pageLogin; ?>">Login</a></div>
+                        <div class="card-footer text-center text-black-50">Already signed up? <a href="<?php Nav::printURL($dir, Nav::$pageLogin); ?>">Login</a></div>
                     </div>
                 </div>
             </div>

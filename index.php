@@ -10,14 +10,16 @@
     $api = new API($apiKey);
     $io = new IO(); 
 
-    Header::initHeader(App::$name); 
+    $dir = './';
+
+    Header::initHeader($dir, App::$name); 
 
     if(Session::checkUserExisted()){
-        HomeView::initView();
+        HomeView::initView($dir);
     }else{
-        HomeView::initView(); 
+        HomeView::initView($dir); 
     }
     
-    Footer::initFooter(); 
+    Footer::initFooter($dir); 
 ?>
     

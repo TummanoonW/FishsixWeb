@@ -1,7 +1,7 @@
 <?php
     class Sidemenu{ //sidemenu HTML elements loader
 
-        public static function initAppSettingsFAB(){
+        public static function initAppSettingsFAB($dir){
 ?>
             <div id="app-settings">
                 <app-settings layout-active="default" :layout-location="{
@@ -13,7 +13,7 @@
 <?php
         } 
 
-        public static function initSideMenu(){
+        public static function initSideMenu($dir){
 ?>
             <div class="mdk-drawer js-mdk-drawer" id="default-drawer">
                 <div class="mdk-drawer__content ">

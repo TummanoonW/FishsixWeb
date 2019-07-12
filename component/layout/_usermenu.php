@@ -1,7 +1,6 @@
 <?php
     class UserMenu{
-        public static function initUserMenu(){
-            $dir = "./";
+        public static function initUserMenu($dir){
             $auth = Session::getAuth();
 
             if($auth != NULL){

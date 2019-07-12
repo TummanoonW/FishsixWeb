@@ -1,10 +1,10 @@
 <?php
     class Footer{ //footer elements loader
 
-        public static function initFooter(){
+        public static function initFooter($dir){
 ?>
                 <!-- jQuery -->
-                <script src="./assets/vendor/jquery.min.js"></script>
+                <script src="<?php Nav::printURL($dir, 'assets/vendor/jquery.min.js'); ?>"></script>
 
                 <!-- Bootstrap -->
                 <script src="./assets/vendor/popper.min.js"></script>
