@@ -29,7 +29,7 @@
                                 <div class="page-separator__text">or</div>
                             </div>
 
-                            <form action="student-dashboard.html" novalidate method="get">
+                            <form action="<?php Nav::printURL($dir, Nav::$routeRegister); ?>" novalidate method="POST">
                                 <div class="form-group">
                                     <label class="form-label" for="name">Name:</label>
                                     <div class="input-group input-group-merge">

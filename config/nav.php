@@ -11,6 +11,7 @@
 
         public static $routeLogIn = "route/login-register/login.php";
         public static $routeLogOut = "route/login-register/logout.php";
+        public static $routeRegister = "route/login-register/register.php";
 
         //navigate to Home URL
         function gotoHome(){
