@@ -13,7 +13,7 @@
     $api = new API($apiKey); //open API connection
     $io = new IO(); //open Input/Output receiver for certain $_GET and $_POST data 
 
-    $dir = "./";
+    $dir = "./"; //current directory
 
     //check if user already logged in
     if(Session::checkUserExisted()){
