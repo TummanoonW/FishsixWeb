@@ -11,6 +11,15 @@
             return self::getAuth() != NULL;
         }
 
+        public static function checkUserAdmin(){
+            $auth = self::getAuth();
+            if($auth != NULL){
+                return ($auth->type == Auth::$TYPE_ADMIN);
+            }else{
+                return FALSE;
+            }
+        }
+
         //save user and API Key in session
         public static function logIn($auth){
             self::setAuth($auth);

@@ -43,9 +43,15 @@
                 $dir = "./";
             }
 
-            include_once 'component/view/' . $file;
+            include_once $dir . 'component/view/' . $file;
         }
 
+        public static function include_admin($dir, $file){
+            if(!isset($dir)){
+                $dir = "./";
+            }
 
+            include_once $dir . 'component/admin/' . $file;
+        }
 
     }
