@@ -101,7 +101,7 @@
 
                                                     <div class="d-flex flex-column flex-sm-row">
                                                         <a href="instructor-course-edit.html" class="avatar avatar-lg avatar-4by3 mb-3 w-xs-plus-down-100 mr-sm-3">
-                                                            <img src="assets/images/vuejs.png" alt="Card image cap" class="avatar-img rounded">
+                                                            <img src="<?php Nav::printURL($dir, 'assets/images/vuejs.png') ?>" alt="Card image cap" class="avatar-img rounded">
                                                         </a>
                                                         <div class="flex" style="min-width: 200px;">
                                                             <!-- <h5 class="card-title text-base m-0"><a href="instructor-course-edit.html"><strong>Learn Vue.js</strong></a></h5> -->
@@ -146,7 +146,7 @@
 
                                                     <div class="d-flex flex-column flex-sm-row">
                                                         <a href="instructor-course-edit.html" class="avatar avatar-lg avatar-4by3 mb-3 w-xs-plus-down-100 mr-sm-3">
-                                                            <img src="assets/images/nodejs.png" alt="Card image cap" class="avatar-img rounded">
+                                                            <img src="<?php Nav::printURL($dir, 'assets/images/nodejs.png') ?>" alt="Card image cap" class="avatar-img rounded">
                                                         </a>
                                                         <div class="flex" style="min-width: 200px;">
                                                             <!-- <h5 class="card-title text-base m-0"><a href="instructor-course-edit.html"><strong>Npm &amp; Gulp Advanced Workflow</strong></a></h5> -->
@@ -191,7 +191,7 @@
 
                                                     <div class="d-flex flex-column flex-sm-row">
                                                         <a href="instructor-course-edit.html" class="avatar avatar-lg avatar-4by3 mb-3 w-xs-plus-down-100 mr-sm-3">
-                                                            <img src="assets/images/github.png" alt="Card image cap" class="avatar-img rounded">
+                                                            <img src="<?php Nav::printURL($dir, 'assets/images/github.png') ?>" alt="Card image cap" class="avatar-img rounded">
                                                         </a>
                                                         <div class="flex" style="min-width: 200px;">
                                                             <!-- <h5 class="card-title text-base m-0"><a href="instructor-course-edit.html"><strong>Github Webhooks for Beginners</strong></a></h5> -->
@@ -236,7 +236,7 @@
 
                                                     <div class="d-flex flex-column flex-sm-row">
                                                         <a href="instructor-course-edit.html" class="avatar avatar-lg avatar-4by3 mb-3 w-xs-plus-down-100 mr-sm-3">
-                                                            <img src="assets/images/gulp.png" alt="Card image cap" class="avatar-img rounded">
+                                                            <img src="<?php Nav::printURL($dir, 'assets/images/gulp.png') ?>" alt="Card image cap" class="avatar-img rounded">
                                                         </a>
                                                         <div class="flex" style="min-width: 200px;">
                                                             <!-- <h5 class="card-title text-base m-0"><a href="instructor-course-edit.html"><strong>Gulp &amp; Slush Workflows</strong></a></h5> -->

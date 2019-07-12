@@ -24,11 +24,13 @@
                                         <div class="media-body">
                                             <h1 class="h2">Admin Panel</h1>
                                         </div>
-                                        <a href="<?php Nav::printURL($dir, Nav::$pageAdminManageCourses); ?>" type="button" class="btn btn-primary">
-                                            <i class="material-icons mr-1">import_contacts</i> Manage Courses
-                                        </a>
                                     </div>
                                     <div class="clearfix"></div>
+                                    <form action="<?php Nav::printURL($dir, Nav::$pageAdminManageCourses); ?>">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="material-icons mr-1">import_contacts</i> Manage Courses
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                             <?php Sidemenu::initSideMenu($dir); ?>
