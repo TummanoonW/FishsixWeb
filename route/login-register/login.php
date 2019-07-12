@@ -1,6 +1,6 @@
 <?php
     $dir = "../../";
-
+    
     include_once $dir . 'includer/includer.php'; //include Includer file to operate
 
     //include Proto Framework Architecture with retracked directory path
@@ -32,7 +32,16 @@
     }
 
     function login($api, $form){
-        $url = $api->getURL(API::$apiLogin, 'login', $form);
+        //real login
+        /*$url = $api->getURL(API::$apiLogin, 'login', $form);
         $result = $api->get($url);
+        return $result;*/
+
+        //mock login
+        $auth = new Auth(NULL);
+        $auth->username = "Wilhelm";
+        $auth->email = "wilhelm@gmail.com";
+        $result = new Result();
+        $result->setResult(TRUE, $auth, NULL);
         return $result;
     }

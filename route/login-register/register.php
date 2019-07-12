@@ -1,6 +1,6 @@
 <?php
     $dir = "../../";
-
+    
     include_once $dir . 'includer/includer.php'; //include Includer file to operate
 
     //include Proto Framework Architecture with retracked directory path
@@ -19,7 +19,9 @@
             $form = new Auth($io->post);
             $result = register($api, $form);
             if($result->success){
-
+                $auth = $result->response;
+                Session::logIn($auth); //save login data to session
+                Nav::gotoHome(); //redirect to profile page
             }else{
                 ErrorPage::showError($result);
             }
@@ -27,7 +29,16 @@
     }
 
     function register($api, $form){
-        $url = $api->getURL(API::$apiLogin, 'register', $form);
+        //real register
+        /*$url = $api->getURL(API::$apiLogin, 'register', $form);
         $result = $api->post($url);
+        return $result;*/
+
+        //mock register
+        $auth = new Auth(NULL);
+        $auth->username = "Herbert";
+        $auth->email = "herbert@gmail.com";
+        $result = new Result();
+        $result->setResult(TRUE, $auth, NULL);
         return $result;
     }
