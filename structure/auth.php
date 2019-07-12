@@ -2,6 +2,10 @@
 
     class Auth extends Doc{
 
+        public static $TYPE_USER = "user";
+        public static $TYPE_ADMIN = "admin";
+        public static $TYPE_ROOT = "root";
+
         public $email;
         public $password;
         public $password_hash;
@@ -36,7 +40,7 @@
             if(isset($obj->type)){
                 $this->type = $obj->type;
             }else{
-                $this->type = "user";
+                $this->type = self::$TYPE_USER;
             }
         }
 

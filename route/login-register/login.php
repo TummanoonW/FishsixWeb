@@ -1,6 +1,6 @@
 <?php
     $dir = "../../";
-    
+
     include_once $dir . 'includer/includer.php'; //include Includer file to operate
 
     //include Proto Framework Architecture with retracked directory path
@@ -38,10 +38,20 @@
         return $result;*/
 
         //mock login
-        $auth = new Auth(NULL);
-        $auth->username = "Wilhelm";
-        $auth->email = "wilhelm@gmail.com";
-        $result = new Result();
-        $result->setResult(TRUE, $auth, NULL);
-        return $result;
+        if($form->email == 'root@localhost'){
+            $auth = new Auth(NULL);
+            $auth->username = "Bismarck";
+            $auth->email = "bismarck@gmail.com";
+            $auth->type = "admin";
+            $result = new Result();
+            $result->setResult(TRUE, $auth, NULL);
+            return $result;
+        }else{
+            $auth = new Auth(NULL);
+            $auth->username = "Wilhelm";
+            $auth->email = "wilhelm@gmail.com";
+            $result = new Result();
+            $result->setResult(TRUE, $auth, NULL);
+            return $result;
+        }
     }
