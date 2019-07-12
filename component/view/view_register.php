@@ -7,7 +7,7 @@
                 <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px;">
                     <div class="text-center mt-5 mb-1">
                         <div class="avatar avatar-lg">
-                            <img src="<?php Nav::printURL('', App::$iconURL); ?>" class="avatar-img rounded-circle" alt="LearnPlus" />
+                            <img src="<?php Nav::printURL($dir, App::$iconURL); ?>" class="avatar-img rounded-circle" alt="LearnPlus" />
                         </div>
                     </div>
                     <div class="d-flex justify-content-center mb-5 navbar-light">
