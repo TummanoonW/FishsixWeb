@@ -2,7 +2,7 @@
     class ErrorPage{
         public static function showError($dir, $result){
 
-            Header::initHeader("Error " . $result->err->code); //initialize HTML header elements with '<<someone name>> 's Profile' as Title
+            Header::initHeader($dir, "Error " . $result->err->code); //initialize HTML header elements with '<<someone name>> 's Profile' as Title
 
 ?>
             <body class=" layout-fluid">
@@ -17,7 +17,7 @@
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
 
-                    <?php Toolbar::initToolbar(); ?>
+                    <?php Toolbar::initToolbar($dir); ?>
 
                     <!-- // END Header -->
 
@@ -42,7 +42,7 @@
                                 
 <?php
 
-            Footer::initFooter(); //initialize HTML footer elements
+            Footer::initFooter($dir); //initialize HTML footer elements
 
         }
     }

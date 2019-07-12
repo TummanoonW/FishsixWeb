@@ -15,7 +15,7 @@
                 <div class="mdk-header-layout js-mdk-header-layout">
 
                     <!-- Header -->
-                    <?php Toolbar::initToolbar(); ?>
+                    <?php Toolbar::initToolbar($dir); ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
@@ -152,7 +152,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu(); ?>
+                            <?php Sidemenu::initSideMenu($dir); ?>
                         </div>
                     </div>
                 </div>
