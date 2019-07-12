@@ -4,17 +4,14 @@
             $auth = Session::getAuth();
 ?>
             <body class=" layout-fluid">
-
                 <div class="preloader">
                     <div class="sk-double-bounce">
                         <div class="sk-child sk-double-bounce1"></div>
                         <div class="sk-child sk-double-bounce2"></div>
                     </div>
                 </div>
-
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
-
                     <!-- Header -->
                     <?php Toolbar::initToolbar($dir); ?>
                     <!-- // END Header -->
