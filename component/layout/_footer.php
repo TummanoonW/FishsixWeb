@@ -7,24 +7,24 @@
                 <script src="<?php Nav::printURL($dir, 'assets/vendor/jquery.min.js'); ?>"></script>
 
                 <!-- Bootstrap -->
-                <script src="./assets/vendor/popper.min.js"></script>
-                <script src="./assets/vendor/bootstrap.min.js"></script>
+                <script src="<?php Nav::printURL($dir, 'assets/vendor/popper.min.js'); ?>"></script>
+                <script src="<?php Nav::printURL($dir, 'assets/vendor/bootstrap.min.js'); ?>"></script>
 
                 <!-- Perfect Scrollbar -->
-                <script src="./assets/vendor/perfect-scrollbar.min.js"></script>
+                <script src="<?php Nav::printURL($dir, 'assets/vendor/perfect-scrollbar.min.js'); ?>"></script>
 
                 <!-- MDK -->
-                <script src="./assets/vendor/dom-factory.js"></script>
-                <script src="./assets/vendor/material-design-kit.js"></script>
+                <script src="<?php Nav::printURL($dir, 'assets/vendor/dom-factory.js'); ?>"></script>
+                <script src="<?php Nav::printURL($dir, 'assets/vendor/material-design-kit.js'); ?>"></script>
 
                 <!-- App JS -->
-                <script src="./assets/js/app.js"></script>
+                <script src="<?php Nav::printURL($dir, 'assets/js/app.js'); ?>"></script>
 
                 <!-- Highlight.js -->
-                <script src="./assets/js/hljs.js"></script>
+                <script src="<?php Nav::printURL($dir, 'assets/js/hljs.js'); ?>"></script>
 
                 <!-- App Settings (safe to remove) -->
-                <script src="./assets/js/app-settings.js"></script>
+                <script src="<?php Nav::printURL($dir, 'assets/js/app-settings.js'); ?>"></script>
 
             </body>
             </html>
