@@ -1,6 +1,6 @@
 <?php
     class App{
-        public static $name = "Fishsix";
+        public static $name = "fishsix";
         public static $framework = "Proto-Framework Plus";
         public static $version = "4";
         public static $platform = ["PHP", "HTML5"]; 
