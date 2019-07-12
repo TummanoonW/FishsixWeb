@@ -1,49 +1,40 @@
 <?php
-    class ErrorPage{
-        public static function showError($dir, $result){
-
-            Header::initHeader($dir, "Error " . $result->err->code); //initialize HTML header elements with '<<someone name>> 's Profile' as Title
-
+    class AdminHomeView{
+        public static function initView($dir){
+            $auth = Session::getAuth();
 ?>
             <body class=" layout-fluid">
-
                 <div class="preloader">
                     <div class="sk-double-bounce">
                         <div class="sk-child sk-double-bounce1"></div>
                         <div class="sk-child sk-double-bounce2"></div>
                     </div>
                 </div>
-
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
-
+                    <!-- Header -->
                     <?php Toolbar::initToolbar($dir); ?>
-
                     <!-- // END Header -->
-
                     <!-- Header Layout Content -->
                     <div class="mdk-header-layout__content">
                         <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
                             <div class="mdk-drawer-layout__content page ">
-
                                 <div class="container-fluid page__container">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="student-dashboard.html">Home</a></li>
-                                        <li class="breadcrumb-item active">Error</li>
-                                    </ol>
-                                    <h1 class="h2"><?php echo "Error " . $result->err->code . ": " . $result->err->msg ?></h1>
+                                    <div class="media align-items-center mb-headings">
+                                        <div class="media-body">
+                                            <h1 class="h2">Admin Panel</h1>
+                                        </div>
+                                        <a href="<?php Nav::printURL($dir, Nav::$pageAdminManageCourses); ?>" type="button" class="btn btn-primary">
+                                            <i class="material-icons mr-1">import_contacts</i> Manage Courses
+                                        </a>
+                                    </div>
+                                    <div class="clearfix"></div>
                                 </div>
                             </div>
+                            <?php Sidemenu::initSideMenu($dir); ?>
                         </div>
                     </div>
-
                 </div>
-            
-                                
 <?php
-
-            Footer::initFooter($dir); //initialize HTML footer elements
-
         }
     }
-?>

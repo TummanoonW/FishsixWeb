@@ -3,22 +3,27 @@
         public static function initUserMenu($dir){
             $auth = Session::getAuth();
 
-            if($auth != NULL){
+            if(Session::checkUserExisted()){
 ?>
                 <li class="nav-item dropdown ml-1 ml-md-3">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img src="./assets/images/people/50/guy-6.jpg" alt="Avatar" class="rounded-circle" width="40"></a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="<?php echo $dir . Nav::$pageMyCourses ?>">
+                        <?php if(Session::checkUserAdmin()){ ?>
+                            <a class="dropdown-item" href="<?php Nav::printURL($dir, Nav::$pageAdminPanel); ?>">
+                                <i class="material-icons">apps</i> Admin Panel
+                            </a>
+                        <?php } ?>
+                        <a class="dropdown-item" href="<?php Nav::printURL($dir, Nav::$pageMyCourses); ?>">
                             <i class="material-icons">school</i> My Courses
                         </a>
-                        <a class="dropdown-item" href="<?php echo $dir . Nav::$pageProfile ?>">
+                        <a class="dropdown-item" href="<?php Nav::printURL($dir, Nav::$pageProfile); ?>">
                             <i class="material-icons">edit</i> Edit Account
                         </a>
                         <a class="dropdown-item" href="student-profile.html">
                             <i class="material-icons">person</i> Public Profile
                         </a>
-                        <a class="dropdown-item" href="<?php echo $dir . Nav::$routeLogOut ?>">
-                            <i class="material-icons">lock</i> Log Out
+                        <a class="dropdown-item" href="<?php Nav::printURL($dir, Nav::$routeLogOut); ?>">
+                            <i class="material-icons">lock_open</i> Log Out
                         </a>
                     </div>
                 </li>
@@ -26,12 +31,12 @@
             }else{
 ?>
                 <li class="nav-item d-none d-md-flex">
-                    <a href="<?php echo $dir . Nav::$pageRegister; ?>" class="nav-link">
+                    <a href="<?php Nav::printURL($dir, Nav::$pageRegister); ?>" class="nav-link">
                         Register
                     </a>
                 </li>
                 <li class="nav-item d-none d-md-flex ml-md-3">
-                    <a href="<?php echo $dir . Nav::$pageLogin; ?>" class="nav-link">
+                    <a href="<?php Nav::printURL($dir, Nav::$pageLogin); ?>" class="nav-link">
                         Log In
                     </a>
                 </li>

@@ -15,7 +15,7 @@
                 <div class="mdk-header-layout js-mdk-header-layout">
 
                     <!-- Header -->
-                    <?php Toolbar::initToolbar(); ?>
+                    <?php Toolbar::initToolbar($dir); ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
@@ -25,10 +25,6 @@
                             <div class="mdk-drawer-layout__content page ">
 
                                 <div class="container-fluid page__container">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="student-dashboard.html">Home</a></li>
-                                        <li class="breadcrumb-item active">Courses</li>
-                                    </ol>
                                     <div class="media align-items-center mb-headings">
                                         <div class="media-body">
                                             <h1 class="h2">Courses</h1>
@@ -152,7 +148,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu(); ?>
+                            <?php Sidemenu::initSideMenu($dir); ?>
                         </div>
                     </div>
                 </div>

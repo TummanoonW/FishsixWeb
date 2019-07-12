@@ -1,9 +1,10 @@
 <?php
+    $dir = "../";
 
-    include_once '../includer/includer.php'; //include Includer file to operate
+    include_once $dir . 'includer/includer.php'; //include Includer file to operate
 
     //include Proto Framework Architecture with retracked directory path
-    Includer::include_proto("../"); 
+    Includer::include_proto($dir); 
 
     $apiKey = Session::getAPIKey(); //get secret API Key
     $auth = Session::getAuth();
@@ -22,7 +23,7 @@
             if($result->success){ //if the API return result
                 $auth->username = $io->post->username;
                 Session::logIn($auth); //update username
-                Nav::goto("../", "profile.php");
+                Nav::goto($dir, "profile.php");
             }else{
                 $io->output($result);
             }
@@ -34,7 +35,12 @@
     }
 
     function editProfile($api, $form){
-        $url = $api->getURL("profile.php", 'edit', NULL);
+        //real edit profile
+        /*$url = $api->getURL(API::$apiProfile, 'edit', NULL);
         $result = $api->post($url, $form);
+        return $result;*/
+
+        $result = new Result();
+        $result->setResult(TRUE, $form, NULL);
         return $result;
     }

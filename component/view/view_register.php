@@ -7,7 +7,7 @@
                 <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px;">
                     <div class="text-center mt-5 mb-1">
                         <div class="avatar avatar-lg">
-                            <img src="assets/images/logo/primary.svg" class="avatar-img rounded-circle" alt="LearnPlus" />
+                            <img src="<?php Nav::printURL($dir, App::$iconURL); ?>" class="avatar-img rounded-circle" alt="LearnPlus" />
                         </div>
                     </div>
                     <div class="d-flex justify-content-center mb-5 navbar-light">
@@ -29,11 +29,11 @@
                                 <div class="page-separator__text">or</div>
                             </div>
 
-                            <form action="student-dashboard.html" novalidate method="get">
+                            <form action="<?php Nav::printURL($dir, Nav::$routeRegister); ?>" novalidate method="POST">
                                 <div class="form-group">
                                     <label class="form-label" for="name">Name:</label>
                                     <div class="input-group input-group-merge">
-                                        <input id="name" type="text" required="" class="form-control form-control-prepended" placeholder="Your first and last name">
+                                        <input name="username" id="name" type="text" required="" class="form-control form-control-prepended" placeholder="Your first and last name">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
                                                 <span class="far fa-user"></span>
@@ -44,7 +44,7 @@
                                 <div class="form-group">
                                     <label class="form-label" for="email">Email address:</label>
                                     <div class="input-group input-group-merge">
-                                        <input id="email" type="email" required="" class="form-control form-control-prepended" placeholder="Your email address">
+                                        <input name="email" id="email" type="email" required="" class="form-control form-control-prepended" placeholder="Your email address">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
                                                 <span class="far fa-envelope"></span>
@@ -55,7 +55,7 @@
                                 <div class="form-group">
                                     <label class="form-label" for="password">Password:</label>
                                     <div class="input-group input-group-merge">
-                                        <input id="password" type="password" required="" class="form-control form-control-prepended" placeholder="Choose a password">
+                                        <input name="password" id="password" type="password" required="" class="form-control form-control-prepended" placeholder="Choose a password">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
                                                 <span class="far fa-key"></span>

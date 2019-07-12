@@ -9,8 +9,12 @@
         public static $pageProfile = "profile.php";
         public static $pageMyCourses = "mycourses.php";
 
+        public static $pageAdminPanel = "admin/index.php";
+        public static $pageAdminManageCourses = "admin/manage-courses.php";
+
         public static $routeLogIn = "route/login-register/login.php";
         public static $routeLogOut = "route/login-register/logout.php";
+        public static $routeRegister = "route/login-register/register.php";
 
         //navigate to Home URL
         function gotoHome(){

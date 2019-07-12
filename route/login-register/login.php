@@ -32,7 +32,26 @@
     }
 
     function login($api, $form){
-        $url = $api->getURL(API::$apiLogin, 'login', $form);
+        //real login
+        /*$url = $api->getURL(API::$apiLogin, 'login', $form);
         $result = $api->get($url);
-        return $result;
+        return $result;*/
+
+        //mock login
+        if($form->email == 'root@localhost'){
+            $auth = new Auth(NULL);
+            $auth->username = "Bismarck";
+            $auth->email = "root@localhost";
+            $auth->type = Auth::$TYPE_ADMIN;
+            $result = new Result();
+            $result->setResult(TRUE, $auth, NULL);
+            return $result;
+        }else{
+            $auth = new Auth(NULL);
+            $auth->username = "Wilhelm";
+            $auth->email = "wilhelm@gmail.com";
+            $result = new Result();
+            $result->setResult(TRUE, $auth, NULL);
+            return $result;
+        }
     }

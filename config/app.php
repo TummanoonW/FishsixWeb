@@ -1,11 +1,12 @@
 <?php
     class App{
-        public static $name = "Proto-Framework Plus";
-        public static $version = "3";
+        public static $name = "fishsix";
+        public static $framework = "Proto-Framework Plus";
+        public static $version = "4";
         public static $platform = ["PHP", "HTML5"]; 
 
-        public static $iconURL = "./assets/images/logo/production.svg";
-        public static $iconURL2 = "./assets/images/logo/production_white.svg";
+        public static $iconURL = "assets/images/logo/primary.svg";
+        public static $iconURL2 = "assets/images/logo/white.svg";
 
     }
 ?>
