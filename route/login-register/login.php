@@ -41,8 +41,8 @@
         if($form->email == 'root@localhost'){
             $auth = new Auth(NULL);
             $auth->username = "Bismarck";
-            $auth->email = "bismarck@gmail.com";
-            $auth->type = "admin";
+            $auth->email = "root@localhost";
+            $auth->type = Auth::$TYPE_ADMIN;
             $result = new Result();
             $result->setResult(TRUE, $auth, NULL);
             return $result;
