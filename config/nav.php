@@ -11,6 +11,7 @@
 
         public static $pageAdminPanel = "admin/index.php";
         public static $pageAdminManageCourses = "admin/manage-courses.php";
+        public static $pageAdminCourseEditor = "admin/course-editor.php";
 
         public static $routeLogIn = "route/login-register/login.php";
         public static $routeLogOut = "route/login-register/logout.php";

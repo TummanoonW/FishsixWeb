@@ -26,11 +26,7 @@
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
-                                    <form action="<?php Nav::printURL($dir, Nav::$pageAdminManageCourses); ?>">
-                                        <button type="submit" class="btn btn-primary">
-                                            <i class="material-icons mr-1">import_contacts</i> Manage Courses
-                                        </button>
-                                    </form>
+                                    <a href="<?php Nav::printURL($dir, Nav::$pageAdminManageCourses); ?>" class="btn btn-success">Manage Courses</a>
                                 </div>
                             </div>
                             <?php Sidemenu::initSideMenu($dir); ?>
