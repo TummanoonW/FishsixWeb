@@ -12,12 +12,12 @@
     $io = new IO(); 
 
     $pages = array(
-        new Path(FALSE, '1', $dir . Nav::$rootURL . "?page=0"),
-        new Path(FALSE, '2', $dir . Nav::$rootURL . "?page=1"),
-        new Path(FALSE, '3', $dir . Nav::$rootURL . "?page=2"),
-        new Path(FALSE, '4', $dir . Nav::$rootURL . "?page=3"),
-        new Path(FALSE, '5', $dir . Nav::$rootURL . "?page=4"),
-        new Path(FALSE, '6', $dir . Nav::$rootURL . "?page=5")
+        new Path(FALSE, '1', Nav::$rootURL . "?page=0"),
+        new Path(FALSE, '2', Nav::$rootURL . "?page=1"),
+        new Path(FALSE, '3', Nav::$rootURL . "?page=2"),
+        new Path(FALSE, '4', Nav::$rootURL . "?page=3"),
+        new Path(FALSE, '5', Nav::$rootURL . "?page=4"),
+        new Path(FALSE, '6', Nav::$rootURL . "?page=5")
     );
 
     if($io->page == NULL){
