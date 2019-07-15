@@ -1,17 +1,30 @@
 <?php
     class AdminCourseEditorView{
-        public static function initView($dir, $course){
+        public static function initView($dir, $paths, $course, $categories){
             $auth = Session::getAuth();
 ?>
+       
             <body class=" layout-fluid">
-                <div class="preloader">
-                    <div class="sk-double-bounce">
-                        <div class="sk-child sk-double-bounce1"></div>
-                        <div class="sk-child sk-double-bounce2"></div>
-                    </div>
-                </div>
+                 <!-- Flatpickr -->
+                <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/flatpickr.css'); ?>" rel="stylesheet">
+                <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/flatpickr.rtl.css'); ?>" rel="stylesheet">
+                <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/flatpickr-airbnb.css'); ?>" rel="stylesheet">
+                <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/flatpickr-airbnb.rtl.css'); ?>" rel="stylesheet">
+
+                <!-- Quill Theme -->
+                <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/quill.css'); ?>" rel="stylesheet">
+                <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/quill.rtl.css'); ?>" rel="stylesheet">
+
+                <!-- Nestable -->
+                <link rel="stylesheet" href="<?php Nav::printURL($dir, 'assets/css/nestable.css'); ?>">
+                <link rel="stylesheet" href="<?php Nav::printURL($dir, 'assets/css/nestable.rtl.css'); ?>">
+
+                <!-- Pre Loader -->
+                <?php Preloader::initPreloader($dir); ?>
+
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
+
                     <!-- Header -->
                     <?php Toolbar::initToolbar($dir); ?>
                     <!-- // END Header -->
@@ -23,245 +36,271 @@
                             <div class="mdk-drawer-layout__content page ">
 
                                 <div class="container-fluid page__container">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="instructor-dashboard.html">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="instructor-quizzes.html">Quiz Manager</a></li>
-                                        <li class="breadcrumb-item active">Edit Quiz</li>
-                                    </ol>
-                                    <h1 class="h2">Course - <?php echo $course->title ?></h1>
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h4 class="card-title">Basic</h4>
-                                        </div>
-                                        <div class="card-body">
-                                            <form action="#">
-                                                <div class="form-group row">
-                                                    <label for="quiz_title" class="col-sm-3 col-form-label form-label">Quiz Title:</label>
-                                                    <div class="col-sm-9">
-                                                        <input id="quiz_title" type="text" class="form-control" placeholder="Title" value="Vue.js Introduction">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="course_title" class="col-sm-3 col-form-label form-label">Course:</label>
-                                                    <div class="col-sm-9 col-md-4">
-                                                        <select id="course_title" class="custom-select form-control">
-                                                            <option value="#">HTML</option>
-                                                            <option value="#">Angular JS</option>
-                                                            <option value="#" selected>Vue.js</option>
-                                                            <option value="#">CSS / LESS</option>
-                                                            <option value="#">Design / Concept</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
 
-                                                <div class="form-group row">
-                                                    <label for="quiz_image" class="col-sm-3 col-form-label form-label">Quiz Image:</label>
-                                                    <div class="col-sm-9 col-md-4">
-                                                        <p><img src="<?php Nav::printURL($dir, 'assets/images/vuejs.png'); ?>" alt="" width="150" class="rounded"></p>
-                                                        <div class="custom-file">
-                                                            <input type="file" id="quiz_image" class="custom-file-input">
-                                                            <label for="quiz_image" class="custom-file-label">Choose file</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="cmn-toggle" class="col-sm-3 col-form-label form-label">Timeframe</label>
-                                                    <div class="col-sm-9">
-                                                        <div class="form-group">
-                                                            <div class="custom-control custom-checkbox-toggle">
-                                                                <input id="cmn-toggle" type="checkbox" aria-checked="false" class="custom-control-input" role="switch">
-                                                                <label class="custom-control-label" for="cmn-toggle"><span class="sr-only">Timeframe</span></label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-inline">
-                                                            <div class="form-group mr-2">
-                                                                <input type="number" class="form-control text-center" value="4" style="width:50px;">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <select class="custom-select">
-                                                                    <option value="hour" selected>Hours</option>
-                                                                    <option value="minutes">Minutes</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row mb-0">
-                                                    <div class="col-sm-9 offset-sm-3">
-                                                        <button type="submit" class="btn btn-success">Save</button>
-                                                    </div>
-                                                </div>
-                                            </form>
+                                    <!-- Navigation Paths -->
+                                    <?php NavPath::initNavPath($dir, $paths); ?>
+
+                                    <div class="media align-items-center mb-headings">
+                                        <div class="media-body">
+                                            <h1 class="h2">Edit Course - <?php echo $course->title ?></h1>
+                                        </div>
+                                        <div class="media-right">
+                                            <a href="#" class="btn btn-success">SAVE</a>
                                         </div>
                                     </div>
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h4 class="card-title">Questions</h4>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Basic Information</h4>
+                                                </div>
+                                                <div class="card-body">
+
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="title">Title</label>
+                                                        <input type="text" id="title" class="form-control" placeholder="Write a title" value="<?php echo $course->title; ?>">
+                                                    </div>
+
+                                                    <div class="form-group mb-0">
+                                                        <label class="form-label">Description</label>
+                                                        <div style="height: 150px;" data-toggle="quill" data-quill-placeholder="Quill WYSIWYG editor" data-quill-modules-toolbar='[["bold", "italic"], ["link", "blockquote", "code", "image"], [{"list": "ordered"}, {"list": "bullet"}]]'>
+                                                            <p><?php echo $course->description; ?></p>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Lessons</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p><a href="instructor-lesson-add.html" class="btn btn-primary">Add Lesson <i class="material-icons">add</i></a></p>
+                                                    <div class="nestable" id="nestable-handles-primary">
+                                                        <ul class="nestable-list">
+                                                            <li class="nestable-item nestable-item-handle" data-id="2">
+                                                                <div class="nestable-handle"><i class="material-icons">menu</i></div>
+                                                                <div class="nestable-content">
+                                                                    <div class="media align-items-center">
+                                                                        <div class="media-left">
+                                                                            <img src="<?php Nav::printURL($dir, 'assets/images/vuejs.png'); ?>" alt="" width="100" class="rounded">
+                                                                        </div>
+                                                                        <div class="media-body">
+                                                                            <h5 class="card-title h6 mb-0">
+                                                                                <a href="instructor-lesson-add.html">Awesome Vue.js with SASS Processing</a>
+                                                                            </h5>
+                                                                            <small class="text-muted">updated 1 month ago</small>
+                                                                        </div>
+                                                                        <div class="media-right">
+                                                                            <a href="instructor-lesson-add.html" class="btn btn-white btn-sm"><i class="material-icons">edit</i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="nestable-item nestable-item-handle" data-id="1">
+                                                                <div class="nestable-handle"><i class="material-icons">menu</i></div>
+                                                                <div class="nestable-content">
+                                                                    <div class="media align-items-center">
+                                                                        <div class="media-left">
+                                                                            <img src="<?php Nav::printURL($dir, 'assets/images/nodejs.png'); ?>" alt="" width="100" class="rounded">
+                                                                        </div>
+                                                                        <div class="media-body">
+                                                                            <h4 class="card-title h6 mb-0">
+                                                                                <a href="instructor-lesson-add.html">Github Webhooks for Beginners</a>
+                                                                            </h4>
+                                                                            <small class="text-muted">updated 1 month ago</small>
+                                                                        </div>
+                                                                        <div class="media-right">
+                                                                            <a href="instructor-lesson-add.html" class="btn btn-white btn-sm"><i class="material-icons">edit</i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="nestable-item nestable-item-handle" data-id="2">
+                                                                <div class="nestable-handle"><i class="material-icons">menu</i></div>
+                                                                <div class="nestable-content">
+                                                                    <div class="media align-items-center">
+                                                                        <div class="media-left">
+                                                                            <img src="<?php Nav::printURL($dir, 'assets/images/gulp.png'); ?>" alt="" width="100" class="rounded">
+                                                                        </div>
+                                                                        <div class="media-body">
+                                                                            <h4 class="card-title h6 mb-0">
+                                                                                <a href="instructor-lesson-add.html">Browserify: Writing Modular JavaScript</a>
+                                                                            </h4>
+                                                                            <small class="text-muted">updated 1 month ago</small>
+                                                                        </div>
+                                                                        <div class="media-right">
+                                                                            <a href="instructor-lesson-add.html" class="btn btn-white btn-sm"><i class="material-icons">edit</i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Packages</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p><a href="instructor-lesson-add.html" class="btn btn-primary">Add Package <i class="material-icons">add</i></a></p>
+                                                    <div class="nestable" id="nestable-handles-primary">
+                                                        <ul class="nestable-list">
+                                                            <li class="nestable-item nestable-item-handle" data-id="2">
+                                                                <div class="nestable-handle"><i class="material-icons">menu</i></div>
+                                                                <div class="nestable-content">
+                                                                    <div class="media align-items-center">
+                                                                        <div class="media-left">
+                                                                            <label> ราคา (บ.)
+                                                                                <input type="text" id="duration" class="form-control" placeholder="Price" value="399">
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="media-body">
+                                                                            <label> จำนวนเครดิต (ชม.)
+                                                                                <input type="text" id="duration" class="form-control" placeholder="No. of Hours" value="2">
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="media-right">
+                                                                            <a href="instructor-lesson-add.html" class="btn btn-white btn-sm"><i class="material-icons">delete_forever</i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Branches</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p><a href="instructor-lesson-add.html" class="btn btn-primary">Add Branch <i class="material-icons">add</i></a></p>
+                                                    <div class="nestable" id="nestable-handles-primary">
+                                                        <ul class="nestable-list">
+                                                            <li class="nestable-item nestable-item-handle" data-id="2">
+                                                                <div class="nestable-handle"><i class="material-icons">menu</i></div>
+                                                                <div class="nestable-content">
+                                                                    <div class="media align-items-center">
+                                                                        <div class="media-left">
+                                                                            <img src="<?php Nav::printURL($dir, 'assets/images/vuejs.png'); ?>" alt="" width="100" class="rounded">
+                                                                        </div>
+                                                                        <div class="media-body">
+                                                                            <h5 class="card-title h6 mb-0">
+                                                                                <a href="instructor-lesson-add.html">Major Trauma Cinegon</a>
+                                                                            </h5>
+                                                                            <small class="text-muted">updated 1 month ago</small>
+                                                                        </div>
+                                                                        <div class="media-right">
+                                                                            <a href="instructor-lesson-add.html" class="btn btn-white btn-sm"><i class="material-icons">edit</i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
-                                        <div class="card-header">
-                                            <a href="#" data-toggle="modal" data-target="#editQuiz" class="btn btn-outline-secondary">Add Question <i class="material-icons">add</i></a>
-                                        </div>
-                                        <div class="nestable" id="nestable">
-                                            <ul class="list-group list-group-fit nestable-list-plain mb-0">
-                                                <li class="list-group-item nestable-item">
-                                                    <div class="media align-items-center">
-                                                        <div class="media-left">
-                                                            <a href="#" class="btn btn-default nestable-handle"><i class="material-icons">menu</i></a>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            Installation
-                                                        </div>
-                                                        <div class="media-right text-right">
-                                                            <div style="width:100px">
-                                                                <a href="#" data-toggle="modal" data-target="#editQuiz" class="btn btn-primary btn-sm"><i class="material-icons">edit</i></a>
+                                        <div class="col-md-4">
+                                            <div class="card">
+                                                <div class="embed-responsive embed-responsive-16by9">
+                                                    <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0" allowfullscreen=""></iframe>
+                                                </div>
+                                                <div class="card-body">
+                                                    <input type="text" class="form-control" value="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0" />
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Meta</h4>
+                                                    <p class="card-subtitle">Extra Options </p>
+                                                </div>
+                                                    
+                                                <form class="card-body" action="#">
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="category">Category</label>
+                                                        <select id="category" class="custom-select form-control" value="<?php echo $course->categoryID; ?>">
+                                                            <?php foreach ($categories as $key => $value) { ?>
+                                                                <option value="<?php echo $value->ID; ?>"><?php echo $value->title; ?></option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="duration">Duration</label>
+                                                        <input type="text" id="duration" class="form-control" placeholder="No. of Days" value="10">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="start">Start Date</label>
+                                                        <input id="start" type="text" class="form-control" placeholder="Start Date" data-toggle="flatpickr" value="01/28/2016">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="end">End Date</label>
+                                                        <input id="end" type="text" class="form-control" placeholder="Start Date" data-toggle="flatpickr" value="01/28/2016">
+                                                    </div>
+                                                    
+                                                    <div class="form-group mb-0">
+                                                        <label class="form-label" for="option1">Completion Badge</label>
+                                                        <div>
+                                                            <div data-toggle="buttons">
+                                                                <label class="btn btn-primary btn-circle active">
+                                                                    <input type="radio" class="d-none" name="options" id="option1" checked>
+                                                                    <i class="material-icons">person</i>
+                                                                </label>
+                                                                <label class="btn btn-danger btn-circle">
+                                                                    <input type="radio" class="d-none" name="options" id="option2">
+                                                                    <i class="material-icons">star</i>
+                                                                </label>
+                                                                <label class="btn btn-success btn-circle">
+                                                                    <input type="radio" class="d-none" name="options" id="option3">
+                                                                    <i class="material-icons">shop</i>
+                                                                </label>
+                                                                <label class="btn btn-warning btn-circle">
+                                                                    <input type="radio" class="d-none" name="options" id="option4">
+                                                                    <i class="material-icons">monetization_on</i>
+                                                                </label>
+                                                                <label class="btn btn-info btn-circle">
+                                                                    <input type="radio" class="d-none" name="options" id="option5">
+                                                                    <i class="material-icons">enhanced_encryption</i>
+                                                                </label>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class="list-group-item nestable-item">
-                                                    <div class="media align-items-center">
-                                                        <div class="media-left">
-                                                            <a href="#" class="btn btn-default nestable-handle"><i class="material-icons">menu</i></a>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            The MVC architectural pattern
-                                                        </div>
-                                                        <div class="media-right text-right">
-                                                            <div style="width:100px">
-                                                                <a href="#" data-toggle="modal" data-target="#editQuiz" class="btn btn-primary btn-sm"><i class="material-icons">edit</i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item nestable-item">
-                                                    <div class="media align-items-center">
-                                                        <div class="media-left">
-                                                            <a href="#" class="btn btn-default nestable-handle"><i class="material-icons">menu</i></a>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            Database Models
-                                                        </div>
-                                                        <div class="media-right text-right">
-                                                            <div style="width:100px">
-                                                                <a href="#" data-toggle="modal" data-target="#editQuiz" class="btn btn-primary btn-sm"><i class="material-icons">edit</i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item nestable-item" data-id="4">
-                                                    <div class="media align-items-center">
-                                                        <div class="media-left">
-                                                            <a href="#" class="btn btn-default nestable-handle"><i class="material-icons">menu</i></a>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            Database Access
-                                                        </div>
-                                                        <div class="media-right text-right">
-                                                            <div style="width:100px">
-                                                                <a href="#" data-toggle="modal" data-target="#editQuiz" class="btn btn-primary btn-sm"><i class="material-icons">edit</i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item nestable-item" data-id="5">
-                                                    <div class="media align-items-center">
-                                                        <div class="media-left">
-                                                            <a href="#" class="btn btn-default nestable-handle"><i class="material-icons">menu</i></a>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            Eloquent Basics
-                                                        </div>
-                                                        <div class="media-right text-right">
-                                                            <div style="width:100px">
-                                                                <a href="#" data-toggle="modal" data-target="#editQuiz" class="btn btn-primary btn-sm"><i class="material-icons">edit</i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item nestable-item" data-id="6">
-                                                    <div class="media align-items-center">
-                                                        <div class="media-left">
-                                                            <a href="#" class="btn btn-default nestable-handle"><i class="material-icons">menu</i></a>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            Take Quiz
-                                                        </div>
-                                                        <div class="media-right text-right">
-                                                            <div style="width:100px">
-                                                                <a href="#" data-toggle="modal" data-target="#editQuiz" class="btn btn-primary btn-sm"><i class="material-icons">edit</i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                                    
+                                <div class="modal fade" id="editLesson">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            // Edit Lesson
+                                        </div>
+                                    </div>
+                                </div>
+                                                    
                             </div>
                             <?php Sidemenu::initSideMenu($dir); ?>
                         </div>
                     </div>
                 </div>
+                <?php Script::initScript($dir); ?>
 
 
-                <!-- EXTENDED COMPONENT FOR POPUP MENU -->
-                <div class="modal fade" id="editQuiz">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header bg-primary">
-                                <h4 class="modal-title text-white">Edit Question</h4>
-                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="#">
-                                    <div class="form-group row">
-                                        <label for="qtitle" class="col-form-label form-label col-md-3">Title:</label>
-                                        <div class="col-md-9">
-                                            <input id="qtitle" type="text" class="form-control" value="Database Access">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="type" class="col-form-label form-label col-md-3">Type:</label>
-                                        <div class="col-md-4">
-                                            <select id="type" class="custom-control custom-select form-control">
-                                                <option value="1">Input</option>
-                                                <option value="2">Textarea</option>
-                                                <option value="3">Checkbox</option>
-                                                <option value="3">Radio</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-form-label form-label col-md-3">Answers:</label>
-                                        <div class="col-md-9">
-                                            <a href="#" class="btn btn-default"><i class="material-icons">add</i> Add Answer</a>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="touch-spin-2" class="col-form-label form-label col-md-3">Question Score:</label>
-                                        <div class="col-md-4">
-                                            <input id="touch-spin-2" data-toggle="touch-spin" data-min="0" data-max="100" data-step="5" type="text" value="50" name="demo2" class="form-control" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group row mb-0">
-                                        <div class="col-md-8 offset-md-3">
-                                            <button type="submit" class="btn btn-success">Save</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Vendor JS -->
+                <!-- Nestable -->
                 <script src="<?php Nav::printURL($dir, 'assets/vendor/jquery.nestable.js'); ?>"></script>
-                <script src="<?php Nav::printURL($dir, 'assets/vendor/jquery.bootstrap-touchspin.js'); ?>"></script>
-                <!-- Initialize -->
                 <script src="<?php Nav::printURL($dir, 'assets/js/nestable.js'); ?>"></script>
-                <script src="<?php Nav::printURL($dir, 'assets/js/touchspin.js'); ?>"></script>
+                <!-- Quill -->
+                <script src="<?php Nav::printURL($dir, 'assets/vendor/quill.min.js'); ?>"></script>
+                <script src="<?php Nav::printURL($dir, 'assets/js/quill.js'); ?>"></script>
+                <!-- Flatpickr -->
+                <script src="<?php Nav::printURL($dir, 'assets/vendor/flatpickr/flatpickr.min.js'); ?>"></script>
+                <script src="<?php Nav::printURL($dir, 'assets/js/flatpickr.js'); ?>"></script>
 <?php
         }
     }

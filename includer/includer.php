@@ -10,10 +10,9 @@
             }
         }
 
-        //Include all files within 'structure' directory
-        //Structure is obsolete and was never used
-        public static function include_structure($dir){
-            foreach (glob($dir . "structure/*.php") as $filename){
+        //Include all files within 'model' directory
+        public static function include_model($dir){
+            foreach (glob($dir . "model/*.php") as $filename){
                 include_once $filename;
             }
         }
@@ -26,14 +25,14 @@
             }
         }
 
-        //Include Proto-Framework Infastructure
+        //Include Proto-Framework Infamodel
         public static function include_proto($dir){
             if(!isset($dir)){
                 $dir = "./";
             }
 
             self::include_config($dir);
-            self::include_structure($dir);
+            self::include_model($dir);
             self::include_layout($dir);
         }
 
@@ -52,6 +51,14 @@
             }
 
             include_once $dir . 'component/admin/' . $file;
+        }
+
+        public static function include_fun($dir, $file){
+            if(!isset($dir)){
+                $dir = "./";
+            }
+
+            include_once $dir . 'function/' . $file;
         }
 
     }

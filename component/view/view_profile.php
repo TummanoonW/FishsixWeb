@@ -1,17 +1,12 @@
 <?php
     class ProfileView{ ////profile HTML elements loader
 
-        public static function initView($dir){
+        public static function initView($dir, $paths){
             $auth = Session::getAuth();
 ?>
             <body class=" layout-fluid">
-
-                <div class="preloader">
-                    <div class="sk-double-bounce">
-                        <div class="sk-child sk-double-bounce1"></div>
-                        <div class="sk-child sk-double-bounce2"></div>
-                    </div>
-                </div>
+                <!-- Pre Loader -->
+                <?php Preloader::initPreloader($dir); ?>
 
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
@@ -27,10 +22,10 @@
                             <div class="mdk-drawer-layout__content page ">
 
                                 <div class="container-fluid page__container">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="student-dashboard.html">Home</a></li>
-                                        <li class="breadcrumb-item active">Edit Account</li>
-                                    </ol>
+
+                                    <!-- Navigation Paths -->
+                                    <?php NavPath::initNavPath($dir, $paths); ?>
+
                                     <h1 class="h2">Edit Account</h1>
 
                                     <div class="card">
@@ -226,6 +221,7 @@
                         </div>
                     </div>
                 </div>
+                <?php Script::initScript($dir); ?>
 <?php
         }
 

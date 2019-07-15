@@ -5,18 +5,31 @@
     Includer::include_proto($dir); 
     Includer::include_admin($dir, 'admin_course_editor.php');
 
+    Includer::include_fun($dir, 'fun_category.php');
+    Includer::include_fun($dir, 'fun_course.php');
+
     $auth = Session::getAuth(); 
     $apiKey = Session::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
 
+    $paths = array(
+        new Path('Home', Nav::$rootURL),
+        new Path('Admin Panel', $dir . Nav::$pageAdminPanel),
+        new Path('Manage Courses', $dir . Nav::$pageAdminManageCourses),
+        new Path('Course Editor', $dir . Nav::$pageAdminCourseEditor)
+    );
+
     if(Session::checkUserAdmin()){
-        $result = getCourse($io->id);
+        $result = FunCourse::getCourse($io->id);
         if($result->success){
             $course = $result->response;
+
+            $categories = FunCategory::getAll($api);
+
             Header::initHeader($dir, "Admin - " . $course->title); 
-            AdminCourseEditorView::initView($dir, $course);
+            AdminCourseEditorView::initView($dir, $paths, $course, $categories);
             Footer::initFooter($dir);
         }else{
             ErrorPage::showError($dir, $result);
@@ -25,27 +38,8 @@
         Nav::gotoHome();
     }
 
-    function getCourse($id){
-        if($id == NULL){
-            $course = new Course(NULL);
-            $result = new Result();
-            $result->setResult(TRUE, $course, NULL);
-            return $result;
-        }else{
-            //real
-            /*$query = new StdClass();
-            $query->ID = $id;
-            $url = $api->getURL(API::$apiCourse, 'getSingle', $query);
-            $result = $api->get($url);
-            return $result;*/
 
-            //mock
-            $course = new Course(NULL);
-            $course->title = "Easy Chinese 101";
-            $result = new Result();
-            $result->setResult(TRUE, $course, NULL);
-            return $result;
-        }
-    }
+
+
 ?>
     

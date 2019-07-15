@@ -11,9 +11,15 @@
     $api = new API($apiKey);
     $io = new IO(); 
 
+    $paths = array(
+        new Path('Home', Nav::$rootURL),
+        new Path('Admin Panel', $dir . Nav::$pageAdminPanel),
+        new Path('Manage Courses', $dir . Nav::$pageAdminManageCourses)
+    );
+
     if(Session::checkUserAdmin()){
         Header::initHeader($dir, "Admin - Manage Courses"); 
-        AdminManageCoursesView::initView($dir);
+        AdminManageCoursesView::initView($dir, $paths);
         Footer::initFooter($dir); 
     }else{
         Nav::gotoHome();

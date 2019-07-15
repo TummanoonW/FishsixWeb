@@ -1,15 +1,12 @@
 <?php
     class AdminManageCoursesView{
-        public static function initView($dir){
+        public static function initView($dir, $paths){
             $auth = Session::getAuth();
 ?>
             <body class=" layout-fluid">
-                <div class="preloader">
-                    <div class="sk-double-bounce">
-                        <div class="sk-child sk-double-bounce1"></div>
-                        <div class="sk-child sk-double-bounce2"></div>
-                    </div>
-                </div>
+                <!-- Pre Loader -->
+                <?php Preloader::initPreloader($dir); ?>
+
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
                     <!-- Header -->
@@ -23,10 +20,9 @@
                             <div class="mdk-drawer-layout__content page ">
 
                                 <div class="container-fluid page__container">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="instructor-dashboard.html">Home</a></li>
-                                        <li class="breadcrumb-item active">Courses</li>
-                                    </ol>
+
+                                    <!-- Navigation Paths -->
+                                    <?php NavPath::initNavPath($dir, $paths); ?>
 
                                     <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
                                         <div class="flex mb-2 mb-sm-0">
@@ -304,7 +300,8 @@
                             <?php Sidemenu::initSideMenu($dir); ?>
                         </div>
                     </div>
-                </div>    
+                </div>   
+                <?php Script::initScript($dir); ?> 
 <?php
         }
     }

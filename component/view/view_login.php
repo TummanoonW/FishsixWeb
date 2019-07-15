@@ -68,6 +68,7 @@
                         </div>
                     </div>
                 </div>
+                <?php Script::initScript($dir); ?>
 <?php
         }
 
