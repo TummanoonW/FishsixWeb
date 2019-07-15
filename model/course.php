@@ -3,11 +3,15 @@
 
         public $title           = "New Course";
         public $description     = "";
+        public $description_short = "";
         public $categoryID      = NULL;
         public $pictures        = [];
         public $tags            = [];
+
         public $minPrice        = 0;
         public $maxPrice        = 0;
+        
+
         public $public          = FALSE;
         public $video           = "";
         public $thumbnail       = "";
@@ -30,6 +34,8 @@
             if(isset($obj->title))$this->title = $obj->title;
 
             if(isset($obj->description))$this->description = $obj->description;
+
+            if(isset($obj->description_short))$this->description_short = $obj->description_short;
 
             if(isset($obj->categoryID))$this->categoryID = $obj->categoryID;
 

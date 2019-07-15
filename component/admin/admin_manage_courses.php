@@ -1,6 +1,6 @@
 <?php
     class AdminManageCoursesView{
-        public static function initView($dir, $paths){
+        public static function initView($dir, $paths, $pages, $courses){
             $auth = Session::getAuth();
 ?>
             <body class=" layout-fluid">
@@ -78,200 +78,20 @@
                                     </div>
 
 
-
-                                    <div class="alert alert-light alert-dismissible border-1 border-left-3 border-left-warning" role="alert">
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        <div class="text-black-70">Ohh no! No courses to display. Add some courses.</div>
-                                    </div>
+                                    <!-- Alert -->
+                                    <?php Alert::initAlert($dir, "Ohh no! No courses to display. Add some courses."); ?>
 
                                     <div class="row">
-
-                                        <div class="col-md-6">
-                                            <div class="card">
-                                                <div class="card-body">
-
-                                                    <div class="d-flex flex-column flex-sm-row">
-                                                        <a href="<?php Nav::printURL($dir, Nav::$pageAdminCourseEditor . '?id=3245'); ?>" class="avatar avatar-lg avatar-4by3 mb-3 w-xs-plus-down-100 mr-sm-3">
-                                                            <img src="<?php Nav::printURL($dir, 'assets/images/vuejs.png') ?>" alt="Card image cap" class="avatar-img rounded">
-                                                        </a>
-                                                        <div class="flex" style="min-width: 200px;">
-                                                            <!-- <h5 class="card-title text-base m-0"><a href="<?php Nav::printURL($dir, Nav::$pageAdminCourseEditor . '?id=3245'); ?>"><strong>Learn Vue.js</strong></a></h5> -->
-                                                            <h4 class="card-title mb-1"><a href="<?php Nav::printURL($dir, Nav::$pageAdminCourseEditor . '?id=3245'); ?>">Learn Vue.js</a></h4>
-                                                            <p class="text-black-70">Let’s start with a quick tour of Vue’s data binding features.</p>
-                                                            <div class="d-flex align-items-end">
-                                                                <div class="d-flex flex flex-column mr-3">
-                                                                    <div class="d-flex align-items-center py-1 border-bottom">
-                                                                        <small class="text-black-70 mr-2">&dollar;1,230/mo</small>
-                                                                        <small class="text-black-50">34 SALES</small>
-                                                                    </div>
-                                                                    <div class="d-flex align-items-center py-1">
-                                                                        <small class="text-muted mr-2">GULP</small>
-                                                                        <small class="text-muted">INTERMEDIATE</small>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="text-center">
-                                                                    <a href="<?php Nav::printURL($dir, Nav::$pageAdminCourseEditor . '?id=3245'); ?>" class="btn btn-sm btn-white">Edit</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <div class="card__options dropdown right-0 pr-2">
-                                                    <a href="#" class="dropdown-toggle text-muted" data-caret="false" data-toggle="dropdown">
-                                                        <i class="material-icons">more_vert</i>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <a class="dropdown-item" href="<?php Nav::printURL($dir, Nav::$pageAdminCourseEditor . '?id=3245'); ?>">Edit course</a>
-                                                        <a class="dropdown-item" href="#">Course Insights</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item text-danger" href="#">Delete course</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="card">
-                                                <div class="card-body">
-
-                                                    <div class="d-flex flex-column flex-sm-row">
-                                                        <a href="<?php Nav::printURL($dir, Nav::$pageAdminCourseEditor . '?id=3245'); ?>" class="avatar avatar-lg avatar-4by3 mb-3 w-xs-plus-down-100 mr-sm-3">
-                                                            <img src="<?php Nav::printURL($dir, 'assets/images/nodejs.png') ?>" alt="Card image cap" class="avatar-img rounded">
-                                                        </a>
-                                                        <div class="flex" style="min-width: 200px;">
-                                                            <!-- <h5 class="card-title text-base m-0"><a href="<?php Nav::printURL($dir, Nav::$pageAdminCourseEditor . '?id=3245'); ?>"><strong>Npm &amp; Gulp Advanced Workflow</strong></a></h5> -->
-                                                            <h4 class="card-title mb-1"><a href="<?php Nav::printURL($dir, Nav::$pageAdminCourseEditor . '?id=3245'); ?>">Npm &amp; Gulp Advanced Workflow</a></h4>
-                                                            <p class="text-black-70">Learn the basics of Github and become a power Github developer.</p>
-                                                            <div class="d-flex align-items-end">
-                                                                <div class="d-flex flex flex-column mr-3">
-                                                                    <div class="d-flex align-items-center py-1 border-bottom">
-                                                                        <small class="text-black-70 mr-2">&dollar;421/mo</small>
-                                                                        <small class="text-black-50">12 SALES</small>
-                                                                    </div>
-                                                                    <div class="d-flex align-items-center py-1">
-                                                                        <small class="text-muted mr-2">GULP</small>
-                                                                        <small class="text-muted">INTERMEDIATE</small>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="text-center">
-                                                                    <a href="<?php Nav::printURL($dir, Nav::$pageAdminCourseEditor . '?id=3245'); ?>" class="btn btn-sm btn-white">Edit</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <div class="card__options dropdown right-0 pr-2">
-                                                    <a href="#" class="dropdown-toggle text-muted" data-caret="false" data-toggle="dropdown">
-                                                        <i class="material-icons">more_vert</i>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <a class="dropdown-item" href="<?php Nav::printURL($dir, Nav::$pageAdminCourseEditor . '?id=3245'); ?>">Edit course</a>
-                                                        <a class="dropdown-item" href="#">Course Insights</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item text-danger" href="#">Delete course</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="card">
-                                                <div class="card-body">
-
-                                                    <div class="d-flex flex-column flex-sm-row">
-                                                        <a href="<?php Nav::printURL($dir, Nav::$pageAdminCourseEditor . '?id=3245'); ?>" class="avatar avatar-lg avatar-4by3 mb-3 w-xs-plus-down-100 mr-sm-3">
-                                                            <img src="<?php Nav::printURL($dir, 'assets/images/github.png') ?>" alt="Card image cap" class="avatar-img rounded">
-                                                        </a>
-                                                        <div class="flex" style="min-width: 200px;">
-                                                            <!-- <h5 class="card-title text-base m-0"><a href="<?php Nav::printURL($dir, Nav::$pageAdminCourseEditor . '?id=3245'); ?>"><strong>Github Webhooks for Beginners</strong></a></h5> -->
-                                                            <h4 class="card-title mb-1"><a href="<?php Nav::printURL($dir, Nav::$pageAdminCourseEditor . '?id=3245'); ?>">Github Webhooks for Beginners</a></h4>
-                                                            <p class="text-black-70">Developing static website with fast and advanced gulp setup.</p>
-                                                            <div class="d-flex align-items-end">
-                                                                <div class="d-flex flex flex-column mr-3">
-                                                                    <div class="d-flex align-items-center py-1 border-bottom">
-                                                                        <small class="text-black-70 mr-2">&dollar;2,191/mo</small>
-                                                                        <small class="text-black-50">50 SALES</small>
-                                                                    </div>
-                                                                    <div class="d-flex align-items-center py-1">
-                                                                        <small class="text-muted mr-2">GULP</small>
-                                                                        <small class="text-muted">INTERMEDIATE</small>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="text-center">
-                                                                    <a href="<?php Nav::printURL($dir, Nav::$pageAdminCourseEditor . '?id=3245'); ?>" class="btn btn-sm btn-white">Edit</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <div class="card__options dropdown right-0 pr-2">
-                                                    <a href="#" class="dropdown-toggle text-muted" data-caret="false" data-toggle="dropdown">
-                                                        <i class="material-icons">more_vert</i>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <a class="dropdown-item" href="<?php Nav::printURL($dir, Nav::$pageAdminCourseEditor . '?id=3245'); ?>">Edit course</a>
-                                                        <a class="dropdown-item" href="#">Course Insights</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item text-danger" href="#">Delete course</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="card">
-                                                <div class="card-body">
-
-                                                    <div class="d-flex flex-column flex-sm-row">
-                                                        <a href="<?php Nav::printURL($dir, Nav::$pageAdminCourseEditor . '?id=3245'); ?>" class="avatar avatar-lg avatar-4by3 mb-3 w-xs-plus-down-100 mr-sm-3">
-                                                            <img src="<?php Nav::printURL($dir, 'assets/images/gulp.png') ?>" alt="Card image cap" class="avatar-img rounded">
-                                                        </a>
-                                                        <div class="flex" style="min-width: 200px;">
-                                                            <!-- <h5 class="card-title text-base m-0"><a href="<?php Nav::printURL($dir, Nav::$pageAdminCourseEditor . '?id=3245'); ?>"><strong>Gulp &amp; Slush Workflows</strong></a></h5> -->
-                                                            <h4 class="card-title mb-1"><a href="<?php Nav::printURL($dir, Nav::$pageAdminCourseEditor . '?id=3245'); ?>">Gulp &amp; Slush Workflows</a></h4>
-                                                            <p class="text-black-70">Let’s start with a quick tour of Vue’s data binding features.</p>
-                                                            <div class="d-flex align-items-end">
-                                                                <div class="d-flex flex flex-column mr-3">
-                                                                    <div class="d-flex align-items-center py-1 border-bottom">
-                                                                        <small class="text-black-70 mr-2">&dollar;300/mo</small>
-                                                                        <small class="text-black-50">5 SALES</small>
-                                                                    </div>
-                                                                    <div class="d-flex align-items-center py-1">
-                                                                        <small class="text-muted mr-2">GULP</small>
-                                                                        <small class="text-muted">INTERMEDIATE</small>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="text-center">
-                                                                    <a href="<?php Nav::printURL($dir, Nav::$pageAdminCourseEditor . '?id=3245'); ?>" class="btn btn-sm btn-white">Edit</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <div class="card__options dropdown right-0 pr-2">
-                                                    <a href="#" class="dropdown-toggle text-muted" data-caret="false" data-toggle="dropdown">
-                                                        <i class="material-icons">more_vert</i>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <a class="dropdown-item" href="<?php Nav::printURL($dir, Nav::$pageAdminCourseEditor . '?id=3245'); ?>">Edit course</a>
-                                                        <a class="dropdown-item" href="#">Course Insights</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item text-danger" href="#">Delete course</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
+                                        <!-- Course Card -->
+                                        <?php 
+                                            foreach ($courses as $key => $value) {
+                                                self::initCard($dir, $key, $value);
+                                            }
+                                        ?>
                                     </div>
 
                                     <!-- Pagination -->
-                                    <?php Pagination::initPagination($dir, $paths); ?>
+                                    <?php Pagination::initPagination($dir, $pages); ?>
                                     
                                 </div>
                             </div>
@@ -280,6 +100,53 @@
                     </div>
                 </div>   
                 <?php Script::initScript($dir); ?> 
+<?php
+        }
+
+        public static function initCard($dir, $key, $course){
+?>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column flex-sm-row">
+                            <a href="<?php Nav::printURL($dir, Nav::$pageAdminCourseEditor . "?id=$course->ID"); ?>" class="avatar avatar-lg avatar-4by3 mb-3 w-xs-plus-down-100 mr-sm-3">
+                                <img src="<?php Nav::printURL($dir, $course->thumbnail) ?>" alt="<?php echo $course->title; ?>" class="avatar-img rounded">
+                            </a>
+                            <div class="flex" style="min-width: 200px;">
+                                <!-- <h5 class="card-title text-base m-0"><a href="<?php Nav::printURL($dir, Nav::$pageAdminCourseEditor . "?id=$course->ID"); ?>"><strong>Learn Vue.js</strong></a></h5> -->
+                                <h4 class="card-title mb-1"><a href="<?php Nav::printURL($dir, Nav::$pageAdminCourseEditor . "?id=$course->ID"); ?>"><?php echo $course->title; ?></a></h4>
+                                <p class="text-black-70"><?php echo $course->description_short; ?></p>
+                                <div class="d-flex align-items-end">
+                                    <div class="d-flex flex flex-column mr-3">
+                                        <div class="d-flex align-items-center py-1 border-bottom">
+                                            <small class="text-black-70 mr-2">&#3647;<?php echo "$course->minPrice - $course->maxPrice" ?></small>
+                                            <small class="text-black-50">34 SALES</small>
+                                        </div>
+                                        <div class="d-flex align-items-center py-1">
+                                            <small class="text-muted mr-2">GULP</small>
+                                            <small class="text-muted">INTERMEDIATE</small>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <a href="<?php Nav::printURL($dir, Nav::$pageAdminCourseEditor . "?id=$course->ID"); ?>" class="btn btn-sm btn-white">Edit</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card__options dropdown right-0 pr-2">
+                        <a href="#" class="dropdown-toggle text-muted" data-caret="false" data-toggle="dropdown">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="<?php Nav::printURL($dir, Nav::$pageAdminCourseEditor . "?id=$course->ID"); ?>">Edit course</a>
+                            <a class="dropdown-item" href="#">Course Insights</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-danger" href="#">Delete course</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 <?php
         }
     }

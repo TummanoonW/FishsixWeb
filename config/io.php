@@ -5,6 +5,7 @@
         public $method;
         public $post;
         public $input;
+        public $page;
 
         function __construct(){
             //use method 'GET' protocol 'q' as JSON to query anything
@@ -26,6 +27,13 @@
                 $this->id = $id;
             }else{
                 $this->id = NULL;
+            }
+
+            if(isset($_GET['page'])){
+                $page = $_GET['page'];
+                $this->page = $page;
+            }else{
+                $this->page = NULL;
             }
 
             $p = $_POST;

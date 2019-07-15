@@ -6,7 +6,7 @@
        
             <body class=" layout-fluid">
                  <!-- Flatpickr -->
-                <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/flatpickr.css'); ?>" rel="stylesheet">
+                <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/flatpickr.css'); ?>"  rel="stylesheet">
                 <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/flatpickr.rtl.css'); ?>" rel="stylesheet">
                 <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/flatpickr-airbnb.css'); ?>" rel="stylesheet">
                 <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/flatpickr-airbnb.rtl.css'); ?>" rel="stylesheet">
@@ -45,6 +45,8 @@
                                             <h1 class="h2">Edit Course - <?php echo $course->title ?></h1>
                                         </div>
                                         <div class="media-right">
+                                            <span style="margin-right: 8px;">Last updated: 13 Oct 2019</span>
+                                            <a href="#" class="btn btn-info" style="margin-right: 4px;">PUBLISH</a>
                                             <a href="#" class="btn btn-success">SAVE</a>
                                         </div>
                                     </div>
@@ -217,6 +219,59 @@
                                             </div>
                                             <div class="card">
                                                 <div class="card-header">
+                                                    <h4 class="card-title">Pictures</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p><a href="instructor-lesson-add.html" class="btn btn-primary">Add Picture <i class="material-icons">add</i></a></p>
+                                                    <div class="nestable" id="nestable-handles-primary">
+                                                        <ul class="nestable-list">
+                                                            <li class="nestable-item nestable-item-handle" data-id="2">
+                                                                <div class="nestable-handle"><i class="material-icons">menu</i></div>
+                                                                <div class="nestable-content">
+                                                                    <div class="media align-items-center">
+                                                                        <div class="media-body">
+                                                                            <p><img src="<?php Nav::printURL($dir, 'assets/images/vuejs.png'); ?>" alt="" width="100" class="rounded"></p>
+                                                                            <small class="text-muted">
+                                                                                <input type="text" id="duration" class="form-control" placeholder="caption" value="" width="100">
+                                                                            </small>
+                                                                        </div>
+                                                                        <div class="media-right">
+                                                                            <a href="instructor-lesson-add.html" class="btn btn-white btn-sm"><i class="material-icons">delete_forever</i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Tags</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p><a href="instructor-lesson-add.html" class="btn btn-primary">Add Tags <i class="material-icons">add</i></a></p>
+                                                    <div class="nestable" id="nestable-handles-primary">
+                                                        <ul class="nestable-list">
+                                                            <li class="nestable-item nestable-item-handle" data-id="2">
+                                                                <div class="nestable-handle"><i class="material-icons">menu</i></div>
+                                                                <div class="nestable-content">
+                                                                    <div class="media align-items-center">
+                                                                        <div class="media-body">
+                                                                            <input type="text" id="duration" class="form-control" placeholder="tag" value="" width="100">
+                                                                        </div>
+                                                                        <div class="media-right">
+                                                                            <a href="instructor-lesson-add.html" class="btn btn-white btn-sm"><i class="material-icons">delete_forever</i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header">
                                                     <h4 class="card-title">Meta</h4>
                                                     <p class="card-subtitle">Extra Options </p>
                                                 </div>
@@ -231,8 +286,8 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="form-label" for="duration">Duration</label>
-                                                        <input type="text" id="duration" class="form-control" placeholder="No. of Days" value="10">
+                                                        <label class="form-label" for="duration">Expire Credit After (days)</label>
+                                                        <input type="text" id="duration" class="form-control" placeholder="No. of Days" value="60">
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="form-label" for="start">Start Date</label>
@@ -241,6 +296,10 @@
                                                     <div class="form-group">
                                                         <label class="form-label" for="end">End Date</label>
                                                         <input id="end" type="text" class="form-control" placeholder="Start Date" data-toggle="flatpickr" value="01/28/2016">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="duration"><img src="<?php Nav::printURL($dir, 'assets/images/line-icon.png'); ?>" alt="Avatar" class="rounded-circle" width="20"> LINE Group</label>
+                                                        <input type="text" id="duration" class="form-control" placeholder="URL" value="">
                                                     </div>
                                                     
                                                     <div class="form-group mb-0">
