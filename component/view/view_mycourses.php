@@ -1,6 +1,6 @@
 <?php
     class MyCoursesView{
-        public static function initView($dir, $paths){
+        public static function initView($dir, $paths, $pages){
             $auth = Session::getAuth();
 ?>
             <body class=" layout-fluid">
@@ -150,30 +150,8 @@
                                     </div>
 
                                     <!-- Pagination -->
-                                    <ul class="pagination justify-content-center pagination-sm">
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="#" aria-label="Previous">
-                                                <span aria-hidden="true" class="material-icons">chevron_left</span>
-                                                <span>Prev</span>
-                                            </a>
-                                        </li>
-                                        <li class="page-item active">
-                                            <a class="page-link" href="#" aria-label="1">
-                                                <span>1</span>
-                                            </a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="1">
-                                                <span>2</span>
-                                            </a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Next">
-                                                <span>Next</span>
-                                                <span aria-hidden="true" class="material-icons">chevron_right</span>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                    <?php Pagination::initPagination($dir, $pages); ?>
+
                                 </div>
 
                             </div>

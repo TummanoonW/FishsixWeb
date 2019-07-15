@@ -16,11 +16,24 @@
         new Path(TRUE, 'My Courses', $dir . Nav::$pageMyCourses)
     );
 
+    $pages = array(
+        new Path(FALSE, '1', $dir . "?page=1"),
+        new Path(FALSE, '2', $dir . "?page=2"),
+        new Path(FALSE, '3', $dir . "?page=3"),
+    );
+
     if(Session::checkUserExisted()){
+
+        if($io->page == NULL){
+            $c_page = 0;
+        }else{
+            $c_page = $io->page;
+        }
+        $pages[$c_page]->active = TRUE;
 
         Header::initHeader($dir, $auth->username . " - My Courses"); 
 
-        MyCoursesView::initView($dir, $paths);
+        MyCoursesView::initView($dir, $paths, $pages);
 
         Footer::initFooter($dir); 
 
