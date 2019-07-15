@@ -4,12 +4,8 @@
             $auth = Session::getAuth();
 ?>
             <body class=" layout-fluid">
-                <div class="preloader">
-                    <div class="sk-double-bounce">
-                        <div class="sk-child sk-double-bounce1"></div>
-                        <div class="sk-child sk-double-bounce2"></div>
-                    </div>
-                </div>
+                <!-- Pre Loader -->
+                <?php Preloader::initPreloader($dir); ?>
 
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
@@ -25,10 +21,10 @@
                             <div class="mdk-drawer-layout__content page ">
 
                                 <div class="container-fluid page__container">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="<?php Nav::printURL($dir, 'student-dashboard.html'); ?>">Home</a></li>
-                                        <li class="breadcrumb-item active">My Courses</li>
-                                    </ol>
+                                    
+                                    <!-- Navigation Paths -->
+                                    <?php NavPath::initNavPath($dir, $paths); ?>
+
                                     <div class="media mb-headings align-items-center">
                                         <div class="media-body">
                                             <h1 class="h2">My Courses</h1>
@@ -185,6 +181,7 @@
                         </div>
                     </div>
                 </div> 
+                <?php Script::initScript($dir); ?>
 <?php
         }
     }

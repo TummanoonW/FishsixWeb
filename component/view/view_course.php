@@ -1,15 +1,12 @@
 <?php
     class CourseView{
-        public static function initView($dir){
+        public static function initView($dir, $paths){
             $auth = Session::getAuth();
 ?>
             <body class=" layout-fluid">
-                <div class="preloader">
-                    <div class="sk-double-bounce">
-                        <div class="sk-child sk-double-bounce1"></div>
-                        <div class="sk-child sk-double-bounce2"></div>
-                    </div>
-                </div>
+
+                <!-- Pre Loader -->
+                <?php Preloader::initPreloader($dir); ?>
 
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
@@ -23,13 +20,11 @@
 
                         <div data-push="" data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout" data-domfactory-upgraded="mdk-drawer-layout">
                             <div class="mdk-drawer-layout__content page " style="transform: translate3d(0px, 0px, 0px);">
-
                                 <div class="container-fluid page__container">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="student-dashboard.html">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="student-browse-courses.html">Courses</a></li>
-                                        <li class="breadcrumb-item active">The MVC architectural pattern</li>
-                                    </ol>
+
+                                    <!-- Navigation Paths -->
+                                    <?php NavPath::initNavPath($dir, $paths); ?>
+                                    
                                     <h1 class="h2">The MVC architectural pattern</h1>
                                     <div class="row">
                                         <div class="col-md-8">
@@ -212,12 +207,13 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                             <?php Sidemenu::initSideMenu($dir); ?>
                         </div>
                     </div>
                 </div>
+                <?php Script::initScript($dir); ?>
+
 <?php
         }
     }

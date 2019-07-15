@@ -11,11 +11,16 @@
     $api = new API($apiKey);
     $io = new IO(); 
 
+    $paths = array(
+        new Path(FALSE, 'Home', Nav::$rootURL),
+        new Path(TRUE, 'My Courses', $dir . Nav::$pageMyCourses)
+    );
+
     if(Session::checkUserExisted()){
 
         Header::initHeader($dir, $auth->username . " - My Courses"); 
 
-        MyCoursesView::initView($dir);
+        MyCoursesView::initView($dir, $paths);
 
         Footer::initFooter($dir); 
 
