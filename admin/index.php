@@ -12,8 +12,8 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path('Home', Nav::$rootURL),
-        new Path('Admin Panel', $dir . Nav::$pageAdminPanel)
+        new Path(FALSE, 'Home', Nav::$rootURL),
+        new Path(TRUE, 'Admin Panel', $dir . Nav::$pageAdminPanel)
     );
 
     if(Session::checkUserAdmin()){

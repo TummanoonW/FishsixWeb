@@ -15,8 +15,8 @@
     $io = new IO(); //open Input/Output receiver for certain $_GET and $_POST data 
 
     $paths = array(
-        new Path('Home', Nav::$rootURL),
-        new Path('Profile', $dir . Nav::$pageProfile)
+        new Path(FALSE, 'Home', Nav::$rootURL),
+        new Path(TRUE, 'Profile', $dir . Nav::$pageProfile)
     );
 
     //check if user already logged in

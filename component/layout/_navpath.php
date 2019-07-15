@@ -4,7 +4,7 @@
 ?>
             <ol class="breadcrumb">
                 <?php foreach ($paths as $key => $value) { 
-                        if($key >= (count($paths) - 1)){
+                        if($value->active){
                 ?>
                             <li class="breadcrumb-item active"><?php echo $value->label; ?></li>
                 <?php   }else{    ?>
