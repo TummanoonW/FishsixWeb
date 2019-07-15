@@ -17,9 +17,9 @@
     );
 
     $pages = array(
-        new Path(FALSE, '1', $dir . "?page=1"),
-        new Path(FALSE, '2', $dir . "?page=2"),
-        new Path(FALSE, '3', $dir . "?page=3"),
+        new Path(FALSE, '1', $dir . Nav::$pageMyCourses . "?page=1"),
+        new Path(FALSE, '2', $dir . Nav::$pageMyCourses . "?page=2"),
+        new Path(FALSE, '3', $dir . Nav::$pageMyCourses . "?page=3"),
     );
 
     if(Session::checkUserExisted()){
