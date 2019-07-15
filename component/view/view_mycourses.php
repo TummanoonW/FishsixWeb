@@ -87,7 +87,7 @@
                                                 <div class="media">
                                                     <div class="media-left">
                                                         <a href="<?php Nav::printURL($dir,'student-student-take-course.html');?>">
-                                                            <img src="<?php Nav::printURL($dir, 'assets/images/github.pn'); ?>" alt="Card image cap" width="100" class="rounded">
+                                                            <img src="<?php Nav::printURL($dir, 'assets/images/github.png'); ?>" alt="Card image cap" width="100" class="rounded">
                                                         </a>
                                                     </div>
                                                     <div class="media-body">
