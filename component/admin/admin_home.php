@@ -1,15 +1,12 @@
 <?php
     class AdminHomeView{
-        public static function initView($dir){
+        public static function initView($dir, $paths){
             $auth = Session::getAuth();
 ?>
             <body class=" layout-fluid">
-                <div class="preloader">
-                    <div class="sk-double-bounce">
-                        <div class="sk-child sk-double-bounce1"></div>
-                        <div class="sk-child sk-double-bounce2"></div>
-                    </div>
-                </div>
+                <!-- Pre Loader -->
+                <?php Preloader::initPreloader($dir); ?>
+
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
                     <!-- Header -->
@@ -17,24 +14,28 @@
                     <!-- // END Header -->
                     <!-- Header Layout Content -->
                     <div class="mdk-header-layout__content">
+
                         <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
                             <div class="mdk-drawer-layout__content page ">
                                 <div class="container-fluid page__container">
+
+                                    <!-- Navigation Paths -->
+                                    <?php NavPath::initNavPath($dir, $paths); ?>
+
                                     <div class="media align-items-center mb-headings">
                                         <div class="media-body">
                                             <h1 class="h2">Admin Panel</h1>
                                         </div>
-                                        <a href="<?php Nav::printURL($dir, Nav::$pageAdminManageCourses); ?>" type="button" class="btn btn-primary">
-                                            <i class="material-icons mr-1">import_contacts</i> Manage Courses
-                                        </a>
                                     </div>
                                     <div class="clearfix"></div>
+                                    <a href="<?php Nav::printURL($dir, Nav::$pageAdminManageCourses); ?>" class="btn btn-success">Manage Courses</a>
                                 </div>
                             </div>
                             <?php Sidemenu::initSideMenu($dir); ?>
                         </div>
                     </div>
                 </div>
+                <?php Script::initScript($dir); ?>
 <?php
         }
     }

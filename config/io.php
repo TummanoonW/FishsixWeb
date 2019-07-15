@@ -22,7 +22,7 @@
             }
 
             if(isset($_GET['id'])){
-                $q = $_GET['id'];
+                $id = $_GET['id'];
                 $this->id = $id;
             }else{
                 $this->id = NULL;

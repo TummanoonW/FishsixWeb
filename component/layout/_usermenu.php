@@ -6,7 +6,7 @@
             if(Session::checkUserExisted()){
 ?>
                 <li class="nav-item dropdown ml-1 ml-md-3">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img src="./assets/images/people/50/guy-6.jpg" alt="Avatar" class="rounded-circle" width="40"></a>
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img src="<?php Nav::printURL($dir, './assets/images/people/50/guy-6.jpg'); ?>" alt="Avatar" class="rounded-circle" width="40"></a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <?php if(Session::checkUserAdmin()){ ?>
                             <a class="dropdown-item" href="<?php Nav::printURL($dir, Nav::$pageAdminPanel); ?>">

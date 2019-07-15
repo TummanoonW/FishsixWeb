@@ -2,6 +2,7 @@
     class API{
         public static $apiLogin = "index.php";
         public static $apiProfile = "profile.php";
+        public static $apiCourse = "course.php";
 
         private $apiKey = "null";
         private $url = "http://192.168.64.3/proto/"; //base URL to call API
