@@ -1,6 +1,6 @@
 <?php
     class MyCoursesView{
-        public static function initView($dir){
+        public static function initView($dir, $paths){
             $auth = Session::getAuth();
 ?>
             <body class=" layout-fluid">
@@ -21,7 +21,7 @@
                             <div class="mdk-drawer-layout__content page ">
 
                                 <div class="container-fluid page__container">
-                                    
+
                                     <!-- Navigation Paths -->
                                     <?php NavPath::initNavPath($dir, $paths); ?>
 

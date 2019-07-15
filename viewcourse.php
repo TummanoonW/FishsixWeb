@@ -11,8 +11,13 @@
     $api = new API($apiKey);
     $io = new IO(); 
 
+    $paths = array(
+        new Path(FALSE, 'Home', Nav::$rootURL),
+        new Path(TRUE, 'Course', $dir . Nav::$pageCourseView)
+    );
+
     Header::initHeader($dir,"View Course"); 
 
-    CourseView::initView($dir);
+    CourseView::initView($dir, $paths);
 
     Footer::initFooter($dir); 
