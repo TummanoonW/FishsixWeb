@@ -19,9 +19,9 @@
                         <a class="dropdown-item" href="<?php Nav::printURL($dir, Nav::$pageProfile); ?>">
                             <i class="material-icons">edit</i> Edit Account
                         </a>
-                        <a class="dropdown-item" href="student-profile.html">
+                        <!--<a class="dropdown-item" href="student-profile.html">
                             <i class="material-icons">person</i> Public Profile
-                        </a>
+                        </a> -->
                         <a class="dropdown-item" href="<?php Nav::printURL($dir, Nav::$routeLogOut); ?>">
                             <i class="material-icons">lock_open</i> Log Out
                         </a>
