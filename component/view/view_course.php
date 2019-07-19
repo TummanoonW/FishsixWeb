@@ -30,7 +30,7 @@
                                         <div class="col-md-8">
                                             <div class="card">
                                                 <div class="embed-responsive embed-responsive-16by9">
-                                                    <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0" allowfullscreen=""></iframe>
+                                                    <iframe class="embed-responsive-item" src="<?php Nav::printURL($dir,'https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0') ?>" allowfullscreen=""></iframe>
                                                 </div>
                                                 <div class="card-body">
                                                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dicta eius enim inventoreus optio ratione veritatis. Beatae deserunt illum ipsam magniima mollitia officiis quia tempora!
@@ -131,7 +131,7 @@
                                             <div class="card">
                                                 <div class="card-body text-center">
                                                     <p>
-                                                        <a href="student-cart.html" class="btn btn-success btn-block flex-column">
+                                                        <a href="<?php Nav::printURL($dir,'student-cart.html');?> " class="btn btn-success btn-block flex-column">
                                                             Get All Courses
                                                             <strong>$9 / month</strong>
                                                         </a>
@@ -139,7 +139,7 @@
                                                     <div class="page-separator">
                                                         <div class="page-separator__text">or</div>
                                                     </div>
-                                                    <a href="student-cart.html" class="btn btn-white btn-block flex-column">
+                                                    <a href="<?php Nav::printURL($dir,'student-cart.html');?> " class="btn btn-white btn-block flex-column">
                                                         Purchase Course
                                                         <strong>$25 USD</strong>
                                                     </a>
@@ -150,10 +150,10 @@
                                                 <div class="card-header">
                                                     <div class="media align-items-center">
                                                         <div class="media-left">
-                                                            <img src="assets/images/people/110/guy-6.jpg" alt="About Adrian" width="50" class="rounded-circle">
+                                                            <img src="<?php Nav::printURL($dir,'assets/images/people/110/guy-6.jpg') ?> " alt="About Adrian" width="50" class="rounded-circle">
                                                         </div>
                                                         <div class="media-body">
-                                                            <h4 class="card-title"><a href="student-profile.html">Adrian Demian</a></h4>
+                                                            <h4 class="card-title"><a href="<?php Nav::printURL($dir,'student-profile.html'); ?> ">Adrian Demian</a></h4>
                                                             <p class="card-subtitle">Instructor</p>
                                                         </div>
                                                     </div>
