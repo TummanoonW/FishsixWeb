@@ -1,5 +1,5 @@
 <?php
-    class CourseView{
+    class MyCartView{
         public static function initView($dir, $paths){
             $auth = Session::getAuth();
 ?>
@@ -15,205 +15,120 @@
                     <?php Toolbar::initToolbar($dir); ?>
                     <!-- // END Header -->
 
-                    <!-- Header Layout Content -->
+                    <!-- Header Layout Content -->    
                     <div class="mdk-header-layout__content" style="padding-top: 64px;">
 
                         <div data-push="" data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout" data-domfactory-upgraded="mdk-drawer-layout">
                             <div class="mdk-drawer-layout__content page " style="transform: translate3d(0px, 0px, 0px);">
+
                                 <div class="container-fluid page__container">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="<?php Nav::printURL($dir,'student-dashboard.html'); ?>">Home</a></li>
+                                        <li class="breadcrumb-item active">Cart</li>
+                                    </ol>
+                                    <h1 class="h2">Shopping Cart</h1>
+                                    <div class="card table-responsive">
+                                        <table class="table table-nowrap mb-0 table--elevated">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th>Details</th>
+                                                    <th style="width: 100px" class="text-center">Qty</th>
+                                                    <th style="width: 100px" class="text-right">Total</th>
+                                                    <th style="width: 10px"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
 
-                                    <!-- Navigation Paths -->
-                                    <?php NavPath::initNavPath($dir, $paths); ?>
-                                    
-                                    <h1 class="h2">The MVC architectural pattern</h1>
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <div class="card">
-                                                <div class="embed-responsive embed-responsive-16by9">
-                                                    <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0" allowfullscreen=""></iframe>
-                                                </div>
-                                                <div class="card-body">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dicta eius enim inventoreus optio ratione veritatis. Beatae deserunt illum ipsam magniima mollitia officiis quia tempora!
-                                                </div>
-                                            </div>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <a href="<?php Nav::printURL($dir,'student-view-course.html');?> " class="avatar avatar-4by3 avatar-sm mr-3">
+                                                                <img src="<?php Nav::printURL($dir,'assets/images/gulp.png');?> " alt="Learn Vue.js Fundamentals" class="avatar-img rounded">
+                                                            </a>
+                                                            <div class="media-body">
+                                                                <a href="#" class="text-body"><strong>Learn Vue.js Fundamentals</strong></a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <div class="d-flex align-items-center">
+                                                            <a href="#" class="text-muted px-2"><i class="material-icons font-size-16pt">remove</i></a>
+                                                            <input type="number" class="form-control" style="width: 64px;" value="1">
+                                                            <a href="#" class="text-muted px-2"><i class="material-icons font-size-16pt">add</i></a>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <p class="mb-0">$20.00 USD</p>
 
-                                            <!-- Lessons -->
-                                            <ul class="card list-group list-group-fit">
-                                                <li class="list-group-item">
-                                                    <div class="media">
-                                                        <div class="media-left">
-                                                            <div class="text-muted">1.</div>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <a href="#">Installation</a>
-                                                        </div>
-                                                        <div class="media-right">
-                                                            <small class="text-muted-light">2:03</small>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item active">
-                                                    <div class="media">
-                                                        <div class="media-left">2.</div>
-                                                        <div class="media-body">
-                                                            <a class="text-white" href="#">The MVC architectural pattern</a>
-                                                        </div>
-                                                        <div class="media-right">
-                                                            <small>25:01</small>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <div class="media">
-                                                        <div class="media-left">
-                                                            <div class="text-muted">3.</div>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <a href="#">Database Models</a>
-                                                        </div>
-                                                        <div class="media-right">
-                                                            <small class="text-muted-light">12:10</small>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <div class="media">
-                                                        <div class="media-left">
-                                                            <div class="text-muted">4.</div>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <div class="text-muted-light">Database Access</div>
-                                                        </div>
-                                                        <div class="media-right">
-                                                            <small class="badge badge-primary ">PRO</small>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <div class="media">
-                                                        <div class="media-left">
-                                                            <div class="text-muted">5.</div>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <div class="text-muted-light">Eloquent Basics</div>
-                                                        </div>
-                                                        <div class="media-right">
-                                                            <small class="badge badge-primary ">PRO</small>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <div class="media">
-                                                        <div class="media-left">
-                                                            <div class="text-muted">6.</div>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <div class="text-muted-light">Take Quiz</div>
-                                                        </div>
-                                                        <div class="media-right">
-                                                            <small class="badge badge-primary ">PRO</small>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        
-                                        <div class="col-md-4">
-                                        <?php if(Session::checkUserExisted()){ ?>
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <a href="#" class="btn btn-primary btn-block flex-column">
-                                                        <i class="material-icons">get_app</i> Download Files
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        <?php }else{ ?>
-                                            <div class="card">
-                                                <div class="card-body text-center">
-                                                    <p>
-                                                        <a href="student-cart.html" class="btn btn-success btn-block flex-column">
-                                                            Get All Courses
-                                                            <strong>$9 / month</strong>
-                                                        </a>
-                                                    </p>
-                                                    <div class="page-separator">
-                                                        <div class="page-separator__text">or</div>
-                                                    </div>
-                                                    <a href="student-cart.html" class="btn btn-white btn-block flex-column">
-                                                        Purchase Course
-                                                        <strong>$25 USD</strong>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        <?php } ?>
-                                            <div class="card">
-                                                <div class="card-header">
-                                                    <div class="media align-items-center">
-                                                        <div class="media-left">
-                                                            <img src="assets/images/people/110/guy-6.jpg" alt="About Adrian" width="50" class="rounded-circle">
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h4 class="card-title"><a href="student-profile.html">Adrian Demian</a></h4>
-                                                            <p class="card-subtitle">Instructor</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card-body">
-                                                    <p>Having over 12 years exp. Adrian is one of the lead UI designers in the industry Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, aut.</p>
-                                                    <a href="" class="btn btn-light"><i class="fab fa-facebook"></i></a>
-                                                    <a href="" class="btn btn-light"><i class="fab fa-twitter"></i></a>
-                                                    <a href="" class="btn btn-light"><i class="fab fa-github"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="card">
-                                                <ul class="list-group list-group-fit">
-                                                    <li class="list-group-item">
-                                                        <div class="media align-items-center">
-                                                            <div class="media-left">
-                                                                <i class="material-icons text-muted-light">assessment</i>
-                                                            </div>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <a href="#" class="text-muted"><i class="material-icons font-size-24pt">close</i></a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <a href="<?php Nav::printURL($dir,'student-view-course.html');?> " class="avatar avatar-4by3 avatar-sm mr-3">
+                                                                <img src="<?php Nav::printURL($dir,'assets/images/vuejs.png');?> " alt="Angular in Steps" class="avatar-img rounded">
+                                                            </a>
                                                             <div class="media-body">
-                                                                Beginner
+                                                                <a href="#" class="text-body"><strong>Angular in Steps</strong></a>
                                                             </div>
                                                         </div>
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <div class="media align-items-center">
-                                                            <div class="media-left">
-                                                                <i class="material-icons text-muted-light">schedule</i>
-                                                            </div>
-                                                            <div class="media-body">
-                                                                2 <small class="text-muted">hrs</small> &nbsp; 26 <small class="text-muted">min</small>
-                                                            </div>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <div class="d-flex align-items-center">
+                                                            <a href="#" class="text-muted px-2"><i class="material-icons font-size-16pt">remove</i></a>
+                                                            <input type="number" class="form-control" style="width: 64px;" value="2">
+                                                            <a href="#" class="text-muted px-2"><i class="material-icons font-size-16pt">add</i></a>
                                                         </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="card">
-                                                <div class="card-header">
-                                                    <h4 class="card-title">Ratings</h4>
-                                                </div>
-                                                <div class="card-body">
-                                                    <div class="rating">
-                                                        <i class="material-icons">star</i>
-                                                        <i class="material-icons">star</i>
-                                                        <i class="material-icons">star</i>
-                                                        <i class="material-icons">star</i>
-                                                        <i class="material-icons">star_border</i>
-                                                    </div>
-                                                    <small class="text-muted">20 ratings</small>
-                                                </div>
-                                            </div>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <p class="mb-0">$20.00 USD</p>
+
+                                                        <small class="text-black-50"><strong>Total</strong>: $40 USD</small>
+
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <a href="#" class="text-muted"><i class="material-icons font-size-24pt">close</i></a>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+
+                                        <table class="table mb-0">
+                                            <tfoot>
+                                                <tr>
+                                                    <td class="text-right text-black-70"><strong>Subtotal</strong></td>
+                                                    <td style="width: 100px;" class="text-right"><strong>$40 USD</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-right text-black-70"><strong>20% Discount</strong></td>
+                                                    <td style="width: 100px;" class="text-right"><strong>-$8 USD</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-right text-black-70"><strong>Total</strong></td>
+                                                    <td style="width: 100px;" class="text-right"><strong>$32 USD</strong></td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                        <div class="card-footer d-flex align-items-center">
+                                            <a href="<?php Nav::printURL($dir,'student-browse-courses.html');?> " class="btn btn-white">Back to Courses</a>
+                                            <a href="<?php Nav::printURL($dir,'checkout.php');?> " class="btn btn-success ml-auto">
+                                                Pay Now <i class="material-icons btn__icon--right">credit_card</i>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir); ?>
                         </div>
+                        <?php Sidemenu::initSideMenu($dir); ?>
                     </div>
                 </div>
-                <?php Script::initScript($dir); ?>
-
+            </div>    
+            <?php Script::initScript($dir); ?>        
 <?php
         }
     }

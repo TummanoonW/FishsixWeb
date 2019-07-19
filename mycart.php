@@ -13,11 +13,11 @@
 
     $paths = array(
         new Path(FALSE, 'Home', Nav::$rootURL),
-        new Path(TRUE, 'My Courses', $dir . Nav::$pageMyCourses)
+        new Path(TRUE, 'Cart', $dir . Nav::$pageMyCart)
     );
 
     Header::initHeader($dir,"Shopping Cart"); 
 
-    CourseView::initView($dir, $paths);
+    MyCartView::initView($dir, $paths);
 
     Footer::initFooter($dir); 

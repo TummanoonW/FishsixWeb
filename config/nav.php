@@ -9,6 +9,8 @@
         public static $pageProfile = "profile.php";
         public static $pageMyCourses = "mycourses.php";
         public static $pageCourseView = "viewcourse.php";
+        public static $pageMyCart = "mycart.php";
+        public static $pageCheckOut = "checkout.php";
 
         public static $pageAdminPanel = "admin/index.php";
         public static $pageAdminManageCourses = "admin/manage-courses.php";

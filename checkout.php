@@ -3,7 +3,7 @@
     $dir = "./";
     include_once $dir . 'includer/includer.php'; 
     Includer::include_proto($dir); 
-    Includer::include_view($dir, 'view_course.php');
+    Includer::include_view($dir, 'view_checkout.php');
 
     $auth = Session::getAuth(); 
     $apiKey = Session::getAPIKey(); 
@@ -13,12 +13,11 @@
 
     $paths = array(
         new Path(FALSE, 'Home', Nav::$rootURL),
-        new Path(FALSE, 'Course', $dir . Nav::$pageCourseView),
-        new Path(TRUE, 'THE MVC ARCHITECTURAL PATTERN', $dir . Nav::$pageCourseView)
+        new Path(TRUE, 'Pay', $dir . Nav::$pageCheckOut)
     );
 
-    Header::initHeader($dir,"View Course"); 
+    Header::initHeader($dir,"Pay"); 
 
-    CourseView::initView($dir, $paths);
+    CheckOutView::initView($dir, $paths);
 
     Footer::initFooter($dir); 
