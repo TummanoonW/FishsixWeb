@@ -29,6 +29,7 @@
                                     </div>
                                     <div class="clearfix"></div>
                                     <a href="<?php Nav::printURL($dir, Nav::$pageAdminManageCourses); ?>" class="btn btn-success">Manage Courses</a>
+                                    <a href="<?php Nav::printURL($dir, Nav::$pageAdminManageCategories); ?>" class="btn btn-success">Manage Categories</a>
                                 </div>
                             </div>
                             <?php Sidemenu::initSideMenu($dir); ?>

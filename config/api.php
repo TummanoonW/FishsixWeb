@@ -4,6 +4,9 @@
         public static $apiProfile = "profile.php";
         public static $apiCourse = "course.php";
 
+        public static $apiAdminCourse = "admin-course.php";
+        public static $apiAdminCategory = "admin-category.php";
+
         private $apiKey = "null";
         private $url = "http://192.168.64.3/proto/"; //base URL to call API
 
@@ -15,7 +18,12 @@
 
         //build URL with custom path and all the parameters provided
         public function getURL($path, $method, $query){
-            return $this->getURLCustom($path) . $this->getMethodParam($method) . $this->getQueryParam($query);
+            $url = $this->getURLCustom($path);
+            $url = $url . $this->getMethodParam($method);
+            if($query != NULL){
+                $url = $url . $this->getQueryParam($query);
+            }
+            return  $url;
         }
 
         //build URL with custom path

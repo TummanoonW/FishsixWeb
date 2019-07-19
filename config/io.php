@@ -13,7 +13,7 @@
                 $q = $_GET['q'];
                 $this->query = json_decode($q);
             }else{
-                $this->query = NULL;
+                $this->query = new StdClass();
             }
 
             if(isset($_GET['m'])){

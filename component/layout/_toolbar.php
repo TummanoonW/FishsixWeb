@@ -15,7 +15,7 @@
                             </button>
                             <!-- Brand -->
                             <a href="<?php Nav::printURL("", Nav::$rootURL); ?>" class="navbar-brand">
-                                <img src="<?php Nav::printURL($dir, App::$iconURL2); ?>" class="mr-2" alt="<?php echo App::$name ?>" />
+                                <img src="<?php Asset::printIcon($dir, $dir . Asset::$iconURL2); ?>" class="mr-2" alt="<?php echo App::$name ?>" />
                                 <span class="d-none d-xs-md-block"><?php echo App::$name ?></span>
                             </a>
                             <!-- Search -->

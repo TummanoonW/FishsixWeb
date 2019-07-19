@@ -6,7 +6,7 @@
     Includer::include_admin($dir, 'admin_course_editor.php');
 
     Includer::include_fun($dir, 'fun_category.php');
-    Includer::include_fun($dir, 'fun_course.php');
+    Includer::include_fun($dir, 'fun_admin_course.php');
 
     $auth = Session::getAuth(); 
     $apiKey = Session::getAPIKey(); 
@@ -22,17 +22,27 @@
     );
 
     if(Session::checkUserAdmin()){
-        $result = FunCourse::getCourse($io->id);
-        if($result->success){
-            $course = $result->response;
+        $id = $io->id;
+        $isNew = ($id == NULL);
 
-            $categories = FunCategory::getAll($api);
+        $categories = FunCategory::getAll($api);
 
+        if($isNew){ //new course
+            $course = new Course(NULL);
             Header::initHeader($dir, "Admin - " . $course->title); 
             AdminCourseEditorView::initView($dir, $paths, $course, $categories);
             Footer::initFooter($dir);
-        }else{
-            ErrorPage::showError($dir, $result);
+        }else{ //edit course
+            $result = FunAdminCourse::getCourse($api, $io->id);
+            if($result->success){
+                $course = $result->response;
+
+                Header::initHeader($dir, "Admin - " . $course->title); 
+                AdminCourseEditorView::initView($dir, $paths, $course, $categories);
+                Footer::initFooter($dir);
+            }else{
+                ErrorPage::showError($dir, $result);
+            }
         }
     }else{
         Nav::gotoHome();

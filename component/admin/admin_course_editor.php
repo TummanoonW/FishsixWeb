@@ -42,12 +42,12 @@
 
                                     <div class="media align-items-center mb-headings">
                                         <div class="media-body">
-                                            <h1 class="h2">Edit Course - <?php echo $course->title ?></h1>
+                                            <h1 class="h2"><?php echo $course->title ?></h1>
                                         </div>
                                         <div class="media-right">
                                             <span style="margin-right: 8px;">Last updated: 13 Oct 2019</span>
-                                            <a href="#" class="btn btn-info" style="margin-right: 4px;">PUBLISH</a>
-                                            <a href="#" class="btn btn-success">SAVE</a>
+                                            <a href="#" class="btn btn-success" style="margin-right: 4px;">PUBLISH</a>
+                                            <a href="#" class="btn btn-info">SAVE</a>
                                         </div>
                                     </div>
                                     <div class="row">

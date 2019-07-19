@@ -5,9 +5,5 @@
         public static $version = "4";
         public static $platform = ["PHP", "HTML5"]; 
 
-        public static $iconURL = "assets/images/logo/primary.svg";
-        public static $iconURL2 = "assets/images/logo/white.svg";
-
-        public static $TIMEZONE = "Thailand/Bangkok";
     }
 ?>

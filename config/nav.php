@@ -2,7 +2,7 @@
 
     class Nav{
 
-        public static $rootURL = "http://192.168.64.3/protoweb";
+        public static $rootURL = "http://localhost:8080/protoweb";
 
         public static $pageLogin = "login.php";
         public static $pageRegister = "register.php";
@@ -13,6 +13,7 @@
         public static $pageAdminPanel = "admin/index.php";
         public static $pageAdminManageCourses = "admin/manage-courses.php";
         public static $pageAdminCourseEditor = "admin/course-editor.php";
+        public static $pageAdminManageCategories = "admin/manage-categories.php";
 
         public static $routeLogIn = "route/login-register/login.php";
         public static $routeLogOut = "route/login-register/logout.php";
