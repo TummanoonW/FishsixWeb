@@ -5,20 +5,34 @@
     Includer::include_proto($dir); 
     Includer::include_view($dir, 'view_course.php');
 
+    Includer::include_fun($dir, 'fun_course.php');
+    Includer::include_fun($dir, 'fun_category.php');
+
     $auth = Session::getAuth(); 
     $apiKey = Session::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
 
-    $paths = array(
-        new Path(FALSE, 'Home', Nav::$rootURL),
-        new Path(FALSE, 'Course', $dir . Nav::$pageCourseView),
-        new Path(TRUE, 'THE MVC ARCHITECTURAL PATTERN', $dir . Nav::$pageCourseView)
-    );
+    if($io->id != NULL){
+        $result = FunCourse::getCourse($api, $io->id);
 
-    Header::initHeader($dir,"View Course"); 
+        if($result->success){
+            $course = $result->response;
 
-    CourseView::initView($dir, $paths);
+            $paths = array(
+                new Path(FALSE, 'Home', Nav::$rootURL),
+                new Path(FALSE, 'Course', $dir . Nav::$pageCourseView),
+                new Path(TRUE, $course->title, $dir . Nav::$pageCourseView . "?id=" . $io->id)
+            );
 
-    Footer::initFooter($dir); 
+            Header::initHeader($dir, $course->title); 
+            CourseView::initView($dir, $paths, $course);
+            Footer::initFooter($dir); 
+        }else{
+            ErrorPage::showError($dir, $result);
+        }
+    }else{
+        Nav::gotoHome();
+    }
+

@@ -5,6 +5,9 @@
     Includer::include_proto($dir); 
     Includer::include_view($dir, 'view_mycart.php');
 
+    Includer::include_fun($dir, 'fun_course.php');
+    Includer::include_fun($dir, 'fun_mycart.php');
+
     $auth = Session::getAuth(); 
     $apiKey = Session::getAPIKey(); 
 
@@ -13,11 +16,20 @@
 
     $paths = array(
         new Path(FALSE, 'Home', Nav::$rootURL),
-        new Path(TRUE, 'Cart', $dir . Nav::$pageMyCart)
+        new Path(TRUE, 'My Cart', $dir . Nav::$pageMyCart)
     );
 
-    Header::initHeader($dir,"Shopping Cart"); 
-
-    MyCartView::initView($dir, $paths);
-
-    Footer::initFooter($dir); 
+    if(Session::checkUserExisted()){
+        $ownerID = Session::getAuth()->ID;
+        $result = FunMyCart::getMyCartFull($api, $ownerID);
+        if($result->success){
+            $cart = $result->response;
+            Header::initHeader($dir,"My Cart"); 
+            MyCartView::initView($dir, $paths, $cart);
+            Footer::initFooter($dir); 
+        }else{
+            ErrorPage::showError($dir, $result);
+        }
+    }else{
+        Nav::gotoHome();
+    }

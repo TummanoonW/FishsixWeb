@@ -21,6 +21,8 @@
         public static $routeLogOut = "route/login-register/logout.php";
         public static $routeRegister = "route/login-register/register.php";
 
+        public static $routeMyCart = "route/mycart.php";
+
         //navigate to Home URL
         function gotoHome(){
             header( "location: " . self::$rootURL);

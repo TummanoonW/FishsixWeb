@@ -5,6 +5,7 @@
     Includer::include_proto($dir); 
     Includer::include_admin($dir, 'admin_manage_courses.php');
     Includer::include_fun($dir, 'fun_admin_course.php');
+    Includer::include_fun($dir, 'fun_course.php');
 
     $auth = Session::getAuth(); 
     $apiKey = Session::getAPIKey(); 
@@ -30,13 +31,13 @@
         $filter->limit = $limit;
         $filter->offset = $offset;
 
-        $count_courses = FunAdminCourse::countCourses($api);
+        $count_courses = FunCourse::countCourses($api);
         if($count_courses->success) $c_courses = $count_courses->response;
         else $c_courses = 0;
         
         $pages = genPages($dir, $limit, $c_page, $c_courses);
 
-        $result = FunAdminCourse::getCoursesFilter($api, $filter);
+        $result = FunCourse::getCoursesFilter($api, $filter);
         $courses = $result->response;
 
         Header::initHeader($dir, "Admin - Manage Courses"); 

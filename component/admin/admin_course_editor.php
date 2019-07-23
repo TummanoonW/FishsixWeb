@@ -4,7 +4,7 @@
             $auth = Session::getAuth();
 ?>
        
-            <body class=" layout-fluid">
+            <body class="layout-fluid">
                  <!-- Flatpickr -->
                 <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/flatpickr.css'); ?>"  rel="stylesheet">
                 <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/flatpickr.rtl.css'); ?>" rel="stylesheet">
@@ -46,8 +46,8 @@
                                         </div>
                                         <div class="media-right">
                                             <span style="margin-right: 8px;">Last updated: 13 Oct 2019</span>
-                                            <a href="#" class="btn btn-success" style="margin-right: 4px;">PUBLISH</a>
-                                            <a href="#" class="btn btn-info">SAVE</a>
+                                            <button id="btn-publish" class="btn btn-success" style="margin-right: 4px;">PUBLISH</button>
+                                            <button id="btn-save" class="btn btn-info">SAVE</button>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -66,7 +66,7 @@
                                                     <div class="form-group mb-0">
                                                         <label class="form-label">Description</label>
                                                         <div style="height: 150px;" data-toggle="quill" data-quill-placeholder="Quill WYSIWYG editor" data-quill-modules-toolbar='[["bold", "italic"], ["link", "blockquote", "code", "image"], [{"list": "ordered"}, {"list": "bullet"}]]'>
-                                                            <p><?php echo $course->description; ?></p>
+                                                            <p id="description"><?php echo $course->description; ?></p>
                                                         </div>
                                                     </div>
 
@@ -360,6 +360,12 @@
                 <!-- Flatpickr -->
                 <script src="<?php Nav::printURL($dir, 'assets/vendor/flatpickr/flatpickr.min.js'); ?>"></script>
                 <script src="<?php Nav::printURL($dir, 'assets/js/flatpickr.js'); ?>"></script>
+
+
+                <!-- PHP-Javascript Interaction -->
+                <script id="obj-course"><?php echo json_encode($course); ?></script>
+                <script id="obj-categories"><?php echo json_encode($categories); ?></script>
+                <?php Script::customScript($dir, 'admin-course-editor.js'); ?>
 <?php
         }
     }

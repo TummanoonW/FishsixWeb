@@ -3,8 +3,6 @@
     class Script{
         public static function initScript($dir){
 ?>
-            <!-- jQuery -->
-            <script src="<?php Nav::printURL($dir, 'assets/vendor/jquery.min.js'); ?>"></script>
 
             <!-- Bootstrap -->
             <script src="<?php Nav::printURL($dir, 'assets/vendor/popper.min.js'); ?>"></script>
@@ -25,6 +23,14 @@
                     
             <!-- App Settings (safe to remove) -->
             <script src="<?php Nav::printURL($dir, 'assets/js/app-settings.js'); ?>"></script>
+
+
+<?php
+        }
+
+        public static function customScript($dir, $file){
+?>
+            <script src="<?php Nav::printURL($dir, 'assets/js/custom/' . $file); ?>"></script>
 <?php
         }
     }

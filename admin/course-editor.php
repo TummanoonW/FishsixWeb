@@ -7,6 +7,7 @@
 
     Includer::include_fun($dir, 'fun_category.php');
     Includer::include_fun($dir, 'fun_admin_course.php');
+    Includer::include_fun($dir, 'fun_course.php');
 
     $auth = Session::getAuth(); 
     $apiKey = Session::getAPIKey(); 
@@ -33,7 +34,7 @@
             AdminCourseEditorView::initView($dir, $paths, $course, $categories);
             Footer::initFooter($dir);
         }else{ //edit course
-            $result = FunAdminCourse::getCourse($api, $io->id);
+            $result = FunCourse::getCourse($api, $io->id);
             if($result->success){
                 $course = $result->response;
 

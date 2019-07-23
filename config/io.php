@@ -17,9 +17,9 @@
             }
 
             if(isset($_GET['m'])){
-                $this->query = $_GET['m'];
+                $this->method = $_GET['m'];
             }else{
-                $this->query = NULL;
+                $this->method = NULL;
             }
 
             if(isset($_GET['id'])){
@@ -40,12 +40,8 @@
             $this->post = (object)$p;
 
             //use method 'POST/PUT' (aka 'input') as JSON to post anything
-            if(file_get_contents('php://input') != NULL){
-                $i = file_get_contents('php://input');
-                $this->input = json_decode($i);
-            }else{
-                $this->input = NULL;
-            }
+            $i = file_get_contents('php://input');
+            $this->input = json_decode($i);
 
 
         }

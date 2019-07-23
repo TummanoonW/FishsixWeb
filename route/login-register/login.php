@@ -24,7 +24,7 @@
                 Session::logIn($auth); //save login data to session
                 Nav::gotoHome(); //redirect to profile page
             }else{
-                $io->output($result);
+                ErrorPage::showError($dir, $result);
             }
         }else{
             Nav::gotoHome(); //return to home page
@@ -42,6 +42,7 @@
             $auth = new Auth(NULL);
             $auth->username = "Bismarck";
             $auth->email = "root@localhost";
+            $auth->apiKey = "51bd0a6070d7fbbc46963f2e2e518d73";
             $auth->type = Auth::$TYPE_ADMIN;
             $result = new Result();
             $result->setResult(TRUE, $auth, NULL);
@@ -50,6 +51,7 @@
             $auth = new Auth(NULL);
             $auth->username = "Wilhelm";
             $auth->email = "wilhelm@gmail.com";
+            $auth->apiKey = "51bd0a6070d7fbbc46963f2e2e518d73";
             $result = new Result();
             $result->setResult(TRUE, $auth, NULL);
             return $result;

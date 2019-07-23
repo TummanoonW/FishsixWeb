@@ -25,7 +25,7 @@
                 Session::logIn($auth); //update username
                 Nav::goto($dir, "profile.php");
             }else{
-                $io->output($result);
+                ErrorPage::showError($dir, $result);
             }
         }else{
             Nav::gotoHome(); //return to home page

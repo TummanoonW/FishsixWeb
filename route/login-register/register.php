@@ -23,7 +23,7 @@
                 Session::logIn($auth); //save login data to session
                 Nav::gotoHome(); //redirect to profile page
             }else{
-                ErrorPage::showError($result);
+                ErrorPage::showError($dir, $result);
             }
         }
     }

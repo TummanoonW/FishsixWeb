@@ -10,7 +10,7 @@
                     <nav id="default-navbar" class="navbar navbar-expand navbar-dark bg-primary m-0">
                         <div class="container-fluid">
                             <!-- Toggle sidebar -->
-                            <button class="navbar-toggler d-block" data-toggle="sidebar" type="button">
+                            <button id="btn-menu" class="navbar-toggler d-block" data-toggle="sidebar" type="button">
                                 <span class="material-icons">menu</span>
                             </button>
                             <!-- Brand -->

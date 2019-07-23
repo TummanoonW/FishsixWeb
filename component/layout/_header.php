@@ -32,9 +32,8 @@
                 <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/app.rtl.css'); ?>" rel="stylesheet">
 
 
-
-
-
+                <!-- jQuery -->
+                <script src="<?php Nav::printURL($dir, 'assets/vendor/jquery.min.js'); ?>"></script>
             </head>
 <?php
         }
