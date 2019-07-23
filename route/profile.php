@@ -23,7 +23,7 @@
             if($result->success){ //if the API return result
                 $auth->username = $io->post->username;
                 Session::logIn($auth); //update username
-                Nav::goto($dir, "profile.php");
+                Nav::goto($dir, App::$pageProfile);
             }else{
                 ErrorPage::showError($dir, $result);
             }

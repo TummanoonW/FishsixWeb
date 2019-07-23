@@ -12,14 +12,14 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home', Nav::$rootURL),
-        new Path(TRUE, 'My Courses', $dir . Nav::$pageMyCourses)
+        new Path(FALSE, 'Home', App::$rootURL),
+        new Path(TRUE, 'My Courses', $dir . App::$pageMyCourses)
     );
 
     $pages = array(
-        new Path(FALSE, '1', $dir . Nav::$pageMyCourses . "?page=0"),
-        new Path(FALSE, '2', $dir . Nav::$pageMyCourses . "?page=1"),
-        new Path(FALSE, '3', $dir . Nav::$pageMyCourses . "?page=2")
+        new Path(FALSE, '1', $dir . App::$pageMyCourses . "?page=0"),
+        new Path(FALSE, '2', $dir . App::$pageMyCourses . "?page=1"),
+        new Path(FALSE, '3', $dir . App::$pageMyCourses . "?page=2")
     );
 
     if(Session::checkUserExisted()){

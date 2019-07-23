@@ -5,13 +5,13 @@
 ?>
             <body class=" layout-fluid">
                 <!-- Pre Loader -->
-                <?php Preloader::initPreloader($dir); ?>
+                <?php Preloader::initPreloader($dir) ?>
 
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
 
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir); ?>
+                    <?php Toolbar::initToolbar($dir) ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
@@ -45,15 +45,15 @@
                                     </div>
 
                                     <!-- Pagination -->
-                                    <?php Pagination::initPagination($dir, $pages); ?>
+                                    <?php Pagination::initPagination($dir, $pages) ?>
 
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir); ?>
+                            <?php Sidemenu::initSideMenu($dir) ?>
                         </div>
                     </div>
                 </div>
-                <?php Script::initScript($dir); ?>
+                <?php Script::initScript($dir) ?>
 <?php
 
         }
@@ -63,7 +63,7 @@
         <div class="col-md-4 col-sm-6">
             <div class="card">
                 <div class="card-header text-center">
-                    <h4 class="card-title mb-0"><a href="<?php Nav::printURL($dir, Nav::$pageCourseView . "?id=" . $course->ID); ?>"><?php echo $course->title; ?></a></h4>
+                    <h4 class="card-title mb-0"><a href="<?php Nav::printURL($dir, App::$pageCourseView . "?id=" . $course->ID) ?>"><?php echo $course->title ?></a></h4>
                     <div class="rating">
                         <i class="material-icons">star</i>
                         <i class="material-icons">star</i>
@@ -72,13 +72,13 @@
                         <i class="material-icons">star_border</i>
                     </div>
                 </div>
-                <a href="<?php Nav::printURL($dir, Nav::$pageCourseView . "?id=" . $course->ID); ?>">
-                    <img src="<?php Asset::printThumb($dir, $course->thumbnail); ?>" alt="<?php echo $course->title; ?>" style="width:100%;">
+                <a href="<?php Nav::printURL($dir, App::$pageCourseView . "?id=" . $course->ID) ?>">
+                    <img src="<?php Asset::printThumb($dir, $course->thumbnail) ?>" alt="<?php echo $course->title ?>" style="width:100%">
                 </a>
                 <div class="card-body">
                     <small class="text-muted">ADVANCED</small><br>
-                    <?php echo $course->description_short; ?><br>
-                    <span class="badge badge-primary "><?php echo self::printCategory($course->categoryID, $categories); ?></span>
+                    <?php echo $course->description_short ?><br>
+                    <span class="badge badge-primary "><?php echo self::printCategory($course->categoryID, $categories) ?></span>
                 </div>
             </div>
         </div>

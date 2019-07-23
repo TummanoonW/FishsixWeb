@@ -6,7 +6,7 @@
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <div class="text-black-70"><?php echo $msg; ?></div>
+                <div class="text-black-70"><?php echo $msg ?></div>
             </div>
 <?php
         }

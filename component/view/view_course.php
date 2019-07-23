@@ -6,24 +6,24 @@
             <body class="layout-fluid">
 
                 <!-- Pre Loader -->
-                <?php Preloader::initPreloader($dir); ?>
+                <?php Preloader::initPreloader($dir) ?>
 
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
 
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir); ?>
+                    <?php Toolbar::initToolbar($dir) ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
-                    <div class="mdk-header-layout__content" style="padding-top: 64px;">
+                    <div class="mdk-header-layout__content" style="padding-top: 64px">
 
                     <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
                         <div class="mdk-drawer-layout__content page ">
                             <div class="container-fluid page__container">
 
                                     <!-- Navigation Paths -->
-                                    <?php NavPath::initNavPath($dir, $paths); ?>
+                                    <?php NavPath::initNavPath($dir, $paths) ?>
                                     
                                     <h1 class="h2"><?php echo $course->title ?></h1>
                                     <div class="row">
@@ -33,7 +33,7 @@
                                                     <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0" allowfullscreen=""></iframe>
                                                 </div>
                                                 <div class="card-body">
-                                                    <?php echo $course->description_short; ?>
+                                                    <?php echo $course->description_short ?>
                                                 </div>
                                             </div>
 
@@ -131,9 +131,9 @@
                                                     <div class="page-separator">
                                                         <div class="page-separator__text">OR</div>
                                                     </div>
-                                                    <a href="<?php Nav::printURL($dir, Nav::$routeMyCart . "?m=add&id=$course->ID"); ?>" class="btn btn-success btn-block flex-column">
+                                                    <a href="<?php Nav::printURL($dir, App::$routeMyCart . "?m=add&id=$course->ID") ?>" class="btn btn-success btn-block flex-column">
                                                         Purchase Course
-                                                        <strong>starts at &#3647;<?php echo $course->minPrice; ?></strong>
+                                                        <strong>starts at &#3647;<?php echo $course->minPrice ?></strong>
                                                     </a>
                                                 </div>
                                             </div>
@@ -145,7 +145,7 @@
                                                             <img src="<?php Nav::printURL($dir,'assets/images/people/110/guy-6.jpg') ?> " alt="About Adrian" width="50" class="rounded-circle">
                                                         </div>
                                                         <div class="media-body">
-                                                            <h4 class="card-title"><a href="<?php Nav::printURL($dir,'student-profile.html'); ?> ">Adrian Demian</a></h4>
+                                                            <h4 class="card-title"><a href="<?php Nav::printURL($dir,'student-profile.html') ?> ">Adrian Demian</a></h4>
                                                             <p class="card-subtitle">Instructor</p>
                                                         </div>
                                                     </div>
@@ -200,11 +200,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir); ?>
+                            <?php Sidemenu::initSideMenu($dir) ?>
                         </div>
                     </div>
                 </div>
-                <?php Script::initScript($dir); ?>
+                <?php Script::initScript($dir) ?>
 
 <?php
         }

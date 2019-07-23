@@ -1,14 +1,6 @@
 <?php
     class API{
-        public static $apiLogin = "index.php";
-        public static $apiProfile = "profile.php";
-        public static $apiCourse = "course.php";
-
-        public static $apiAdminCourse = "admin-course.php";
-        public static $apiAdminCategory = "admin-category.php";
-
         private $apiKey = "null";
-        private $url = "http://192.168.64.3/proto/"; //base URL to call API
 
         function __construct($apiKey){
             if(isset($apiKey)){
@@ -28,11 +20,11 @@
 
         //build URL with custom path
         public function getURLCustom($path){
-            return $this->url . $path . $this->getAPIParam();
+            return App::$apiURL . $path . $this->getAPIParam();
         }
 
         public function getURLRoot(){
-            return $this->url . $this->getAPIParam();
+            return App::$apiURL . $this->getAPIParam();
         }
 
         public function getQueryParam($query){

@@ -17,7 +17,7 @@
                 $category = new Category($io->input);
                 $result = FunAdminCategory::editCategory($api, $category->ID, $category);
 
-                if($result->success) Nav::goto($dir, Nav::$pageAdminManageCategories);
+                if($result->success) Nav::goto($dir, App::$pageAdminManageCategories);
                 else ErrorPage::showError($dir, $result);
                 break;
 
@@ -25,7 +25,7 @@
                 $category = new Category($io->input);
                 $result = FunAdminCategory::createCategory($api, $category);
                 
-                if($result->success) Nav::goto($dir, Nav::$pageAdminManageCategories);
+                if($result->success) Nav::goto($dir, App::$pageAdminManageCategories);
                 else ErrorPage::showError($dir, $result);
                 break;
 
@@ -33,7 +33,7 @@
                 $id = $io->input->id;
                 $result = FunAdminCategory::deleteCategory($api, $id);
 
-                if($result->success) Nav::goto($dir, Nav::$pageAdminManageCategories);
+                if($result->success) Nav::goto($dir, App::$pageAdminManageCategories);
                 else ErrorPage::showError($dir, $result);
                 break;
 

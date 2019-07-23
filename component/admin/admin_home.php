@@ -5,12 +5,12 @@
 ?>
             <body class=" layout-fluid">
                 <!-- Pre Loader -->
-                <?php Preloader::initPreloader($dir); ?>
+                <?php Preloader::initPreloader($dir) ?>
 
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir); ?>
+                    <?php Toolbar::initToolbar($dir) ?>
                     <!-- // END Header -->
                     <!-- Header Layout Content -->
                     <div class="mdk-header-layout__content">
@@ -20,7 +20,7 @@
                                 <div class="container-fluid page__container">
 
                                     <!-- Navigation Paths -->
-                                    <?php NavPath::initNavPath($dir, $paths); ?>
+                                    <?php NavPath::initNavPath($dir, $paths) ?>
 
                                     <div class="media align-items-center mb-headings">
                                         <div class="media-body">
@@ -28,15 +28,15 @@
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
-                                    <a href="<?php Nav::printURL($dir, Nav::$pageAdminManageCourses); ?>" class="btn btn-success">Manage Courses</a>
-                                    <a href="<?php Nav::printURL($dir, Nav::$pageAdminManageCategories); ?>" class="btn btn-success">Manage Categories</a>
+                                    <a href="<?php Nav::printURL($dir, App::$pageAdminManageCourses) ?>" class="btn btn-success">Manage Courses</a>
+                                    <a href="<?php Nav::printURL($dir, App::$pageAdminManageCategories) ?>" class="btn btn-success">Manage Categories</a>
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir); ?>
+                            <?php Sidemenu::initSideMenu($dir) ?>
                         </div>
                     </div>
                 </div>
-                <?php Script::initScript($dir); ?>
+                <?php Script::initScript($dir) ?>
 <?php
         }
     }

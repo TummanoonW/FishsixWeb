@@ -6,12 +6,12 @@
 ?>
             <body class=" layout-fluid">
                 <!-- Pre Loader -->
-                <?php Preloader::initPreloader($dir); ?>
+                <?php Preloader::initPreloader($dir) ?>
 
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
 
-                    <?php Toolbar::initToolbar($dir); ?>
+                    <?php Toolbar::initToolbar($dir) ?>
 
                     <!-- // END Header -->
 
@@ -24,7 +24,7 @@
                                 <div class="container-fluid page__container">
 
                                     <!-- Navigation Paths -->
-                                    <?php NavPath::initNavPath($dir, $paths); ?>
+                                    <?php NavPath::initNavPath($dir, $paths) ?>
 
                                     <h1 class="h2">Edit Account</h1>
 
@@ -217,11 +217,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir); ?>
+                            <?php Sidemenu::initSideMenu($dir) ?>
                         </div>
                     </div>
                 </div>
-                <?php Script::initScript($dir); ?>
+                <?php Script::initScript($dir) ?>
 <?php
         }
 

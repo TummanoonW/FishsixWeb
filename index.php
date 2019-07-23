@@ -15,12 +15,12 @@
     $io = new IO(); 
 
     $pages = array(
-        new Path(FALSE, '1', Nav::$rootURL . "?page=0"),
-        new Path(FALSE, '2', Nav::$rootURL . "?page=1"),
-        new Path(FALSE, '3', Nav::$rootURL . "?page=2"),
-        new Path(FALSE, '4', Nav::$rootURL . "?page=3"),
-        new Path(FALSE, '5', Nav::$rootURL . "?page=4"),
-        new Path(FALSE, '6', Nav::$rootURL . "?page=5")
+        new Path(FALSE, '1', App::$rootURL . "?page=0"),
+        new Path(FALSE, '2', App::$rootURL . "?page=1"),
+        new Path(FALSE, '3', App::$rootURL . "?page=2"),
+        new Path(FALSE, '4', App::$rootURL . "?page=3"),
+        new Path(FALSE, '5', App::$rootURL . "?page=4"),
+        new Path(FALSE, '6', App::$rootURL . "?page=5")
     );
 
     $categories = FunCategory::getAll($api);
@@ -57,7 +57,7 @@
         $mark = 0;
         $count = 0;
         do {
-            array_push($pages, new Path(($c_page == $count), $count, $dir . Nav::$pageAdminManageCourses . '?page=' . $count));
+            array_push($pages, new Path(($c_page == $count), $count, $dir . App::$pageAdminManageCourses . '?page=' . $count));
 
             $count = $count + 1;
             $mark = $mark + $limit;

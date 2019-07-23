@@ -10,9 +10,9 @@
             }
         }
 
-        //Include all files within 'model' directory
-        public static function include_model($dir){
-            foreach (glob($dir . "model/*.php") as $filename){
+        //Include all files within 'structure' directory
+        public static function include_structure($dir){
+            foreach (glob($dir . "structure/*.php") as $filename){
                 include_once $filename;
             }
         }
@@ -32,7 +32,7 @@
             }
 
             self::include_config($dir);
-            self::include_model($dir);
+            self::include_structure($dir);
             self::include_layout($dir);
         }
 

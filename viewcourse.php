@@ -21,9 +21,9 @@
             $course = $result->response;
 
             $paths = array(
-                new Path(FALSE, 'Home', Nav::$rootURL),
-                new Path(FALSE, 'Course', $dir . Nav::$pageCourseView),
-                new Path(TRUE, $course->title, $dir . Nav::$pageCourseView . "?id=" . $io->id)
+                new Path(FALSE, 'Home', App::$rootURL),
+                new Path(FALSE, 'Course', $dir . App::$pageCourseView),
+                new Path(TRUE, $course->title, $dir . App::$pageCourseView . "?id=" . $io->id)
             );
 
             Header::initHeader($dir, $course->title); 

@@ -22,10 +22,10 @@
                             <div class="mdk-drawer-layout__content page " style="transform: translate3d(0px, 0px, 0px);">
 
                                 <div class="container-fluid page__container">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="<?php Nav::printURL($dir,'student-dashboard.html'); ?>">Home</a></li>
-                                        <li class="breadcrumb-item active">Cart</li>
-                                    </ol>
+
+                                    <!-- Navigation Paths -->
+                                    <?php NavPath::initNavPath($dir, $paths) ?>
+
                                     <h1 class="h2">Shopping Cart</h1>
                                     <div class="card table-responsive">
                                         <table class="table table-nowrap mb-0 table--elevated">
@@ -63,8 +63,8 @@
                                             </tfoot>
                                         </table>
                                         <div class="card-footer d-flex align-items-center">
-                                            <a href="<?php Nav::printURL('', Nav::$rootURL);?> " class="btn btn-white">Back to Courses</a>
-                                            <a href="<?php Nav::printURL($dir, 'checkout.php');?> " class="btn btn-success ml-auto">
+                                            <a href="<?php Nav::printHome() ?> " class="btn btn-white">Back to Courses</a>
+                                            <a href="<?php Nav::printURL($dir, App::$pageCheckOut) ?> " class="btn btn-success ml-auto">
                                                 Pay Now <i class="material-icons btn__icon--right">credit_card</i>
                                             </a>
                                         </div>
@@ -72,11 +72,11 @@
                                 </div>
                             </div>
                         </div>
-                        <?php Sidemenu::initSideMenu($dir); ?>
+                        <?php Sidemenu::initSideMenu($dir) ?>
                     </div>
                 </div>
             </div>    
-            <?php Script::initScript($dir); ?>        
+            <?php Script::initScript($dir) ?>        
 <?php
         }
 
@@ -85,8 +85,8 @@
             <tr>
                 <td>
                     <div class="d-flex align-items-center">
-                        <a href="<?php Nav::printURL($dir, Nav::$pageCourseView . "?id=" . $item->courseID);?> " class="avatar avatar-4by3 avatar-sm mr-3">
-                            <img src="<?php Asset::printThumb($dir, $item->course->thumbnail);?> " alt="<?php echo $item->course->title ?>" class="avatar-img rounded">
+                        <a href="<?php Nav::printURL($dir, App::$pageCourseView . "?id=" . $item->courseID) ?> " class="avatar avatar-4by3 avatar-sm mr-3">
+                            <img src="<?php Asset::printThumb($dir, $item->course->thumbnail) ?> " alt="<?php echo $item->course->title ?>" class="avatar-img rounded">
                         </a>
                         <div class="media-body">
                             <a href="#" class="text-body"><strong><?php echo $item->course->title ?></strong></a>
@@ -96,12 +96,12 @@
                 <td class="text-center">
                     <div class="d-flex align-items-center">
                         <a href="#" class="text-muted px-2"><i class="material-icons font-size-16pt">remove</i></a>
-                        <input type="number" class="form-control" style="width: 64px;" value="<?php echo $item->credit ?>">
+                        <input type="number" class="form-control" style="width: 64px" value="<?php echo $item->credit ?>">
                         <a href="#" class="text-muted px-2"><i class="material-icons font-size-16pt">add</i></a>
                     </div>
                 </td>
                 <td class="text-right">
-                    <p class="mb-0">&#3647;<?php echo self::calPrice($item->credit, $item->course->minPrice); ?> THB</p>
+                    <p class="mb-0">&#3647;<?php echo self::calPrice($item->credit, $item->course->minPrice) ?> THB</p>
                 </td>
                 <td class="text-center">
                     <a href="#" class="text-muted"><i class="material-icons font-size-24pt">close</i></a>

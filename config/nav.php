@@ -1,31 +1,9 @@
 <?php
 
     class Nav{
-
-        public static $rootURL = "http://localhost:8080/protoweb";
-
-        public static $pageLogin = "login.php";
-        public static $pageRegister = "register.php";
-        public static $pageProfile = "profile.php";
-        public static $pageMyCourses = "mycourses.php";
-        public static $pageCourseView = "viewcourse.php";
-        public static $pageMyCart = "mycart.php";
-        public static $pageCheckOut = "checkout.php";
-
-        public static $pageAdminPanel = "admin/index.php";
-        public static $pageAdminManageCourses = "admin/manage-courses.php";
-        public static $pageAdminCourseEditor = "admin/course-editor.php";
-        public static $pageAdminManageCategories = "admin/manage-categories.php";
-
-        public static $routeLogIn = "route/login-register/login.php";
-        public static $routeLogOut = "route/login-register/logout.php";
-        public static $routeRegister = "route/login-register/register.php";
-
-        public static $routeMyCart = "route/mycart.php";
-
         //navigate to Home URL
         function gotoHome(){
-            header( "location: " . self::$rootURL);
+            header( "location: " . App::$rootURL);
             exit();
         }
 
@@ -49,5 +27,9 @@
         //add URL text combining between directory path and file name to HTML page
         public static function printURL($dir, $file){
             echo $dir . $file;
+        }
+
+        public static function printHome(){
+            echo App::$rootURL;
         }
     }

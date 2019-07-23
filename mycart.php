@@ -15,8 +15,8 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home', Nav::$rootURL),
-        new Path(TRUE, 'My Cart', $dir . Nav::$pageMyCart)
+        new Path(FALSE, 'Home', App::$rootURL),
+        new Path(TRUE, 'My Cart', $dir . App::$pageMyCart)
     );
 
     if(Session::checkUserExisted()){

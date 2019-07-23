@@ -1,10 +1,7 @@
 <?php
      $dir = "../";
-
      include_once $dir . 'includer/includer.php'; 
- 
      Includer::include_proto($dir); 
-
      Includer::include_fun($dir, 'fun_mycart.php');
  
      $apiKey = Session::getAPIKey(); 
