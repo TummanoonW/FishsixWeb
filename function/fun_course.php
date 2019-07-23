@@ -5,7 +5,7 @@
             $query = new StdClass();
             $query->id = $id;
 
-            $url = $api->getURL(API::$apiCourse, 'single', $query);
+            $url = $api->getURL(App::$apiCourse, 'single', $query);
             $result = $api->get($url);
 
             if($result->response == NULL){
@@ -17,13 +17,13 @@
         }
 
         public static function countCourses($api){
-            $url = $api->getURL(API::$apiCourse, 'count', NULL);
+            $url = $api->getURL(App::$apiCourse, 'count', NULL);
             $result = $api->get($url);
             return $result;
         }
 
         public static function getCoursesFilter($api, $filter){
-            $url = $api->getURL(API::$apiCourse, 'filter', $filter);
+            $url = $api->getURL(App::$apiCourse, 'filter', $filter);
             $result = $api->get($url);
             return $result;
         }
