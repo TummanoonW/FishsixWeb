@@ -16,8 +16,10 @@
         new Path(TRUE, 'Pay', $dir . App::$pageCheckOut)
     );
 
-    Header::initHeader($dir,"Pay"); 
-
-    CheckOutView::initView($dir, $paths);
-
-    Footer::initFooter($dir); 
+    if(Session::checkUserExisted()){
+        Header::initHeader($dir,"Pay"); 
+        CheckOutView::initView($dir, $paths);
+        Footer::initFooter($dir); 
+    }else{
+        Nav::gotoHome();
+    }
