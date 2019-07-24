@@ -19,7 +19,7 @@
                         if($value->active){
 ?>
                     <li class="page-item">
-                        <a class="page-link" href="<?php echo $paths[$key - 1]->url; ?>" aria-label="Previous">
+                        <a class="page-link" href="<?php echo $paths[$key - 1]->url ?>" aria-label="Previous">
                             <span aria-hidden="true" class="material-icons">chevron_left</span>
                             <span>Prev</span>
                         </a>
@@ -33,16 +33,16 @@
                     if($value->active){
 ?>
                         <li class="page-item active">
-                            <a class="page-link" href="<?php echo $value->url; ?>" aria-label="1">
-                            <span><?php echo ($key+1); ?></span>
+                            <a class="page-link" href="<?php echo $value->url ?>" aria-label="1">
+                            <span><?php echo ($key+1) ?></span>
                             </a>
                         </li>
 <?php
                     }else{
 ?>
                         <li class="page-item">
-                            <a class="page-link" href="<?php echo $value->url; ?>" aria-label="1">
-                            <span><?php echo ($key+1); ?></span>
+                            <a class="page-link" href="<?php echo $value->url ?>" aria-label="1">
+                            <span><?php echo ($key+1) ?></span>
                             </a>
                         </li>                        
 <?php
@@ -63,7 +63,7 @@
                         if($value->active){
 ?>
                     <li class="page-item">
-                        <a class="page-link" href="<?php echo $paths[$key + 1]->url; ?>" aria-label="Next">
+                        <a class="page-link" href="<?php echo $paths[$key + 1]->url ?>" aria-label="Next">
                             <span>Next</span>
                             <span aria-hidden="true" class="material-icons">chevron_right</span>
                         </a>

@@ -5,17 +5,17 @@
 ?>
             <body class=" layout-fluid">
                 <!-- Pre Loader -->
-                <?php Preloader::initPreloader($dir); ?>
+                <?php Preloader::initPreloader($dir) ?>
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir); ?>
+                    <?php Toolbar::initToolbar($dir) ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
-                        <div class="mdk-header-layout__content" style="padding-top: 64px;">
+                        <div class="mdk-header-layout__content" style="padding-top: 64px">
                             <div data-push="" data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout" data-domfactory-upgraded="mdk-drawer-layout">
-                            <div class="mdk-drawer-layout__content page " style="transform: translate3d(0px, 0px, 0px);">
+                            <div class="mdk-drawer-layout__content page " style="transform: translate3d(0px, 0px, 0px)">
                                 <div class="container-fluid page__container">
                                     <!-- Navigation Paths -->
                                     <?php NavPath::initNavPath($dir, $paths); ?>
@@ -127,11 +127,11 @@
                                     </div>
                                 </div>   
                             </div>                                 
-                            <?php Sidemenu::initSideMenu($dir); ?>
+                            <?php Sidemenu::initSideMenu($dir) ?>
                         </div>
                     </div>
                 </div>
-                    <?php Script::initScript($dir); ?>
+                    <?php Script::initScript($dir) ?>
 <?php
         }
     }

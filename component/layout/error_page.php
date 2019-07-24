@@ -7,13 +7,6 @@
 ?>
             <body class=" layout-fluid">
 
-                <div class="preloader">
-                    <div class="sk-double-bounce">
-                        <div class="sk-child sk-double-bounce1"></div>
-                        <div class="sk-child sk-double-bounce2"></div>
-                    </div>
-                </div>
-
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
 
@@ -27,11 +20,8 @@
                             <div class="mdk-drawer-layout__content page ">
 
                                 <div class="container-fluid page__container">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="student-dashboard.html">Home</a></li>
-                                        <li class="breadcrumb-item active">Error</li>
-                                    </ol>
-                                    <h1 class="h2"><?php echo "Error " . $result->err->code . ": " . $result->err->msg ?></h1>
+                                    <h1 class="h2">Error <?php echo $result->err->code; ?></h1>
+                                    <h1 class="h4"><?php echo $result->err->msg; ?></h1>
                                 </div>
                             </div>
                         </div>
@@ -41,7 +31,7 @@
             
                                 
 <?php
-
+            Script::initScript($dir); 
             Footer::initFooter($dir); //initialize HTML footer elements
 
         }

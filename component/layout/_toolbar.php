@@ -10,12 +10,12 @@
                     <nav id="default-navbar" class="navbar navbar-expand navbar-dark bg-primary m-0">
                         <div class="container-fluid">
                             <!-- Toggle sidebar -->
-                            <button class="navbar-toggler d-block" data-toggle="sidebar" type="button">
+                            <button id="btn-menu" class="navbar-toggler d-block" data-toggle="sidebar" type="button">
                                 <span class="material-icons">menu</span>
                             </button>
                             <!-- Brand -->
-                            <a href="<?php Nav::printURL("", Nav::$rootURL); ?>" class="navbar-brand">
-                                <img src="<?php Asset::printIcon($dir, $dir . Asset::$iconURL2); ?>" class="mr-2" alt="<?php echo App::$name ?>" />
+                            <a href="<?php Nav::printHome() ?>" class="navbar-brand">
+                                <img src="<?php Asset::printIcon($dir, $dir . Asset::$iconURL2) ?>" class="mr-2" alt="<?php echo App::$name ?>" />
                                 <span class="d-none d-xs-md-block"><?php echo App::$name ?></span>
                             </a>
                             <!-- Search -->
@@ -35,7 +35,7 @@
                                 </li>
                             </ul>
                             <!-- Menu -->
-                            <?php Menu::initMenu($dir); ?>
+                            <?php Menu::initMenu($dir) ?>
                             <!-- // END Menu -->
                         </div>
                     </nav>

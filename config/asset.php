@@ -8,7 +8,11 @@
         public static $image_def = "assets/images/def.png";
         public static $thumb_def = "assets/images/thumbs/def.png";
 
-        public static function printThumb($dir, $url){
+        public static function printThumb($dir, $file){
+            $arr = explode("://", $file);
+            if(count($arr) == 1) $url = $dir . $file;
+            else $url = $file;
+
             if(file_exists($url)){
                 echo $url;
             }else{
@@ -16,7 +20,11 @@
             }
         }
         
-        public static function printImage($dir, $url){
+        public static function printImage($dir, $file){
+            $arr = explode("://", $file);
+            if(count($arr) == 1) $url = $dir . $file;
+            else $url = $file;
+
             if(file_exists($url)){
                 echo $url;
             }else{
@@ -24,7 +32,11 @@
             }
         }
 
-        public static function printIcon($dir, $url){
+        public static function printIcon($dir, $file){
+            $arr = explode("://", $file);
+            if(count($arr) == 1) $url = $dir . $file;
+            else $url = $file;
+
             if(file_exists($url)){
                 echo $url;
             }else{

@@ -57,5 +57,21 @@
             return $apiKey;
         }
 
+        public function set($key, $value){
+            $_SESSION[$key] = $value;
+        }
+
+        public function get($key){
+            if(isset($_SESSION[$key])){
+                return $_SESSION[$key];
+            }else{
+                return NULL;
+            }
+        }
+
+        public function remove($key){
+            unset($_SESSION[$key]);
+        }
+
         
     }

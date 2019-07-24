@@ -5,6 +5,7 @@
     Includer::include_proto($dir); 
     Includer::include_admin($dir, 'admin_manage_courses.php');
     Includer::include_fun($dir, 'fun_admin_course.php');
+    Includer::include_fun($dir, 'fun_course.php');
 
     $auth = Session::getAuth(); 
     $apiKey = Session::getAPIKey(); 
@@ -13,9 +14,9 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home', Nav::$rootURL),
-        new Path(FALSE, 'Admin Panel', $dir . Nav::$pageAdminPanel),
-        new Path(TRUE, 'Manage Courses', $dir . Nav::$pageAdminManageCourses)
+        new Path(FALSE, 'Home', App::$rootURL),
+        new Path(FALSE, 'Admin Panel', $dir . App::$pageAdminPanel),
+        new Path(TRUE, 'Manage Courses', $dir . App::$pageAdminManageCourses)
     );
 
     if(Session::checkUserAdmin()){
@@ -30,13 +31,13 @@
         $filter->limit = $limit;
         $filter->offset = $offset;
 
-        $count_courses = FunAdminCourse::countCourses($api);
+        $count_courses = FunCourse::countCourses($api);
         if($count_courses->success) $c_courses = $count_courses->response;
         else $c_courses = 0;
         
         $pages = genPages($dir, $limit, $c_page, $c_courses);
 
-        $result = FunAdminCourse::getCoursesFilter($api, $filter);
+        $result = FunCourse::getCoursesFilter($api, $filter);
         $courses = $result->response;
 
         Header::initHeader($dir, "Admin - Manage Courses"); 
@@ -53,7 +54,7 @@
         $mark = 0;
         $count = 0;
         do {
-            array_push($pages, new Path(($c_page == $count), $count, $dir . Nav::$pageAdminManageCourses . '?page=' . $count));
+            array_push($pages, new Path(($c_page == $count), $count, $dir . App::$pageAdminManageCourses . '?page=' . $count));
 
             $count = $count + 1;
             $mark = $mark + $limit;

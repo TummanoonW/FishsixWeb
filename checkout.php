@@ -12,8 +12,8 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home', Nav::$rootURL),
-        new Path(TRUE, 'Pay', $dir . Nav::$pageCheckOut)
+        new Path(FALSE, 'Home', App::$rootURL),
+        new Path(TRUE, 'Pay', $dir . App::$pageCheckOut)
     );
 
     if(Session::checkUserExisted()){

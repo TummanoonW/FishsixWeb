@@ -1,31 +1,31 @@
 <?php
     class CourseView{
-        public static function initView($dir, $paths){
+        public static function initView($dir, $paths, $course){
             $auth = Session::getAuth();
 ?>
-            <body class=" layout-fluid">
+            <body class="layout-fluid">
 
                 <!-- Pre Loader -->
-                <?php Preloader::initPreloader($dir); ?>
+                <?php Preloader::initPreloader($dir) ?>
 
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
 
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir); ?>
+                    <?php Toolbar::initToolbar($dir) ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
-                    <div class="mdk-header-layout__content" style="padding-top: 64px;">
+                    <div class="mdk-header-layout__content" style="padding-top: 64px">
 
-                        <div data-push="" data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout" data-domfactory-upgraded="mdk-drawer-layout">
-                            <div class="mdk-drawer-layout__content page " style="transform: translate3d(0px, 0px, 0px);">
-                                <div class="container-fluid page__container">
+                    <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+                        <div class="mdk-drawer-layout__content page ">
+                            <div class="container-fluid page__container">
 
                                     <!-- Navigation Paths -->
-                                    <?php NavPath::initNavPath($dir, $paths); ?>
+                                    <?php NavPath::initNavPath($dir, $paths) ?>
                                     
-                                    <h1 class="h2">The MVC architectural pattern</h1>
+                                    <h1 class="h2"><?php echo $course->title ?></h1>
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="card">
@@ -33,7 +33,7 @@
                                                     <iframe class="embed-responsive-item" src="<?php Asset::printImage($dir,'https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0') ?>" allowfullscreen=""></iframe>
                                                 </div>
                                                 <div class="card-body">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dicta eius enim inventoreus optio ratione veritatis. Beatae deserunt illum ipsam magniima mollitia officiis quia tempora!
+                                                    <?php echo $course->description_short ?>
                                                 </div>
                                             </div>
 
@@ -119,33 +119,25 @@
                                         </div>
                                         
                                         <div class="col-md-4">
-                                        <?php if(Session::checkUserExisted()){ ?>
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <a href="#" class="btn btn-primary btn-block flex-column">
-                                                        <i class="material-icons">get_app</i> Download Files
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        <?php }else{ ?>
+
+                                            <!-- Pricing Card -->
                                             <div class="card">
                                                 <div class="card-body text-center">
                                                     <p>
-                                                        <a href="<?php Nav::printURL($dir,'student-cart.html');?> " class="btn btn-success btn-block flex-column">
-                                                            Get All Courses
-                                                            <strong>$9 / month</strong>
+                                                        <a href="#" class="btn btn-outline-danger btn-block flex-column">
+                                                            <i class="material-icons">favorite</i> Add to Wish List
                                                         </a>
                                                     </p>
                                                     <div class="page-separator">
-                                                        <div class="page-separator__text">or</div>
+                                                        <div class="page-separator__text">OR</div>
                                                     </div>
-                                                    <a href="<?php Nav::printURL($dir,'student-cart.html');?> " class="btn btn-white btn-block flex-column">
+                                                    <a href="<?php Nav::printURL($dir, App::$routeMyCart . "?m=add&id=$course->ID") ?>" class="btn btn-success btn-block flex-column">
                                                         Purchase Course
-                                                        <strong>$25 USD</strong>
+                                                        <strong>starts at &#3647;<?php echo $course->minPrice ?></strong>
                                                     </a>
                                                 </div>
                                             </div>
-                                        <?php } ?>
+
                                             <div class="card">
                                                 <div class="card-header">
                                                     <div class="media align-items-center">
@@ -153,7 +145,7 @@
                                                             <img src="<?php Asset::printImage($dir,'assets/images/people/110/guy-6.jpg') ?> " alt="About Adrian" width="50" class="rounded-circle">
                                                         </div>
                                                         <div class="media-body">
-                                                            <h4 class="card-title"><a href="<?php Nav::printURL($dir,'student-profile.html'); ?> ">Adrian Demian</a></h4>
+                                                            <h4 class="card-title"><a href="<?php Nav::printURL($dir,'student-profile.html') ?> ">Adrian Demian</a></h4>
                                                             <p class="card-subtitle">Instructor</p>
                                                         </div>
                                                     </div>
@@ -208,11 +200,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir); ?>
+                            <?php Sidemenu::initSideMenu($dir) ?>
                         </div>
                     </div>
                 </div>
-                <?php Script::initScript($dir); ?>
+                <?php Script::initScript($dir) ?>
 
 <?php
         }

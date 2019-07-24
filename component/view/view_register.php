@@ -13,7 +13,7 @@
                 <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px;">
                     <div class="text-center mt-5 mb-1">
                         <div class="avatar avatar-lg">
-                            <img src="<?php Asset::printIcon($dir, $dir . Asset::$iconURL); ?>" class="avatar-img rounded-circle" alt="LearnPlus" />
+                            <img src="<?php Asset::printIcon($dir, $dir . Asset::$iconURL) ?>" class="avatar-img rounded-circle" alt="LearnPlus" />
                         </div>
                     </div>
                     <div class="d-flex justify-content-center mb-5 navbar-light">
@@ -126,7 +126,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="card-footer text-center text-black-50">Already signed up? <a href="<?php Nav::printURL($dir, Nav::$pageLogin); ?>">Login</a></div>
+                        <div class="card-footer text-center text-black-50">Already signed up? <a href="<?php Nav::printURL($dir, App::$pageLogin) ?>">Login</a></div>
                     </div>
                 </div>
             </div>

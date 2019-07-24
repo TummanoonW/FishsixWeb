@@ -7,6 +7,7 @@
 
     Includer::include_fun($dir, 'fun_category.php');
     Includer::include_fun($dir, 'fun_admin_course.php');
+    Includer::include_fun($dir, 'fun_course.php');
 
     $auth = Session::getAuth(); 
     $apiKey = Session::getAPIKey(); 
@@ -15,10 +16,10 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home',            Nav::$rootURL),
-        new Path(FALSE, 'Admin Panel',     $dir . Nav::$pageAdminPanel),
-        new Path(FALSE, 'Manage Courses',  $dir . Nav::$pageAdminManageCourses),
-        new Path(TRUE,  'Course Editor',   $dir . Nav::$pageAdminCourseEditor)
+        new Path(FALSE, 'Home',            App::$rootURL),
+        new Path(FALSE, 'Admin Panel',     $dir . App::$pageAdminPanel),
+        new Path(FALSE, 'Manage Courses',  $dir . App::$pageAdminManageCourses),
+        new Path(TRUE,  'Course Editor',   $dir . App::$pageAdminCourseEditor)
     );
 
     if(Session::checkUserAdmin()){
@@ -33,7 +34,7 @@
             AdminCourseEditorView::initView($dir, $paths, $course, $categories);
             Footer::initFooter($dir);
         }else{ //edit course
-            $result = FunAdminCourse::getCourse($api, $io->id);
+            $result = FunCourse::getCourse($api, $io->id);
             if($result->success){
                 $course = $result->response;
 

@@ -4,29 +4,29 @@
             $auth = Session::getAuth();
 ?>
        
-            <body class=" layout-fluid">
+            <body class="layout-fluid">
                  <!-- Flatpickr -->
-                <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/flatpickr.css'); ?>"  rel="stylesheet">
-                <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/flatpickr.rtl.css'); ?>" rel="stylesheet">
-                <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/flatpickr-airbnb.css'); ?>" rel="stylesheet">
-                <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/flatpickr-airbnb.rtl.css'); ?>" rel="stylesheet">
+                <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/flatpickr.css') ?>"  rel="stylesheet">
+                <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/flatpickr.rtl.css') ?>" rel="stylesheet">
+                <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/flatpickr-airbnb.css') ?>" rel="stylesheet">
+                <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/flatpickr-airbnb.rtl.css') ?>" rel="stylesheet">
 
                 <!-- Quill Theme -->
-                <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/quill.css'); ?>" rel="stylesheet">
-                <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/quill.rtl.css'); ?>" rel="stylesheet">
+                <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/quill.css') ?>" rel="stylesheet">
+                <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/quill.rtl.css') ?>" rel="stylesheet">
 
                 <!-- Nestable -->
-                <link rel="stylesheet" href="<?php Nav::printURL($dir, 'assets/css/nestable.css'); ?>">
-                <link rel="stylesheet" href="<?php Nav::printURL($dir, 'assets/css/nestable.rtl.css'); ?>">
+                <link rel="stylesheet" href="<?php Nav::printURL($dir, 'assets/css/nestable.css') ?>">
+                <link rel="stylesheet" href="<?php Nav::printURL($dir, 'assets/css/nestable.rtl.css') ?>">
 
                 <!-- Pre Loader -->
-                <?php Preloader::initPreloader($dir); ?>
+                <?php Preloader::initPreloader($dir) ?>
 
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
 
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir); ?>
+                    <?php Toolbar::initToolbar($dir) ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
@@ -38,16 +38,16 @@
                                 <div class="container-fluid page__container">
 
                                     <!-- Navigation Paths -->
-                                    <?php NavPath::initNavPath($dir, $paths); ?>
+                                    <?php NavPath::initNavPath($dir, $paths) ?>
 
                                     <div class="media align-items-center mb-headings">
                                         <div class="media-body">
                                             <h1 class="h2"><?php echo $course->title ?></h1>
                                         </div>
                                         <div class="media-right">
-                                            <span style="margin-right: 8px;">Last updated: 13 Oct 2019</span>
-                                            <a href="#" class="btn btn-success" style="margin-right: 4px;">PUBLISH</a>
-                                            <a href="#" class="btn btn-info">SAVE</a>
+                                            <span style="margin-right: 8px">Last updated: 13 Oct 2019</span>
+                                            <button id="btn-publish" class="btn btn-success" style="margin-right: 4px">PUBLISH</button>
+                                            <button id="btn-save" class="btn btn-info">SAVE</button>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -60,13 +60,13 @@
 
                                                     <div class="form-group">
                                                         <label class="form-label" for="title">Title</label>
-                                                        <input type="text" id="title" class="form-control" placeholder="Write a title" value="<?php echo $course->title; ?>">
+                                                        <input type="text" id="title" class="form-control" placeholder="Write a title" value="<?php echo $course->title ?>">
                                                     </div>
 
                                                     <div class="form-group mb-0">
                                                         <label class="form-label">Description</label>
-                                                        <div style="height: 150px;" data-toggle="quill" data-quill-placeholder="Quill WYSIWYG editor" data-quill-modules-toolbar='[["bold", "italic"], ["link", "blockquote", "code", "image"], [{"list": "ordered"}, {"list": "bullet"}]]'>
-                                                            <p><?php echo $course->description; ?></p>
+                                                        <div style="height: 150px" data-toggle="quill" data-quill-placeholder="Quill WYSIWYG editor" data-quill-modules-toolbar='[["bold", "italic"], ["link", "blockquote", "code", "image"], [{"list": "ordered"}, {"list": "bullet"}]]'>
+                                                            <p id="description"><?php echo $course->description ?></p>
                                                         </div>
                                                     </div>
 
@@ -85,7 +85,7 @@
                                                                 <div class="nestable-content">
                                                                     <div class="media align-items-center">
                                                                         <div class="media-left">
-                                                                            <img src="<?php Nav::printURL($dir, 'assets/images/vuejs.png'); ?>" alt="" width="100" class="rounded">
+                                                                            <img src="<?php Asset::printThumb($dir, 'vuejs.png') ?>" alt="" width="100" class="rounded">
                                                                         </div>
                                                                         <div class="media-body">
                                                                             <h5 class="card-title h6 mb-0">
@@ -104,7 +104,7 @@
                                                                 <div class="nestable-content">
                                                                     <div class="media align-items-center">
                                                                         <div class="media-left">
-                                                                            <img src="<?php Nav::printURL($dir, 'assets/images/nodejs.png'); ?>" alt="" width="100" class="rounded">
+                                                                            <img src="<?php Asset::printThumb($dir, 'nodejs.png') ?>" alt="" width="100" class="rounded">
                                                                         </div>
                                                                         <div class="media-body">
                                                                             <h4 class="card-title h6 mb-0">
@@ -123,7 +123,7 @@
                                                                 <div class="nestable-content">
                                                                     <div class="media align-items-center">
                                                                         <div class="media-left">
-                                                                            <img src="<?php Nav::printURL($dir, 'assets/images/gulp.png'); ?>" alt="" width="100" class="rounded">
+                                                                            <img src="<?php Asset::printThumb($dir, 'gulp.png') ?>" alt="" width="100" class="rounded">
                                                                         </div>
                                                                         <div class="media-body">
                                                                             <h4 class="card-title h6 mb-0">
@@ -188,7 +188,7 @@
                                                                 <div class="nestable-content">
                                                                     <div class="media align-items-center">
                                                                         <div class="media-left">
-                                                                            <img src="<?php Nav::printURL($dir, 'assets/images/vuejs.png'); ?>" alt="" width="100" class="rounded">
+                                                                            <img src="<?php Asset::printThumb($dir, 'vuejs.png') ?>" alt="" width="100" class="rounded">
                                                                         </div>
                                                                         <div class="media-body">
                                                                             <h5 class="card-title h6 mb-0">
@@ -230,7 +230,7 @@
                                                                 <div class="nestable-content">
                                                                     <div class="media align-items-center">
                                                                         <div class="media-body">
-                                                                            <p><img src="<?php Nav::printURL($dir, 'assets/images/vuejs.png'); ?>" alt="" width="100" class="rounded"></p>
+                                                                            <p><img src="<?php Asset::printThumb($dir, 'vuejs.png') ?>" alt="" width="100" class="rounded"></p>
                                                                             <small class="text-muted">
                                                                                 <input type="text" id="duration" class="form-control" placeholder="caption" value="" width="100">
                                                                             </small>
@@ -279,9 +279,9 @@
                                                 <form class="card-body" action="#">
                                                     <div class="form-group">
                                                         <label class="form-label" for="category">Category</label>
-                                                        <select id="category" class="custom-select form-control" value="<?php echo $course->categoryID; ?>">
+                                                        <select id="category" class="custom-select form-control" value="<?php echo $course->categoryID ?>">
                                                             <?php foreach ($categories as $key => $value) { ?>
-                                                                <option value="<?php echo $value->ID; ?>"><?php echo $value->title; ?></option>
+                                                                <option value="<?php echo $value->ID ?>"><?php echo $value->title ?></option>
                                                             <?php } ?>
                                                         </select>
                                                     </div>
@@ -298,7 +298,7 @@
                                                         <input id="end" type="text" class="form-control" placeholder="Start Date" data-toggle="flatpickr" value="01/28/2016">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="form-label" for="duration"><img src="<?php Nav::printURL($dir, 'assets/images/line-icon.png'); ?>" alt="Avatar" class="rounded-circle" width="20"> LINE Group</label>
+                                                        <label class="form-label" for="duration"><img src="<?php Asset::printIcon($dir, 'line-icon.png') ?>" alt="Avatar" class="rounded-circle" width="20"> LINE Group</label>
                                                         <input type="text" id="duration" class="form-control" placeholder="URL" value="">
                                                     </div>
                                                     
@@ -344,22 +344,28 @@
                                 </div>
                                                     
                             </div>
-                            <?php Sidemenu::initSideMenu($dir); ?>
+                            <?php Sidemenu::initSideMenu($dir) ?>
                         </div>
                     </div>
                 </div>
-                <?php Script::initScript($dir); ?>
+                <?php Script::initScript($dir) ?>
 
 
                 <!-- Nestable -->
-                <script src="<?php Nav::printURL($dir, 'assets/vendor/jquery.nestable.js'); ?>"></script>
-                <script src="<?php Nav::printURL($dir, 'assets/js/nestable.js'); ?>"></script>
+                <script src="<?php Nav::printURL($dir, 'assets/vendor/jquery.nestable.js') ?>"></script>
+                <script src="<?php Nav::printURL($dir, 'assets/js/nestable.js') ?>"></script>
                 <!-- Quill -->
-                <script src="<?php Nav::printURL($dir, 'assets/vendor/quill.min.js'); ?>"></script>
-                <script src="<?php Nav::printURL($dir, 'assets/js/quill.js'); ?>"></script>
+                <script src="<?php Nav::printURL($dir, 'assets/vendor/quill.min.js') ?>"></script>
+                <script src="<?php Nav::printURL($dir, 'assets/js/quill.js') ?>"></script>
                 <!-- Flatpickr -->
-                <script src="<?php Nav::printURL($dir, 'assets/vendor/flatpickr/flatpickr.min.js'); ?>"></script>
-                <script src="<?php Nav::printURL($dir, 'assets/js/flatpickr.js'); ?>"></script>
+                <script src="<?php Nav::printURL($dir, 'assets/vendor/flatpickr/flatpickr.min.js') ?>"></script>
+                <script src="<?php Nav::printURL($dir, 'assets/js/flatpickr.js') ?>"></script>
+
+
+                <!-- PHP-Javascript Interaction -->
+                <script id="obj-course"><?php echo json_encode($course) ?></script>
+                <script id="obj-categories"><?php echo json_encode($categories) ?></script>
+                <?php Script::customScript($dir, 'admin-course-editor.js') ?>
 <?php
         }
     }

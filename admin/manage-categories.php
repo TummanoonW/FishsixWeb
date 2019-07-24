@@ -13,9 +13,9 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home', Nav::$rootURL),
-        new Path(FALSE, 'Admin Panel', $dir . Nav::$pageAdminPanel),
-        new Path(TRUE, 'Manage Categories', $dir . Nav::$pageAdminManageCategories)
+        new Path(FALSE, 'Home', App::$rootURL),
+        new Path(FALSE, 'Admin Panel', $dir . App::$pageAdminPanel),
+        new Path(TRUE, 'Manage Categories', $dir . App::$pageAdminManageCategories)
     );
 
     if(Session::checkUserAdmin()){

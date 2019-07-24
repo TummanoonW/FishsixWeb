@@ -1,92 +1,30 @@
 <?php
     class FunCourse{
-        public static function getCourse($id){
-            if($id == NULL){
-                $course = new Course(NULL);
-                $result = new Result();
-                $result->setResult(TRUE, $course, NULL);
-                return $result;
-            }else{
-                //real
-                /*$query = new StdClass();
-                $query->ID = $id;
-                $url = $api->getURL(API::$apiCourse, 'getSingle', $query);
-                $result = $api->get($url);
-                return $result;*/
-    
-                //mock
-                $course = new Course(NULL);
-                $course->title = "Easy Chinese 101";
-                $result = new Result();
-                $result->setResult(TRUE, $course, NULL);
-                return $result;
-            }
-        }
 
-        public static function getCourses($dir){
-            //mock
-            $courses = array(
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL),
-                new Course(NULL)
-            );
+        public static function getCourse($api, $id){
+            $query = new StdClass();
+            $query->id = $id;
 
-            foreach ($courses as $key => $value) {
-                $value->ID = $key;
-                $value->title = $value->title . " ($key)";
-                $value->thumbnail = "assets/images/github.png";
+            $url = $api->getURL(App::$apiCourse, 'single', $query);
+            $result = $api->get($url);
+
+            if($result->response == NULL){
+                $result->success = FALSE;
+                $result->err = Err::$ERR_NO_DATA;
             }
 
-            return $courses;
+            return $result;
         }
 
-        public static function getCoursesFilter($dir, $start, $end){
-            //mock
-            $courses = self::getCourses($dir);
-            $max = count($courses);
-            $n_courses = array();
-            for ($i=$start; $i < $end; $i++) { 
-                if($i < $max){
-                    array_push($n_courses, $courses[$i]);
-                }
-            }
-            return $n_courses;
+        public static function countCourses($api){
+            $url = $api->getURL(App::$apiCourse, 'count', NULL);
+            $result = $api->get($url);
+            return $result;
         }
 
-        public static function countCourses($dir){
-            $courses = self::getCourses($dir);
-            $count = count($courses);
-
-            //mock
-            $result = new Result();
-            $result->setResult(TRUE, $count, NULL);
+        public static function getCoursesFilter($api, $filter){
+            $url = $api->getURL(App::$apiCourse, 'filter', $filter);
+            $result = $api->get($url);
             return $result;
         }
     }

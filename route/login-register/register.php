@@ -1,8 +1,6 @@
 <?php
     $dir = "../../";
-    
     include_once $dir . 'includer/includer.php'; //include Includer file to operate
-
     //include Proto Framework Architecture with retracked directory path
     Includer::include_proto($dir); 
 
@@ -23,7 +21,7 @@
                 Session::logIn($auth); //save login data to session
                 Nav::gotoHome(); //redirect to profile page
             }else{
-                ErrorPage::showError($result);
+                ErrorPage::showError($dir, $result);
             }
         }
     }
