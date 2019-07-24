@@ -16,8 +16,15 @@
         new Path(TRUE, 'Cart', $dir . Nav::$pageMyCart)
     );
 
-    Header::initHeader($dir,"Shopping Cart"); 
+    if(Session::checkUserExisted()){
 
-    MyCartView::initView($dir, $paths);
+        Header::initHeader($dir,"Shopping Cart"); 
 
-    Footer::initFooter($dir); 
+        MyCartView::initView($dir, $paths);
+
+        Footer::initFooter($dir); 
+        
+    }else{
+        Nav::gotoHome();
+    }
+

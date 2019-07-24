@@ -22,10 +22,8 @@
                             <div class="mdk-drawer-layout__content page " style="transform: translate3d(0px, 0px, 0px);">
 
                                 <div class="container-fluid page__container">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="<?php Nav::printURL($dir,'student-dashboard.html'); ?>">Home</a></li>
-                                        <li class="breadcrumb-item active">Cart</li>
-                                    </ol>
+                                    <!-- Navigation Paths -->
+                                    <?php NavPath::initNavPath($dir, $paths); ?>
                                     <h1 class="h2">Shopping Cart</h1>
                                     <div class="card table-responsive">
                                         <table class="table table-nowrap mb-0 table--elevated">
@@ -43,7 +41,7 @@
                                                     <td>
                                                         <div class="d-flex align-items-center">
                                                             <a href="<?php Nav::printURL($dir,'student-view-course.html');?> " class="avatar avatar-4by3 avatar-sm mr-3">
-                                                                <img src="<?php Nav::printURL($dir,'assets/images/gulp.png');?> " alt="Learn Vue.js Fundamentals" class="avatar-img rounded">
+                                                                <img src="<?php Asset::printThumb($dir,'assets/images/gulp.png');?> " alt="Learn Vue.js Fundamentals" class="avatar-img rounded">
                                                             </a>
                                                             <div class="media-body">
                                                                 <a href="#" class="text-body"><strong>Learn Vue.js Fundamentals</strong></a>
@@ -70,7 +68,7 @@
                                                     <td>
                                                         <div class="d-flex align-items-center">
                                                             <a href="<?php Nav::printURL($dir,'student-view-course.html');?> " class="avatar avatar-4by3 avatar-sm mr-3">
-                                                                <img src="<?php Nav::printURL($dir,'assets/images/vuejs.png');?> " alt="Angular in Steps" class="avatar-img rounded">
+                                                                <img src="<?php Asset::printThumb($dir,'assets/images/vuejs.png');?> " alt="Angular in Steps" class="avatar-img rounded">
                                                             </a>
                                                             <div class="media-body">
                                                                 <a href="#" class="text-body"><strong>Angular in Steps</strong></a>

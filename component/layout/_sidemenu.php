@@ -137,7 +137,7 @@
                                     </a>
                                 </li>
                                 <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="student-view-course.html">
+                                    <a class="sidebar-menu-button" href="<?php Nav::printURL($dir,'viewcourse.php')?> ">
                                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">import_contacts</i> View Course
                                     </a>
                                 </li>
@@ -158,7 +158,7 @@
                                     </a>
                                 </li>
                                 <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="student-my-courses.html">
+                                    <a class="sidebar-menu-button" href="<?php Nav::printURL($dir,'mycourses.php');?> ">
                                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> My Courses
                                     </a>
                                 </li>

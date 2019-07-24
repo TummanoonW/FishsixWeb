@@ -11,6 +11,9 @@
         public static $pageCourseView = "viewcourse.php";
         public static $pageMyCart = "mycart.php";
         public static $pageCheckOut = "checkout.php";
+        public static $pageBookClass = "bookclass.php";
+        public static $pageMySchedule = "myschedule.php";
+        public static $pageRegisterSucceed = "registerSucceed.php";
 
         public static $pageAdminPanel = "admin/index.php";
         public static $pageAdminManageCourses = "admin/manage-courses.php";

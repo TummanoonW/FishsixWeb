@@ -3,7 +3,7 @@
     $dir = "./";
     include_once $dir . 'includer/includer.php'; 
     Includer::include_proto($dir); 
-    Includer::include_view($dir, 'view_checkout.php');
+    Includer::include_view($dir, 'view_myschedule.php');
 
     $auth = Session::getAuth(); 
     $apiKey = Session::getAPIKey(); 
@@ -13,17 +13,19 @@
 
     $paths = array(
         new Path(FALSE, 'Home', Nav::$rootURL),
-        new Path(TRUE, 'Pay', $dir . Nav::$pageCheckOut)
+        new Path(TRUE, 'MY Schedule', $dir . Nav::$pageMySchedule)
     );
 
-    if(Session::checkUserExisted()){
-            
-        Header::initHeader($dir,"Pay"); 
+    if(checkUserExisted()){
+        
+        Header::initHeader($dir,"MY Schedule"); 
 
-        CheckOutView::initView($dir, $paths);
-
+        MySchedule::initView($dir, $paths);
+    
         Footer::initFooter($dir); 
-
+    
     }else{
-        Nav::gotoHome();
+        Nav::gotoHme();
     }
+
+    
