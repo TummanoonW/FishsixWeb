@@ -1,5 +1,5 @@
 <?php
-    class RegisterSucceedView{
+    class ResetPasswordSucceedView{
         public static function initView($dir){
 ?>
            <body class="registersucceed">
@@ -16,10 +16,9 @@
                     <div class="card navbar-shadow">
                         <div class="card-header text-center" >
                         <i class="far fa-check-circle" style="font-size: 100px;color:green" ></i>
-                            <h2>Register Succeed!</h2>
-                            <h3>Welcom Mr.J</h3>
+                            <h2>Resetpassword Succeed!</h2>
+                            <h3>Now you can login with new password</h3>
                         </div>
-                        <div class="card-footer text-center text-black-50">Go to <a href="<?php Nav::printURL($dir, Nav::$routeLogIn); ?>">Fishsix</a></div>
                         <div class="card-footer text-center text-black-50">Back to <a href="<?php Nav::printURL($dir, Nav::$pageLogin); ?>">Login</a></div>
                     </div>
                 </div>

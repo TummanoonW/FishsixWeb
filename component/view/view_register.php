@@ -48,6 +48,48 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label class="form-label" for="password1">Password:</label>
+                                    <div class="input-group input-group-merge">
+                                        <input name="password1" id="password1" type="password" required="" class="form-control form-control-prepended" placeholder="Choose a password">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <span class="fas fa-key"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="password2">Confirm Password:</label>
+                                    <div class="input-group input-group-merge">
+                                        <input id="password2" type="password" required="" class="form-control form-control-prepended" placeholder="Confirm password">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <span class="fas fa-key"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="username">User name:</label>
+                                    <div class="input-group input-group-merge">
+                                        <input name="username" id="username" type="text" required="" class="form-control form-control-prepended" placeholder="Your User name">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <span class="fas fa-user"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                        <label class="form-label" for="profile_pic">Profile Picture:</label>
+                                        <div class="form-group m-0">
+                                        <div class="custom-file">
+                                            <input type="file" id="profile_pic" class="custom-file-input">
+                                            <label for="profile_pic" class="custom-file-label">Choose file</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="form-label" for="fname">Frist name:</label>
                                     <div class="input-group input-group-merge">
                                         <input name="fname" id="fname" type="text" required="" class="form-control form-control-prepended" placeholder="Your first name">
@@ -79,40 +121,21 @@
                                         <label class="form-label" for="gender">Gender:</label>
                                         <select id="gender" class="form-control custom-select">
                                             <option selected="">Your gender</option>
-                                            <option value="male">Male</option>
+                                            <option value="male" >Male</option>
                                             <option value="female">Memale</option>
                                         </select>
-                                        
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="phone">Phone:</label>
+                                    <input id="phone" type="text" class="form-control" placeholder="123-456-7890" data-mask="000-000-0000" autocomplete="off" maxlength="12">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label" for="address">Address:</label>
                                     <div class="input-group input-group-merge">
-                                        <input name="address" id="address" type="text" required="" class="form-control form-control-prepended" placeholder="Your address">
+                                        <input name="address" id="address"  type="text" required="" class="form-control form-control-prepended" placeholder="Your address">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
                                                 <span class="fas fa-thumbtack"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label" for="password">Password:</label>
-                                    <div class="input-group input-group-merge">
-                                        <input name="password" id="password" type="password" required="" class="form-control form-control-prepended" placeholder="Choose a password">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <span class="fas fa-key"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label" for="password2">Confirm Password:</label>
-                                    <div class="input-group input-group-merge">
-                                        <input id="password2" type="password" required="" class="form-control form-control-prepended" placeholder="Confirm password">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <span class="fas fa-key"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -134,6 +157,8 @@
                 <!-- Flatpickr -->
                 <script src="assets/vendor/flatpickr/flatpickr.min.js"></script>
                 <script src="assets/js/flatpickr.js"></script>
+                <!-- jQuery Mask Plugin -->
+                <script src="assets/vendor/jquery.mask.min.js"></script>
 <?php
         }
     }
