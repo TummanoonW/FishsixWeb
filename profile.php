@@ -15,7 +15,7 @@
     $io = new IO(); //open Input/Output receiver for certain $_GET and $_POST data 
 
     $paths = array(
-        new Path(FALSE, 'Home', App::$rootURL),
+        new Path(FALSE, 'Home', $dir),
         new Path(TRUE, 'Profile', $dir . App::$pageProfile)
     );
 
@@ -27,7 +27,7 @@
 
         Footer::initFooter($dir); //initialize HTML footer elements
     }else{
-        Nav::gotoHome(); //return to home page
+        Nav::gotoHome($dir); //return to home page
     }
     
 ?>

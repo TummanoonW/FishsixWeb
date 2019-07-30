@@ -28,10 +28,10 @@
                 ErrorPage::showError($dir, $result);
             }
         }else{
-            Nav::gotoHome(); //return to home page
+            Nav::gotoHome($dir); //return to home page
         }
     }else{
-        Nav::gotoHome(); //return to home page
+        Nav::gotoHome($dir); //return to home page
     }
 
     function editProfile($api, $form){

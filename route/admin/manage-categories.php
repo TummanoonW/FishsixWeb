@@ -38,9 +38,9 @@
                 break;
 
             default:
-                Nav::gotoHome();
+                Nav::gotoHome($dir);
                 break;
         }   
     }else{
-        Nav::gotoHome(); 
+        Nav::gotoHome($dir); 
     }

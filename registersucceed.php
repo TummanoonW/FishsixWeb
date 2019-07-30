@@ -12,7 +12,7 @@
     $io = new IO();
 
     if(Session::checkUserExisted()){
-        Nav::gotoHome();
+        Nav::gotoHome($dir);
     }else{
         Header::initHeader($dir, "Register Succeend"); 
         

@@ -39,8 +39,8 @@
                                                 <tr>
                                                     <td>
                                                         <div class="d-flex align-items-center">
-                                                            <a href="<?php Nav::printURL($dir,'student-view-course.html');?> " class="avatar avatar-4by3 avatar-sm mr-3">
-                                                                <img src="<?php Asset::printThumb($dir,'assets/images/gulp.png');?> " alt="Learn Vue.js Fundamentals" class="avatar-img rounded">
+                                                            <a href="<?php Nav::echoURL($dir,'student-view-course.html');?> " class="avatar avatar-4by3 avatar-sm mr-3">
+                                                                <img src="<?php Asset::echoThumb($dir,'assets/images/gulp.png');?> " alt="Learn Vue.js Fundamentals" class="avatar-img rounded">
                                                             </a>
                                                             <div class="media-body">
                                                                 <a href="#" class="text-body"><strong>Learn Vue.js Fundamentals</strong></a>
@@ -66,8 +66,8 @@
                                                 <tr>
                                                     <td>
                                                         <div class="d-flex align-items-center">
-                                                            <a href="<?php Nav::printURL($dir,'student-view-course.html');?> " class="avatar avatar-4by3 avatar-sm mr-3">
-                                                                <img src="<?php Asset::printThumb($dir,'assets/images/vuejs.png');?> " alt="Angular in Steps" class="avatar-img rounded">
+                                                            <a href="<?php Nav::echoURL($dir,'student-view-course.html');?> " class="avatar avatar-4by3 avatar-sm mr-3">
+                                                                <img src="<?php Asset::echoThumb($dir,'assets/images/vuejs.png');?> " alt="Angular in Steps" class="avatar-img rounded">
                                                             </a>
                                                             <div class="media-body">
                                                                 <a href="#" class="text-body"><strong>Angular in Steps</strong></a>
@@ -112,8 +112,8 @@
                                             </tfoot>
                                         </table>
                                         <div class="card-footer d-flex align-items-center">
-                                            <a href="<?php Nav::printHome() ?> " class="btn btn-white">Back to Courses</a>
-                                            <a href="<?php Nav::printURL($dir, App::$pageCheckOut) ?> " class="btn btn-success ml-auto">
+                                            <a href="<?php Nav::echoHome($dir) ?> " class="btn btn-white">Back to Courses</a>
+                                            <a href="<?php Nav::echoURL($dir, App::$pageCheckOut) ?> " class="btn btn-success ml-auto">
                                                 Pay Now <i class="material-icons btn__icon--right">credit_card</i>
                                             </a>
                                         </div>
@@ -134,8 +134,8 @@
             <tr>
                 <td>
                     <div class="d-flex align-items-center">
-                        <a href="<?php Nav::printURL($dir, App::$pageCourseView . "?id=" . $item->courseID) ?> " class="avatar avatar-4by3 avatar-sm mr-3">
-                            <img src="<?php Asset::printThumb($dir, $item->course->thumbnail) ?> " alt="<?php echo $item->course->title ?>" class="avatar-img rounded">
+                        <a href="<?php Nav::echoURL($dir, App::$pageCourseView . "?id=" . $item->courseID) ?> " class="avatar avatar-4by3 avatar-sm mr-3">
+                            <img src="<?php Asset::echoThumb($dir, $item->course->thumbnail) ?> " alt="<?php echo $item->course->title ?>" class="avatar-img rounded">
                         </a>
                         <div class="media-body">
                             <a href="#" class="text-body"><strong><?php echo $item->course->title ?></strong></a>

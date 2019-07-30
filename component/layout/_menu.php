@@ -7,7 +7,7 @@
                     if(Session::checkUserExisted()){ 
                 ?>
                         <li class="nav-item d-none d-md-flex">
-                            <a href="<?php Nav::printURL($dir, App::$pageMyCart) ?>" class="nav-link">
+                            <a href="<?php Nav::echoURL($dir, App::$pageMyCart) ?>" class="nav-link">
                                 <i class="material-icons">shopping_cart</i>
                             </a>
                         </li>

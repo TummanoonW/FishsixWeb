@@ -12,7 +12,7 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home', App::$rootURL),
+        new Path(FALSE, 'Home', $dir),
         new Path(TRUE, 'Admin Panel', $dir . App::$pageAdminPanel)
     );
 
@@ -21,7 +21,7 @@
         AdminHomeView::initView($dir, $paths);
         Footer::initFooter($dir); 
     }else{
-        Nav::gotoHome();
+        Nav::gotoHome($dir);
     }
 ?>
     

@@ -12,9 +12,9 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home', Nav::$rootURL),
-        new Path(FALSE, 'My Courses', $dir . Nav::$pageMyCourses),
-        new Path(TRUE, 'Booking Class', $dir . Nav::$pageBookClass)
+        new Path(FALSE, 'Home', $dir),
+        new Path(FALSE, 'My Courses', $dir . App::$pageMyCourses),
+        new Path(TRUE, 'Booking Class', $dir . App::$pageBookClass)
     );
     if(Session::checkUserExisted()){
 
@@ -25,7 +25,7 @@
         Footer::initFooter($dir); 
 
     }else{
-        Nav::gotoHome();
+        Nav::gotoHome($dir);
     }
     
     

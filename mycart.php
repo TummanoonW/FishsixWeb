@@ -15,7 +15,7 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home', App::$rootURL),
+        new Path(FALSE, 'Home', $dir),
         new Path(TRUE, 'My Cart', $dir . App::$pageMyCart)
     );
 
@@ -31,5 +31,5 @@
             ErrorPage::showError($dir, $result);
         }
     }else{
-        Nav::gotoHome();
+        Nav::gotoHome($dir);
     }

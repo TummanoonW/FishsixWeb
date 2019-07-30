@@ -16,7 +16,7 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home',            App::$rootURL),
+        new Path(FALSE, 'Home',            $dir),
         new Path(FALSE, 'Admin Panel',     $dir . App::$pageAdminPanel),
         new Path(FALSE, 'Manage Courses',  $dir . App::$pageAdminManageCourses),
         new Path(TRUE,  'Course Editor',   $dir . App::$pageAdminCourseEditor)
@@ -46,7 +46,7 @@
             }
         }
     }else{
-        Nav::gotoHome();
+        Nav::gotoHome($dir);
     }
 
 

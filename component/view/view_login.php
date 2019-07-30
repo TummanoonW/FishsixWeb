@@ -9,7 +9,7 @@
                     <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px">
                         <div class="text-center mt-5 mb-1">
                             <div class="avatar avatar-lg">
-                                <img src="<?php Asset::printIcon($dir, $dir . Asset::$iconURL) ?>" class="avatar-img rounded-circle" alt="LearnPlus" />
+                                <img src="<?php Asset::echoIcon($dir, $dir . Asset::$iconURL) ?>" class="avatar-img rounded-circle" alt="LearnPlus" />
                             </div>
                         </div>
                         <div class="d-flex justify-content-center mb-5 navbar-light">
@@ -31,7 +31,7 @@
                                     <div class="page-separator__text">or</div>
                                 </div>
 
-                                <form method="POST" action="<?php Nav::printURL($dir, App::$routeLogIn) ?>">
+                                <form method="POST" action="<?php Nav::echoURL($dir, App::$routeLogIn) ?>">
                                     <div class="form-group">
                                         <label class="form-label" for="email">Your email address:</label>
                                         <div class="input-group input-group-merge">
@@ -58,12 +58,12 @@
                                         <button type="submit" class="btn btn-primary btn-block">Login</button>
                                     </div>
                                     <div class="text-center">
-                                        <a href="<?php Nav::printURL($dir, Nav::$pageForgotPassword)?>" class="text-black-70" style="text-decoration: underline">Forgot Password?</a>
+                                        <a href="<?php Nav::echoURL($dir, App::$pageForgotPassword)?>" class="text-black-70" style="text-decoration: underline">Forgot Password?</a>
                                     </div>
                                 </form>
                             </div>
                             <div class="card-footer text-center text-black-50">
-                                Not yet a student? <a href="<?php Nav::printURL($dir, App::$pageRegister) ?>">Sign Up</a>
+                                Not yet a student? <a href="<?php Nav::echoURL($dir, App::$pageRegister) ?>">Sign Up</a>
                             </div>
                         </div>
                     </div>

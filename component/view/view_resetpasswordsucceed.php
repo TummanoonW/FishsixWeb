@@ -7,11 +7,11 @@
                 <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px;">
                     <div class="text-center mt-5 mb-1">
                         <div class="avatar avatar-lg">
-                            <img src="<?php Asset::printIcon($dir, $dir . Asset::$iconURL); ?>" class="avatar-img rounded-circle" alt="LearnPlus" />
+                            <img src="<?php Asset::echoIcon($dir, $dir . Asset::$iconURL); ?>" class="avatar-img rounded-circle" alt="LearnPlus" />
                         </div>
                     </div>
                     <div class="d-flex justify-content-center mb-5 navbar-light">
-                        <a href="<?php Nav::printURL($dir,'student-dashboard.html')?>" class="navbar-brand m-0">fishsix</a>
+                        <a href="<?php Nav::echoURL($dir,'student-dashboard.html')?>" class="navbar-brand m-0">fishsix</a>
                     </div>
                     <div class="card navbar-shadow">
                         <div class="card-header text-center" >
@@ -21,7 +21,7 @@
                         </div>
                         <div class="card-footer text-center text-black-50">
                            <span>
-                               Back to <a href="<?php Nav::printURL($dir, Nav::$pageLogin); ?>">Login </a><span id="countdown">10</span> seconds
+                               Back to <a href="<?php Nav::echoURL($dir, App::$pageLogin); ?>">Login </a><span id="countdown">10</span> seconds
                             </span> 
                         </div>
                     </div>
