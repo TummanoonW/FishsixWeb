@@ -12,7 +12,7 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home', App::$rootURL),
+        new Path(FALSE, 'Home', $dir),
         new Path(TRUE, 'Pay', $dir . App::$pageCheckOut)
     );
 
@@ -25,5 +25,5 @@
         Footer::initFooter($dir); 
 
     }else{
-        Nav::gotoHome();
+        Nav::gotoHome($dir);
     }

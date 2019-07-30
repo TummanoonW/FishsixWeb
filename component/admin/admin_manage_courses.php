@@ -28,7 +28,7 @@
                                         <div class="flex mb-2 mb-sm-0">
                                             <h1 class="h2">Manage Courses</h1>
                                         </div>
-                                        <a href="<?php Nav::printURL($dir, App::$pageAdminCourseEditor) ?>" class="btn btn-success">Add course</a>
+                                        <a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditor) ?>" class="btn btn-success">Add course</a>
                                     </div>
 
                                     <div class="card card-body border-left-3 border-left-primary navbar-shadow mb-4">
@@ -109,12 +109,12 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex flex-column flex-sm-row">
-                            <a href="<?php Nav::printURL($dir, App::$pageAdminCourseEditor . "?id=$course->ID") ?>" class="avatar avatar-lg avatar-4by3 mb-3 w-xs-plus-down-100 mr-sm-3">
-                                <img src="<?php Asset::printThumb($dir, $course->thumbnail) ?>" alt="<?php echo $course->title ?>" class="avatar-img rounded">
+                            <a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditor . "?id=$course->ID") ?>" class="avatar avatar-lg avatar-4by3 mb-3 w-xs-plus-down-100 mr-sm-3">
+                                <img src="<?php Asset::echoThumb($dir, $course->thumbnail) ?>" alt="<?php echo $course->title ?>" class="avatar-img rounded">
                             </a>
                             <div class="flex" style="min-width: 200px">
-                                <!-- <h5 class="card-title text-base m-0"><a href="<?php Nav::printURL($dir, App::$pageAdminCourseEditor . "?id=$course->ID") ?>"><strong>Learn Vue.js</strong></a></h5> -->
-                                <h4 class="card-title mb-1"><a href="<?php Nav::printURL($dir, App::$pageAdminCourseEditor . "?id=$course->ID") ?>"><?php echo $course->title ?></a></h4>
+                                <!-- <h5 class="card-title text-base m-0"><a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditor . "?id=$course->ID") ?>"><strong>Learn Vue.js</strong></a></h5> -->
+                                <h4 class="card-title mb-1"><a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditor . "?id=$course->ID") ?>"><?php echo $course->title ?></a></h4>
                                 <p class="text-black-70"><?php echo $course->description_short ?></p>
                                 <div class="d-flex align-items-end">
                                     <div class="d-flex flex flex-column mr-3">
@@ -128,7 +128,7 @@
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <a href="<?php Nav::printURL($dir, App::$pageAdminCourseEditor . "?id=$course->ID") ?>" class="btn btn-sm btn-white">Edit</a>
+                                        <a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditor . "?id=$course->ID") ?>" class="btn btn-sm btn-white">Edit</a>
                                     </div>
                                 </div>
                             </div>
@@ -139,7 +139,7 @@
                             <i class="material-icons">more_vert</i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="<?php Nav::printURL($dir, App::$pageAdminCourseEditor . "?id=$course->ID") ?>">Edit course</a>
+                            <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditor . "?id=$course->ID") ?>">Edit course</a>
                             <a class="dropdown-item" href="#">Course Insights</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item text-danger" href="#">Delete course</a>

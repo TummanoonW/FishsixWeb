@@ -13,11 +13,11 @@
                 <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px;">
                     <div class="text-center mt-5 mb-1">
                         <div class="avatar avatar-lg">
-                            <img src="<?php Asset::printIcon($dir, $dir . Asset::$iconURL) ?>" class="avatar-img rounded-circle" alt="LearnPlus" />
+                            <img src="<?php Asset::echoIcon($dir, $dir . Asset::$iconURL) ?>" class="avatar-img rounded-circle" alt="LearnPlus" />
                         </div>
                     </div>
                     <div class="d-flex justify-content-center mb-5 navbar-light">
-                        <a href="<?php Nav::printURL($dir,'student-dashboard.html')?>" class="navbar-brand m-0"><?php echo App::$name ?></a>
+                        <a href="<?php Nav::echoURL($dir,'student-dashboard.html')?>" class="navbar-brand m-0"><?php echo App::$name ?></a>
                     </div>
                     <div class="card navbar-shadow">
                         <div class="card-header text-center">
@@ -26,7 +26,7 @@
                         </div>
                         <div class="card-body">
 
-                            <a href="<?php Nav::printURL($dir,'student-dashboard.html')?>" class="btn btn-light btn-block">
+                            <a href="<?php Nav::echoURL($dir,'student-dashboard.html')?>" class="btn btn-light btn-block">
                                 <span class="fab fa-google mr-2"></span>
                                 Continue with Google
                             </a>
@@ -35,7 +35,7 @@
                                 <div class="page-separator__text">or</div>
                             </div>
 
-                            <form action="<?php Nav::printURL($dir, Nav::$pageRegisterSucceed); ?>" novalidate method="POST">
+                            <form action="<?php Nav::echoURL($dir, App::$pageRegisterSucceed); ?>" novalidate method="POST">
                                 <div class="form-group">
                                     <label class="form-label" for="email">Email address:</label>
                                     <div class="input-group input-group-merge">
@@ -149,10 +149,11 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="card-footer text-center text-black-50">Already signed up? <a href="<?php Nav::printURL($dir, App::$pageLogin) ?>">Login</a></div>
+                        <div class="card-footer text-center text-black-50">Already signed up? <a href="<?php Nav::echoURL($dir, App::$pageLogin) ?>">Login</a></div>
                     </div>
                 </div>
             </div>
+
             <?php Script::initScript($dir); ?>
                 <!-- Flatpickr -->
                 <script src="assets/vendor/flatpickr/flatpickr.min.js"></script>

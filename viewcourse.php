@@ -21,7 +21,7 @@
             $course = $result->response;
 
             $paths = array(
-                new Path(FALSE, 'Home', App::$rootURL),
+                new Path(FALSE, 'Home', $dir),
                 new Path(FALSE, 'Course', $dir . App::$pageCourseView),
                 new Path(TRUE, $course->title, $dir . App::$pageCourseView . "?id=" . $io->id)
             );
@@ -33,6 +33,6 @@
             ErrorPage::showError($dir, $result);
         }
     }else{
-        Nav::gotoHome();
+        Nav::gotoHome($dir);
     }
 

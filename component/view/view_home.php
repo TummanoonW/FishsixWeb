@@ -63,7 +63,7 @@
         <div class="col-md-4 col-sm-6">
             <div class="card">
                 <div class="card-header text-center">
-                    <h4 class="card-title mb-0"><a href="<?php Nav::printURL($dir, App::$pageCourseView . "?id=" . $course->ID) ?>"><?php echo $course->title ?></a></h4>
+                    <h4 class="card-title mb-0"><a href="<?php Nav::echoURL($dir, App::$pageCourseView . "?id=" . $course->ID) ?>"><?php echo $course->title ?></a></h4>
                     <div class="rating">
                         <i class="material-icons">star</i>
                         <i class="material-icons">star</i>
@@ -72,8 +72,8 @@
                         <i class="material-icons">star_border</i>
                     </div>
                 </div>
-                <a href="<?php Nav::printURL($dir, App::$pageCourseView . "?id=" . $course->ID) ?>">
-                    <img src="<?php Asset::printThumb($dir, $course->thumbnail) ?>" alt="<?php echo $course->title ?>" style="width:100%">
+                <a href="<?php Nav::echoURL($dir, App::$pageCourseView . "?id=" . $course->ID) ?>">
+                    <img src="<?php Asset::echoThumb($dir, $course->thumbnail) ?>" alt="<?php echo $course->title ?>" style="width:100%">
                 </a>
                 <div class="card-body">
                     <small class="text-muted">ADVANCED</small><br>

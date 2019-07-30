@@ -11,7 +11,7 @@
 
     //check if user exists
     if(Session::checkUserExisted()){
-        Nav::gotoHome();
+        Nav::gotoHome($dir);
     }else{
         if($io->post->email != NULL){
             $form = new Auth($io->post);
@@ -19,7 +19,7 @@
             if($result->success){
                 $auth = $result->response;
                 Session::logIn($auth); //save login data to session
-                Nav::gotoHome(); //redirect to profile page
+                Nav::gotoHome($dir); //redirect to profile page
             }else{
                 ErrorPage::showError($dir, $result);
             }

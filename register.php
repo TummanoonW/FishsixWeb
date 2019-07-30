@@ -16,7 +16,7 @@
 
     //check if user already logged in
     if(Session::checkUserExisted()){
-        Nav::gotoHome();
+        Nav::gotoHome($dir);
     }else{
         Header::initHeader($dir, "Register"); //initialize HTML header elements with 'Login' as Title
 

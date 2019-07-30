@@ -11,7 +11,7 @@
 
     //check if user exists
     if(Session::checkUserExisted()){
-        Nav::gotoHome();
+        Nav::gotoHome($dir);
     }else{
         //check if form were sent
         if(isset($io->post->email)){
@@ -20,12 +20,12 @@
             if($result->success){ //if the API return result
                 $auth = $result->response;
                 Session::logIn($auth); //save login data to session
-                Nav::gotoHome(); //redirect to profile page
+                Nav::gotoHome($dir); //redirect to profile page
             }else{
                 ErrorPage::showError($dir, $result);
             }
         }else{
-            Nav::gotoHome(); //return to home page
+            Nav::gotoHome($dir); //return to home page
         }
     }
 

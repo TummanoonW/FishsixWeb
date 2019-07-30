@@ -30,7 +30,7 @@
                                         <div class="col-md-8">
                                             <div class="card">
                                                 <div class="embed-responsive embed-responsive-16by9">
-                                                    <iframe class="embed-responsive-item" src="<?php Asset::printImage($dir,'https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0') ?>" allowfullscreen=""></iframe>
+                                                    <iframe class="embed-responsive-item" src="<?php Asset::echoImage($dir,'https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0') ?>" allowfullscreen=""></iframe>
                                                 </div>
                                                 <div class="card-body">
                                                     <?php echo $course->description_short ?>
@@ -131,7 +131,7 @@
                                                     <div class="page-separator">
                                                         <div class="page-separator__text">OR</div>
                                                     </div>
-                                                    <a href="<?php Nav::printURL($dir, App::$routeMyCart . "?m=add&id=$course->ID") ?>" class="btn btn-success btn-block flex-column">
+                                                    <a href="<?php Nav::echoURL($dir, App::$routeMyCart . "?m=add&id=$course->ID") ?>" class="btn btn-success btn-block flex-column">
                                                         Purchase Course
                                                         <strong>starts at &#3647;<?php echo $course->minPrice ?></strong>
                                                     </a>
@@ -142,10 +142,10 @@
                                                 <div class="card-header">
                                                     <div class="media align-items-center">
                                                         <div class="media-left">
-                                                            <img src="<?php Asset::printImage($dir,'assets/images/people/110/guy-6.jpg') ?> " alt="About Adrian" width="50" class="rounded-circle">
+                                                            <img src="<?php Asset::echoImage($dir,'assets/images/people/110/guy-6.jpg') ?> " alt="About Adrian" width="50" class="rounded-circle">
                                                         </div>
                                                         <div class="media-body">
-                                                            <h4 class="card-title"><a href="<?php Nav::printURL($dir,'student-profile.html') ?> ">Adrian Demian</a></h4>
+                                                            <h4 class="card-title"><a href="<?php Nav::echoURL($dir,'student-profile.html') ?> ">Adrian Demian</a></h4>
                                                             <p class="card-subtitle">Instructor</p>
                                                         </div>
                                                     </div>

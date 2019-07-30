@@ -12,8 +12,8 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home', Nav::$rootURL),
-        new Path(TRUE, 'MY Schedule', $dir . Nav::$pageMySchedule)
+        new Path(FALSE, 'Home', $dir),
+        new Path(TRUE, 'MY Schedule', $dir . App::$pageMySchedule)
     );
 
     if(checkUserExisted()){

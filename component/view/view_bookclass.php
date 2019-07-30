@@ -29,7 +29,7 @@
                                             <h1 class="h2">Booking Class</h1>
                                         </div>
                                     </div>
-                                    <form action="<?php Nav::printURL($dir, Nav::$pageMySchedule); ?>" novalidate method="POST">
+                                    <form action="<?php Nav::echoURL($dir, App::$pageMySchedule); ?>" novalidate method="POST">
                                         <table class="table table-nowrap mb-0 table--elevated">
                                                 <tbody>
                                                     <tr>

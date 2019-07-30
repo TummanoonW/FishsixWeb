@@ -123,7 +123,7 @@
                                                         </div>
                                                     </div>
                                                 </form>
-                                                <form action="<?php Nav::printURL($dir, Nav::$routeLogOut); ?>" method="POST" class="form-horizontal">
+                                                <form action="<?php Nav::echoURL($dir, App::$routeLogOut); ?>" method="POST" class="form-horizontal">
                                                     <div class="form-group row">
                                                         <div class="col-sm-8 offset-sm-3">
                                                             <div class="media align-items-center">

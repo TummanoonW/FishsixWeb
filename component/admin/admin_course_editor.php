@@ -6,18 +6,18 @@
        
             <body class="layout-fluid">
                  <!-- Flatpickr -->
-                <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/flatpickr.css') ?>"  rel="stylesheet">
-                <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/flatpickr.rtl.css') ?>" rel="stylesheet">
-                <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/flatpickr-airbnb.css') ?>" rel="stylesheet">
-                <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/flatpickr-airbnb.rtl.css') ?>" rel="stylesheet">
+                <link type="text/css" href="<?php Nav::echoURL($dir, 'assets/css/flatpickr.css') ?>"  rel="stylesheet">
+                <link type="text/css" href="<?php Nav::echoURL($dir, 'assets/css/flatpickr.rtl.css') ?>" rel="stylesheet">
+                <link type="text/css" href="<?php Nav::echoURL($dir, 'assets/css/flatpickr-airbnb.css') ?>" rel="stylesheet">
+                <link type="text/css" href="<?php Nav::echoURL($dir, 'assets/css/flatpickr-airbnb.rtl.css') ?>" rel="stylesheet">
 
                 <!-- Quill Theme -->
-                <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/quill.css') ?>" rel="stylesheet">
-                <link type="text/css" href="<?php Nav::printURL($dir, 'assets/css/quill.rtl.css') ?>" rel="stylesheet">
+                <link type="text/css" href="<?php Nav::echoURL($dir, 'assets/css/quill.css') ?>" rel="stylesheet">
+                <link type="text/css" href="<?php Nav::echoURL($dir, 'assets/css/quill.rtl.css') ?>" rel="stylesheet">
 
                 <!-- Nestable -->
-                <link rel="stylesheet" href="<?php Nav::printURL($dir, 'assets/css/nestable.css') ?>">
-                <link rel="stylesheet" href="<?php Nav::printURL($dir, 'assets/css/nestable.rtl.css') ?>">
+                <link rel="stylesheet" href="<?php Nav::echoURL($dir, 'assets/css/nestable.css') ?>">
+                <link rel="stylesheet" href="<?php Nav::echoURL($dir, 'assets/css/nestable.rtl.css') ?>">
 
                 <!-- Pre Loader -->
                 <?php Preloader::initPreloader($dir) ?>
@@ -85,7 +85,7 @@
                                                                 <div class="nestable-content">
                                                                     <div class="media align-items-center">
                                                                         <div class="media-left">
-                                                                            <img src="<?php Asset::printThumb($dir, 'vuejs.png') ?>" alt="" width="100" class="rounded">
+                                                                            <img src="<?php Asset::echoThumb($dir, 'vuejs.png') ?>" alt="" width="100" class="rounded">
                                                                         </div>
                                                                         <div class="media-body">
                                                                             <h5 class="card-title h6 mb-0">
@@ -104,7 +104,7 @@
                                                                 <div class="nestable-content">
                                                                     <div class="media align-items-center">
                                                                         <div class="media-left">
-                                                                            <img src="<?php Asset::printThumb($dir, 'nodejs.png') ?>" alt="" width="100" class="rounded">
+                                                                            <img src="<?php Asset::echoThumb($dir, 'nodejs.png') ?>" alt="" width="100" class="rounded">
                                                                         </div>
                                                                         <div class="media-body">
                                                                             <h4 class="card-title h6 mb-0">
@@ -123,7 +123,7 @@
                                                                 <div class="nestable-content">
                                                                     <div class="media align-items-center">
                                                                         <div class="media-left">
-                                                                            <img src="<?php Asset::printThumb($dir, 'gulp.png') ?>" alt="" width="100" class="rounded">
+                                                                            <img src="<?php Asset::echoThumb($dir, 'gulp.png') ?>" alt="" width="100" class="rounded">
                                                                         </div>
                                                                         <div class="media-body">
                                                                             <h4 class="card-title h6 mb-0">
@@ -188,7 +188,7 @@
                                                                 <div class="nestable-content">
                                                                     <div class="media align-items-center">
                                                                         <div class="media-left">
-                                                                            <img src="<?php Asset::printThumb($dir, 'vuejs.png') ?>" alt="" width="100" class="rounded">
+                                                                            <img src="<?php Asset::echoThumb($dir, 'vuejs.png') ?>" alt="" width="100" class="rounded">
                                                                         </div>
                                                                         <div class="media-body">
                                                                             <h5 class="card-title h6 mb-0">
@@ -230,7 +230,7 @@
                                                                 <div class="nestable-content">
                                                                     <div class="media align-items-center">
                                                                         <div class="media-body">
-                                                                            <p><img src="<?php Asset::printThumb($dir, 'vuejs.png') ?>" alt="" width="100" class="rounded"></p>
+                                                                            <p><img src="<?php Asset::echoThumb($dir, 'vuejs.png') ?>" alt="" width="100" class="rounded"></p>
                                                                             <small class="text-muted">
                                                                                 <input type="text" id="duration" class="form-control" placeholder="caption" value="" width="100">
                                                                             </small>
@@ -298,7 +298,7 @@
                                                         <input id="end" type="text" class="form-control" placeholder="Start Date" data-toggle="flatpickr" value="01/28/2016">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="form-label" for="duration"><img src="<?php Asset::printIcon($dir, 'line-icon.png') ?>" alt="Avatar" class="rounded-circle" width="20"> LINE Group</label>
+                                                        <label class="form-label" for="duration"><img src="<?php Asset::echoIcon($dir, 'line-icon.png') ?>" alt="Avatar" class="rounded-circle" width="20"> LINE Group</label>
                                                         <input type="text" id="duration" class="form-control" placeholder="URL" value="">
                                                     </div>
                                                     
@@ -352,14 +352,14 @@
 
 
                 <!-- Nestable -->
-                <script src="<?php Nav::printURL($dir, 'assets/vendor/jquery.nestable.js') ?>"></script>
-                <script src="<?php Nav::printURL($dir, 'assets/js/nestable.js') ?>"></script>
+                <script src="<?php Nav::echoURL($dir, 'assets/vendor/jquery.nestable.js') ?>"></script>
+                <script src="<?php Nav::echoURL($dir, 'assets/js/nestable.js') ?>"></script>
                 <!-- Quill -->
-                <script src="<?php Nav::printURL($dir, 'assets/vendor/quill.min.js') ?>"></script>
-                <script src="<?php Nav::printURL($dir, 'assets/js/quill.js') ?>"></script>
+                <script src="<?php Nav::echoURL($dir, 'assets/vendor/quill.min.js') ?>"></script>
+                <script src="<?php Nav::echoURL($dir, 'assets/js/quill.js') ?>"></script>
                 <!-- Flatpickr -->
-                <script src="<?php Nav::printURL($dir, 'assets/vendor/flatpickr/flatpickr.min.js') ?>"></script>
-                <script src="<?php Nav::printURL($dir, 'assets/js/flatpickr.js') ?>"></script>
+                <script src="<?php Nav::echoURL($dir, 'assets/vendor/flatpickr/flatpickr.min.js') ?>"></script>
+                <script src="<?php Nav::echoURL($dir, 'assets/js/flatpickr.js') ?>"></script>
 
 
                 <!-- PHP-Javascript Interaction -->

@@ -15,12 +15,12 @@
     $io = new IO(); 
 
     $pages = array(
-        new Path(FALSE, '1', App::$rootURL . "?page=0"),
-        new Path(FALSE, '2', App::$rootURL . "?page=1"),
-        new Path(FALSE, '3', App::$rootURL . "?page=2"),
-        new Path(FALSE, '4', App::$rootURL . "?page=3"),
-        new Path(FALSE, '5', App::$rootURL . "?page=4"),
-        new Path(FALSE, '6', App::$rootURL . "?page=5")
+        new Path(FALSE, '1', $dir . "?page=0"),
+        new Path(FALSE, '2', $dir . "?page=1"),
+        new Path(FALSE, '3', $dir . "?page=2"),
+        new Path(FALSE, '4', $dir . "?page=3"),
+        new Path(FALSE, '5', $dir . "?page=4"),
+        new Path(FALSE, '6', $dir . "?page=5")
     );
 
     $categories = FunCategory::getAll($api);

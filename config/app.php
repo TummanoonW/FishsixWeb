@@ -5,9 +5,6 @@
         public static $version = "4";
         public static $platform = ["PHP", "HTML5"]; 
 
-
-        public static $rootURL = "https://www.trialation.com/fishsix";
-
         public static $pageLogin = "login.php";
         public static $pageRegister = "register.php";
         public static $pageProfile = "profile.php";
@@ -15,6 +12,13 @@
         public static $pageCourseView = "viewcourse.php";
         public static $pageMyCart = "mycart.php";
         public static $pageCheckOut = "checkout.php";
+        public static $pageBookClass = "bookclass.php";
+        public static $pageMySchedule = "myschedule.php";
+        public static $pageRegisterSucceed = "registersucceed.php";
+        public static $pageRegisterErorr = "registererror.php";
+        public static $pageForgotPassword = "forgotpassword.php";
+        public static $pageResetPassword = "resetpassword.php";
+        public static $pageResetPasswordSucceed = "resetpasswordsucceed.php";
 
         public static $pageAdminPanel = "admin/index.php";
         public static $pageAdminManageCourses = "admin/manage-courses.php";

@@ -9,7 +9,7 @@
                     <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px">
                         <div class="text-center mt-5 mb-1">
                             <div class="avatar avatar-lg">
-                                <img src="<?php Asset::printIcon($dir, $dir . Asset::$iconURL) ?>" class="avatar-img rounded-circle" alt="LearnPlus" />
+                                <img src="<?php Asset::echoIcon($dir, $dir . Asset::$iconURL) ?>" class="avatar-img rounded-circle" alt="LearnPlus" />
                             </div>
                         </div>
                         <div class="d-flex justify-content-center mb-5 navbar-light">
@@ -26,7 +26,7 @@
                                     <div class="text-body">Please set you new password and confirm it.</div>
                                 </div>
 
-                                <form action="<?php Nav::printURL($dir,Nav::$pageResetPasswordSucceed)?>" novalidate="" method="get">
+                                <form action="<?php Nav::echoURL($dir,App::$pageResetPasswordSucceed)?>" novalidate="" method="get">
                                     <div class="form-group">
                                         <label class="form-label" for="reset-password1">Password:</label>
                                         <div class="input-group input-group-merge">
@@ -52,7 +52,7 @@
                                         <button type="submit" class="btn btn-primary btn-block">Reset Password</button>
                                 </form>
                             </div>
-                            <div class="card-footer text-center text-black-50">Remember your password? <a href="<?php Nav::printURL($dir, Nav::$pageLogin); ?>">Login</a></div>
+                            <div class="card-footer text-center text-black-50">Remember your password? <a href="<?php Nav::echoURL($dir, App::$pageLogin); ?>">Login</a></div>
                         </div>
                     </div>
                 </div>

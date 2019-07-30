@@ -16,7 +16,7 @@
                 $ownerID = Session::getAuth()->ID;
                 if($io->id != NULL){
                     $result = FunMyCart::addToCart($api, $io->id, $ownerID);
-                    if($result->success) Nav::goto($dir, Nav::$pageMyCart);
+                    if($result->success) Nav::goto($dir, App::$pageMyCart);
                     else ErrorPage::showError($dir, $result);
                 }else{
                     Nav::goBack();

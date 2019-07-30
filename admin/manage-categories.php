@@ -13,7 +13,7 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home', App::$rootURL),
+        new Path(FALSE, 'Home', $dir),
         new Path(FALSE, 'Admin Panel', $dir . App::$pageAdminPanel),
         new Path(TRUE, 'Manage Categories', $dir . App::$pageAdminManageCategories)
     );
@@ -27,5 +27,5 @@
         AdminManageCategoriesView::initView($dir, $paths, $categories);
         Footer::initFooter($dir); 
     }else{
-        Nav::gotoHome();
+        Nav::gotoHome($dir);
     }

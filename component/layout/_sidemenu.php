@@ -25,14 +25,14 @@
                                 <ul class="sidebar-menu sm-active-button-bg">
                                     <?php if(Session::checkUserAdmin()){ ?>
                                         <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="<?php Nav::printURL($dir, App::$pageAdminPanel); ?>">
+                                            <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageAdminPanel); ?>">
                                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">apps</i> Admin Panel
                                             </a>
                                         </li>
                                     <?php } ?>
 
                                     <li class="sidebar-menu-item">
-                                        <a class="sidebar-menu-button" href="<?php Nav::printURL($dir, App::$pageMyCourses); ?>">
+                                        <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageMyCourses); ?>">
                                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> My Courses
                                         </a>
                                     </li>      
@@ -43,12 +43,12 @@
                             <div class="sidebar-heading">Explore</div>
                             <ul class="sidebar-menu sm-active-button-bg">
                                 <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="<?php Nav::printURL("", App::$rootURL); ?>">
+                                    <a class="sidebar-menu-button" href="<?php Nav::echoURL("", $dir); ?>">
                                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">search</i> Browse Courses
                                     </a>
                                 </li>
                                 <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="<?php Nav::printURL($dir,'viewcourse.php')?> ">
+                                    <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir,'viewcourse.php')?> ">
                                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">import_contacts</i> View Course
                                     </a>
                                 </li>
@@ -69,7 +69,7 @@
                                     </a>
                                 </li>
                                 <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="<?php Nav::printURL($dir,'mycourses.php');?> ">
+                                    <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir,'mycourses.php');?> ">
                                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> My Courses
                                     </a>
                                 </li>
@@ -119,23 +119,23 @@
                             <ul class="sidebar-menu">
                                 <?php if(Session::checkUserExisted()){ ?>
                                     <li class="sidebar-menu-item">
-                                        <a class="sidebar-menu-button" href="<?php Nav::printURL($dir, App::$pageProfile); ?>">
+                                        <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageProfile); ?>">
                                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">edit</i> Edit Account
                                         </a>
                                     </li>
                                     <li class="sidebar-menu-item">
-                                        <a class="sidebar-menu-button" href="<?php Nav::printURL($dir, App::$routeLogOut); ?>">
+                                        <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$routeLogOut); ?>">
                                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">lock_open</i> Log Out
                                         </a>
                                     </li>
                                 <?php }else{ ?>
                                     <li class="sidebar-menu-item">
-                                        <a class="sidebar-menu-button" href="<?php Nav::printURL($dir, App::$pageLogin); ?>">
+                                        <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageLogin); ?>">
                                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">lock</i> Log In
                                         </a>
                                     </li>
                                     <li class="sidebar-menu-item">
-                                        <a class="sidebar-menu-button" href="<?php Nav::printURL($dir, App::$pageRegister); ?>">
+                                        <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageRegister); ?>">
                                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">assignment_ind</i> Register
                                         </a>
                                     </li>

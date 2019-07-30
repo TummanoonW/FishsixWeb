@@ -16,7 +16,7 @@
 
     //check if user already logged in
     if(Session::checkUserExisted()){
-        Nav::gotoHome(); //go to Profile page
+        Nav::gotoHome($dir); //go to Profile page
     }else{
         Header::initHeader($dir, "Login"); //initialize HTML header elements with 'Login' as Title
 

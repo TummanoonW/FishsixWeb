@@ -10,4 +10,4 @@
     Session::logOut();
 
     //return to home page
-    Nav::gotoHome();
+    Nav::gotoHome($dir);
