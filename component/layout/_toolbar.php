@@ -15,7 +15,7 @@
                             </button>
                             <!-- Brand -->
                             <a href="<?php Nav::echoHome($dir) ?>" class="navbar-brand">
-                                <img src="<?php Asset::echoIcon($dir, $dir . Asset::$iconURL2) ?>" class="mr-2" alt="<?php echo App::$name ?>" />
+                                <img src="<?php Asset::embedIcon($dir, $dir . Asset::$iconURL2) ?>" class="mr-2" alt="<?php echo App::$name ?>" />
                                 <span class="d-none d-xs-md-block"><?php echo App::$name ?></span>
                             </a>
                             <!-- Search -->
