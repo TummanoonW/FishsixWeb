@@ -17,10 +17,8 @@
                             <div data-push="" data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout" data-domfactory-upgraded="mdk-drawer-layout">
                             <div class="mdk-drawer-layout__content page " style="transform: translate3d(0px, 0px, 0px)">
                                 <div class="container-fluid page__container">
-
                                     <!-- Navigation Paths -->
-                                    <?php NavPath::initNavPath($dir, $paths) ?>
-
+                                    <?php NavPath::initNavPath($dir, $paths); ?>
                                     <h1 class="h2">Payment method</h1>
                                     <div class="row">
                                         <div class="col-lg">

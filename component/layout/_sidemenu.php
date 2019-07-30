@@ -48,6 +48,32 @@
                                     </a>
                                 </li>
                                 <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button" href="<?php Nav::printURL($dir,'viewcourse.php')?> ">
+                                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">import_contacts</i> View Course
+                                    </a>
+                                </li>
+                                <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button" href="student-take-course.html">
+                                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">class</i> Take Course
+                                        <span class="sidebar-menu-badge badge badge-primary ml-auto">PRO</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button" href="student-take-quiz.html">
+                                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dvr</i> Take a Quiz
+                                    </a>
+                                </li>
+                                <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button" href="student-quiz-results.html">
+                                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">poll</i> Quiz Results
+                                    </a>
+                                </li>
+                                <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button" href="<?php Nav::printURL($dir,'mycourses.php');?> ">
+                                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> My Courses
+                                    </a>
+                                </li>
+                                <li class="sidebar-menu-item">
                                     <a class="sidebar-menu-button" data-toggle="collapse" href="#forum_menu">
                                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">chat_bubble_outline</i>
                                         Community

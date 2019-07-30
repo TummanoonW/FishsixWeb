@@ -30,7 +30,7 @@
                                         <div class="col-md-8">
                                             <div class="card">
                                                 <div class="embed-responsive embed-responsive-16by9">
-                                                    <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0" allowfullscreen=""></iframe>
+                                                    <iframe class="embed-responsive-item" src="<?php Asset::printImage($dir,'https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0') ?>" allowfullscreen=""></iframe>
                                                 </div>
                                                 <div class="card-body">
                                                     <?php echo $course->description_short ?>
@@ -142,7 +142,7 @@
                                                 <div class="card-header">
                                                     <div class="media align-items-center">
                                                         <div class="media-left">
-                                                            <img src="<?php Nav::printURL($dir,'assets/images/people/110/guy-6.jpg') ?> " alt="About Adrian" width="50" class="rounded-circle">
+                                                            <img src="<?php Asset::printImage($dir,'assets/images/people/110/guy-6.jpg') ?> " alt="About Adrian" width="50" class="rounded-circle">
                                                         </div>
                                                         <div class="media-body">
                                                             <h4 class="card-title"><a href="<?php Nav::printURL($dir,'student-profile.html') ?> ">Adrian Demian</a></h4>
