@@ -13,10 +13,12 @@
 
     $paths = array(
         new Path(FALSE, 'Home', Nav::$rootURL),
+        new Path(FALSE, 'My Courses', $dir . Nav::$pageMyCourses),
+        new Path(FALSE, 'Booking Class', $dir . Nav::$pageBookClass),
         new Path(TRUE, 'MY Schedule', $dir . Nav::$pageMySchedule)
     );
 
-    if(checkUserExisted()){
+   if(Session::checkUserExisted()){
         
         Header::initHeader($dir,"MY Schedule"); 
 
@@ -24,8 +26,8 @@
     
         Footer::initFooter($dir); 
     
-    }else{
-        Nav::gotoHme();
+   }else{
+        Nav::gotoHome();
     }
 
     

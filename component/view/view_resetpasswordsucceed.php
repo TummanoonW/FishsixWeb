@@ -1,5 +1,5 @@
 <?php
-    class RegisterSucceedView{
+    class ResetPasswordSucceedView{
         public static function initView($dir){
 ?>
            <body class="registersucceed">
@@ -16,18 +16,37 @@
                     <div class="card navbar-shadow">
                         <div class="card-header text-center" >
                         <i class="far fa-check-circle" style="font-size: 100px;color:green" ></i>
-                            <h2>Register Succeed!</h2>
-                            <h3>Welcom Mr.J</h3>
+                            <h2>Resetpassword Succeed!</h2>
+                            <h3>Now you can login with new password</h3>
                         </div>
                         <div class="card-footer text-center text-black-50">
-                           <span style="float:left;">Back to <a href="<?php Nav::printURL($dir, Nav::$pageLogin); ?>">Login</a></span> 
-                            <span style="float:right;">Go to <a href="<?php Nav::printURL($dir, Nav::$routeLogIn); ?>">Fishsix </a></span> 
-                            
+                           <span>
+                               Back to <a href="<?php Nav::printURL($dir, Nav::$pageLogin); ?>">Login </a><span id="countdown">10</span> seconds
+                            </span> 
                         </div>
                     </div>
                 </div>
             </div>
             <?php Script::initScript($dir); ?>
+            <script type="text/javascript">
+                // Total seconds to wait
+                var seconds = 10;
+    
+                function countdown() {
+                    seconds = seconds - 1;
+                    if (seconds < 0) {
+                        // Chnage your redirection link here
+                        window.location = "<?php Nav::printURL($dir, Nav::$pageLogin); ?>";
+                    } else {
+                        // Update remaining seconds
+                        document.getElementById("countdown").innerHTML = seconds;
+                        // Count down using javascript
+                        window.setTimeout("countdown()", 1000);
+                    }
+                }
+                // Run countdown function
+                countdown();
+            </script>
 <?php
         }
     }

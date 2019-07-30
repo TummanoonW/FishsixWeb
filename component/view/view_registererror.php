@@ -1,5 +1,5 @@
 <?php
-    class RegisterSucceedView{
+    class RegisterErorrView{
         public static function initView($dir){
 ?>
            <body class="registersucceed">
@@ -15,15 +15,11 @@
                     </div>
                     <div class="card navbar-shadow">
                         <div class="card-header text-center" >
-                        <i class="far fa-check-circle" style="font-size: 100px;color:green" ></i>
-                            <h2>Register Succeed!</h2>
-                            <h3>Welcom Mr.J</h3>
+                        <i class="fas fa-exclamation-circle" style="font-size: 100px;color:red" ></i>
+                            <h2>Register Error!</h2>
+                            <h3>Please try again</h3>
                         </div>
-                        <div class="card-footer text-center text-black-50">
-                           <span style="float:left;">Back to <a href="<?php Nav::printURL($dir, Nav::$pageLogin); ?>">Login</a></span> 
-                            <span style="float:right;">Go to <a href="<?php Nav::printURL($dir, Nav::$routeLogIn); ?>">Fishsix </a></span> 
-                            
-                        </div>
+                        <div class="card-footer text-center text-black-50">Back to <a href="<?php Nav::printURL($dir, Nav::$pageRegister); ?>">Register</a></div>
                     </div>
                 </div>
             </div>
