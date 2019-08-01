@@ -7,7 +7,7 @@
                 <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px;">
                     <div class="text-center mt-5 mb-1">
                         <div class="avatar avatar-lg">
-                            <img src="<?php Asset::echoIcon($dir, $dir . Asset::$iconURL); ?>" class="avatar-img rounded-circle" alt="LearnPlus" />
+                            <img src="<?php Asset::embedIcon($dir, Asset::$iconURL); ?>" class="avatar-img rounded-circle" alt="LearnPlus" />
                         </div>
                     </div>
                     <div class="d-flex justify-content-center mb-5 navbar-light">
@@ -28,24 +28,21 @@
                 </div>
             </div>
             <?php Script::initScript($dir); ?>
-            <script type="text/javascript">
-                // Total seconds to wait
+
+            <script>
                 var seconds = 10;
     
-                function countdown() {
-                    seconds = seconds - 1;
-                    if (seconds < 0) {
-                        // Chnage your redirection link here
-                        window.location = "<?php Nav::printURL($dir, Nav::$pageLogin); ?>";
-                    } else {
-                        // Update remaining seconds
-                        document.getElementById("countdown").innerHTML = seconds;
-                        // Count down using javascript
-                        window.setTimeout("countdown()", 1000);
-                    }
-                }
-                // Run countdown function
-                countdown();
+                var x = setInterval(function() {
+                        seconds = seconds - 1;
+                        if (seconds < 0) {
+                            clearInterval(x);
+                            window.location = "<?php Nav::echoURL($dir, App::$pageLogin); ?>";
+                        } else {
+                            document.querySelector("#countdown").innerHTML = seconds;
+                        }
+                    }, 1000
+                );
+
             </script>
 <?php
         }

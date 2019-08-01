@@ -11,15 +11,11 @@
     $api = new API($apiKey); 
     $io = new IO();
 
-    if(Session::checkUserExisted()){
-        Nav::gotoHome($dir);
-    }else{
-        Header::initHeader($dir, "Reset password Succeend"); 
-        
-        ResetPasswordSucceedView::initView($dir);
 
+        Header::initHeader($dir, "Reset password Succeend"); 
+        ResetPasswordSucceedView::initView($dir);
         Footer::initFooter($dir); 
-    }
+    
 
         
     

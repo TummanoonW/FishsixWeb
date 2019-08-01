@@ -25,7 +25,7 @@
         public static $pageAdminCourseEditor = "admin/course-editor.php";
         public static $pageAdminManageCategories = "admin/manage-categories.php";
 
-
+        public static $routeRecovery= "route/login-register/recovery.php";
         public static $routeLogIn = "route/login-register/login.php";
         public static $routeLogOut = "route/login-register/logout.php";
         public static $routeRegister = "route/login-register/register.php";
@@ -34,6 +34,7 @@
 
         public static $apiURL = "https://www.trialation.com/fishsix-api/"; //base URL to call API
         
+        public static $apiAuth = "apiAuth.php";
         public static $apiLogin = "index.php";
         public static $apiProfile = "profile.php";
         public static $apiCourse = "course.php";

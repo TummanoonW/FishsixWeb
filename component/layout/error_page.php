@@ -6,7 +6,6 @@
 
 ?>
             <body class=" layout-fluid">
-
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
 
@@ -18,10 +17,13 @@
                     <div class="mdk-header-layout__content">
                         <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
                             <div class="mdk-drawer-layout__content page ">
-
-                                <div class="container-fluid page__container">
-                                    <h1 class="h2">Error <?php echo $result->err->code; ?></h1>
-                                    <h1 class="h4"><?php echo $result->err->msg; ?></h1>
+                                <div class="jumbotron bg-light mt-4">
+                                  <h1 class="display-4"><i class="far fa-frown"></i>&nbsp; Error <?php echo $result->err->code ?></h1>
+                                  <p class="lead"><?php echo $result->err->msg ?>!</p>
+                                  <hr class="my-4">
+                                  <p>If you find any problem you can just go back or send a feedback.</p>
+                                  <a class="btn btn-outline-success btn-lg" href="<?php Nav::echoPrevious(); ?>" role="button">Go Back</a>
+                                  <!--<a class="btn btn-outline-success btn-lg" href="<?php Nav::echoURL($dir, App::$pageFeedback); ?>" role="button">Send a Feedback</a> -->
                                 </div>
                             </div>
                         </div>

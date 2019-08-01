@@ -3,6 +3,7 @@
     include_once $dir . 'includer/includer.php'; //include Includer file to operate
     //include Proto Framework Architecture with retracked directory path
     Includer::include_proto($dir); 
+    Includer::include_fun($dir, 'fun_auth.php');
 
     $apiKey = Session::getAPIKey(); //get secret API Key
 
@@ -14,12 +15,12 @@
         Nav::gotoHome($dir);
     }else{
         if($io->post->email != NULL){
-            $form = new Auth($io->post);
-            $result = register($api, $form);
+            $result = FunAuth::register($api, $io->post);
+                
             if($result->success){
                 $auth = $result->response;
                 Session::logIn($auth); //save login data to session
-                Nav::gotoHome($dir); //redirect to profile page
+                Nav::goto($dir, App::$pageRegisterSucceed);
             }else{
                 ErrorPage::showError($dir, $result);
             }

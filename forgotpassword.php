@@ -20,7 +20,11 @@
     }else{
         Header::initHeader($dir, "Forgot password"); //initialize HTML header elements with 'Login' as Title
 
-        ForgotPasswordView::initView($dir); //initialize HTML login elements
+        if($io->method == 'show'){
+            ForgotPasswordView::initView($dir, TRUE); //initialize HTML login elements
+        }else{
+            ForgotPasswordView::initView($dir, FALSE); //initialize HTML login elements    
+        }
 
         Footer::initFooter($dir); //initialize HTML footer elements
     }

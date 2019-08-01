@@ -11,15 +11,11 @@
     $api = new API($apiKey); 
     $io = new IO();
 
-    if(Session::checkUserExisted()){
-        Nav::gotoHome($dir);
-    }else{
-        Header::initHeader($dir, "Register Succeend"); 
-        
-        RegisterSucceedView::initView($dir);
 
-        Footer::initFooter($dir); 
-    }
+    Header::initHeader($dir, "Register Succeed"); 
+    RegisterSucceedView::initView($dir);
+    Footer::initFooter($dir); 
+    
 
         
     

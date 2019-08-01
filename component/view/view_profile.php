@@ -77,7 +77,7 @@
                                                         <div class="col-sm-9">
                                                             <div class="media align-items-center">
                                                                 <div class="media-left">
-                                                                    <div class="icon-block rounded">
+                                                                    <div class="icon-block rounded bg-transparent">
                                                                         <i class="material-icons text-muted-light md-36">photo</i>
                                                                     </div>
                                                                 </div>
@@ -131,7 +131,7 @@
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                  <select id="gender" class="form-control custom-select">
-                                                                     <option selected="">Your gender</option>
+                                                                     <option selected="">-</option>
                                                                      <option value="male" >Male</option>
                                                                      <option value="female">Memale</option>
                                                                  </select>

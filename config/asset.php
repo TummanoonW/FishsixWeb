@@ -1,10 +1,11 @@
 <?php
     class Asset{
 
-        public static $iconURL = "assets/images/logo/primary.svg";
-        public static $iconURL2 = "assets/images/logo/white.svg";
+        public static $iconURL = "primary.svg";
+        public static $iconURL2 = "white.svg";
+        public static $icon_user = "user.svg";
 
-        public static $icon_def = "assets/images/icons/def.png";
+        public static $icon_def = "assets/images/icons/user.svg";
         public static $image_def = "assets/images/def.png";
         public static $thumb_def = "assets/images/thumbs/def.png";
 
@@ -33,7 +34,7 @@
         }
 
         public static function embedIcon($dir, $file){
-            $path = $dir . self::$icon_path . $file;
+            $path = $dir . 'assets/images/icons/' . $file;
             if(file_exists($path)){
                 echo $path;
             }else{
