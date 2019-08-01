@@ -31,8 +31,17 @@
             $query = new StdClass();
             $query->token = $tokenID;
 
-            $url = $api->getURL(App::$apiAuth, 'resetPassword', $tokenID);
+            $url = $api->getURL(App::$apiAuth, 'resetPassword', $query);
             $result = $api->post($url, $form);
+            return $result;
+        }
+
+        public static function getUserByAuthID($api, $id){
+            $query = new StdClass();
+            $query->id = $id;
+
+            $url = $api->getURL(App::$apiAuth, 'user', $query);
+            $result = $api->get($url);
             return $result;
         }
     }

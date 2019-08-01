@@ -1,8 +1,7 @@
 <?php
     class ProfileView{ ////profile HTML elements loader
 
-        public static function initView($dir, $paths){
-            $auth = Session::getAuth();
+        public static function initView($dir, $paths, $auth, $user){
 ?>
             <body class=" layout-fluid">
                 <!-- Flatpickr -->
@@ -56,7 +55,7 @@
                                                                             <i class="material-icons md-18 text-muted">mail</i>
                                                                         </div>
                                                                     </div>
-                                                                <input type="text" id="email" class="form-control" placeholder="Email Address" value="<?php echo $auth->email ?>" disabled>
+                                                                <input name="email" type="text" id="email" class="form-control" placeholder="Email Address" value="<?php echo $auth->email ?>" disabled>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -78,7 +77,7 @@
                                                             <div class="media align-items-center">
                                                                 <div class="media-left">
                                                                     <div class="icon-block rounded bg-transparent">
-                                                                        <i class="material-icons text-muted-light md-36">photo</i>
+                                                                        <img class="w-100 h-100" src="<?php Asset::echoIcon($dir, $auth->profile_pic) ?>">
                                                                     </div>
                                                                 </div>
                                                                 <div class="media-body">
@@ -88,6 +87,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <input name="profile_pic" type="file" id="profile_pic" class="custom-file-input">
                                                         </div>
                                                     </div>
 
@@ -96,7 +96,7 @@
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <input name="fname" id="fname" type="text" class="form-control" placeholder="Your first name">
+                                                                    <input name="fname" id="fname" type="text" class="form-control" placeholder="Your first name" value="<?php echo $user->fname ?>">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -107,7 +107,7 @@
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <input name="lname" id="lname" type="text" class="form-control" placeholder="Your last name">
+                                                                    <input name="lname" id="lname" type="text" class="form-control" placeholder="Your last name" value="<?php echo $user->lname ?>">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -119,7 +119,7 @@
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <input id="bdate" type="hidden" class="form-control flatpickr-input" data-toggle="flatpickr">
+                                                                    <input id="bdate" type="hidden" class="form-control flatpickr-input" data-toggle="flatpickr" value="<?php echo $user->bdate ?>">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -131,9 +131,31 @@
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                  <select id="gender" class="form-control custom-select">
-                                                                     <option selected="">-</option>
-                                                                     <option value="male" >Male</option>
-                                                                     <option value="female">Memale</option>
+                                                                    <?php 
+                                                                        switch($user->gender){ 
+                                                                            case 'male':
+                                                                            ?>
+                                                                                <option>-</option>
+                                                                                <option value="male" selected>Male</option>
+                                                                                <option value="female">Female</option>
+                                                                            <?php
+                                                                                break;
+                                                                            case 'female':
+                                                                            ?>
+                                                                                <option>-</option>
+                                                                                <option value="male">Male</option>
+                                                                                <option value="female" selected>Female</option>
+                                                                            <?php
+                                                                                break;
+                                                                            default:
+                                                                            ?>
+                                                                                <option selected>-</option>
+                                                                                <option value="male">Male</option>
+                                                                                <option value="female">Female</option>
+                                                                            <?php
+                                                                                break;
+                                                                        }
+                                                                    ?>
                                                                  </select>
                                                                 </div>
                                                             </div>
@@ -145,7 +167,7 @@
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <input name="address" id="address"  type="text" required="" class="form-control" placeholder="Your address">
+                                                                    <input name="address" id="address"  type="text" required="" class="form-control" placeholder="Your address" value="<?php echo $user->address ?>">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -157,7 +179,7 @@
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                <input id="phone" type="text" class="form-control" placeholder="123-456-7890" data-mask="000-000-0000" autocomplete="off" maxlength="12">
+                                                                <input id="phone" type="text" class="form-control" placeholder="123-456-7890" data-mask="000-000-0000" autocomplete="off" maxlength="12" value="<?php echo $user->phone ?>">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -168,7 +190,7 @@
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <input name="facebook" id="facebook" type="url" class="form-control" placeholder="Your facebook url">
+                                                                    <input name="facebook" id="facebook" type="url" class="form-control" placeholder="Your facebook url" value="<?php echo $user->facebookURL ?>">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -179,7 +201,7 @@
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <input name="lineid" id="lineid" type="text" class="form-control" placeholder="Your LineID">
+                                                                    <input name="lineid" id="lineid" type="text" class="form-control" placeholder="Your LineID" value="<?php echo $user->lineID ?>">
                                                                 </div>
                                                             </div>
                                                         </div>
