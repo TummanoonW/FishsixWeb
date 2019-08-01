@@ -5,6 +5,7 @@
 
     //include Proto Framework Architecture with retracked directory path
     Includer::include_proto($dir); 
+    Includer::include_fun($dir, 'fun_auth.php');
 
     $apiKey = Session::getAPIKey(); //get secret API Key
     $auth = Session::getAuth();
@@ -16,12 +17,10 @@
     if(Session::checkUserExisted()){
         //check if form were sent
         if(isset($io->post->username)){
-            $form = new Auth($io->post);
-            $form->ID = $auth->ID;
-            $result = editProfile($api, $form);
+            $result = FunAuth::editProfile($api, $io->post, $io->id);
 
             if($result->success){ //if the API return result
-                $auth->username = $io->post->username;
+                $auth = $result->response;
                 Session::logIn($auth); //update username
                 Nav::goto($dir, App::$pageProfile);
             }else{
@@ -32,15 +31,4 @@
         }
     }else{
         Nav::gotoHome($dir); //return to home page
-    }
-
-    function editProfile($api, $form){
-        //real edit profile
-        /*$url = $api->getURL(API::$apiProfile, 'edit', NULL);
-        $result = $api->post($url, $form);
-        return $result;*/
-
-        $result = new Result();
-        $result->setResult(TRUE, $form, NULL);
-        return $result;
     }

@@ -44,4 +44,13 @@
             $result = $api->get($url);
             return $result;
         }
+
+        public static function editProfile($api, $form, $id){
+            $query = new StdClass();
+            $query->id = $id;
+
+            $url = $api->getURL(App::$apiAuth, 'editProfile', $query);
+            $result = $api->post($url, $form);
+            return $result;
+        }
     }

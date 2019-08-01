@@ -22,7 +22,8 @@
     //check if user already logged in
     if(Session::checkUserExisted()){
         $auth = Session::getAuth();
-        $user = FunAuth::getUserByAuthID($api, $auth->ID);
+        $result = FunAuth::getUserByAuthID($api, $auth->ID);
+        $user = $result->response;
 
         Header::initHeader($dir, $auth->username . " - Profile"); //initialize HTML header elements with '<<someone name>> 's Profile' as Title
         ProfileView::initView($dir, $paths, $auth, $user); //initialize HTML profile elements

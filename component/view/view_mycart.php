@@ -23,7 +23,7 @@
 
                                 <div class="container-fluid page__container">
                                     <!-- Navigation Paths -->
-                                    <?php NavPath::initNavPath($dir, $paths); ?>
+                                    <?php Breadcrumb::initBreadcrumb($dir, $paths); ?>
                                     <h1 class="h2">Shopping Cart</h1>
                                     <div class="card table-responsive">
                                         <table class="table table-nowrap mb-0 table--elevated">

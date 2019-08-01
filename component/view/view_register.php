@@ -160,21 +160,6 @@
                 <script src="assets/vendor/jquery.mask.min.js"></script>
 
                 <script>
-                    function readURL(input) {
-                        if (input.files && input.files[0]) {
-                                var reader = new FileReader();
-                        
-                            reader.onload = function (e) {
-                                $('#prof')
-                                    .attr('src', e.target.result);
-                                
-                                $('#profile_pic')
-                                    .attr('value', e.target.result);
-                            };
-
-                            reader.readAsDataURL(input.files[0]);
-                        }
-                    }
                     
                     $('#err-pass').hide();
 

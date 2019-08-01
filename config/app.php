@@ -30,7 +30,7 @@
         public static $routeLogOut = "route/login-register/logout.php";
         public static $routeRegister = "route/login-register/register.php";
         public static $routeMyCart = "route/mycart.php";
-
+        public static $routeProfile = "route/profile.php";
 
         public static $apiURL = "https://www.trialation.com/fishsix-api/"; //base URL to call API
         

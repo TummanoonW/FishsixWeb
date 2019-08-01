@@ -6,7 +6,11 @@
             if(Session::checkUserExisted()){
 ?>
                 <li class="nav-item dropdown ml-1 ml-md-3">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img src="<?php Asset::echoIcon($dir, $auth->profile_pic) ?>" alt="Avatar" class="rounded-circle" width="40"></a>
+                    <?php if($auth->profile_pic == ''){ ?>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img src="<?php Asset::echoIcon($dir, $auth->profile_pic) ?>" alt="Avatar" class="rounded-circle" width="40"></a>
+                    <?php }else{ ?>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img src="<?php echo $auth->profile_pic ?>" alt="Avatar" class="rounded-circle" width="40"></a>
+                    <?php } ?>
                     <div class="dropdown-menu dropdown-menu-right">
                         <?php if(Session::checkUserAdmin()){ ?>
                             <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageAdminPanel) ?>">

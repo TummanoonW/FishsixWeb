@@ -29,7 +29,7 @@
                                 <div class="container-fluid page__container">
 
                                     <!-- Navigation Paths -->
-                                    <?php NavPath::initNavPath($dir, $paths) ?>
+                                    <?php Breadcrumb::initBreadcrumb($dir, $paths) ?>
 
                                     <h1 class="h2">Edit Account</h1>
 
@@ -44,7 +44,7 @@
                                         </ul>
                                         <div class="tab-content card-body">
                                             <div class="tab-pane active" id="first">
-                                                <form action="./route/profile.php" method="POST" class="form-horizontal">
+                                                <form action="<?php Nav::echoURL($dir, App::$routeProfile . "?id=" . $auth->ID) ?>" method="POST" class="form-horizontal">
 
                                                     <div class="form-group row">
                                                             <label for="email" class="col-sm-3 col-form-label form-label">Email</label>
@@ -77,17 +77,21 @@
                                                             <div class="media align-items-center">
                                                                 <div class="media-left">
                                                                     <div class="icon-block rounded bg-transparent">
-                                                                        <img class="w-100 h-100" src="<?php Asset::echoIcon($dir, $auth->profile_pic) ?>">
+                                                                        <?php if($auth->profile_pic == ''){ ?>
+                                                                            <img id="prof" class="w-100 h-100" src="<?php Asset::echoIcon($dir, $auth->profile_pic) ?>">
+                                                                        <?php }else{ ?>
+                                                                            <img id="prof" class="w-100 h-100" src="<?php echo $auth->profile_pic ?>">
+                                                                        <?php } ?>
                                                                     </div>
                                                                 </div>
                                                                 <div class="media-body">
                                                                     <div class="custom-file" style="width: auto;">
-                                                                        <input type="file" id="avatar" class="custom-file-input">
+                                                                        <input type="file" id="avatar" class="custom-file-input" accept="image/*" onchange="readURL(this)">
                                                                         <label for="avatar" class="custom-file-label">Choose file</label>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <input name="profile_pic" type="file" id="profile_pic" class="custom-file-input">
+                                                            <input name="profile_pic" id="profile_pic" style="visibility: collapse;" value="<?php echo $auth->profile_pic ?>">
                                                         </div>
                                                     </div>
 
@@ -119,7 +123,7 @@
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <input id="bdate" type="hidden" class="form-control flatpickr-input" data-toggle="flatpickr" value="<?php echo $user->bdate ?>">
+                                                                    <input name="bdate" id="bdate" type="hidden" class="form-control flatpickr-input" data-toggle="flatpickr" value="<?php echo $user->bdate ?>">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -130,7 +134,7 @@
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                 <select id="gender" class="form-control custom-select">
+                                                                 <select name="gender" id="gender" class="form-control custom-select">
                                                                     <?php 
                                                                         switch($user->gender){ 
                                                                             case 'male':
@@ -179,7 +183,7 @@
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                <input id="phone" type="text" class="form-control" placeholder="123-456-7890" data-mask="000-000-0000" autocomplete="off" maxlength="12" value="<?php echo $user->phone ?>">
+                                                                <input name="phone" id="phone" type="text" class="form-control" placeholder="123-456-7890" data-mask="000-000-0000" autocomplete="off" maxlength="12" value="<?php echo $user->phone ?>">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -190,7 +194,7 @@
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <input name="facebook" id="facebook" type="url" class="form-control" placeholder="Your facebook url" value="<?php echo $user->facebookURL ?>">
+                                                                    <input name="facebookURL" id="facebook" type="url" class="form-control" placeholder="Your facebook url" value="<?php echo $user->facebookURL ?>">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -201,12 +205,13 @@
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <input name="lineid" id="lineid" type="text" class="form-control" placeholder="Your LineID" value="<?php echo $user->lineID ?>">
+                                                                    <input name="lineID" id="lineid" type="text" class="form-control" placeholder="Your LineID" value="<?php echo $user->lineID ?>">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                              
+                                                    <input name="authID" id="authID" type="text" class="form-control" value="<?php echo $user->authID ?>" style="visibility: collapse; height: 0px;">
+
                                                     <div class="form-group row">
                                                         <div class="col-sm-8 offset-sm-3">
                                                             <div class="media align-items-center">
@@ -222,6 +227,8 @@
                                                             </div>
                                                         </div>
                                                     </div>
+
+
                                                 </form>
                                                 <form action="<?php Nav::echoURL($dir, App::$routeLogOut); ?>" method="POST" class="form-horizontal">
                                                     <div class="form-group row">
@@ -327,6 +334,35 @@
                     <script src="assets/js/flatpickr.js"></script>
                     <!-- jQuery Mask Plugin -->
                     <script src="assets/vendor/jquery.mask.min.js"></script>
+
+                <script>
+                    function readURL(input) {
+                        if (input.files && input.files[0]) {
+                            var reader = new FileReader();
+
+                            reader.onload = function (e) {    
+                                var img = document.createElement("img");
+                                img.src = e.target.result;
+                                img.onload = function(){
+                                    var canvas = document.createElement("canvas");
+                                    canvas.width = 128;
+                                    canvas.height = 128;
+                                    var ctx = canvas.getContext("2d");
+                                    ctx.fillStyle = "#FFFFFF";
+                                    ctx.fillRect(0, 0, 128, 128);
+                                    ctx.drawImage(img, 0, 0, 128, 128);
+                                    var dataurl = canvas.toDataURL('image/jpeg', 0.8);
+
+                                    $('#prof').attr('src', dataurl);    
+                                    $('#profile_pic').val(dataurl);
+                                }
+                            };
+
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
+
+                </script>
 <?php
         }
 

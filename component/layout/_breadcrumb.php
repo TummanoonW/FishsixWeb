@@ -1,6 +1,6 @@
 <?php 
-    class NavPath{
-        public static function initNavPath($dir, $paths){
+    class Breadcrumb{
+        public static function initBreadcrumb($dir, $paths){
 ?>
             <ol class="breadcrumb">
                 <?php foreach ($paths as $key => $value) { 
