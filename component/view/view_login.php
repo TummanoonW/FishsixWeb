@@ -63,7 +63,7 @@
                                 </form>
                             </div>
                             <div class="card-footer text-center text-black-50">
-                                Not yet a student? <a href="<?php Nav::echoURL($dir, App::$pageRegister) ?>">Sign Up</a>
+                                Not yet a student? <a href="<?php Nav::echoURL($dir, App::$pageRegister) ?>">Register Now</a>
                             </div>
                         </div>
                     </div>

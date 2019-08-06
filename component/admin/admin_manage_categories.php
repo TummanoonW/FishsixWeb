@@ -1,6 +1,6 @@
 <?php
     class AdminManageCategoriesView{
-        public static function initView($dir, $paths, $categories){
+        public static function initView($dir, $paths, $categories,$pages){
 ?>
             <body class=" layout-fluid">
 
@@ -29,7 +29,7 @@
                                             <h1 class="h2">Manage Categories</h1>
                                         </div>
                                         <div class="media-right">
-                                            <button class="btn btn-success" style="margin-right: 4px">Add Category</button>
+                                            <a href="<?php Nav::echoURL($dir, App::$pageAdminAddCategories) ?>" class="btn btn-success" style="margin-right: 4px">Add Category</a>
                                         </div>
                                     </div>
 
@@ -41,8 +41,8 @@
                                             }
                                         ?>
                                     </div>
-                                        
                                 </div>
+                                <?php Pagination::initPagination($dir, $pages) ?>
                             </div>
                             <?php Sidemenu::initSideMenu($dir) ?>
                         </div>
@@ -76,7 +76,7 @@
                 <div class="card-footer text-center">
                     <a href="instructor-review-quiz.html" class="btn btn-white btn-sm float-left"><i class="material-icons btn__icon--left">playlist_add_check</i> View Courses <span class="badge badge-dark ml-2">5</span></a>
                     <button class="btn btn-primary btn-sm float-right" onclick="update(<?php echo $id ?>)"><i class="material-icons btn__icon--left">edit</i> Update </button>
-                    <button class="btn btn-default btn-sm float-right" style="margin-right: 8px"><i class="material-icons btn__icon--left">delete_forever</i> Delete </button>
+                    <button onclick="return confirm('Are you sure?');" class="btn btn-default btn-sm float-right" style="margin-right: 8px"><i class="material-icons btn__icon--left">delete_forever</i> Delete </button>
                     <div class="clearfix"></div>
                 </div>
             </div>

@@ -24,6 +24,13 @@
         public static $pageAdminManageCourses = "admin/manage-courses.php";
         public static $pageAdminCourseEditor = "admin/course-editor.php";
         public static $pageAdminManageCategories = "admin/manage-categories.php";
+        public static $pageAdminManageUser = "admin/manage-user.php";
+        public static $pageAdminManageBranch = "admin/manage-branch.php";
+        public static $pageAdminAddUser = "admin/add-user.php";
+        public static $pageAdminEditUser = "admin/edit-user.php";
+        public static $pageAdminAddCategories = "admin/add-categories.php";
+        public static $pageAdminAddBranch = "admin/add-branch.php";
+        public static $pageAdminEditBranch = "admin/edit-branch.php";
 
 
         public static $routeLogIn = "route/login-register/login.php";

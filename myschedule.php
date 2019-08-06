@@ -12,10 +12,10 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home', Nav::$rootURL),
-        new Path(FALSE, 'My Courses', $dir . Nav::$pageMyCourses),
-        new Path(FALSE, 'Booking Class', $dir . Nav::$pageBookClass),
-        new Path(TRUE, 'MY Schedule', $dir . Nav::$pageMySchedule)
+        new Path(FALSE, 'Home', $dir),
+        new Path(FALSE, 'My Courses', $dir . App::$pageMyCourses),
+        new Path(FALSE, 'Booking Class', $dir . App::$pageBookClass),
+        new Path(TRUE, 'MY Schedule', $dir . App::$pageMySchedule)
     );
 
    if(Session::checkUserExisted()){

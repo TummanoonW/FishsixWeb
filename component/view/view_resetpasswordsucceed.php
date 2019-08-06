@@ -21,7 +21,7 @@
                         </div>
                         <div class="card-footer text-center text-black-50">
                            <span>
-                               Back to <a href="<?php Nav::echoURL($dir, App::$pageLogin); ?>">Login </a><span id="countdown">10</span> seconds
+                               Back to <a href="<?php Nav::echoURL($dir, App::$pageLogin); ?>">Login </a>(<span id="countdown">11</span>)
                             </span> 
                         </div>
                     </div>
@@ -30,13 +30,13 @@
             <?php Script::initScript($dir); ?>
             <script type="text/javascript">
                 // Total seconds to wait
-                var seconds = 10;
+                var seconds = 11;
     
                 function countdown() {
                     seconds = seconds - 1;
                     if (seconds < 0) {
                         // Chnage your redirection link here
-                        window.location = "<?php Nav::printURL($dir, Nav::$pageLogin); ?>";
+                        window.location = "<?php Nav::echoURL($dir, App::$pageLogin); ?>";
                     } else {
                         // Update remaining seconds
                         document.getElementById("countdown").innerHTML = seconds;

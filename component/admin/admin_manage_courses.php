@@ -128,7 +128,8 @@
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditor . "?id=$course->ID") ?>" class="btn btn-sm btn-white">Edit</a>
+                                        <a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditor . "?id=$course->ID") ?>" class="btn btn-primary btn-sm float-right"><i class="material-icons btn__icon--left">edit</i>Edit</a>
+                                        <button onclick="return confirm('Are you sure?');" class="btn btn-default btn-sm float-right" style="margin-right:8px;" ><i class="material-icons btn__icon--left">delete_forever</i>Delete</button>
                                     </div>
                                 </div>
                             </div>

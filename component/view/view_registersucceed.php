@@ -19,8 +19,10 @@
                             <h2>Register Succeed!</h2>
                             <h3>Welcom Mr.J</h3>
                         </div>
-                        <div class="card-footer text-center text-black-50">Go to <a href="<?php Nav::echoURL($dir, App::$routeLogIn); ?>">Fishsix</a></div>
-                        <div class="card-footer text-center text-black-50">Back to <a href="<?php Nav::echoURL($dir, App::$pageLogin); ?>">Login</a></div>
+                        <div class="card-footer text-center text-black-50">
+                            <span style="float: right;">Go to <a href="<?php Nav::echoURL($dir, App::$routeLogIn); ?>">Fishsix</a></span>
+                            <span style="float: left;">Back to <a href="<?php Nav::echoURL($dir, App::$pageLogin); ?>">Login</a></span>
+                        </div>                    
                     </div>
                 </div>
             </div>

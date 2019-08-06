@@ -17,14 +17,26 @@
         new Path(FALSE, 'Admin Panel', $dir . App::$pageAdminPanel),
         new Path(TRUE, 'Manage Categories', $dir . App::$pageAdminManageCategories)
     );
+    $pages = array(
+        new Path(FALSE, '1', $dir . App::$pageAdminManageCategories . "?page=0"),
+        new Path(FALSE, '2', $dir . App::$pageAdminManageCategories . "?page=1"),
+        new Path(FALSE, '3', $dir . App::$pageAdminManageCategories . "?page=2")
+    );
 
     if(Session::checkUserAdmin()){
+        
+        if($io->page == NULL){
+            $c_page = 0;
+        }else{
+            $c_page = $io->page;
+        }
+        $pages[$c_page]->active = TRUE;
 
         $result = FunAdminCategory::getCategories($api);
         $categories = $result->response;
 
         Header::initHeader($dir, "Admin - Manage Categories"); 
-        AdminManageCategoriesView::initView($dir, $paths, $categories);
+        AdminManageCategoriesView::initView($dir, $paths,$categories,$pages);
         Footer::initFooter($dir); 
     }else{
         Nav::gotoHome($dir);

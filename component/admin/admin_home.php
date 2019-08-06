@@ -30,6 +30,8 @@
                                     <div class="clearfix"></div>
                                     <a href="<?php Nav::echoURL($dir, App::$pageAdminManageCourses) ?>" class="btn btn-success">Manage Courses</a>
                                     <a href="<?php Nav::echoURL($dir, App::$pageAdminManageCategories) ?>" class="btn btn-success">Manage Categories</a>
+                                    <a href="<?php Nav::echoURL($dir, App::$pageAdminManageUser) ?>" class="btn btn-success">Manage User</a>
+                                    <a href="<?php Nav::echoURL($dir, App::$pageAdminManageBranch) ?>" class="btn btn-success">Manage Branch</a>
                                 </div>
                             </div>
                             <?php Sidemenu::initSideMenu($dir) ?>

@@ -122,7 +122,8 @@
                                     <select id="gender" class="form-control custom-select">
                                         <option selected="">Your gender</option>
                                         <option value="male" >Male</option>
-                                        <option value="female">Memale</option>
+                                        <option value="female">Female</option>
+                                        <option value="alternative">Alternative sex</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
