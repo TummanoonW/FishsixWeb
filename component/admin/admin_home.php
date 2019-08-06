@@ -20,7 +20,7 @@
                                 <div class="container-fluid page__container">
 
                                     <!-- Navigation Paths -->
-                                    <?php NavPath::initNavPath($dir, $paths) ?>
+                                    <?php Breadcrumb::initBreadcrumb($dir, $paths) ?>
 
                                     <div class="media align-items-center mb-headings">
                                         <div class="media-body">

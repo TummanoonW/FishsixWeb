@@ -9,7 +9,7 @@
                     <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px">
                         <div class="text-center mt-5 mb-1">
                             <div class="avatar avatar-lg">
-                                <img src="<?php Asset::echoIcon($dir, $dir . Asset::$iconURL) ?>" class="avatar-img rounded-circle" alt="LearnPlus" />
+                                <img src="<?php Asset::embedIcon($dir, Asset::$iconURL) ?>" class="avatar-img rounded-circle" alt="LearnPlus" />
                             </div>
                         </div>
                         <div class="d-flex justify-content-center mb-5 navbar-light">
@@ -63,7 +63,7 @@
                                 </form>
                             </div>
                             <div class="card-footer text-center text-black-50">
-                                Not yet a student? <a href="<?php Nav::echoURL($dir, App::$pageRegister) ?>">Register Now</a>
+                                Not yet a student? <a href="<?php Nav::echoURL($dir, App::$pageRegister) ?>">Register</a>
                             </div>
                         </div>
                     </div>

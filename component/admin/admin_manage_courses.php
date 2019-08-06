@@ -22,7 +22,7 @@
                                 <div class="container-fluid page__container">
 
                                     <!-- Navigation Paths -->
-                                    <?php NavPath::initNavPath($dir, $paths) ?>
+                                    <?php Breadcrumb::initBreadcrumb($dir, $paths) ?>
 
                                     <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
                                         <div class="flex mb-2 mb-sm-0">

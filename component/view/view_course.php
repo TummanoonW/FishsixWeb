@@ -23,7 +23,7 @@
                             <div class="container-fluid page__container">
 
                                     <!-- Navigation Paths -->
-                                    <?php NavPath::initNavPath($dir, $paths) ?>
+                                    <?php Breadcrumb::initBreadcrumb($dir, $paths) ?>
                                     
                                     <h1 class="h2"><?php echo $course->title ?></h1>
                                     <div class="row">

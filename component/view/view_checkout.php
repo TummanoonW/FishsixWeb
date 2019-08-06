@@ -18,7 +18,7 @@
                             <div class="mdk-drawer-layout__content page " style="transform: translate3d(0px, 0px, 0px)">
                                 <div class="container-fluid page__container">
                                     <!-- Navigation Paths -->
-                                    <?php NavPath::initNavPath($dir, $paths); ?>
+                                    <?php Breadcrumb::initBreadcrumb($dir, $paths); ?>
                                     <h1 class="h2">Payment method</h1>
                                     <div class="row">
                                         <div class="col-lg">
