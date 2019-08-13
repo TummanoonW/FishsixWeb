@@ -1,5 +1,5 @@
 <?php
-    class AdminManageCoursesView{
+    class AdminManageCategoriesCoursesView{
         public static function initView($dir, $paths, $pages){
             $auth = Session::getAuth();
 ?>
@@ -26,7 +26,7 @@
 
                                     <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
                                         <div class="flex mb-2 mb-sm-0">
-                                            <h1 class="h2">Manage Courses</h1>
+                                            <h1 class="h2">View Courses</h1>
                                         </div>
                                         <a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditor) ?>" class="btn btn-success">Add course</a>
                                     </div>
@@ -146,7 +146,7 @@
 ?>
         <div>
             <div class="text-center">
-                <a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditor) ?>" class="btn btn-primary btn-sm float-right"><i class="material-icons btn__icon--left">edit</i>Edit</a>
+                <a href="../admin/course-editor.php" class="btn btn-primary btn-sm float-right"><i class="material-icons btn__icon--left">edit</i>Edit</a>
                 <button onclick="return confirm('Are you sure?');" class="btn btn-default btn-sm float-right" style="margin-right:8px;" ><i class="material-icons btn__icon--left">delete_forever</i>Delete</button>
             </div>
         </div> 

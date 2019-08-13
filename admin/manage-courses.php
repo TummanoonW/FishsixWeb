@@ -19,7 +19,13 @@
         new Path(TRUE, 'Manage Courses', $dir . App::$pageAdminManageCourses)
     );
 
-    if(Session::checkUserAdmin()){
+    $pages = array(
+        new Path(FALSE, '1', $dir . App::$pageAdminManageCourses . "?page=0"),
+        new Path(FALSE, '2', $dir . App::$pageAdminManageCourses . "?page=1"),
+        new Path(FALSE, '3', $dir . App::$pageAdminManageCourses . "?page=2")
+    );
+
+  /*  if(Session::checkUserAdmin()){
         if(isset($io->query->limit)) $limit = $io->query->limit;
         else $limit = 20;
 
@@ -61,6 +67,23 @@
         } while ($c_courses > $mark);
 
         return $pages;
+    }
+    */
+    if(Session::checkUserAdmin()){
+        
+        if($io->page == NULL){
+            $c_page = 0;
+        }else{
+            $c_page = $io->page;
+        }
+        $pages[$c_page]->active = TRUE;
+
+        Header::initHeader($dir, "Admin - View Courses"); 
+        AdminManageCoursesView::initView($dir, $paths, $pages);
+        Footer::initFooter($dir); 
+
+    }else{
+        Nav::gotoHome($dir);
     }
 ?>
     

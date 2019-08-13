@@ -22,7 +22,7 @@
                                 <div class="container-fluid page__container">
 
                                     <!-- Navigation Paths -->
-                                    <?php NavPath::initNavPath($dir, $paths) ?>
+                                    <?php Breadcrumb::initBreadcrumb($dir, $paths) ?>
 
                                     <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
                                         <div class="flex mb-2 mb-sm-0">
@@ -31,46 +31,66 @@
                                         <a href="<?php Nav::echoURL($dir, App::$pageAdminAddBranch) ?>" class="btn btn-success">Add Branch</a>
                                     </div>
                                     <!--- Card Branch --->
-                                    <div class="card">
-                                      <div class="card-header d-flex align-items-center">
-                                        <div class="flex">
-                                        <h2 class="card-title mb-1">สาขา งามวงศ์วาน</h2>
-                                          <a href="../admin/edit-branch.php" >
-                                            <img src="../assets/images/thumbs/def.png" alt="สาขางามวงศ์วาน" class="avatar-img rounded">
-                                            </a>
-                                        </div>
+                                    <div class="card" >
+                                        <div class="card-header d-flex align-items-center" >
+                                            <div class="flex">
+                                                <a href="../admin/edit-branch.php" >
+                                                    <img src="../assets/images/thumbs/def.png" alt="สาขางามวงศ์วาน" class="avatar-img rounded">
+                                                </a>
+                                            </div>
                                             <div class="card-body">
-                                                <p class="card-subtitle "><h4>เวลาเปิดทำการ</h4></p>
-                                                <p class="text-black-70">
-                                                    <span>เปิดสอนวิชา คณิตและฟิสิกส์</span><br>
-                                                    <span>วันจันทร์ เวลา 10:00- 19:00 น. <br>
-                                                    วันเสาร์ – อาทิตย์ เวลา 08:00-17:00 น.</span><br>
-                                                    <div class="text-black-70">
-                                                        <span>โทรศัพท์:098-974-8688</span>
-                                                    </div>
-                                                </p>
+                                                <h2 class="card-title mb-1">สาขา งามวงศ์วาน</h2>
+                                                    <table class="text-black-70">
+                                                      <tr>
+                                                        <td>เปิดสอนวิชา</td>
+                                                        <td style="padding-left:16px;">คณิตและฟิสิกส์</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>วันจันทร์เวลา</td>
+                                                        <td style="padding-left:16px;">10:00 - 19:00 น.</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>วันเสาร์ – อาทิตย์</td>
+                                                        <td style="padding-left:16px;">8:00 - 17:00 น.</td>
+                                                      </tr>
+                                                      <tr>
+                                                          <td>โทรศัพท์</td>
+                                                          <td style="padding-left:16px;">098-974-8688</td>
+                                                      </tr>
+                                                    </table>
                                                 <?php self::initBtn($dir); ?>
                                             </div>
-                                      </div>
+                                        </div>
+                                    </div>
                                       
                                       <div class="card">
                                       <div class="card-header d-flex align-items-center">
                                         <div class="flex">
-                                        <h2 class="card-title mb-1">สาขา สยาม</h2>
+                                        
                                           <a href="../admin/edit-branch.php" >
                                             <img src="../assets/images/thumbs/def.png" alt="สาขาสยาม" class="avatar-img rounded">
                                             </a>
                                         </div>
                                             <div class="card-body">
-                                                <p class="card-subtitle "><h4>เวลาเปิดทำการ</h4></p>
-                                                <p class="text-black-70">
-                                                    <span>เปิดสอนวิชา คณิตและฟิสิกส์</span><br>
-                                                    <span>วันจันทร์ เวลา 16:00- 19:00 น. <br>
-                                                    วันเสาร์ – อาทิตย์ เวลา 08:00-17:00 น.</span>
-                                                    <div class="text-black-70">
-                                                        <span>โทรศัพท์:098-974-8688</span>
-                                                    </div> 
-                                                </p>
+                                            <h2 class="card-title mb-1">สาขา สยาม</h2>
+                                            <table class="text-black-70">
+                                                      <tr>
+                                                        <td>เปิดสอนวิชา</td>
+                                                        <td style="padding-left:16px;">คณิตและฟิสิกส์</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>วันจันทร์เวลา</td>
+                                                        <td style="padding-left:16px;">16:00 - 19:00 น.</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>วันเสาร์ – อาทิตย์</td>
+                                                        <td style="padding-left:16px;">8:00- 17:00 น.</td>
+                                                      </tr>
+                                                      <tr>
+                                                          <td>โทรศัพท์</td>
+                                                          <td style="padding-left:16px;">098-974-8688</td>
+                                                      </tr>
+                                                    </table>
                                                 <?php self::initBtn($dir); ?>
                                             </div>
                                       </div>
@@ -78,24 +98,30 @@
                                       <div class="card">
                                       <div class="card-header d-flex align-items-center">
                                         <div class="flex">
-                                        <h2 class="card-title mb-1">สาขา พระราม 2</h2>
+                                        
                                           <a href="../admin/edit-branch.php" >
                                             <img src="../assets/images/thumbs/def.png" alt="สาขาพระราม2" class="avatar-img rounded">
                                             </a>
                                         </div>
                                             <div class="card-body">
-                                                <p class="card-subtitle "><h4>เวลาเปิดทำการ</h4></p>
-                                                <p class="text-black-70">
-                                                    <span>เปิดสอนวิชา คณิตและฟิสิกส์</span><br>
-                                                    <span>วันอาทิตย์ เวลา 9:00- 16:00 น. </span><br>
-                                                    <div class="text-black-70">
-                                                        <span>โทรศัพท์:098-974-8688</span>
-                                                    </div>
-                                                </p>
+                                            <h2 class="card-title mb-1">สาขา พระราม 2</h2>
+                                            <table class="text-black-70">
+                                                      <tr>
+                                                        <td>เปิดสอนวิชา</td>
+                                                        <td style="padding-left:16px;">คณิตและฟิสิกส์</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>อาทิตย์</td>
+                                                        <td style="padding-left:16px;">9:00- 16:00 น.</td>
+                                                      </tr>
+                                                      <tr>
+                                                          <td>โทรศัพท์</td>
+                                                          <td style="padding-left:16px;">098-974-8688</td>
+                                                      </tr>
+                                                    </table>
                                                 <?php self::initBtn($dir); ?>
                                             </div>
                                       </div>
-                                      
                                     </div>
                                     <!-- Pagination -->
                                     <?php Pagination::initPagination($dir, $pages) ?>
