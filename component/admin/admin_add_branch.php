@@ -26,7 +26,7 @@
                                 <div class="container-fluid page__container">
 
                                     <!-- Navigation Paths -->
-                                    <?php NavPath::initNavPath($dir, $paths) ?>
+                                    <?php Breadcrumb::initBreadcrumb($dir, $paths) ?>
 
                                     <h1 class="h2">Add Branch</h1>
 
@@ -39,7 +39,7 @@
                                                             <label for="title" class="col-sm-3 col-form-label form-label">Title</label>
                                                             <div class="col-sm-8">
                                                                 <div class="input-group">
-                                                                <input type="text" id="title" class="form-control" placeholder="Title branch" value="" >
+                                                                <input type="text" id="title" class="form-control" placeholder=" Branch title" value="" >
                                                             </div>
                                                         </div>
                                                     </div>

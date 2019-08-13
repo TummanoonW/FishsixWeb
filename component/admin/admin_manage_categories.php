@@ -35,11 +35,78 @@
 
                                     <div class="card-columns">
                                         <!-- Category Card -->
-                                        <?php 
-                                            foreach ($categories as $key => $value) {
-                                                self::initCard($dir, $key, $value, $categories);
-                                            }
-                                        ?>
+                                        <div id="" class="card card-sm">
+                                            <div class="card-body media">
+                                                <div class="media-left">
+                                                    <h4 class="card-title mb-0">
+                                                        <label>Title: <input id="title" class="form-control" value=""></label>
+                                                    </h4>
+                                                    <div class="form-group">
+                                                        <label for="masterID" class="form-label">Parent</label><br>
+                                                        <select id="masterID" class="form-control custom-select" style="width: 200px">
+                                                            <option value="">1</option>
+                                                            <option value="">2</option>
+                                                            <option value="">3</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer text-center">
+                                                <a href="<?php Nav::echoURL($dir, App::$pageAdminManageCategoriesCourses) ?>" class="btn btn-white btn-sm float-left"><i class="material-icons btn__icon--left">playlist_add_check</i> View Courses <span class="badge badge-dark ml-2">5</span></a>
+                                                <button class="btn btn-primary btn-sm float-right"><i class="material-icons btn__icon--left">edit</i> Update </button>
+                                                <button onclick="return confirm('Are you sure?');" class="btn btn-default btn-sm float-right" style="margin-right: 8px"><i class="material-icons btn__icon--left">delete_forever</i> Delete </button>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+
+                                        <div id="" class="card card-sm">
+                                            <div class="card-body media">
+                                                <div class="media-left">
+                                                    <h4 class="card-title mb-0">
+                                                        <label>Title: <input id="title" class="form-control" value=""></label>
+                                                    </h4>
+                                                    <div class="form-group">
+                                                        <label for="masterID" class="form-label">Parent</label><br>
+                                                        <select id="masterID" class="form-control custom-select" style="width: 200px">
+                                                            <option value="">aa</option>
+                                                            <option value="">sss</option>
+                                                            <option value="">cccc</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer text-center">
+                                                <a href="<?php Nav::echoURL($dir, App::$pageAdminManageCategoriesCourses) ?>" class="btn btn-white btn-sm float-left"><i class="material-icons btn__icon--left">playlist_add_check</i> View Courses <span class="badge badge-dark ml-2">5</span></a>
+                                                <button class="btn btn-primary btn-sm float-right"><i class="material-icons btn__icon--left">edit</i> Update </button>
+                                                <button onclick="return confirm('Are you sure?');" class="btn btn-default btn-sm float-right" style="margin-right: 8px"><i class="material-icons btn__icon--left">delete_forever</i> Delete </button>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+
+                                        <div id="" class="card card-sm">
+                                            <div class="card-body media">
+                                                <div class="media-left">
+                                                    <h4 class="card-title mb-0">
+                                                        <label>Title: <input id="title" class="form-control" value=""></label>
+                                                    </h4>
+                                                    <div class="form-group">
+                                                        <label for="masterID" class="form-label">Parent</label><br>
+                                                        <select id="masterID" class="form-control custom-select" style="width: 200px">
+                                                            <option value="">1</option>
+                                                            <option value="">2</option>
+                                                            <option value="">3</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer text-center">
+                                                <a href="<?php Nav::echoURL($dir, App::$pageAdminManageCategoriesCourses) ?>" class="btn btn-white btn-sm float-left"><i class="material-icons btn__icon--left">playlist_add_check</i> View Courses <span class="badge badge-dark ml-2">5</span></a>
+                                                <button class="btn btn-primary btn-sm float-right"><i class="material-icons btn__icon--left">edit</i> Update </button>
+                                                <button onclick="return confirm('Are you sure?');" class="btn btn-default btn-sm float-right" style="margin-right: 8px"><i class="material-icons btn__icon--left">delete_forever</i> Delete </button>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                                 <?php Pagination::initPagination($dir, $pages) ?>

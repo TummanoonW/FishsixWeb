@@ -23,12 +23,18 @@
         public static $pageAdminPanel = "admin/index.php";
         public static $pageAdminManageCourses = "admin/manage-courses.php";
         public static $pageAdminCourseEditor = "admin/course-editor.php";
+        public static $pageAdminCourseEditorLessons = "admin/course-editor-lessons.php";
+        public static $pageAdminCourseEditorPackage = "admin/course-editor-package.php";
+        public static $pageAdminCourseEditorBranch = "admin/course-editor-branch.php";
+        public static $pageAdminCourseEditorTime = "admin/course-editor-time.php";
+        public static $pageAdminCourseEditorTeacher = "admin/course-editor-teacher.php";
         public static $pageAdminManageCategories = "admin/manage-categories.php";
+        public static $pageAdminManageCategoriesCourses = "admin/manage-categories-courses.php";
+        public static $pageAdminAddCategories = "admin/add-categories.php";
         public static $pageAdminManageUser = "admin/manage-user.php";
         public static $pageAdminManageBranch = "admin/manage-branch.php";
         public static $pageAdminAddUser = "admin/add-user.php";
         public static $pageAdminEditUser = "admin/edit-user.php";
-        public static $pageAdminAddCategories = "admin/add-categories.php";
         public static $pageAdminAddBranch = "admin/add-branch.php";
         public static $pageAdminEditBranch = "admin/edit-branch.php";
 

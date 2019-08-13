@@ -4,6 +4,7 @@
             $url = $api->getURL(App::$apiAdminCategory, 'all', NULL);
             $result = $api->get($url);
             return $result;
+            
         }
 
         public static function editCategory($api, $id, $category){

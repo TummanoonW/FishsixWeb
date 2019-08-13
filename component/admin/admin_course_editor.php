@@ -77,7 +77,7 @@
                                                     <h4 class="card-title">Lessons</h4>
                                                 </div>
                                                 <div class="card-body">
-                                                    <p><a href="instructor-lesson-add.html" class="btn btn-primary">Add Lesson <i class="material-icons">add</i></a></p>
+                                                    <p><a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditorLessons) ?>" class="btn btn-primary">Add Lesson <i class="material-icons">add</i></a></p>
                                                     <div class="nestable" id="nestable-handles-primary">
                                                         <ul class="nestable-list">
                                                             <li class="nestable-item nestable-item-handle" data-id="2">
@@ -94,6 +94,7 @@
                                                                             <small class="text-muted">updated 1 month ago</small>
                                                                         </div>
                                                                         <div class="media-right">
+                                                                            <a href="instructor-lesson-add.html" onclick="return confirm('Are you sure?');" class="btn btn-white btn-sm"><i class="material-icons">delete_forever</i></a>
                                                                             <a href="instructor-lesson-add.html" class="btn btn-white btn-sm"><i class="material-icons">edit</i></a>
                                                                         </div>
                                                                     </div>
@@ -113,6 +114,7 @@
                                                                             <small class="text-muted">updated 1 month ago</small>
                                                                         </div>
                                                                         <div class="media-right">
+                                                                            <a href="instructor-lesson-add.html" onclick="return confirm('Are you sure?');" class="btn btn-white btn-sm"><i class="material-icons">delete_forever</i></a>
                                                                             <a href="instructor-lesson-add.html" class="btn btn-white btn-sm"><i class="material-icons">edit</i></a>
                                                                         </div>
                                                                     </div>
@@ -132,6 +134,7 @@
                                                                             <small class="text-muted">updated 1 month ago</small>
                                                                         </div>
                                                                         <div class="media-right">
+                                                                            <a href="instructor-lesson-add.html" onclick="return confirm('Are you sure?');" class="btn btn-white btn-sm"><i class="material-icons">delete_forever</i></a>
                                                                             <a href="instructor-lesson-add.html" class="btn btn-white btn-sm"><i class="material-icons">edit</i></a>
                                                                         </div>
                                                                     </div>
@@ -147,7 +150,7 @@
                                                     <h4 class="card-title">Packages</h4>
                                                 </div>
                                                 <div class="card-body">
-                                                    <p><a href="instructor-lesson-add.html" class="btn btn-primary">Add Package <i class="material-icons">add</i></a></p>
+                                                    <p><a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditorPackage) ?>" class="btn btn-primary">Add Package <i class="material-icons">add</i></a></p>
                                                     <div class="nestable" id="nestable-handles-primary">
                                                         <ul class="nestable-list">
                                                             <li class="nestable-item nestable-item-handle" data-id="2">
@@ -180,7 +183,7 @@
                                                     <h4 class="card-title">Branches</h4>
                                                 </div>
                                                 <div class="card-body">
-                                                    <p><a href="instructor-lesson-add.html" class="btn btn-primary">Add Branch <i class="material-icons">add</i></a></p>
+                                                    <p><a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditorBranch) ?>" class="btn btn-primary">Add Branch <i class="material-icons">add</i></a></p>
                                                     <div class="nestable" id="nestable-handles-primary">
                                                         <ul class="nestable-list">
                                                             <li class="nestable-item nestable-item-handle" data-id="2">
@@ -207,6 +210,128 @@
                                                 </div>
                                             </div>
 
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Teacher</h4>
+                                                </div>
+                                                <div class="card-body"><!-- แก้ -->
+                                                    <p><a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditorTeacher) ?>" class="btn btn-primary">Add Teacher<i class="material-icons">add</i></a></p>
+                                                    <div class="nestable" id="nestable-handles-primary">
+                                                    <table class="table mb-0">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Teacher</th>
+                                                                    <th style="width: 24px;"></th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody class="list" id="staff"><tr>
+                                                                    <td>
+                                                                        <div class="media align-items-center">
+                                                                            <div class="avatar avatar-sm mr-3">
+                                                                                <img src="../assets/images/thumbs/def.png" alt="Avatar" class="avatar-img rounded-circle">
+                                                                            </div>
+                                                                            <div class="media-body">
+                                                                                <span class="js-lists-values-employee-name">Helen Mcdaniel</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td><a href="instructor-lesson-add.html" onclick="return confirm('Are you sure?');" class="btn btn-white btn-sm"><i class="material-icons">delete_forever</i></a></td>
+                                                                </tr><tr>
+                                                                    <td>
+                                                                        <div class="media align-items-center">
+                                                                            <div class="avatar avatar-sm mr-3">
+                                                                                <img src="../assets/images/thumbs/def.png" alt="Avatar" class="avatar-img rounded-circle">
+                                                                            </div>
+                                                                            <div class="media-body">
+                                                                                <span class="js-lists-values-employee-name">Karim Hicks</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td><a href="instructor-lesson-add.html" onclick="return confirm('Are you sure?');" class="btn btn-white btn-sm"><i class="material-icons">delete_forever</i></a></td>
+                                                                </tr><tr>
+                                                                    <td>
+                                                                        <div class="media align-items-center">
+                                                                            <div class="avatar avatar-sm mr-3">
+                                                                                <img src="../assets/images/thumbs/def.png" alt="Avatar" class="avatar-img rounded-circle">
+                                                                            </div>
+                                                                            <div class="media-body">
+                                                                                <span class="js-lists-values-employee-name">Clifford Burgess</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td><a href="instructor-lesson-add.html" onclick="return confirm('Are you sure?');" class="btn btn-white btn-sm"><i class="material-icons">delete_forever</i></a></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Time</h4>
+                                                </div>
+                                                <div class="card-body"><!-- แก้ -->
+                                                    <p><a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditorTime) ?>" class="btn btn-primary">Add Time<i class="material-icons">add</i></a></p>
+                                                    <div class="nestable" id="nestable-handles-primary">
+                                                    <table class="table mb-0">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Day</th>
+                                                                    <th>Start</th>
+                                                                    <th></th>
+                                                                    <th>End</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody class="list" id="staff">
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="media align-items-center">
+                                                                            
+                                                                            <div class="media-body">
+                                                                                <span class="js-lists-values-employee-name">Monday</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td><span>10:00</span></td>
+                                                                    <td>To</td>
+                                                                    <td><span>19:00</span></td>
+                                                                    <td><a href="instructor-lesson-add.html" onclick="return confirm('Are you sure?');" class="btn btn-white btn-sm"><i class="material-icons">delete_forever</i></a></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="media align-items-center">
+                                                                            
+                                                                            <div class="media-body">
+                                                                                <span class="js-lists-values-employee-name">Saturday</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td><span>8:00</span></td>
+                                                                    <td>To</td>
+                                                                    <td><span>17:00</span></td>
+                                                                    <td><a href="instructor-lesson-add.html" onclick="return confirm('Are you sure?');" class="btn btn-white btn-sm"><i class="material-icons">delete_forever</i></a></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="media align-items-center">
+                                                                            
+                                                                            <div class="media-body">
+                                                                                <span class="js-lists-values-employee-name">Sunday</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td><span>8:00</span></td>
+                                                                    <td>To</td>
+                                                                    <td><span>17:00</span></td>
+                                                                    <td><a href="instructor-lesson-add.html" onclick="return confirm('Are you sure?');" class="btn btn-white btn-sm"><i class="material-icons">delete_forever</i></a></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
                                         <div class="col-md-4">
                                             <div class="card">
@@ -219,11 +344,14 @@
                                             </div>
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h4 class="card-title">Pictures</h4>
+                                                   <label for="picture"><h4 class="card-title">Pictures</h4></label> 
                                                 </div>
                                                 <div class="card-body">
-                                                    <p><a href="instructor-lesson-add.html" class="btn btn-primary">Add Picture <i class="material-icons">add</i></a></p>
-                                                    <div class="nestable" id="nestable-handles-primary">
+                                                    <div class="custom-file" style="width: auto;">
+                                                        <input type="file" id="picture" class="custom-file-input">
+                                                        <label for="picture" class="custom-file-label">Choose file</label>
+                                                    </div>
+                                                    <div class="nestable" id="nestable-handles-primary" style="margin-top:10px;">
                                                         <ul class="nestable-list">
                                                             <li class="nestable-item nestable-item-handle" data-id="2">
                                                                 <div class="nestable-handle"><i class="material-icons">menu</i></div>
@@ -250,12 +378,15 @@
                                                     <h4 class="card-title">Tags</h4>
                                                 </div>
                                                 <div class="card-body">
-                                                    <p><a href="instructor-lesson-add.html" class="btn btn-primary">Add Tags <i class="material-icons">add</i></a></p>
+                                                    <span>
+                                                    <input type="text" id="tag" class="form-control" placeholder="Tag here">
+                                                    <button  class="btn btn-primary" style="margin-top:10px" >Add Tags <i class="material-icons">add</i></button>
+                                                    </span>
                                                     <div class="nestable" id="nestable-handles-primary">
                                                         <ul class="nestable-list">
                                                             <li class="nestable-item nestable-item-handle" data-id="2">
                                                                 <div class="nestable-handle"><i class="material-icons">menu</i></div>
-                                                                <div class="nestable-content">
+                                                                <div class="nestable-content" style="margin-top:10px">
                                                                     <div class="media align-items-center">
                                                                         <div class="media-body">
                                                                             <input type="text" id="duration" class="form-control" placeholder="tag" value="" width="100">

@@ -1,5 +1,5 @@
 <?php
-    class AdminManageCoursesView{
+    class AdminManageCategoriesCoursesView{
         public static function initView($dir, $paths, $pages){
             $auth = Session::getAuth();
 ?>
@@ -26,7 +26,7 @@
 
                                     <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
                                         <div class="flex mb-2 mb-sm-0">
-                                            <h1 class="h2">Manage Courses</h1>
+                                            <h1 class="h2">View Courses</h1>
                                         </div>
                                         <a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditor) ?>" class="btn btn-success">Add course</a>
                                     </div>
