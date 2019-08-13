@@ -253,7 +253,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </td>
-                                                                    <td><a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditor) ?>" onclick="return confirm('Are you sure?');" class="btn btn-white btn-sm"><i class="material-icons">delete_forever</i></a></td>
+                                                                    <td><a href="instructor-lesson-add.html" onclick="return confirm('Are you sure?');" class="btn btn-white btn-sm"><i class="material-icons">delete_forever</i></a></td>
                                                                 </tr><tr>
                                                                     <td>
                                                                         <div class="media align-items-center">
