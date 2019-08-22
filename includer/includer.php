@@ -42,6 +42,10 @@
                 $dir = "./";
             }
 
+            $arr = explode(".", $file);
+            $lenght = count($arr);
+            if($lenght == 1) $file = $file . ".php";
+            
             include_once $dir . 'component/view/' . $file;
         }
 
@@ -50,6 +54,10 @@
                 $dir = "./";
             }
 
+            $arr = explode(".", $file);
+            $lenght = count($arr);
+            if($lenght == 1) $file = $file . ".php";
+
             include_once $dir . 'component/admin/' . $file;
         }
 
@@ -57,6 +65,10 @@
             if(!isset($dir)){
                 $dir = "./";
             }
+
+            $arr = explode(".", $file);
+            $lenght = count($arr);
+            if($lenght == 1) $file = $file . ".php";
 
             include_once $dir . 'function/' . $file;
         }

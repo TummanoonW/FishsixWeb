@@ -14,24 +14,20 @@
     if(Session::checkUserAdmin()){
         switch($io->method){
             case 'edit':
-                $category = new Category($io->input);
-                $result = FunAdminCategory::editCategory($api, $category->ID, $category);
+                $form = $io->post;
+                if(isset($form->ID)){
+                    $result = FunAdminCategory::edit($api, $form);
+                }else{
+                    $result = FunAdminCategory::create($api, $form);
+                }
 
-                if($result->success) Nav::goto($dir, App::$pageAdminManageCategories);
-                else ErrorPage::showError($dir, $result);
-                break;
-
-            case 'create':
-                $category = new Category($io->input);
-                $result = FunAdminCategory::createCategory($api, $category);
-                
                 if($result->success) Nav::goto($dir, App::$pageAdminManageCategories);
                 else ErrorPage::showError($dir, $result);
                 break;
 
             case 'delete':
-                $id = $io->input->id;
-                $result = FunAdminCategory::deleteCategory($api, $id);
+                $id = $io->id;
+                $result = FunAdminCategory::delete($api, $id);
 
                 if($result->success) Nav::goto($dir, App::$pageAdminManageCategories);
                 else ErrorPage::showError($dir, $result);

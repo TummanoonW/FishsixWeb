@@ -1,6 +1,6 @@
 <?php
     class AdminManageBranchView{
-        public static function initView($dir, $paths, $pages){
+        public static function initView($dir, $paths, $pages, $branches, $count){
             $auth = Session::getAuth();
 ?>
             <body class=" layout-fluid">
@@ -28,100 +28,12 @@
                                         <div class="flex mb-2 mb-sm-0">
                                             <h1 class="h2">Manage Branch</h1>
                                         </div> <!-- ต้องแก้ --->
-                                        <a href="<?php Nav::echoURL($dir, App::$pageAdminAddBranch) ?>" class="btn btn-success">Add Branch</a>
+                                        <a href="<?php Nav::echoURL($dir, App::$pageAdminAddBranch) ?>" class="btn btn-success">+ Add Branch</a>
                                     </div>
-                                    <!--- Card Branch --->
-                                    <div class="card" >
-                                        <div class="card-header d-flex align-items-center" >
-                                            <div class="flex">
-                                                <a href="../admin/edit-branch.php" >
-                                                    <img src="../assets/images/thumbs/def.png" alt="สาขางามวงศ์วาน" class="avatar-img rounded">
-                                                </a>
-                                            </div>
-                                            <div class="card-body">
-                                                <h2 class="card-title mb-1">สาขา งามวงศ์วาน</h2>
-                                                    <table class="text-black-70">
-                                                      <tr>
-                                                        <td>เปิดสอนวิชา</td>
-                                                        <td style="padding-left:16px;">คณิตและฟิสิกส์</td>
-                                                      </tr>
-                                                      <tr>
-                                                        <td>วันจันทร์เวลา</td>
-                                                        <td style="padding-left:16px;">10:00 - 19:00 น.</td>
-                                                      </tr>
-                                                      <tr>
-                                                        <td>วันเสาร์ – อาทิตย์</td>
-                                                        <td style="padding-left:16px;">8:00 - 17:00 น.</td>
-                                                      </tr>
-                                                      <tr>
-                                                          <td>โทรศัพท์</td>
-                                                          <td style="padding-left:16px;">098-974-8688</td>
-                                                      </tr>
-                                                    </table>
-                                                <?php self::initBtn($dir); ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                      
-                                      <div class="card">
-                                      <div class="card-header d-flex align-items-center">
-                                        <div class="flex">
-                                        
-                                          <a href="../admin/edit-branch.php" >
-                                            <img src="../assets/images/thumbs/def.png" alt="สาขาสยาม" class="avatar-img rounded">
-                                            </a>
-                                        </div>
-                                            <div class="card-body">
-                                            <h2 class="card-title mb-1">สาขา สยาม</h2>
-                                            <table class="text-black-70">
-                                                      <tr>
-                                                        <td>เปิดสอนวิชา</td>
-                                                        <td style="padding-left:16px;">คณิตและฟิสิกส์</td>
-                                                      </tr>
-                                                      <tr>
-                                                        <td>วันจันทร์เวลา</td>
-                                                        <td style="padding-left:16px;">16:00 - 19:00 น.</td>
-                                                      </tr>
-                                                      <tr>
-                                                        <td>วันเสาร์ – อาทิตย์</td>
-                                                        <td style="padding-left:16px;">8:00- 17:00 น.</td>
-                                                      </tr>
-                                                      <tr>
-                                                          <td>โทรศัพท์</td>
-                                                          <td style="padding-left:16px;">098-974-8688</td>
-                                                      </tr>
-                                                    </table>
-                                                <?php self::initBtn($dir); ?>
-                                            </div>
-                                      </div>
 
-                                      <div class="card">
-                                      <div class="card-header d-flex align-items-center">
-                                        <div class="flex">
-                                        
-                                          <a href="../admin/edit-branch.php" >
-                                            <img src="../assets/images/thumbs/def.png" alt="สาขาพระราม2" class="avatar-img rounded">
-                                            </a>
-                                        </div>
-                                            <div class="card-body">
-                                            <h2 class="card-title mb-1">สาขา พระราม 2</h2>
-                                            <table class="text-black-70">
-                                                      <tr>
-                                                        <td>เปิดสอนวิชา</td>
-                                                        <td style="padding-left:16px;">คณิตและฟิสิกส์</td>
-                                                      </tr>
-                                                      <tr>
-                                                        <td>อาทิตย์</td>
-                                                        <td style="padding-left:16px;">9:00- 16:00 น.</td>
-                                                      </tr>
-                                                      <tr>
-                                                          <td>โทรศัพท์</td>
-                                                          <td style="padding-left:16px;">098-974-8688</td>
-                                                      </tr>
-                                                    </table>
-                                                <?php self::initBtn($dir); ?>
-                                            </div>
-                                      </div>
+                                    <div class="row">
+                                      <!--- Card Branch --->
+                                      <?php self::initCards($dir, $branches) ?>
                                     </div>
                                     <!-- Pagination -->
                                     <?php Pagination::initPagination($dir, $pages) ?>
@@ -132,23 +44,39 @@
                     </div>
                 </div>   
                 <?php Script::initScript($dir) ?> 
-
+                <!-- Custom Script -->
+                <?php Script::customScript($dir, 'common.js') ?>
 <?php
         }
-        public static function initBtn($dir){
+
+        private static function initCards($dir, $branches){
+          foreach ($branches as $key => $branch) {
+            $id = $branch->ID;
 ?>
-        <div>
-            <div class="text-center">
-                <a href="../admin/edit-branch.php" class="btn btn-primary btn-sm float-right"><i class="material-icons btn__icon--left">edit</i>Edit</a>
-                <button onclick="return confirm('Are you sure?');" class="btn btn-default btn-sm float-right" style="margin-right:8px;" ><i class="material-icons btn__icon--left">delete_forever</i>Delete</button>
+            <div class="col-12 card">
+              <div class="card-header d-flex align-items-center" >
+                <div class="flex">
+                  <a href="<?php Nav::echoURL($dir, App::$pageAdminAddBranch . "?id=$id") ?>" >
+                    <img src="<?php Asset::echoThumb($dir, $branch->thumbnail) ?>" alt="สาขา<?php echo $branch->title ?>" class="avatar-img rounded">
+                  </a>
+                </div>
+                <div class="card-body">
+                  <h2 class="card-title mb-1">สาขา <?php echo $branch->title ?></h2>
+                  <div class="text-secondary mt-2">
+                    <label>ID: <?php echo $id ?></label><br>
+                    <label>Address: <?php echo $branch->address ?></label><br>
+                    <label>Nearby Place: <?php echo $branch->nearbyPlace ?></label>
+                  </div>
+                  <div class="text-center">
+                      <a href="<?php Nav::echoURL($dir, App::$pageAdminAddBranch . "?id=$id") ?>" class="btn btn-primary btn-sm float-right"><i class="material-icons btn__icon--left">edit</i>Edit</a>
+                      <button onclick="return confirmDelete('<?php Nav::echoURL($dir, App::$routeAdminBranch . '?m=delete&id=' . $id) ?>');" class="btn btn-default btn-sm float-right" style="margin-right:8px;" ><i class="material-icons btn__icon--left">delete_forever</i>Delete</button>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
-        
-        
-
 <?php
+          }
         }
-
     }
 ?>
             

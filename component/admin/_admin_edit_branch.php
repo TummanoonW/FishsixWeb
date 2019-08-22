@@ -1,5 +1,5 @@
 <?php
-    class AdminAddBranchView{
+    class AdminEditBranchView{
 
         public static function initView($dir, $paths){
             $auth = Session::getAuth();
@@ -28,18 +28,18 @@
                                     <!-- Navigation Paths -->
                                     <?php Breadcrumb::initBreadcrumb($dir, $paths) ?>
 
-                                    <h1 class="h2">Add Branch</h1>
+                                    <h1 class="h2">Edit Branch</h1>
 
                                     <div class="card">
                                         <div class="tab-content card-body">
                                             <div class="tab-pane active" id="first">
-                                                <form action="./add-branch.php" method="POST" class="form-horizontal">
+                                                <form action="./edit-branch.php" method="POST" class="form-horizontal">
 
                                                     <div class="form-group row">
                                                             <label for="title" class="col-sm-3 col-form-label form-label">Title</label>
                                                             <div class="col-sm-8">
                                                                 <div class="input-group">
-                                                                <input type="text" id="title" class="form-control" placeholder=" Branch title" value="" >
+                                                                <input type="text" id="title" class="form-control" placeholder="Title branch" value="" >
                                                             </div>
                                                         </div>
                                                     </div>

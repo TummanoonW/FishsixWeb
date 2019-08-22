@@ -8,6 +8,5 @@ function update(id){
         title: title,
         masterID: masterID
     };
-
-    
 }
+

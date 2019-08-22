@@ -1,13 +1,13 @@
 <?php
-    class FunAdminCategory{
+    class FunAdminAuth{
         public static function edit($api, $form){
-            $url = $api->getURL(App::$apiAdminCategory, 'edit', NULL);
+            $url = $api->getURL(App::$apiAdminAuth, 'editFull', NULL);
             $result = $api->post($url, $form);
             return $result;
         }
     
         public static function create($api, $form){
-            $url = $api->getURL(App::$apiAdminCategory, 'create', NULL);
+            $url = $api->getURL(App::$apiAdminAuth, 'createFull', NULL);
             $result = $api->post($url, $form);
             return $result;
         }
@@ -16,7 +16,7 @@
             $query = new StdClass();
             $query->id = $id;
 
-            $url = $api->getURL(App::$apiAdminCategory, 'delete', NULL);
+            $url = $api->getURL(App::$apiAdminAuth, 'deleteFull', NULL);
             $result = $api->post($url, $query);
             return $result;
         }

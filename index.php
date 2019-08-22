@@ -23,7 +23,7 @@
         new Path(FALSE, '6', $dir . "?page=5")
     );
 
-    $categories = FunCategory::getAll($api);
+    $categories = FunCategory::get($api);
 
     if(isset($io->query->limit)) $limit = $io->query->limit;
     else $limit = 20;
@@ -37,8 +37,7 @@
     $filter->offset = $offset;
 
     $count_courses = FunCourse::countCourses($api);
-    if($count_courses->success) $c_courses = $count_courses->response;
-    else $c_courses = 0;
+    $c_courses = $count_courses->response;
     
     $pages = genPages($dir, $limit, $c_page, $c_courses);
 

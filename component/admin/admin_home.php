@@ -4,6 +4,11 @@
             $auth = Session::getAuth();
 ?>
             <body class=" layout-fluid">
+                <style>
+                    a > div > i{
+                        font-size: 26px;
+                    }
+                </style>
                 <!-- Pre Loader -->
                 <?php Preloader::initPreloader($dir) ?>
 
@@ -24,14 +29,53 @@
 
                                     <div class="media align-items-center mb-headings">
                                         <div class="media-body">
-                                            <h1 class="h2">Admin Panel</h1>
+                                            <h1 class="h2">ระบบจัดการ</h1>
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
-                                    <a href="<?php Nav::echoURL($dir, App::$pageAdminManageCourses) ?>" class="btn btn-success">Manage Courses</a>
-                                    <a href="<?php Nav::echoURL($dir, App::$pageAdminManageCategories) ?>" class="btn btn-success">Manage Categories</a>
-                                    <a href="<?php Nav::echoURL($dir, App::$pageAdminManageUser) ?>" class="btn btn-success">Manage User</a>
-                                    <a href="<?php Nav::echoURL($dir, App::$pageAdminManageBranch) ?>" class="btn btn-success">Manage Branch</a>
+                                    <h3>Fishsix</h3>
+                                    <div class="row">
+                                        <div class="col-md-3 col-sm-4 pb-3">
+                                            <a href="<?php Nav::echoURL($dir, App::$pageAdminManageCourses) ?>" class="btn btn-primary w-100 h-100">
+                                                <div class="pb-2 pt-2">
+                                                    <i class="fas fa-graduation-cap"></i>
+                                                    <div class="mt-1">จัดการคอร์สเรียน</div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-3 col-sm-4 pb-3">
+                                            <a href="<?php Nav::echoURL($dir, App::$pageAdminManageCategories) ?>" class="btn btn-primary w-100 h-100">
+                                                <div class="pb-2 pt-2">
+                                                    <i class="fas fa-stream"></i>
+                                                    <div class="mt-1">จัดการหมวดหมู่</div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-3 col-sm-4 pb-3">
+                                            <a href="<?php Nav::echoURL($dir, App::$pageAdminManageBranch) ?>" class="btn btn-primary w-100 h-100">
+                                                <div class="pb-2 pt-2">
+                                                    <i class="far fa-building"></i>
+                                                    <div class="mt-1">จัดการสาขา</div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <h3>การค้าขาย</h3>
+                                    <div class="row">
+                                    </div>
+                                    <hr>
+                                    <h3>ทั่วไป</h3>
+                                    <div class="row">
+                                        <div class="col-md-3 col-sm-4 pb-3">
+                                            <a href="<?php Nav::echoURL($dir, App::$pageAdminManageUser) ?>" class="btn btn-secondary w-100 h-100">
+                                                <div class="pb-2 pt-2">
+                                                    <i class="fas fa-users"></i>
+                                                    <div class="mt-1">จัดการผู้ใช้</div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <?php Sidemenu::initSideMenu($dir) ?>

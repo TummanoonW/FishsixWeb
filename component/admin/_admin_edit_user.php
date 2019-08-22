@@ -1,5 +1,5 @@
 <?php
-    class AdminAddUserView{
+    class AdminEditUserView{ ////profile HTML elements loader
 
         public static function initView($dir, $paths){
             $auth = Session::getAuth();
@@ -32,7 +32,7 @@
                                     <!-- Navigation Paths -->
                                     <?php Breadcrumb::initBreadcrumb($dir, $paths) ?>
 
-                                    <h1 class="h2">Add User</h1>
+                                    <h1 class="h2">Edit User's account</h1>
 
                                     <div class="card">
                                         <ul class="nav nav-tabs nav-tabs-card">
@@ -182,13 +182,13 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                            
+                                                
                                                     <div class="form-group row">
                                                         <div class="col-sm-8 offset-sm-3">
                                                             <div class="media align-items-center">
                                                                 <div class="media-left">
-                                                                    <button type="submit" class="btn btn-success">Add User</button>
-                                                                    <a href="../admin/manage-user.php"style="margin-left:8px;" class="btn btn-danger">Cancel</a>
+                                                                    <button type="submit" class="btn btn-success">Save change</button>
+                                                                    <a href="../admin/manage-user.php" style="margin-left:8px;" class="btn btn-danger">Cancel</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -209,7 +209,6 @@
                     <script src="assets/js/flatpickr.js"></script>
                     <!-- jQuery Mask Plugin -->
                     <script src="assets/vendor/jquery.mask.min.js"></script>
-                    
 <?php
         }
 
