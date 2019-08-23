@@ -14,23 +14,23 @@
                     <div class="dropdown-menu dropdown-menu-right">
                         <?php if(Session::checkUserAdmin()){ ?>
                             <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageAdminPanel) ?>">
-                                <i class="material-icons">apps</i> Admin Panel
+                                <i class="material-icons">apps</i> ระบบจัดการ
                             </a>
                         <?php } ?>
                         <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageMyCourses) ?>">
-                            <i class="material-icons">school</i> My Courses
+                            <i class="material-icons">school</i> คอร์สของฉัน
                         </a>
                         <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageMyOrder) ?>">
                             <i class="fas fa-history"></i><span style="margin-left:8px;" >My Order</span>
                         </a>
                         <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageProfile) ?>">
-                            <i class="material-icons">edit</i> Edit Account
+                            <i class="material-icons">edit</i> แก้ไขบัยชี
                         </a>
                         <!--<a class="dropdown-item" href="student-profile.html">
                             <i class="material-icons">person</i> Public Profile
                         </a> -->
                         <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$routeLogOut) ?>">
-                            <i class="material-icons">lock_open</i> Log Out
+                            <i class="material-icons">lock_open</i> ออกจากระบบ
                         </a>
                     </div>
                 </li>
@@ -39,12 +39,12 @@
 ?>
                 <li class="nav-item d-none d-md-flex">
                     <a href="<?php Nav::echoURL($dir, App::$pageRegister) ?>" class="nav-link">
-                        Register
+                        สมัครสมาชิก
                     </a>
                 </li>
                 <li class="nav-item d-none d-md-flex ml-md-3">
                     <a href="<?php Nav::echoURL($dir, App::$pageLogin) ?>" class="nav-link">
-                        Log In
+                        เข้าสู่ระบบ
                     </a>
                 </li>
 <?php

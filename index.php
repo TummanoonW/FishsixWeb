@@ -23,7 +23,7 @@
         new Path(FALSE, '6', $dir . "?page=5")
     );
 
-    if(Session::checkUserExisted()){
+    $categories = FunCategory::get($api);
 
       if($io->page == NULL){
         $c_page = 0;
@@ -47,17 +47,8 @@
 //    if(isset($io->query->limit)) $limit = $io->query->limit;
   //  else $limit = 20;
 
-//    if($io->page != NULL) $c_page = $io->page;
-//    else $c_page = 0;
-
-//    $offset = ($c_page * $limit);        
-//    $filter = new StdClass();
-//    $filter->limit = $limit;
-//    $filter->offset = $offset;
-
-  //  $count_courses = FunCourse::countCourses($api);
-//    if($count_courses->success) $c_courses = $count_courses->response;
-//    else $c_courses = 0;
+    $count_courses = FunCourse::countCourses($api);
+    $c_courses = $count_courses->response;
     
 //    $pages = genPages($dir, $limit, $c_page, $c_courses);
 

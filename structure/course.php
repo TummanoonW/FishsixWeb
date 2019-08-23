@@ -3,7 +3,7 @@
 
         public $title           = "New Course";
         public $description     = "";
-        public $description_short = "";
+        public $content         = "";
         public $categoryID      = NULL;
         public $pictures        = [];
         public $tags            = [];
@@ -35,7 +35,7 @@
 
             if(isset($obj->description))$this->description = $obj->description;
 
-            if(isset($obj->description_short))$this->description_short = $obj->description_short;
+            if(isset($obj->content))$this->content = $obj->content;
 
             if(isset($obj->categoryID))$this->categoryID = $obj->categoryID;
 

@@ -86,7 +86,7 @@
                                                                 </div>
                                                                 <div class="media-body">
                                                                     <div class="custom-file" style="width: auto;">
-                                                                        <input type="file" id="avatar" class="custom-file-input" accept="image/*" onchange="readURL(this)">
+                                                                        <input type="file" id="avatar" class="custom-file-input" accept="image/*" onchange="urlToBase64(this, 128, 128, '#prof', '#profile_pic')">
                                                                         <label for="avatar" class="custom-file-label">Choose file</label>
                                                                     </div>
                                                                 </div>
@@ -329,40 +329,13 @@
                     </div>
                 </div>
                 <?php Script::initScript($dir) ?>
-                    <!-- Flatpickr -->
-                    <script src="assets/vendor/flatpickr/flatpickr.min.js"></script>
-                    <script src="assets/js/flatpickr.js"></script>
-                    <!-- jQuery Mask Plugin -->
-                    <script src="assets/vendor/jquery.mask.min.js"></script>
-
-                <script>
-                    function readURL(input) {
-                        if (input.files && input.files[0]) {
-                            var reader = new FileReader();
-
-                            reader.onload = function (e) {    
-                                var img = document.createElement("img");
-                                img.src = e.target.result;
-                                img.onload = function(){
-                                    var canvas = document.createElement("canvas");
-                                    canvas.width = 128;
-                                    canvas.height = 128;
-                                    var ctx = canvas.getContext("2d");
-                                    ctx.fillStyle = "#FFFFFF";
-                                    ctx.fillRect(0, 0, 128, 128);
-                                    ctx.drawImage(img, 0, 0, 128, 128);
-                                    var dataurl = canvas.toDataURL('image/jpeg', 0.8);
-
-                                    $('#prof').attr('src', dataurl);    
-                                    $('#profile_pic').val(dataurl);
-                                }
-                            };
-
-                            reader.readAsDataURL(input.files[0]);
-                        }
-                    }
-
-                </script>
+                <!-- Flatpickr -->
+                <script src="assets/vendor/flatpickr/flatpickr.min.js"></script>
+                <script src="assets/js/flatpickr.js"></script>
+                <!-- jQuery Mask Plugin -->
+                <script src="assets/vendor/jquery.mask.min.js"></script>
+                <!-- Custom Script -->
+                <?php Script::customScript($dir, 'common.js') ?>
 <?php
         }
 

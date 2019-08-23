@@ -23,8 +23,9 @@
         }
 
         public static function getCoursesFilter($api, $filter){
-            $url = $api->getURL(App::$apiCourse, 'filter', $filter);
+            $url = $api->getURL(App::$apiCourse, 'getAllCourse', $filter);
             $result = $api->get($url);
             return $result;
         }
+
     }

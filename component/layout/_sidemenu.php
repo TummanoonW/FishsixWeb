@@ -21,133 +21,68 @@
                         <div class="sidebar-p-y">
 
                             <?php if(Session::checkUserExisted()){ ?>
-                                <div class="sidebar-heading">APPLICATIONS</div>
+                                <div class="sidebar-heading">เมนูของฉัน</div>
                                 <ul class="sidebar-menu sm-active-button-bg">
                                     <?php if(Session::checkUserAdmin()){ ?>
                                         <li class="sidebar-menu-item">
                                             <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageAdminPanel); ?>">
-                                                <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">apps</i> Admin Panel
+                                                <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">apps</i> ระบบจัดการ
                                             </a>
                                         </li>
                                     <?php } ?>
 
                                     <li class="sidebar-menu-item">
                                         <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageMyCourses); ?>">
-                                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> My Courses
+                                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> คอร์สของฉัน
                                         </a>
                                     </li>      
                                 </ul>
                             <?php } ?>
 
                             <!-- Explore Menu -->
-                            <div class="sidebar-heading">Explore</div>
+                            <div class="sidebar-heading">เมนูค้นหา</div>
                             <ul class="sidebar-menu sm-active-button-bg">
                                 <li class="sidebar-menu-item">
                                     <a class="sidebar-menu-button" href="<?php Nav::echoURL("", $dir); ?>">
-                                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">search</i> Browse Courses
+                                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">search</i> ค้นหา
                                     </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir,'viewcourse.php')?> ">
-                                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">import_contacts</i> View Course
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="student-take-course.html">
-                                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">class</i> Take Course
-                                        <span class="sidebar-menu-badge badge badge-primary ml-auto">PRO</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="student-take-quiz.html">
-                                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dvr</i> Take a Quiz
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="student-quiz-results.html">
-                                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">poll</i> Quiz Results
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir,'mycourses.php');?> ">
-                                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> My Courses
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" data-toggle="collapse" href="#forum_menu">
-                                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">chat_bubble_outline</i>
-                                        Community
-                                        <span class="ml-auto sidebar-menu-toggle-icon"></span>
-                                    </a>
-                                    <ul class="sidebar-submenu sm-indent collapse" id="forum_menu">
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="">
-                                                <span class="sidebar-menu-text">Forum</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="">
-                                                <span class="sidebar-menu-text">Discussion</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="">
-                                                <span class="sidebar-menu-text">Ask Question</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="">
-                                                <span class="sidebar-menu-text">Student Profile - Courses</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="">
-                                                <span class="sidebar-menu-text">Student Profile - Posts</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="instructor-profile.html">
-                                                <span class="sidebar-menu-text">Instructor Profile</span>
-                                            </a>
-                                        </li>
-                                    </ul>
                                 </li>
                             </ul>
 
                             <!-- Account menu -->
-                            <div class="sidebar-heading">Account</div>
+                            <div class="sidebar-heading">บัญชี</div>
                             <ul class="sidebar-menu">
                                 <?php if(Session::checkUserExisted()){ ?>
                                     <li class="sidebar-menu-item">
                                         <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageProfile); ?>">
-                                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">edit</i> Edit Account
+                                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">edit</i> แก้ไขบัญชี
                                         </a>
                                     </li>
                                     <li class="sidebar-menu-item">
                                         <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$routeLogOut); ?>">
-                                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">lock_open</i> Log Out
+                                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">lock_open</i> ออกจากระบบ
                                         </a>
                                     </li>
                                 <?php }else{ ?>
                                     <li class="sidebar-menu-item">
                                         <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageLogin); ?>">
-                                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">lock</i> Log In
+                                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">lock</i> เข้าสู่ระบบ
                                         </a>
                                     </li>
                                     <li class="sidebar-menu-item">
                                         <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageRegister); ?>">
-                                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">assignment_ind</i> Register
+                                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">assignment_ind</i> สมัครสมาชิก
                                         </a>
                                     </li>
                                 <?php } ?>
                             </ul>
 
                             <!-- Help menu -->
-                            <div class="sidebar-heading">Helps</div>
+                            <div class="sidebar-heading">อื่นๆ</div>
                             <ul class="sidebar-menu">
                                 <li class="sidebar-menu-item">
                                     <a class="sidebar-menu-button" href="student-help-center.html">
-                                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">live_help</i> Get Help
+                                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">live_help</i> ขอความช่วยเหลือ
                                     </a>
                                 </li>
                             </ul>

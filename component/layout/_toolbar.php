@@ -20,7 +20,7 @@
                             </a>
                             <!-- Search -->
                             <form class="search-form d-none d-md-flex">
-                                <input type="text" class="form-control" placeholder="Search">
+                                <input type="text" class="form-control" placeholder="คำค้นหา">
                                 <button class="btn" type="button"><i class="material-icons font-size-24pt">search</i></button>
                             </form>
                             <!-- // END Search -->
@@ -28,10 +28,10 @@
                             <!-- Menu -->
                             <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="student-forum.html">Forum</a>
+                                    <a class="nav-link" href="student-forum.html">บทความ</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="student-help-center.html">Get Help</a>
+                                    <a class="nav-link" href="student-help-center.html">ขอความช่วยเหลือ</a>
                                 </li>
                             </ul>
                             <!-- Menu -->

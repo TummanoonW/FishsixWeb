@@ -1,6 +1,6 @@
 <?php
     class AdminManageCategoriesView{
-        public static function initView($dir, $paths, $categories,$pages){
+        public static function initView($dir, $paths, $pages, $categories, $count, $api){
 ?>
             <body class=" layout-fluid">
 
@@ -29,84 +29,15 @@
                                             <h1 class="h2">Manage Categories</h1>
                                         </div>
                                         <div class="media-right">
-                                            <a href="<?php Nav::echoURL($dir, App::$pageAdminAddCategories) ?>" class="btn btn-success" style="margin-right: 4px">Add Category</a>
+                                            <a href="<?php Nav::echoURL($dir, App::$pageAdminAddCategories) ?>" class="btn btn-success" style="margin-right: 4px">+ Add Category</a>
                                         </div>
                                     </div>
 
                                     <div class="card-columns">
                                         <!-- Category Card -->
-                                        <div id="" class="card card-sm">
-                                            <div class="card-body media">
-                                                <div class="media-left">
-                                                    <h4 class="card-title mb-0">
-                                                        <label>Title: <input id="title" class="form-control" value=""></label>
-                                                    </h4>
-                                                    <div class="form-group">
-                                                        <label for="masterID" class="form-label">Parent</label><br>
-                                                        <select id="masterID" class="form-control custom-select" style="width: 200px">
-                                                            <option value="">1</option>
-                                                            <option value="">2</option>
-                                                            <option value="">3</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="card-footer text-center">
-                                                <a href="<?php Nav::echoURL($dir, App::$pageAdminManageCategoriesCourses) ?>" class="btn btn-white btn-sm float-left"><i class="material-icons btn__icon--left">playlist_add_check</i> View Courses <span class="badge badge-dark ml-2">5</span></a>
-                                                <button class="btn btn-primary btn-sm float-right"><i class="material-icons btn__icon--left">edit</i> Update </button>
-                                                <button onclick="return confirm('Are you sure?');" class="btn btn-default btn-sm float-right" style="margin-right: 8px"><i class="material-icons btn__icon--left">delete_forever</i> Delete </button>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                        </div>
-
-                                        <div id="" class="card card-sm">
-                                            <div class="card-body media">
-                                                <div class="media-left">
-                                                    <h4 class="card-title mb-0">
-                                                        <label>Title: <input id="title" class="form-control" value=""></label>
-                                                    </h4>
-                                                    <div class="form-group">
-                                                        <label for="masterID" class="form-label">Parent</label><br>
-                                                        <select id="masterID" class="form-control custom-select" style="width: 200px">
-                                                            <option value="">aa</option>
-                                                            <option value="">sss</option>
-                                                            <option value="">cccc</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="card-footer text-center">
-                                                <a href="<?php Nav::echoURL($dir, App::$pageAdminManageCategoriesCourses) ?>" class="btn btn-white btn-sm float-left"><i class="material-icons btn__icon--left">playlist_add_check</i> View Courses <span class="badge badge-dark ml-2">5</span></a>
-                                                <button class="btn btn-primary btn-sm float-right"><i class="material-icons btn__icon--left">edit</i> Update </button>
-                                                <button onclick="return confirm('Are you sure?');" class="btn btn-default btn-sm float-right" style="margin-right: 8px"><i class="material-icons btn__icon--left">delete_forever</i> Delete </button>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                        </div>
-
-                                        <div id="" class="card card-sm">
-                                            <div class="card-body media">
-                                                <div class="media-left">
-                                                    <h4 class="card-title mb-0">
-                                                        <label>Title: <input id="title" class="form-control" value=""></label>
-                                                    </h4>
-                                                    <div class="form-group">
-                                                        <label for="masterID" class="form-label">Parent</label><br>
-                                                        <select id="masterID" class="form-control custom-select" style="width: 200px">
-                                                            <option value="">1</option>
-                                                            <option value="">2</option>
-                                                            <option value="">3</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="card-footer text-center">
-                                                <a href="<?php Nav::echoURL($dir, App::$pageAdminManageCategoriesCourses) ?>" class="btn btn-white btn-sm float-left"><i class="material-icons btn__icon--left">playlist_add_check</i> View Courses <span class="badge badge-dark ml-2">5</span></a>
-                                                <button class="btn btn-primary btn-sm float-right"><i class="material-icons btn__icon--left">edit</i> Update </button>
-                                                <button onclick="return confirm('Are you sure?');" class="btn btn-default btn-sm float-right" style="margin-right: 8px"><i class="material-icons btn__icon--left">delete_forever</i> Delete </button>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                        </div>
-
+                                        <?php foreach ($categories as $key => $value) {
+                                            self::initCard($dir, $key, $value, $categories, $api);
+                                        } ?>
                                     </div>
                                 </div>
                                 <?php Pagination::initPagination($dir, $pages) ?>
@@ -116,54 +47,49 @@
                     </div>
                 </div>
                 <?php Script::initScript($dir) ?> 
-                
                 <!-- Custom Script -->
-                <?php Script::customScript($dir, 'admin-manage-category.js') ?>
-
+                <?php Script::customScript($dir, 'common.js') ?>
 <?php
         }
 
-        public static function initCard($dir, $key, $s_cat, $categories){
+        public static function initCard($dir, $key, $s_cat, $categories, $api){
             $id = $s_cat->ID;
 ?>
             <div id="<?php echo $id ?>" class="card card-sm">
                 <div class="card-body media">
                     <div class="media-left">
                         <h4 class="card-title mb-0">
-                            <label>Title: <input id="title" class="form-control" value="<?php echo $s_cat->title ?>"></label>
+                            <label><?php echo $s_cat->title ?></label>
                         </h4>
-                        <div class="form-group">
-                            <label for="masterID" class="form-label">Parent</label><br>
-                            <select id="masterID" class="form-control custom-select" style="width: 200px">
-                                <?php self::initSelect($dir, $s_cat->masterID, $categories) ?>
-                            </select>
+                        <div class="d-flex align-items-center py-1">
+                            <small class="text-secondary mr-2"><strong>ID:</strong> <?php echo $id ?></small class="text-muted"><br>
+                            <small class="text-secondary"><strong>Parent:</strong> <?php self::initParent($s_cat->parentID, $categories) ?></small class="text-muted">
                         </div>
                     </div>
                 </div>
                 <div class="card-footer text-center">
-                    <a href="instructor-review-quiz.html" class="btn btn-white btn-sm float-left"><i class="material-icons btn__icon--left">playlist_add_check</i> View Courses <span class="badge badge-dark ml-2">5</span></a>
-                    <button class="btn btn-primary btn-sm float-right" onclick="update(<?php echo $id ?>)"><i class="material-icons btn__icon--left">edit</i> Update </button>
-                    <button onclick="return confirm('Are you sure?');" class="btn btn-default btn-sm float-right" style="margin-right: 8px"><i class="material-icons btn__icon--left">delete_forever</i> Delete </button>
+                    <a href="<?php Nav::echoURL($dir, App::$pageAdminManageCategoriesCourses) ?>" class="btn btn-white btn-sm float-left"><i class="material-icons btn__icon--left">playlist_add_check</i> View Courses <span class="badge badge-dark ml-2"><?php echo '0'; ?></span></a>
+                    <a class="btn btn-primary btn-sm float-right" href="<?php Nav::echoURL($dir, App::$pageAdminAddCategories . "?id=$id") ?>"><i class="material-icons btn__icon--left">edit</i>Edit</a>
+                    <button onclick="confirmDelete('<?php Nav::echoURL($dir, App::$routeAdminCategory . '?m=delete&id=' . $id) ?>');" class="btn btn-default btn-sm float-right" style="margin-right: 8px"><i class="material-icons btn__icon--left">delete_forever</i> Delete </button>
                     <div class="clearfix"></div>
                 </div>
             </div>
 <?php
         }
 
-        public static function initSelect($dir, $masterID, $categories){
-?>
-            <option value="">-</option>
-<?php
+        private static function initParent($parentID, $categories){
             foreach ($categories as $key => $value) {
-                if($masterID != $value->ID){
-?>
-                    <option value="<?php echo $value->ID ?>"><?php echo $value->title ?></option>
-<?php
-                }else{
-?>
-                    <option value="<?php echo $value->ID ?>" selected><?php echo $value->title ?></option>    
-<?php
+                if($parentID == $value->ID){
+                    echo $value->title;
                 }
             }
+        }
+
+        private static function countByCategory($api, $id){
+            $filter = new StdClass();
+            $filter->categoryID = $id;
+
+            $result = FunCourse::countFiltered($api, $filter);
+            return $result->response;
         }
     }

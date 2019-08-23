@@ -6,6 +6,7 @@
     Includer::include_admin($dir, 'admin_manage_courses.php');
     Includer::include_fun($dir, 'fun_admin_course.php');
     Includer::include_fun($dir, 'fun_course.php');
+    Includer::include_fun($dir, 'fun_category.php');
 
     $auth = Session::getAuth(); 
     $apiKey = Session::getAPIKey(); 
@@ -19,71 +20,48 @@
         new Path(TRUE, 'Manage Courses', $dir . App::$pageAdminManageCourses)
     );
 
-    $pages = array(
-        new Path(FALSE, '1', $dir . App::$pageAdminManageCourses . "?page=0"),
-        new Path(FALSE, '2', $dir . App::$pageAdminManageCourses . "?page=1"),
-        new Path(FALSE, '3', $dir . App::$pageAdminManageCourses . "?page=2")
-    );
-
-  /*  if(Session::checkUserAdmin()){
-        if(isset($io->query->limit)) $limit = $io->query->limit;
-        else $limit = 20;
-
-        if($io->page != NULL) $c_page = $io->page;
-        else $c_page = 0;
-
-        $offset = ($c_page * $limit);        
-        $filter = new StdClass();
-        $filter->limit = $limit;
-        $filter->offset = $offset;
-
-        $count_courses = FunCourse::countCourses($api);
-        if($count_courses->success) $c_courses = $count_courses->response;
-        else $c_courses = 0;
-        
-        $pages = genPages($dir, $limit, $c_page, $c_courses);
-
-        $result = FunCourse::getCoursesFilter($api, $filter);
-        $courses = $result->response;
-
-        Header::initHeader($dir, "Admin - Manage Courses"); 
-        AdminManageCoursesView::initView($dir, $paths, $pages, $courses);
-        Footer::initFooter($dir); 
-
-    }else{
-        Nav::gotoHome($dir);
-    }
-
-    function genPages($dir, $limit, $c_page, $c_courses){
-        $pages = array();
-
-        $mark = 0;
-        $count = 0;
-        do {
-            array_push($pages, new Path(($c_page == $count), $count, $dir . App::$pageAdminManageCourses . '?page=' . $count));
-
-            $count = $count + 1;
-            $mark = $mark + $limit;
-        } while ($c_courses > $mark);
-
-        return $pages;
-    }
-    */
     if(Session::checkUserAdmin()){
         
+        if(!isset($io->query->query)) $search = (object)array(
+            'category' => '',
+            'public' => '',
+            'query' => '',
+            'orderBy' => 'course',
+            'desc' => FALSE,
+            'limit' => 20,
+            'offset' => 0
+        );
+        else $search = $io->query;
+        
+        $limit = $search->limit;
+
+        $result = FunAdminCourse::countFiltered($api, $search);
+        $count = $result->response;
+
         if($io->page == NULL){
             $c_page = 0;
         }else{
             $c_page = $io->page;
         }
+
+        $pages = Path::genPages($dir, App::$pageAdminManageCourses, $limit, $c_page, $count);
         $pages[$c_page]->active = TRUE;
 
-        Header::initHeader($dir, "Admin - View Courses"); 
-        AdminManageCoursesView::initView($dir, $paths, $pages);
+        $offset = ($c_page * $limit);        
+        $search->offset = $offset;
+
+        $result = FunAdminCourse::getFiltered($api, $search);
+        $courses = $result->response;
+
+        $result = FunCategory::get($api);
+        $categories = $result->response;
+
+        Header::initHeader($dir, "Admin - Manage Courses"); 
+        AdminManageCoursesView::initView($dir, $paths, $pages, $courses, $count, $search, $categories);
         Footer::initFooter($dir); 
 
     }else{
         Nav::gotoHome($dir);
     }
-?>
+
     

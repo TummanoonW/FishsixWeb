@@ -26,25 +26,29 @@
         $id = $io->id;
         $isNew = ($id == NULL);
 
-        $categories = FunCategory::getAll($api);
+        $result = FunCategory::get($api);
+        $categories = $result->response;
 
-        if($isNew){ //new course
-            $course = new Course(NULL);
-            Header::initHeader($dir, "Admin - " . $course->title); 
-            AdminCourseEditorView::initView($dir, $paths, $course, $categories);
-            Footer::initFooter($dir);
-        }else{ //edit course
+        if(!$isNew){ //new course
             $result = FunCourse::getCourse($api, $io->id);
-            if($result->success){
-                $course = $result->response;
-
-                Header::initHeader($dir, "Admin - " . $course->title); 
-                AdminCourseEditorView::initView($dir, $paths, $course, $categories);
-                Footer::initFooter($dir);
-            }else{
-                ErrorPage::showError($dir, $result);
-            }
+            $course = $result->response;
+            $lessons = [];
+            $packages = [];
+            $branches = [];
+            $teachers = [];
+            $classes = [];
+        }else{
+            $course = new StdClass();
+            $lessons = [];
+            $packages = [];
+            $branches = [];
+            $teachers = [];
+            $classes = [];
         }
+
+        Header::initHeader($dir, "Admin - Course Editor"); 
+        AdminCourseEditorView::initView($dir, $paths, $isNew, $course, $categories, $lessons, $packages, $branches, $teachers, $classes);
+        Footer::initFooter($dir);
     }else{
         Nav::gotoHome($dir);
     }

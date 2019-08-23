@@ -49,14 +49,24 @@
         public static $routeMyCart = "route/mycart.php";
         public static $routeProfile = "route/profile.php";
 
+        public static $routeAdminCategory = "route/admin/category.php";
+        public static $routeAdminBranch = "route/admin/branch.php";
+        public static $routeAdminUser = "route/admin/user.php";
+        public static $routeAdminCourse = "route/admin/course.php";
+
         public static $apiURL = "https://www.trialation.com/fishsix-api/"; //base URL to call API
         
         public static $apiAuth = "apiAuth.php";
         public static $apiLogin = "index.php";
         public static $apiProfile = "profile.php";
-        public static $apiCourse = "course.php";
+        public static $apiCourse = "apiCourse.php";
+        public static $apiCategory = "category.php";
+        public static $apiBranch = "branch.php";
+
         public static $apiAdminCourse = "admin-course.php";
         public static $apiAdminCategory = "admin-category.php";
+        public static $apiAdminBranch = "admin-branch.php";
+        public static $apiAdminAuth = "admin-auth.php";
 
     }
 ?>

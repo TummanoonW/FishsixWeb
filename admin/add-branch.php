@@ -3,7 +3,8 @@
 
     include_once $dir . 'includer/includer.php'; 
     Includer::include_proto($dir); 
-    Includer::include_admin($dir, 'admin_add_branch.php');
+    Includer::include_admin($dir, 'admin_edit_branch.php');
+    Includer::include_fun($dir, 'fun_branch.php');
 
 
     $auth = Session::getAuth(); 
@@ -15,15 +16,23 @@
     $paths = array(
         new Path(FALSE, 'Home', $dir),
         new Path(FALSE, 'Admin Panel', $dir . App::$pageAdminPanel),
-        new Path(FALSE, 'Manage Brach', $dir . App::$pageAdminManageBranch),
-        new Path(TRUE, 'Add Bracnh', $dir . App::$pageAdminAddBranch)
+        new Path(FALSE, 'Manage Branch', $dir . App::$pageAdminManageBranch),
+        new Path(TRUE, 'Branch Editor', $dir . App::$pageAdminAddBranch)
     );
 
     if(Session::checkUserAdmin()){
-        
+        $id = $io->id;
+        $isNew = ($id == NULL);
 
-        Header::initHeader($dir, "Admin - Add Branch"); 
-        AdminAddBranchView::initView($dir, $paths);
+        if($isNew){
+            $branch = new StdClass();
+        }else{
+            $result = FunBranch::getSingle($api, $id);
+            $branch = $result->response;
+        }
+
+        Header::initHeader($dir, "Admin - Branch Editor"); 
+        AdminAddBranchView::initView($dir, $paths, $isNew, $branch);
         Footer::initFooter($dir); 
 
     }else{
