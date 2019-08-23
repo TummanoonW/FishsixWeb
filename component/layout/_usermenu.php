@@ -20,6 +20,9 @@
                         <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageMyCourses) ?>">
                             <i class="material-icons">school</i> My Courses
                         </a>
+                        <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageMyOrder) ?>">
+                            <i class="fas fa-history"></i><span style="margin-left:8px;" >My Order</span>
+                        </a>
                         <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageProfile) ?>">
                             <i class="material-icons">edit</i> Edit Account
                         </a>

@@ -14,25 +14,47 @@
     $api = new API($apiKey);
     $io = new IO(); 
 
-    if($io->id != NULL){
-        $result = FunCourse::getCourse($api, $io->id);
+    $paths = array(
+        new Path(FALSE, 'Home', $dir),
+        new Path(TRUE, 'HTML and CSS (Sample Courses title)', $dir . App::$pageCourseView)
+    );
 
-        if($result->success){
-            $course = $result->response;
+    if(Session::checkUserExisted()){
 
-            $paths = array(
-                new Path(FALSE, 'Home', $dir),
-                new Path(FALSE, 'Course', $dir . App::$pageCourseView),
-                new Path(TRUE, $course->title, $dir . App::$pageCourseView . "?id=" . $io->id)
-            );
+        Header::initHeader($dir,"HTML and CSS (Sample Courses title)"); 
 
-            Header::initHeader($dir, $course->title); 
-            CourseView::initView($dir, $paths, $course);
-            Footer::initFooter($dir); 
-        }else{
-            ErrorPage::showError($dir, $result);
-        }
+        CourseView::initView($dir, $paths);
+
+        Footer::initFooter($dir); 
+
     }else{
-        Nav::gotoHome($dir);
+       // Nav::gotoHome($dir);
+       Header::initHeader($dir,"HTML and CSS (Sample Courses title)"); 
+
+       CourseView::initView($dir, $paths);
+
+       Footer::initFooter($dir); 
     }
+
+//    if($io->id != NULL){
+//        $result = FunCourse::getCourse($api, $io->id);
+
+//        if($result->success){
+//            $course = $result->response;
+
+//            $paths = array(
+//                new Path(FALSE, 'Home', $dir),
+//                new Path(FALSE, 'Course', $dir . App::$pageCourseView),
+//                new Path(TRUE, $course->title, $dir . App::$pageCourseView . "?id=" . $io->id)
+//            );
+
+//            Header::initHeader($dir, $course->title); 
+//            CourseView::initView($dir, $paths, $course);
+//            Footer::initFooter($dir); 
+//        }else{
+//            ErrorPage::showError($dir, $result);
+//        }
+//    }else{
+//        Nav::gotoHome($dir);
+//    }
 

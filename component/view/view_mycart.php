@@ -30,7 +30,7 @@
                                             <thead class="thead-light">
                                                 <tr>
                                                     <th>Details</th>
-                                                    <th style="width: 100px" class="text-center">Qty</th>
+                                                    <th style="width: 100px" class="text-center">Package(Cradit)</th>
                                                     <th style="width: 100px" class="text-right">Total</th>
                                                     <th style="width: 10px"></th>
                                                 </tr>
@@ -49,13 +49,11 @@
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="d-flex align-items-center">
-                                                            <a href="#" class="text-muted px-2"><i class="material-icons font-size-16pt">remove</i></a>
-                                                            <input type="number" class="form-control" style="width: 64px;" value="1">
-                                                            <a href="#" class="text-muted px-2"><i class="material-icons font-size-16pt">add</i></a>
+                                                            <input type="number" class="form-control text-center"  value="4" disabled>
                                                         </div>
                                                     </td>
                                                     <td class="text-right">
-                                                        <p class="mb-0">$20.00 USD</p>
+                                                        <p class="mb-0">399฿</p>
 
                                                     </td>
                                                     <td class="text-center">
@@ -76,15 +74,11 @@
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="d-flex align-items-center">
-                                                            <a href="#" class="text-muted px-2"><i class="material-icons font-size-16pt">remove</i></a>
-                                                            <input type="number" class="form-control" style="width: 64px;" value="2">
-                                                            <a href="#" class="text-muted px-2"><i class="material-icons font-size-16pt">add</i></a>
+                                                            <input type="number" class="form-control text-center"  value="8" disabled>
                                                         </div>
                                                     </td>
                                                     <td class="text-right">
-                                                        <p class="mb-0">$20.00 USD</p>
-
-                                                        <small class="text-black-50"><strong>Total</strong>: $40 USD</small>
+                                                        <p class="mb-0">799฿</p>
 
                                                     </td>
                                                     <td class="text-center">
@@ -99,15 +93,19 @@
                                             <tfoot>
                                                 <tr>
                                                     <td class="text-right text-black-70"><strong>Subtotal</strong></td>
-                                                    <td style="width: 100px;" class="text-right"><strong>$40 USD</strong></td>
+                                                    <td style="width: 100px;" class="text-right"><strong>1198฿</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-right text-black-70"><strong>VAT 7 %</strong></td>
+                                                    <td style="width: 100px;" class="text-right"><strong>+ 83฿</strong></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="text-right text-black-70"><strong>20% Discount</strong></td>
-                                                    <td style="width: 100px;" class="text-right"><strong>-$8 USD</strong></td>
+                                                    <td style="width: 100px;" class="text-right"><strong>- 256฿</strong></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="text-right text-black-70"><strong>Total</strong></td>
-                                                    <td style="width: 100px;" class="text-right"><strong>$32 USD</strong></td>
+                                                    <td style="width: 100px;" class="text-right"><strong>1,025฿</strong></td>
                                                 </tr>
                                             </tfoot>
                                         </table>
@@ -144,9 +142,7 @@
                 </td>
                 <td class="text-center">
                     <div class="d-flex align-items-center">
-                        <a href="#" class="text-muted px-2"><i class="material-icons font-size-16pt">remove</i></a>
-                        <input type="number" class="form-control" style="width: 64px" value="<?php echo $item->credit ?>">
-                        <a href="#" class="text-muted px-2"><i class="material-icons font-size-16pt">add</i></a>
+                        <input type="number" class="form-control" style="width: 64px" value="<?php echo $item->credit ?>" disabled>
                     </div>
                 </td>
                 <td class="text-right">

@@ -20,107 +20,49 @@
                                     <!-- Navigation Paths -->
                                     <?php Breadcrumb::initBreadcrumb($dir, $paths); ?>
                                     <h1 class="h2">Payment method</h1>
-                                    <div class="row">
-                                        <div class="col-lg">
-                                            <ul class="card list-group list-group-fit">
-                                                <li class="list-group-item">
-                                                    <div class="media align-items-center">
-                                                        <div class="media-left">
-                                                            <span class="btn btn-default btn-circle"><i class="material-icons">credit_card</i></span>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <p class="mb-0">**** **** **** 2422</p>
-                                                            <small class="text-muted">Updated on 12/02/2016</small>
-                                                        </div>
-                                                        <div class="media-right">
-                                                            <a href="#" class="btn btn-primary">Pay</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <div class="media align-items-center">
-                                                        <div class="media-left">
-                                                            <span class="btn btn-white btn-circle"><i class="material-icons">credit_card</i></span>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <p class="mb-0">**** **** **** 6321</p>
-                                                            <small class="text-muted">Updated on 11/01/2016</small>
-                                                        </div>
-                                                        <div class="media-right">
-                                                            <a href="#" class="btn btn-primary">Pay</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <div class="media align-items-center">
-                                                        <div class="media-left">
-                                                            <span class="btn btn-white btn-circle">
-                                                                <i class="fab fa-paypal"></i>
-                                                            </span>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            PayPal
-                                                        </div>
-                                                        <div class="media-right">
-                                                            <a href="#" class="btn btn-default">Pay</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
                                         <div class="col-lg">
                                             <div class="card">
-                                                <form action="#" class="form-horizontal">
+                                                <form action="<?php Nav::echoURL($dir, App::$pageOrderCourses) ?>" class="form-horizontal">
                                                     <div class="card-body">
-                                                        <div class="form-group">
-                                                            <label class="form-label">Card Number:</label>
-                                                            <input type="text" class="form-control" placeholder="XXXX XXXX XXXX XXXX XXXX">
-                                                        </div>
+
                                                         <div class="form-group row">
-                                                            <label for="cvc" class="col-form-label form-label col-md-4">CVC:</label>
-                                                            <div class="col-md-8">
-                                                                <input id="cvc" type="text" class="form-control" placeholder="123" style="width:80px">
-                                                            </div>
+                                                            <img src="https://cu.lnwfile.com/_/cu/_raw/bc/19/ql.jpg" style="margin-left:auto;margin-right:auto;" alt="">
                                                         </div>
+
+                                                        <div class="card">
+                                                          <div class="card-body">
+                                                            <p class="card-text">
+                                                            <h4 class="card-title">วิธีการชำระเงิน</h4>
+                                                                <ol>
+                                                                    <li>โอนเงินผ่านช่องทางที่กำหนด</li>
+                                                                    <li>หลังจากโอนเงินเสร็จ ให้ถ่ายรูปสลิปการโอนเงิน</li>
+                                                                    <li>อัพไฟล์รูปสลิปขึ้นเว็บไซต์</li>
+                                                                </ol>
+                                                            </p>
+                                                          </div>
+                                                        </div>
+
                                                         <div class="form-group row">
-                                                            <label for="expires" class="col-form-label form-label col-md-4">Expires:</label>
-                                                            <div class="col-md-8">
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <select id="expires" class="custom-control custom-select form-control">
-                                                                            <option value="1">January</option>
-                                                                            <option value="2">February</option>
-                                                                            <option value="3">March</option>
-                                                                            <option value="4">April</option>
-                                                                            <option value="5">May</option>
-                                                                            <option value="6">June</option>
-                                                                            <option value="7">July</option>
-                                                                            <option value="8">August</option>
-                                                                            <option value="9">September</option>
-                                                                            <option value="10">October</option>
-                                                                            <option value="11">Novemeber</option>
-                                                                            <option value="12">December</option>
-                                                                        </select>
+                                                            <label for="slip" class="col-sm-3 col-form-label form-label">Your slip</label>
+                                                            <div class="col-sm-9">
+                                                                <div class="media align-items-center">
+                                                                    <div class="media-left">
+                                                                        <div class="icon-block rounded">
+                                                                            <i class="material-icons text-muted-light md-36">photo</i>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="col-md-6">
-                                                                        <select class="custom-control custom-select form-control">
-                                                                            <option value="1" selected="">2016</option>
-                                                                            <option value="2">2017</option>
-                                                                            <option value="3">2018</option>
-                                                                            <option value="3">2019</option>
-                                                                            <option value="3">2020</option>
-                                                                            <option value="3">2021</option>
-                                                                            <option value="3">2022</option>
-                                                                            <option value="3">2023</option>
-                                                                        </select>
+                                                                    <div class="media-body">
+                                                                        <div class="custom-file" style="width: auto;">
+                                                                            <input type="file" id="slip" class="custom-file-input">
+                                                                            <label for="slip" class="custom-file-label">Choose file</label>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="card-footer text-center">
-                                                        <button type="submit" class="btn btn-success">Make Payment</button>
-                                                    </div>
+                                                        <div class="card-footer text-center">
+                                                            <button type="submit" class="btn btn-success">Make Payment</button>
+                                                        </div>
                                                 </form>
                                             </div>
                                         </div>

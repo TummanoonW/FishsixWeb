@@ -35,7 +35,7 @@
                                         <div class="card-header d-flex align-items-center" >
                                             <div class="flex">
                                                 <a href="../admin/edit-branch.php" >
-                                                    <img src="../assets/images/thumbs/def.png" alt="สาขางามวงศ์วาน" class="avatar-img rounded">
+                                                    <img src="<?php Asset::echoThumb($dir,'assets/images/thumbs/def.png') ?>" alt="สาขางามวงศ์วาน" class="avatar-img rounded">
                                                 </a>
                                             </div>
                                             <div class="card-body">
@@ -68,7 +68,7 @@
                                         <div class="flex">
                                         
                                           <a href="../admin/edit-branch.php" >
-                                            <img src="../assets/images/thumbs/def.png" alt="สาขาสยาม" class="avatar-img rounded">
+                                            <img src="<?php Asset::echoThumb($dir,'assets/images/thumbs/def.png') ?>" alt="สาขาสยาม" class="avatar-img rounded">
                                             </a>
                                         </div>
                                             <div class="card-body">
@@ -100,7 +100,7 @@
                                         <div class="flex">
                                         
                                           <a href="../admin/edit-branch.php" >
-                                            <img src="../assets/images/thumbs/def.png" alt="สาขาพระราม2" class="avatar-img rounded">
+                                            <img src="<?php Asset::echoThumb($dir,'assets/images/thumbs/def.png') ?>" alt="สาขาพระราม2" class="avatar-img rounded">
                                             </a>
                                         </div>
                                             <div class="card-body">

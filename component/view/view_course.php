@@ -1,6 +1,7 @@
 <?php
     class CourseView{
-        public static function initView($dir, $paths, $course){
+        public static function initView($dir, $paths//, $course
+        ){
             $auth = Session::getAuth();
 ?>
             <body class="layout-fluid">
@@ -25,7 +26,7 @@
                                     <!-- Navigation Paths -->
                                     <?php Breadcrumb::initBreadcrumb($dir, $paths) ?>
                                     
-                                    <h1 class="h2"><?php echo $course->title ?></h1>
+                                    <h2 class="h2">HTML and CSS<?php // echo $course->title ?></h2>
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="card">
@@ -33,7 +34,7 @@
                                                     <iframe class="embed-responsive-item" src="<?php Asset::echoImage($dir,'https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0') ?>" allowfullscreen=""></iframe>
                                                 </div>
                                                 <div class="card-body">
-                                                    <?php echo $course->description_short ?>
+                                                k;;fdlg;dslfkg;sdlkfg;dlkfgsg;d;sdfkkg;kreds;fgk;dsfkg
                                                 </div>
                                             </div>
 
@@ -116,28 +117,222 @@
                                                     </div>
                                                 </li>
                                             </ul>
+
+                                            <h2 class="h2">Branch and Time</h2>
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h3 class="h3">สาขา งามวงศ์วาน</h3>
+                                                    <table class="table mb-0">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Day</th>
+                                                                <th>Start</th>
+                                                                <th></th>
+                                                                <th>End</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="list" id="staff">
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="media align-items-center">
+
+                                                                        <div class="media-body">
+                                                                            <span class="js-lists-values-employee-name">Monday</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td><span>10:00</span></td>
+                                                                <td>To</td>
+                                                                <td><span>19:00</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="media align-items-center">
+
+                                                                        <div class="media-body">
+                                                                            <span class="js-lists-values-employee-name">Saturday</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td><span>8:00</span></td>
+                                                                <td>To</td>
+                                                                <td><span>17:00</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="media align-items-center">
+
+                                                                        <div class="media-body">
+                                                                            <span class="js-lists-values-employee-name">Sunday</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td><span>8:00</span></td>
+                                                                <td>To</td>
+                                                                <td><span>17:00</span></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <h3 class="h3">สาขา สยาม</h3>
+                                                    <table class="table mb-0">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Day</th>
+                                                                <th>Start</th>
+                                                                <th></th>
+                                                                <th>End</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="list" id="staff">
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="media align-items-center">
+
+                                                                        <div class="media-body">
+                                                                            <span class="js-lists-values-employee-name">Monday</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td><span>10:00</span></td>
+                                                                <td>To</td>
+                                                                <td><span>19:00</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="media align-items-center">
+
+                                                                        <div class="media-body">
+                                                                            <span class="js-lists-values-employee-name">Saturday</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td><span>8:00</span></td>
+                                                                <td>To</td>
+                                                                <td><span>17:00</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="media align-items-center">
+
+                                                                        <div class="media-body">
+                                                                            <span class="js-lists-values-employee-name">Sunday</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td><span>8:00</span></td>
+                                                                <td>To</td>
+                                                                <td><span>17:00</span></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </div>
-                                        
                                         <div class="col-md-4">
 
                                             <!-- Pricing Card -->
+                                            <?php  if(Session::checkUserExisted()){ ?>
+                                            
+                                            <div class="card">
+                                                <div class="card-body text-center">                            
+                                                    <a href="<?php Nav::echoURL($dir, App::$pageBookClass) ?>" class="btn btn-primary btn-block flex-column">
+                                                        <i class="fas fa-bookmark"></i> Book Class
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <div class="media align-items-center">
+                                                        <div class="media-body">
+                                                            <h4 class="card-title">Your Branch and Time</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <h3 class="h3">สาขา สยาม</h3>
+                                                    <table class="table mb-0">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Day</th>
+                                                                <th>Start</th>
+                                                                <th></th>
+                                                                <th>End</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="list" id="staff">
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="media align-items-center">
+                                                                        <div class="media-body">
+                                                                            <span class="js-lists-values-employee-name">Monday</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td><span>10:00</span></td>
+                                                                <td>To</td>
+                                                                <td><span>19:00</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="media align-items-center">
+                                                                        
+                                                                        <div class="media-body">
+                                                                            <span class="js-lists-values-employee-name">Saturday</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td><span>8:00</span></td>
+                                                                <td>To</td>
+                                                                <td><span>17:00</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="media align-items-center">
+                                                                        
+                                                                        <div class="media-body">
+                                                                            <span class="js-lists-values-employee-name">Sunday</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td><span>8:00</span></td>
+                                                                <td>To</td>
+                                                                <td><span>17:00</span></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            
+                                            <?php }else{ ?>
+
                                             <div class="card">
                                                 <div class="card-body text-center">
                                                     <p>
                                                         <a href="#" class="btn btn-outline-danger btn-block flex-column">
-                                                            <i class="material-icons">favorite</i> Add to Wish List
+                                                            <i class="fas fa-cart-plus"></i> Add to Cart
                                                         </a>
                                                     </p>
                                                     <div class="page-separator">
                                                         <div class="page-separator__text">OR</div>
                                                     </div>
+                                                    <div class="card">
+                                                        <select id="custom-select" class="form-control custom-select">
+                                                            <option selected="">Choose Course package</option>
+                                                            <option value="package1">4 Cradit/399฿</option>
+                                                            <option value="package2">8 Cradit/699฿</option>
+                                                            <option value="package3">12 Cradit/999฿</option>
+                                                        </select>
+                                                    </div>
+                                                    
                                                     <a href="<?php Nav::echoURL($dir, App::$routeMyCart . "?m=add&id=$course->ID") ?>" class="btn btn-success btn-block flex-column">
                                                         Purchase Course
-                                                        <strong>starts at &#3647;<?php echo $course->minPrice ?></strong>
                                                     </a>
                                                 </div>
                                             </div>
-
+                                            <?php }?>
+                                            
                                             <div class="card">
                                                 <div class="card-header">
                                                     <div class="media align-items-center">
@@ -157,6 +352,7 @@
                                                     <a href="" class="btn btn-light"><i class="fab fa-github"></i></a>
                                                 </div>
                                             </div>
+
                                             <div class="card">
                                                 <ul class="list-group list-group-fit">
                                                     <li class="list-group-item">

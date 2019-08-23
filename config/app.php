@@ -8,10 +8,13 @@
         public static $pageLogin = "login.php";
         public static $pageRegister = "register.php";
         public static $pageProfile = "profile.php";
+        public static $pageBrowseCourses = "browsecourses.php";
         public static $pageMyCourses = "mycourses.php";
         public static $pageCourseView = "viewcourse.php";
         public static $pageMyCart = "mycart.php";
         public static $pageCheckOut = "checkout.php";
+        public static $pageOrderCourses = "ordercourses.php";
+        public static $pageMyOrder = "myorder.php";
         public static $pageBookClass = "bookclass.php";
         public static $pageMySchedule = "myschedule.php";
         public static $pageRegisterSucceed = "registersucceed.php";
@@ -33,6 +36,7 @@
         public static $pageAdminAddCategories = "admin/add-categories.php";
         public static $pageAdminManageUser = "admin/manage-user.php";
         public static $pageAdminManageBranch = "admin/manage-branch.php";
+        public static $pageAdminManageOrder = "admin/manage-order.php";
         public static $pageAdminAddUser = "admin/add-user.php";
         public static $pageAdminEditUser = "admin/edit-user.php";
         public static $pageAdminAddBranch = "admin/add-branch.php";

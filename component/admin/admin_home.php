@@ -32,6 +32,7 @@
                                     <a href="<?php Nav::echoURL($dir, App::$pageAdminManageCategories) ?>" class="btn btn-success">Manage Categories</a>
                                     <a href="<?php Nav::echoURL($dir, App::$pageAdminManageUser) ?>" class="btn btn-success">Manage User</a>
                                     <a href="<?php Nav::echoURL($dir, App::$pageAdminManageBranch) ?>" class="btn btn-success">Manage Branch</a>
+                                    <a href="<?php Nav::echoURL($dir, App::$pageAdminManageOrder) ?>" class="btn btn-success">Manage Order</a>
                                 </div>
                             </div>
                             <?php Sidemenu::initSideMenu($dir) ?>

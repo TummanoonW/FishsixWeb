@@ -3,7 +3,7 @@
     $dir = "./";
     include_once $dir . 'includer/includer.php'; 
     Includer::include_proto($dir); 
-    Includer::include_view($dir, 'view_checkout.php');
+    Includer::include_view($dir, 'view_myorder.php');
 
     $auth = Session::getAuth(); 
     $apiKey = Session::getAPIKey(); 
@@ -13,15 +13,14 @@
 
     $paths = array(
         new Path(FALSE, 'Home', $dir),
-        new Path(FALSE, 'My Cart', $dir . App::$pageMyCart),
-        new Path(TRUE, 'Pay', $dir . App::$pageCheckOut)
+        new Path(TRUE, 'My Order', $dir . App::$pageMyOrder)
     );
 
     if(Session::checkUserExisted()){
             
-        Header::initHeader($dir,"Pay"); 
+        Header::initHeader($dir,"My Order"); 
 
-        CheckOutView::initView($dir, $paths);
+        MyOrderView::initView($dir, $paths);
 
         Footer::initFooter($dir); 
 

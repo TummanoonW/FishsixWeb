@@ -234,7 +234,7 @@
                                                                     <td>
                                                                         <div class="media align-items-center">
                                                                             <div class="avatar avatar-sm mr-3">
-                                                                                <img src="../assets/images/thumbs/def.png" alt="Avatar" class="avatar-img rounded-circle">
+                                                                                <img src="<?php Asset::echoThumb($dir,'assets/images/thumbs/def.png') ?>" alt="Avatar" class="avatar-img rounded-circle">
                                                                             </div>
                                                                             <div class="media-body">
                                                                                 <span class="js-lists-values-employee-name">Helen Mcdaniel</span>
@@ -246,7 +246,7 @@
                                                                     <td>
                                                                         <div class="media align-items-center">
                                                                             <div class="avatar avatar-sm mr-3">
-                                                                                <img src="../assets/images/thumbs/def.png" alt="Avatar" class="avatar-img rounded-circle">
+                                                                                <img src="<?php Asset::echoThumb($dir,'assets/images/thumbs/def.png') ?>" alt="Avatar" class="avatar-img rounded-circle">
                                                                             </div>
                                                                             <div class="media-body">
                                                                                 <span class="js-lists-values-employee-name">Karim Hicks</span>
@@ -258,7 +258,7 @@
                                                                     <td>
                                                                         <div class="media align-items-center">
                                                                             <div class="avatar avatar-sm mr-3">
-                                                                                <img src="../assets/images/thumbs/def.png" alt="Avatar" class="avatar-img rounded-circle">
+                                                                                <img src="<?php Asset::echoThumb($dir,'assets/images/thumbs/def.png') ?>" alt="Avatar" class="avatar-img rounded-circle">
                                                                             </div>
                                                                             <div class="media-body">
                                                                                 <span class="js-lists-values-employee-name">Clifford Burgess</span>
