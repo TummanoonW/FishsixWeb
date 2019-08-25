@@ -31,6 +31,8 @@
                 <link type="text/css" href="<?php Nav::echoURL($dir, 'assets/css/app.css') ?>" rel="stylesheet">
                 <link type="text/css" href="<?php Nav::echoURL($dir, 'assets/css/app.rtl.css') ?>" rel="stylesheet">
 
+                <!-- Theme CSS -->
+                <link rel="stylesheet" href="./assets/css/theme.css" type="text/css" />
 
                 <!-- jQuery -->
                 <script src="<?php Nav::echoURL($dir, 'assets/vendor/jquery.min.js') ?>"></script>
