@@ -16,10 +16,10 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home',            $dir),
-        new Path(FALSE, 'Admin Panel',     $dir . App::$pageAdminPanel),
-        new Path(FALSE, 'Manage Courses',  $dir . App::$pageAdminManageCourses),
-        new Path(TRUE,  'Course Editor',   $dir . App::$pageAdminCourseEditor)
+        new Path(FALSE, 'หน้าหลัก',            $dir),
+        new Path(FALSE, 'ระบบจัดการ',     $dir . App::$pageAdminPanel),
+        new Path(FALSE, 'จัดการคอร์ส',  $dir . App::$pageAdminManageCourses),
+        new Path(TRUE,  'โปรแกรมแก้ไขคอร์ส',   $dir . App::$pageAdminCourseEditor)
     );
 
     if(Session::checkUserAdmin()){
@@ -30,24 +30,30 @@
         $categories = $result->response;
 
         if(!$isNew){ //new course
-            $result = FunCourse::getCourse($api, $io->id);
+            $result = FunCourse::getFull($api, $io->id);
             $course = $result->response;
-            $lessons = [];
-            $packages = [];
-            $branches = [];
-            $teachers = [];
-            $classes = [];
         }else{
-            $course = new StdClass();
-            $lessons = [];
-            $packages = [];
-            $branches = [];
-            $teachers = [];
-            $classes = [];
+            $course = (object)array(
+                'title' => '',
+                'content' => '',
+                'description' => '',
+                'public' => '0',
+                'thumbnail' => '',
+                'endDate' => '',
+                'startDate' => '',
+                'lineGroup' => '',
+                'lessons' => [],
+                'branches' => [],
+                'classes' => [],
+                'lessons' => [],
+                'packages' => [],
+                'teachers' => [],
+                'pictures' => []
+            );
         }
 
-        Header::initHeader($dir, "Admin - Course Editor"); 
-        AdminCourseEditorView::initView($dir, $paths, $isNew, $course, $categories, $lessons, $packages, $branches, $teachers, $classes);
+        Header::initHeader($dir, "แอดมิน - โปรแกรมแก้ไขคอร์ส"); 
+        AdminCourseEditorView::initView($dir, $paths, $isNew, $course, $categories);
         Footer::initFooter($dir);
     }else{
         Nav::gotoHome($dir);

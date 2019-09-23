@@ -13,8 +13,8 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home', $dir),
-        new Path(FALSE, 'Admin Panel', $dir . App::$pageAdminPanel),
+        new Path(FALSE, 'หน้าหลัก', $dir),
+        new Path(FALSE, 'ระบบจัดการ', $dir . App::$pageAdminPanel),
         new Path(FALSE, 'Manage Brach', $dir . App::$pageAdminManageBranch),
         new Path(TRUE, 'Edit Bracnh', $dir . App::$pageAdminEditBranch)
     );

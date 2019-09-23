@@ -15,7 +15,7 @@
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir) ?>
+                    <?php Toolbar::initToolbar($dir, '') ?>
                     <!-- // END Header -->
                     <!-- Header Layout Content -->
                     <div class="mdk-header-layout__content">

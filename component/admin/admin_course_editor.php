@@ -1,7 +1,23 @@
 <?php
     class AdminCourseEditorView{
-        public static function initView($dir, $paths, $isNew, $course, $categories, $lessons, $packages, $branches, $teachers, $classes){
+        public static function initView($dir, $paths, $isNew, $course, $categories){
             $auth = Session::getAuth();
+            $obj = array(
+                'isNew' => $isNew, 
+                'dir' => $dir
+            ); 
+            $urls = array(
+                'def_thumb'                     => $dir . Asset::$thumb_def,
+                'def_user'                      => $dir . Asset::$icon_def,
+                'pageAdminManageCourses'        => Nav::getURL($dir, App::$pageAdminManageCourses),
+                'pageAdminCourseEditor'         => Nav::getURL($dir, App::$pageAdminCourseEditor),
+                'pageAdminCourseEditorLesson'   => Nav::getURL($dir, App::$pageAdminCourseEditorLessons),
+                'routeAdminCourse'              => Nav::getURL($dir, App::$routeAdminCourse),
+                'pageAdminCourseEditorBranch'   => Nav::getURL($dir, App::$pageAdminCourseEditorBranch),
+                'pageAdminCourseEditorPackage'  => Nav::getURL($dir, App::$pageAdminCourseEditorPackage),
+                'pageAdminCourseEditorTeacher'  => Nav::getURL($dir, App::$pageAdminCourseEditorTeacher),
+                'pageAdminCourseEditorClass'    => Nav::getURL($dir, App::$pageAdminCourseEditorTime)
+            );
 ?>
        
             <body class="layout-fluid">
@@ -26,7 +42,7 @@
                 <div class="mdk-header-layout js-mdk-header-layout">
 
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir) ?>
+                    <?php Toolbar::initToolbar($dir, '') ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
@@ -35,61 +51,47 @@
                         <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
                             <div class="mdk-drawer-layout__content page ">
 
-                                <div class="container-fluid page__container">
+                                <div id="loading" class="progress m-4 height32" height="32">
+                                  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0%</div>
+                                </div>
+
+                                <div id="page" class="container-fluid page__container">
 
                                     <!-- Navigation Paths -->
                                     <?php Breadcrumb::initBreadcrumb($dir, $paths) ?>
 
                                     <div class="media align-items-center mb-headings">
                                         <div class="media-body">
-                                            <h1 class="h2"><?php if(!$isNew) echo $course->title; else echo 'New Course' ?></h1>
+                                            <h1 class="h2" id="pageTitle">คอร์สใหม่</h1>
                                         </div>
                                         <div class="media-right">
-                                            <?php if(!$isNew){ ?>
-                                                <span style="margin-right: 8px">Last updated: <?php echo $course->editedDate ?></span>
-                                            <?php } ?>
-                                            <?php 
-                                                if(!$isNew){
-                                                    if($course->public){
-                                                        ?>
-                                                            <button id="btn-unpublish" class="btn btn-secondary mr-2" style="margin-right: 4px">UNPUBLISH</button>
-                                                        <?php
-                                                    }else{
-                                                        ?>
-                                                            <button id="btn-publish" class="btn btn-success mr-2" style="margin-right: 4px">PUBLISH</button>
-                                                        <?php
-                                                    }
-                                                }else{
-                                                    ?>
-                                                        <button id="btn-publish" class="btn btn-success mr-2" style="visibility: collapse;">PUBLISH</button>
-                                                    <?php
-                                                }
-                                            ?>
-                                            <button id="btn-save" class="btn btn-info">SAVE</button>
+                                            <span class="mr-3">อัพเดทล่าสุด: <span id="cEditedDate"></span></span>
+                                            <button id="btn-publish" class="btn mr-2">เผยแพร่เลย</button>
+                                            <button id="btn-save" class="btn btn-info">บันทึก</button>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h4 class="card-title">Basic Information</h4>
+                                                    <h4 class="card-title">ข้อมูลเบื้องต้น</h4>
                                                 </div>
                                                 <div class="card-body">
 
                                                     <div class="form-group">
-                                                        <label class="form-label" for="title">Title</label>
-                                                        <input type="text" id="title" class="form-control" placeholder="Write a title" value="<?php if(!$isNew) echo $course->title ?>">
+                                                        <label class="form-label" for="cTitle">Title</label>
+                                                        <input type="text" id="cTitle" class="form-control" placeholder="กรอกหัวเรื่อง" value="">
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label class="form-label" for="sub-description">Content (maximum 100 letters)</label>
-                                                        <textarea id="sub-description" class="form-control" placeholder="Enter content" maxlength="100" value="<?php if(!$isNew) echo $course->content ?>"></textarea>
+                                                        <label class="form-label" for="cContent">คำอธิบายย่อ (สูงสุด 100 ตัวอักษร)</label>
+                                                        <textarea id="cContent" class="form-control" placeholder="กรอกคำอธิบายย่อ" maxlength="100" rows="3" value=""></textarea>
                                                     </div>
 
                                                     <div class="form-group mb-0">
-                                                        <label class="form-label">Description (maximum 1000 letters)</label>
-                                                        <div style="height: 150px" data-toggle="quill" data-quill-placeholder="Quill WYSIWYG editor" data-quill-modules-toolbar='[["bold", "italic"], ["link", "blockquote", "code", "image"], [{"list": "ordered"}, {"list": "bullet"}]]'>
-                                                            <p id="description"><?php if(!$isNew) echo $course->description ?></p>
+                                                        <label class="form-label">คำอธิบายเต็ม (สูงสุด 1000 ตัวอักษร)</label>
+                                                        <div id="cDescription" style="height: 300px" data-toggle="quill" data-quill-placeholder="กรอกคำอธิบายเต็ม" data-quill-modules-toolbar='[["bold", "italic"], ["link", "blockquote", "code"], [{"list": "ordered"}, {"list": "bullet"}]]'>
+                                                            <p></p>    
                                                         </div>
                                                     </div>
 
@@ -97,13 +99,13 @@
                                             </div>
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h4 class="card-title">Lessons</h4>
+                                                    <h4 class="card-title">บทเรียน</h4>
                                                 </div>
                                                 <div class="card-body">
-                                                    <p><a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditorLessons) ?>" class="btn btn-primary">Add Lesson <i class="material-icons">add</i></a></p>
+                                                    <p><a id="btn-add-lesson" class="btn btn-primary text-light">เพิ่มบทเรียน <i class="material-icons">add</i></a></p>
                                                     <div class="nestable" id="nestable-handles-primary">
-                                                        <ul class="nestable-list">
-                                                            <?php self::initLessonItems($dir, $lessons) ?>
+                                                        <ul id="cLessons" class="nestable-list">
+                                                            <!-- LESSON ITEMS -->
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -111,13 +113,13 @@
                                             
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h4 class="card-title">Packages</h4>
+                                                    <h4 class="card-title">ชุดราคา</h4>
                                                 </div>
                                                 <div class="card-body">
-                                                    <p><a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditorPackage) ?>" class="btn btn-primary">Add Package <i class="material-icons">add</i></a></p>
+                                                    <p><a id="btn-add-package" class="btn btn-primary text-light">เพิ่มชุดราคา <i class="material-icons">add</i></a></p>
                                                     <div class="nestable" id="nestable-handles-primary">
-                                                        <ul class="nestable-list">
-                                                            <?php self::initPackageItems($dir, $packages) ?>
+                                                        <ul id="cPackages" class="nestable-list">
+                                                            <!-- PACKAGE ITEMS -->
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -125,13 +127,13 @@
 
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h4 class="card-title">Branches</h4>
+                                                    <h4 class="card-title">สาขา</h4>
                                                 </div>
                                                 <div class="card-body">
-                                                    <p><a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditorBranch) ?>" class="btn btn-primary">Add Branch <i class="material-icons">add</i></a></p>
+                                                    <p><a id="btn-add-branch" class="btn btn-primary text-light">เพิ่มสาขา <i class="material-icons">add</i></a></p>
                                                     <div class="nestable" id="nestable-handles-primary">
-                                                        <ul class="nestable-list">
-                                                            <?php self::initBranchItems($dir, $branches) ?>
+                                                        <ul id="cBranches" class="nestable-list">
+                                                            <!-- BRANCH ITEMS -->
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -140,22 +142,22 @@
                                            
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h4 class="card-title">Class</h4>
+                                                    <h4 class="card-title">รอบเรียน</h4>
                                                 </div>
                                                 <div class="card-body">
-                                                    <p><a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditorTime) ?>" class="btn btn-primary">Add Time<i class="material-icons">add</i></a></p>
+                                                    <p><a id="btn-add-class" class="btn btn-primary text-light">เพิ่มรอบเรียน<i class="material-icons">add</i></a></p>
                                                     <div class="nestable" id="nestable-handles-primary">
                                                     <table class="table mb-0">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>Day</th>
-                                                                    <th>Start</th>
+                                                                    <th>วัน</th>
+                                                                    <th>เวลาเริ่ม</th>
                                                                     <th></th>
-                                                                    <th>End</th>
+                                                                    <th>เวลาจบ</th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody class="list" id="staff">
-                                                                <?php self::initClassItems($dir, $classes) ?>
+                                                            <tbody id="cClasses" class="list">
+                                                                <!-- CLASS ITEMS -->
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -163,94 +165,71 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="card">
+                                            <form id="thumbForm" class="card">
                                                 <div class="embed-responsive embed-responsive-16by9">
-                                                    <?php 
-                                                        if($course->thumbnail == ''){
-                                                            ?>
-                                                                <img id="thumb" src="<?php Asset::echoThumb($dir, $course->thumbnail) ?>" alt="" width="100%" class="embed-responsive-item">
-                                                            <?php
-                                                        }else{
-                                                            ?>
-                                                                <img id="thumb" src="<?php echo $course->thumbnail ?>" alt="" width="100%" class="embed-responsive-item">
-                                                            <?php
-                                                        }
-                                                    ?>
+                                                    <img id="cThumb" src="<?php Asset::echoThumb($dir, '') ?>" alt="" width="100%" class="embed-responsive-item">
                                                 </div>
                                                 <div class="card-body">
-                                                    <label class="mb-2"><h5 class="card-title">Thumbnail</h5></label> 
+                                                    <label class="mb-2"><h5 class="card-title">ภาพตัวอย่าง</h5></label> 
                                                     <div class="custom-file" style="width: auto;">
-                                                        <input type="file" id="thumbnail" class="custom-file-input" accept="image/*" onchange="urlToBase64(this, 720, 480, '#thumb', '#thumbnail')">
-                                                        <label for="thumbnail" class="custom-file-label">Choose file</label>
-                                                        <small class="text-secondary">recommended size: 720x480 px</small>
+                                                        <input type="file" id="cThumbnail" class="custom-file-input" accept="image/*" onchange="uploadToPicture(this, 720, 480, '#cThumb', '#cThumbnail2')">
+                                                        <label for="cThumbnail" class="custom-file-label">อัพโหลดไฟล์</label>
+                                                        <small class="text-secondary">ขนาดที่แนะนำ: 720x480 px</small>
                                                     </div>
                                                 </div>
-                                                <input name="thumbnail" id="thumbnail" style="visibility: collapse; height: 1px;" value="<?php if(!$isNew) echo $course->thumbnail ?>">
-                                            </div>
+                                                <input name="thumbnail" id="cThumbnail2" style="visibility: collapse; height: 1px;" value="">
+                                            </form>
 
                                             <div class="card">
                                                 <div class="card-header">
-                                                   <label for="picture"><h4 class="card-title">Pictures</h4></label> 
+                                                   <label for="picture"><h4 class="card-title">ภาพประกอบ</h4></label> 
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="custom-file" style="width: auto;">
-                                                        <input type="file" id="picture" class="custom-file-input">
-                                                        <label for="picture" class="custom-file-label">Choose file</label>
+                                                        <input name="picture" type="file" id="cPicture" class="custom-file-input" accept="image/*" onchange="onUploadToPicture(this, 1080, 720, '#cPicture2')">
+                                                        <label for="cPicture" class="custom-file-label">อัพโหลดไฟล์</label>
+                                                        <small class="text-secondary">ขนาดที่แนะนำ: 1080x720 px</small>
                                                     </div>
                                                     <div class="nestable" id="nestable-handles-primary" style="margin-top:10px;">
-                                                        <ul class="nestable-list">
-                                                            <li class="nestable-item nestable-item-handle" data-id="2">
-                                                                <div class="nestable-handle"><i class="material-icons">menu</i></div>
-                                                                <div class="nestable-content">
-                                                                    <div class="media align-items-center">
-                                                                        <div class="media-body">
-                                                                            <p><img src="<?php Asset::echoThumb($dir, 'vuejs.png') ?>" alt="" width="100" class="rounded"></p>
-                                                                            <small class="text-muted">
-                                                                                <input type="text" id="duration" class="form-control" placeholder="caption" value="" width="100">
-                                                                            </small>
-                                                                        </div>
-                                                                        <div class="media-right">
-                                                                            <a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditor) ?>" onclick="return confirm('Are you sure?');" class="btn btn-white btn-sm"><i class="material-icons">delete_forever</i></a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
+                                                        <ul id="cPictures" class="nestable-list">
+                                                            <!-- PICTURE ITEMS -->
                                                         </ul>
                                                     </div>
                                                 </div>
+                                                <input name="picture2" id="cPicture2" style="visibility: collapse; height: 1px;" value="">
                                             </div>
 
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h4 class="card-title">Teacher</h4>
+                                                    <h4 class="card-title">ครูผู้สอน</h4>
                                                 </div>
                                                 <div class="card-body"><!-- แก้ -->
-                                                    <p><a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditorTeacher) ?>" class="btn btn-primary">Add Teacher<i class="material-icons">add</i></a></p>
+                                                    <p><a id="btn-add-teacher" class="btn btn-primary text-light">เพิ่มครู<i class="material-icons">add</i></a></p>
                                                     <div class="nestable" id="nestable-handles-primary">
                                                     <table class="table mb-0">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>Teacher</th>
+                                                                    <th>ครู</th>
                                                                     <th style="width: 24px;"></th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody class="list" id="staff">
-                                                                <?php self::initTeacherItems($dir, $teachers) ?>
+                                                            <tbody id="cTeachers" class="list">
+                                                                <!-- TEACHER ITEMS -->
                                                             </tbody>
                                                         </table>
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h4 class="card-title">Category</h4>
+                                                    <h4 class="card-title">หมวดหมู่</h4>
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="category">Category</label>
-                                                        <select id="category" class="custom-select form-control" value="<?php if(!$isNew) echo $course->categoryID ?>">
-                                                                <option value="0">-</option>
+                                                        <label class="form-label" for="category">หมวดหมู่</label>
+                                                        <select id="cCategory" class="custom-select form-control" value="">
+                                                                <option value="">-</option>
                                                             <?php foreach ($categories as $key => $value) { ?>
                                                                 <option value="<?php echo $value->ID ?>"><?php echo $value->title ?></option>
                                                             <?php } ?>
@@ -260,33 +239,31 @@
                                             </div>
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h4 class="card-title">Meta</h4>
-                                                    <p class="card-subtitle">Extra Options </p>
+                                                    <h4 class="card-title">เพิ่มเติม</h4>
+                                                    <p class="card-subtitle">ข้อมูลเพิ่มเติม </p>
                                                 </div>
                                                 <form class="card-body" action="#">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="duration">Expire Credit After (days)</label>
-                                                        <input type="text" id="duration" class="form-control" placeholder="No. of Days" value="60">
+                                                        <label class="form-label" for="cExpiration">Credit หมดอายุภายใน (วัน)</label>
+                                                        <input id="cExpiration" type="number" class="form-control" placeholder="จำนวนวัน" value="60">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="form-label" for="start">Start Date</label>
-                                                        <input id="start" type="text" class="form-control" placeholder="Start Date" data-toggle="flatpickr" value="01/28/2016">
+                                                        <label class="form-label" for="cStartDate">วันที่เริ่มคอร์ส</label>
+                                                        <input id="cStartDate" type="date" class="form-control" placeholder="วันที่เริ่มคอร์ส" data-toggle="flatpickr">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="form-label" for="end">End Date</label>
-                                                        <input id="end" type="text" class="form-control" placeholder="Start Date" data-toggle="flatpickr" value="01/28/2016">
+                                                        <label class="form-label" for="cEndDate">วันที่จบคอร์ส</label>
+                                                        <input id="cEndDate" type="date" class="form-control" placeholder="วันที่จบคอร์ส" data-toggle="flatpickr">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="form-label" for="duration"><img src="<?php Asset::echoIcon($dir, 'line-icon.png') ?>" alt="Avatar" class="rounded-circle" width="20"> LINE Group</label>
-                                                        <input type="text" id="duration" class="form-control" placeholder="URL" value="">
+                                                        <label class="form-label" for="cLineGroup"><img src="<?php Asset::embedIcon($dir, 'line-icon.png') ?>" alt="Avatar" class="rounded-circle" width="20">กลุ่ม LINE</label>
+                                                        <input id="cLineGroup" type="text" class="form-control" placeholder="URL" value="">
                                                     </div>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                                
-                                                    
+                                </div>              
                             </div>
                             <?php Sidemenu::initSideMenu($dir) ?>
                         </div>
@@ -307,18 +284,16 @@
 
 
                 <!-- PHP-Javascript Interaction -->
-                <script id="obj-isNew"><?php if($isNew) echo '1'; else echo '0' ?></script>
+                <script id="obj-basic">
+                    <?php echo json_encode($obj); ?>
+                </script>
                 <script id="obj-course"><?php echo json_encode($course) ?></script>
-                <script id="obj-categories"><?php echo json_encode($categories) ?></script>
-                <script id="obj-lessons"><?php echo json_encode($lessons) ?></script>
-                <script id="obj-packages"><?php echo json_encode($packages) ?></script>
-                <script id="obj-branches"><?php echo json_encode($branches) ?></script>
-                <script id="obj-teachers"><?php echo json_encode($teachers) ?></script>
-                <script id="obj-classes"><?php echo json_encode($classes) ?></script>
+                <script id="obj-urls"><?php echo json_encode($urls) ?></script>
 
+                
+                <!-- Custom -->
                 <?php Script::customScript($dir, 'admin-course-editor.js') ?>
-                <!-- Custom Script -->
-                <?php Script::customScript($dir, 'common.js') ?>
+
 <?php
         }
 
@@ -434,6 +409,27 @@
                     <td><span>19:00</span></td>
                     <td><a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditor) ?>" onclick="return confirm('Are you sure?');" class="btn btn-white btn-sm"><i class="material-icons">delete_forever</i></a></td>
                 </tr>
+            <?php
+        }
+
+        private static function initPicturesItems($dir, $pictures){
+            ?>
+                <li class="nestable-item nestable-item-handle" data-id="2">
+                    <div class="nestable-handle"><i class="material-icons">menu</i></div>
+                    <div class="nestable-content">
+                        <div class="media align-items-center">
+                            <div class="media-body">
+                                <p><img src="<?php Asset::echoThumb($dir, 'vuejs.png') ?>" alt="" width="100" class="rounded"></p>
+                                <small class="text-muted">
+                                    <input type="text" id="duration" class="form-control" placeholder="caption" value="" width="100">
+                                </small>
+                            </div>
+                            <div class="media-right">
+                                <a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditor) ?>" onclick="return confirm('Are you sure?');" class="btn btn-white btn-sm"><i class="material-icons">delete_forever</i></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
             <?php
         }
     }

@@ -9,7 +9,7 @@
                     <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px">
                         <div class="text-center mt-5 mb-1">
                             <div class="avatar avatar-lg">
-                                <img src="<?php Asset::embedIcon($dir, Asset::$iconURL) ?>" class="avatar-img rounded-circle" alt="LearnPlus" />
+                                <img src="<?php Asset::embedIcon($dir, Asset::$iconURL) ?>" class="avatar-img rounded-circle" alt="Fishsix" />
                             </div>
                         </div>
                         <div class="d-flex justify-content-center mb-5 navbar-light">
@@ -17,25 +17,25 @@
                         </div>
                         <div class="card navbar-shadow">
                             <div class="card-header text-center">
-                                <h4 class="card-title">Login</h4>
-                                <p class="card-subtitle">Access your account</p>
+                                <h4 class="card-title">เข้าสู่ระบบ</h4>
+                                <p class="card-subtitle">ด้วยบัญชีของคุณ</p>
                             </div>
                             <div class="card-body">
 
                                 <a href="student-dashboard.html" class="btn btn-light btn-block">
                                     <span class="fab fa-google mr-2"></span>
-                                    Continue with Google
+                                    เข้าสู่ระบบด้วย บัญชี Google
                                 </a>
 
                                 <div class="page-separator">
-                                    <div class="page-separator__text">or</div>
+                                    <div class="page-separator__text">หรือ</div>
                                 </div>
 
                                 <form method="POST" action="<?php Nav::echoURL($dir, App::$routeLogIn) ?>">
                                     <div class="form-group">
-                                        <label class="form-label" for="email">Your email address:</label>
+                                        <label class="form-label" for="email">อีเมล ของคุณ:</label>
                                         <div class="input-group input-group-merge">
-                                            <input name="email" id="email" type="email" required="" class="form-control form-control-prepended" placeholder="Your email address">
+                                            <input name="email" id="email" type="email" required="" class="form-control form-control-prepended" placeholder="อีเมล ของคุณ">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
                                                     <span class="far fa-envelope"></span>
@@ -44,9 +44,9 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-label" for="password">Your password:</label>
+                                        <label class="form-label" for="password">รหัสผ่าน ของคุณ:</label>
                                         <div class="input-group input-group-merge">
-                                            <input name="password" id="password" type="password" required="" class="form-control form-control-prepended" placeholder="Your password">
+                                            <input name="password" id="password" type="password" required="" class="form-control form-control-prepended" placeholder="รหัสผ่าน ของคุณ">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
                                                     <span class="far fa-key"></span>
@@ -55,15 +55,15 @@
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                                        <button type="submit" class="btn btn-primary btn-block">เข้าสู่ระบบ</button>
                                     </div>
                                     <div class="text-center">
-                                        <a href="<?php Nav::echoURL($dir, App::$pageForgotPassword)?>" class="text-black-70" style="text-decoration: underline">Forgot Password?</a>
+                                        <a href="<?php Nav::echoURL($dir, App::$pageForgotPassword)?>" class="text-black-70" style="text-decoration: underline">ลืมรหัสผ่าน?</a>
                                     </div>
                                 </form>
                             </div>
                             <div class="card-footer text-center text-black-50">
-                                Not yet a student? <a href="<?php Nav::echoURL($dir, App::$pageRegister) ?>">Register</a>
+                                ยังไม่ได้เป็นสมาชิก? <a href="<?php Nav::echoURL($dir, App::$pageRegister) ?>">สมัครสมาชิก</a>
                             </div>
                         </div>
                     </div>

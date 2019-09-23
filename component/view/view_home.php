@@ -4,6 +4,10 @@
             $auth = Session::getAuth();
 ?>
             <body class=" layout-fluid">
+
+                <link rel="stylesheet" href="<?php Nav::echoURL($dir, 'assets/css/theme.css') ?>" type="text/css" />
+                <script type="text/javascript" src="<?php Nav::echoURL($dir, 'assets/js/frontpage.js') ?>"></script>
+
                 <!-- Pre Loader -->
                 <?php Preloader::initPreloader($dir) ?>
 
@@ -11,42 +15,52 @@
                 <div class="mdk-header-layout js-mdk-header-layout">
 
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir) ?>
+                    <?php Toolbar::initToolbar($dir, '') ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
                     <div class="mdk-header-layout__content">
 
-                        <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+                        <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout" style="background: #0F0F0F">
                             <div class="mdk-drawer-layout__content page ">
-
-                                <div class="container-fluid page__container">
-                                    <div class="media align-items-center mb-headings">
-                                        <div class="media-body">
-                                            <h1 class="h2">Courses</h1>
+                                <div class="container-fluid page__container">                                
+                                    <section id="row1" class="mt-1">
+                                        <h2 class="sectionTitle text-light">คอร์สเรียนยอดนิยม</h2>
+                                        <div class="examples">
+                                           <ul class="img-list">
+                                             <?php self::initCard($dir, $courses, $categories) ?>
+                                           </ul>
                                         </div>
-                                        <div class="media-right">
-                                            <div class="btn-group btn-group-sm">
-                                                <a href="#" class="btn btn-white active"><i class="material-icons">list</i></a>
-                                                <a href="#" class="btn btn-white"><i class="material-icons">dashboard</i></a>
-                                            </div>
-                                        </div>
+                                    </section>
+                                    
+                                   <section id="row2" class="mt-4 mb-5">
+                                    <h2 class="sectionTitle text-light">ฟิสิกข์</h2>
+                                    <div class="examples">
+                                       <ul class="img-list">
+                                          <li class="image">
+                                             <a href="#">
+                                                <img src="http://placehold.it/280x150" width="280" height="150" />
+                                                <span class="text-content"><span>Title Here...<br><br><i class="fa fa-4x  fa-play-circle-o"></i><br><br><i class="fa fa-chevron-down" aria-hidden="true"></i></span></span>
+                                             </a>
+                                          </li>
+                                          <li class="image">
+                                             <a href="#">
+                                                <img src="http://placehold.it/280x150" width="280" height="150" />
+                                                <span class="text-content"><span>Title Here...<br><br><i class="fa fa-4x  fa-play-circle-o"></i><br><br><i class="fa fa-chevron-down" aria-hidden="true"></i></span></span>
+                                             </a>
+                                          </li>
+                                          <li class="image">
+                                             <a href="#">
+                                                <img src="http://placehold.it/280x150" width="280" height="150" />
+                                                <span class="text-content"><span>Title Here...<br><br><i class="fa fa-4x  fa-play-circle-o"></i><br><br><i class="fa fa-chevron-down" aria-hidden="true"></i></span></span>
+                                             </a>
+                                          </li>
+                                       </ul>
                                     </div>
-                                    <div class="clearfix"></div>
-
-
-                                    <div class="row">
-                                        <!-- Course Card -->
-                                        <?php 
-                                            foreach ($courses as $key => $value) {
-                                                self::initCard($dir, $key, $value, $categories);
-                                            }
-                                        ?>
-                                    </div>
+                                   </section>
 
                                     <!-- Pagination -->
                                     <?php Pagination::initPagination($dir, $pages) ?>
-
                                 </div>
                             </div>
                             <?php Sidemenu::initSideMenu($dir) ?>
@@ -58,31 +72,24 @@
 
         }
         
-        public static function initCard($dir, $key, $course, $categories){
+        public static function initCard($dir, $courses, $categories){
+            foreach ($courses as $key => $c) {
 ?>
-        <div class="col-md-4 col-sm-6">
-            <div class="card">
-                <div class="card-header text-center">
-                    <h4 class="card-title mb-0"><a href="<?php Nav::echoURL($dir, App::$pageCourseView . "?id=" . $course->ID) ?>"><?php echo $course->title ?></a></h4>
-                    <div class="rating">
-                        <i class="material-icons">star</i>
-                        <i class="material-icons">star</i>
-                        <i class="material-icons">star</i>
-                        <i class="material-icons">star</i>
-                        <i class="material-icons">star_border</i>
-                    </div>
-                </div>
-                <a href="<?php Nav::echoURL($dir, App::$pageCourseView . "?id=" . $course->ID) ?>">
-                    <img src="<?php Asset::echoThumb($dir, $course->thumbnail) ?>" alt="<?php echo $course->title ?>" style="width:100%">
-                </a>
-                <div class="card-body">
-                    <small class="text-muted">ADVANCED</small><br>
-                    <?php echo $course->description_short ?><br>
-                    <span class="badge badge-primary "><?php echo self::printCategory($course->categoryID, $categories) ?></span>
-                </div>
-            </div>
-        </div>
+                <li class="image">
+                   <a href="<?php Nav::echoURL($dir, App::$pageCourseView ."?id=$c->ID") ?>">
+                        <img id="box1" src="<?php Asset::echoThumb($dir, $c->thumbnail)?>" width="280" height="150" />
+                        <span class="text-content">
+                            <h4 class="text-light">
+                              <?php echo $c->title?>
+                            </h4>
+                            <i class="far fa-play-circle" style="font-size: 48px"></i>
+                            <br><br>
+                            <i class="fas fa-chevron-down" onclick="openNav()" aria-hidden="true"></i>
+                        </span>
+                   </a>
+                </li>
 <?php
+            }
         }
 
         public static function printCategory($id, $cats){

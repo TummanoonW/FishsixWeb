@@ -15,8 +15,8 @@
     $io = new IO(); //open Input/Output receiver for certain $_GET and $_POST data 
 
     $paths = array(
-        new Path(FALSE, 'Home', $dir),
-        new Path(TRUE, 'Profile', $dir . App::$pageProfile)
+        new Path(FALSE, 'หน้าหลัก', $dir),
+        new Path(TRUE, 'โปรไฟล์', $dir . App::$pageProfile)
     );
 
     //check if user already logged in
@@ -25,7 +25,7 @@
         $result = FunAuth::getUserByAuthID($api, $auth->ID);
         $user = $result->response;
 
-        Header::initHeader($dir, $auth->username . " - Profile"); //initialize HTML header elements with '<<someone name>> 's Profile' as Title
+        Header::initHeader($dir, $auth->username . " - โปรไฟล์"); //initialize HTML header elements with '<<someone name>> 's Profile' as Title
         ProfileView::initView($dir, $paths, $auth, $user); //initialize HTML profile elements
         Footer::initFooter($dir); //initialize HTML footer elements
     }else{

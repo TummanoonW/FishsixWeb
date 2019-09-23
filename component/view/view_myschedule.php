@@ -10,7 +10,7 @@
                 <div class="mdk-header-layout js-mdk-header-layout">
 
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir); ?>
+                    <?php Toolbar::initToolbar($dir, ''); ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
@@ -26,7 +26,7 @@
 
                                     <div class="media mb-headings align-items-center">
                                         <div class="media-body">
-                                            <h1 class="h2">My Schedule</h1>
+                                            <h1 class="h2">ตารางการจอง</h1>
                                         </div>
                                     </div>
                                    

@@ -49,7 +49,7 @@
             curl_setopt($curlSession, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($curlSession, CURLOPT_SSL_VERIFYHOST, false);
 
-            $output = curl_exec($curlSession);
+            $output = utf8_decode(curl_exec($curlSession));
             $response = json_decode($output);
             curl_close($curlSession);
 
@@ -67,7 +67,7 @@
             curl_setopt($curlSession, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($curlSession, CURLOPT_SSL_VERIFYHOST, false);
 
-            $output = curl_exec($curlSession);
+            $output = utf8_decode(curl_exec($curlSession));
             $response = json_decode($output);
             curl_close($curlSession);
 
@@ -84,7 +84,7 @@
             curl_setopt($curlSession, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($curlSession, CURLOPT_SSL_VERIFYHOST, false);
 
-            $output = curl_exec($curlSession);
+            $output = utf8_decode(curl_exec($curlSession));
             $response = json_decode($output);
             curl_close($curlSession);
 

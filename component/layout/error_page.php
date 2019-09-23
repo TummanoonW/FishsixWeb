@@ -9,7 +9,7 @@
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
 
-                    <?php Toolbar::initToolbar($dir); ?>
+                    <?php Toolbar::initToolbar($dir, ''); ?>
 
                     <!-- // END Header -->
 
@@ -21,8 +21,8 @@
                                   <h1 class="display-4"><i class="far fa-frown"></i>&nbsp; Error <?php echo $result->err->code ?></h1>
                                   <p class="lead"><?php echo $result->err->msg ?>!</p>
                                   <hr class="my-4">
-                                  <p>If you find any problem you can just go back or send a feedback.</p>
-                                  <a class="btn btn-outline-success btn-lg" href="<?php Nav::echoPrevious(); ?>" role="button">Go Back</a>
+                                  <p>หากคุณพบปัญหาขัดข้อง คุณสามารถย้อนกลับไปหน้าเดิม หรือส่งรายงานข้อผิดพลาดได้</p>
+                                  <a class="btn btn-outline-success btn-lg" href="<?php Nav::echoPrevious(); ?>" role="button">ย้อนกลับ</a>
                                   <!--<a class="btn btn-outline-success btn-lg" href="<?php Nav::echoURL($dir, App::$pageFeedback); ?>" role="button">Send a Feedback</a> -->
                                 </div>
                             </div>

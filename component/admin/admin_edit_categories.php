@@ -10,7 +10,7 @@
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir) ?>
+                    <?php Toolbar::initToolbar($dir, '') ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
@@ -26,7 +26,7 @@
 
                                     <div class="media align-items-center mb-headings">
                                         <div class="media-body">
-                                            <h1 class="h2">Category Editor</h1>
+                                            <h1 class="h2">โปรแกรมแก้ไขหมวดหมู่</h1>
                                         </div>
                                     </div>
                                     <div class="card">
@@ -37,20 +37,20 @@
                                                         <div class="form-group row">
                                                             <label for="id" class="col-sm-3 col-form-label form-label">ID</label>
                                                             <div class="col-sm-8">
-                                                                <input name="ID" type="text" id="id" class="form-control" placeholder="" value="<?php echo $category->ID; ?>" readonly>
+                                                                <input name="ID" type="text" id="id" class="form-control" placeholder="" value="<?php if(!$isNew) echo $category->ID; ?>" readonly>
                                                             </div>
                                                         </div>
                                                     <?php } ?>
                                                     <div class="form-group row">
-                                                            <label for="title" class="col-sm-3 col-form-label form-label">Title</label>
+                                                            <label for="title" class="col-sm-3 col-form-label form-label">หัวเรื่อง</label>
                                                             <div class="col-sm-8">
-                                                                <input name="title" type="text" id="title" class="form-control" placeholder="Enter title here" value="<?php echo $category->title; ?>">
+                                                                <input name="title" type="text" id="title" class="form-control" placeholder="กรอกหัวเรื่อง" value="<?php if(!$isNew) echo $category->title; ?>">
                                                             </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="parent" class="col-sm-3 col-form-label form-label">Parent</label>
+                                                        <label for="parent" class="col-sm-3 col-form-label form-label">หมวดหมู่แม่</label>
                                                         <div class="col-sm-8">
                                                             <div class="form-group">
                                                                 <select name="parentID" id="masterID" class="form-control custom-select" style="width: 200px">
@@ -64,8 +64,8 @@
                                                         <div class="col-sm-8 offset-sm-3">
                                                             <div class="media align-items-center">
                                                                 <div class="media-left">
-                                                                    <button type="submit" class="btn btn-success">Save</button>
-                                                                    <a onclick="confirmCancel('<?php Nav::echoURL($dir, App::$pageAdminManageCategories); ?>')'" class="btn btn-danger text-light ml-2">Cancel</a>
+                                                                    <button type="submit" class="btn btn-success">บันทึก</button>
+                                                                    <a onclick="confirmCancel('<?php Nav::echoURL($dir, App::$pageAdminManageCategories) ?>')" class="btn btn-danger text-light ml-2">ยกเลิก</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -78,11 +78,12 @@
                             </div>
                         </div>
                         <?php Sidemenu::initSideMenu($dir) ?>
-                        <!-- Custom Script -->
-                        <?php Script::customScript($dir, 'common.js') ?>
                     </div>
                 </div>
             <?php Script::initScript($dir) ?> 
+
+            
+            
 <?php
         }
         

@@ -43,7 +43,12 @@
                             <div class="sidebar-heading">เมนูค้นหา</div>
                             <ul class="sidebar-menu sm-active-button-bg">
                                 <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="<?php Nav::echoURL("", $dir); ?>">
+                                    <a class="sidebar-menu-button" href="<?php Nav::echoHome($dir); ?>">
+                                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">home</i> หน้าร้านค้า
+                                    </a>
+                                </li>
+                                <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageCourses); ?>">
                                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">search</i> ค้นหา
                                     </a>
                                 </li>

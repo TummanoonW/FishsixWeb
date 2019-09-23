@@ -1,1 +1,0 @@
-import 'ui-learnplus-bootstrap/js/check-selected-row'

@@ -13,10 +13,10 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home', $dir),
-        new Path(FALSE, 'Admin Panel', $dir . App::$pageAdminPanel),
-        new Path(FALSE, 'Manage User', $dir . App::$pageAdminManageUser),
-        new Path(TRUE, 'User Editor', $dir . App::$pageAdminAddUser)
+        new Path(FALSE, 'หน้าหลัก', $dir),
+        new Path(FALSE, 'ระบบจัดการ', $dir . App::$pageAdminPanel),
+        new Path(FALSE, 'จัดการผู้ใช้', $dir . App::$pageAdminManageUser),
+        new Path(TRUE, 'โปรแกรมแก้ไขผู้ใช้', $dir . App::$pageAdminAddUser)
     );
 
     if(Session::checkUserAdmin()){
@@ -31,7 +31,7 @@
             $user = $result->response->user;
         }
 
-        Header::initHeader($dir, "Admin - User Editor"); 
+        Header::initHeader($dir, "แอดมิน - โปรแกรมแก้ไขผู้ใช้"); 
         AdminAddUserView::initView($dir, $paths, $isNew, $auth, $user);
         Footer::initFooter($dir); 
 

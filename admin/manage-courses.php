@@ -15,9 +15,9 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home', $dir),
-        new Path(FALSE, 'Admin Panel', $dir . App::$pageAdminPanel),
-        new Path(TRUE, 'Manage Courses', $dir . App::$pageAdminManageCourses)
+        new Path(FALSE, 'หน้าหลัก', $dir),
+        new Path(FALSE, 'ระบบจัดการ', $dir . App::$pageAdminPanel),
+        new Path(TRUE, 'จัดการคอร์ส', $dir . App::$pageAdminManageCourses)
     );
 
     if(Session::checkUserAdmin()){
@@ -56,7 +56,7 @@
         $result = FunCategory::get($api);
         $categories = $result->response;
 
-        Header::initHeader($dir, "Admin - Manage Courses"); 
+        Header::initHeader($dir, "แอดมิน - จัดการคอร์ส"); 
         AdminManageCoursesView::initView($dir, $paths, $pages, $courses, $count, $search, $categories);
         Footer::initFooter($dir); 
 

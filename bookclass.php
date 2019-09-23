@@ -12,9 +12,9 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home', $dir),
-        new Path(FALSE, 'My Courses', $dir . App::$pageMyCourses),
-        new Path(TRUE, 'Booking Class', $dir . App::$pageBookClass)
+        new Path(FALSE, 'หน้าหลัก', $dir),
+        new Path(FALSE, 'คอร์สของฉัน', $dir . App::$pageMyCourses),
+        new Path(TRUE, 'จองรอบเรียน', $dir . App::$pageBookClass)
     );
     if(Session::checkUserExisted()){
 

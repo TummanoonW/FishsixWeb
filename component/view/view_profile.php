@@ -16,7 +16,7 @@
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
 
-                    <?php Toolbar::initToolbar($dir) ?>
+                    <?php Toolbar::initToolbar($dir, '') ?>
 
                     <!-- // END Header -->
 
@@ -31,23 +31,23 @@
                                     <!-- Navigation Paths -->
                                     <?php Breadcrumb::initBreadcrumb($dir, $paths) ?>
 
-                                    <h1 class="h2">Edit Account</h1>
+                                    <h1 class="h2">แก้ไขข้อมูลโปรไฟล์</h1>
 
                                     <div class="card">
                                         <ul class="nav nav-tabs nav-tabs-card">
                                             <li class="nav-item">
-                                                <a class="nav-link active" href="#first" data-toggle="tab">Account</a>
+                                                <a class="nav-link active" href="#first" data-toggle="tab">บัญชีผู้ใช้</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#second" data-toggle="tab">Billing</a>
+                                                <a class="nav-link" href="#second" data-toggle="tab">การเก็บใบเสร็จ</a>
                                             </li>
                                         </ul>
                                         <div class="tab-content card-body">
                                             <div class="tab-pane active" id="first">
-                                                <form action="<?php Nav::echoURL($dir, App::$routeProfile . "?id=" . $auth->ID) ?>" method="POST" class="form-horizontal">
+                                                <form action="<?php Nav::echoURL($dir, App::$routeProfile . "?id=" . $auth->ID) ?>" method="POST" enctype="multipart/form-data" class="form-horizontal">
 
                                                     <div class="form-group row">
-                                                            <label for="email" class="col-sm-3 col-form-label form-label">Email</label>
+                                                            <label for="email" class="col-sm-3 col-form-label form-label">อีเมล</label>
                                                             <div class="col-sm-8">
                                                                 <div class="input-group">
                                                                     <div class="input-group-prepend">
@@ -55,63 +55,59 @@
                                                                             <i class="material-icons md-18 text-muted">mail</i>
                                                                         </div>
                                                                     </div>
-                                                                <input name="email" type="text" id="email" class="form-control" placeholder="Email Address" value="<?php echo $auth->email ?>" disabled>
+                                                                <input name="email" type="text" id="email" class="form-control" placeholder="กรอกอีเมล ของคุณ" value="<?php echo $auth->email ?>" disabled>
                                                             </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="username" class="col-sm-3 col-form-label form-label">Username</label>
+                                                        <label for="username" class="col-sm-3 col-form-label form-label">ชื่อผู้ใช้</label>
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <input name="username" id="username" type="text" class="form-control" placeholder="Your username" value="<?php echo $auth->username ?>">
+                                                                    <input name="username" id="username" type="text" class="form-control" placeholder="กรอกชื่อผู้ใช้ ของคุณ" value="<?php echo $auth->username ?>">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="avatar" class="col-sm-3 col-form-label form-label">Avatar</label>
+                                                        <label for="avatar" class="col-sm-3 col-form-label form-label">ภาพโปรไฟล์</label>
                                                         <div class="col-sm-9">
                                                             <div class="media align-items-center">
                                                                 <div class="media-left">
                                                                     <div class="icon-block rounded bg-transparent">
-                                                                        <?php if($auth->profile_pic == ''){ ?>
-                                                                            <img id="prof" class="w-100 h-100" src="<?php Asset::echoIcon($dir, $auth->profile_pic) ?>">
-                                                                        <?php }else{ ?>
-                                                                            <img id="prof" class="w-100 h-100" src="<?php echo $auth->profile_pic ?>">
-                                                                        <?php } ?>
+                                                                        <img id="prof" class="w-100 h-100" src="<?php Asset::echoIcon($dir, $auth->profile_pic) ?>">
                                                                     </div>
                                                                 </div>
                                                                 <div class="media-body">
                                                                     <div class="custom-file" style="width: auto;">
-                                                                        <input type="file" id="avatar" class="custom-file-input" accept="image/*" onchange="urlToBase64(this, 128, 128, '#prof', '#profile_pic')">
-                                                                        <label for="avatar" class="custom-file-label">Choose file</label>
+                                                                        <input name="profile_pic" type="file" id="avatar" class="custom-file-input" accept="image/*" onchange="uploadToPicture(this, 128, 128, '#prof', '#profile_pic2')">
+                                                                        <label for="avatar" class="custom-file-label">อัพโหลดไฟล์</label>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <input name="profile_pic" id="profile_pic" style="visibility: collapse;" value="<?php echo $auth->profile_pic ?>">
+                                                            <!-- <input name="profile_pic2" id="profile_pic2" style="visibility: collapse;" value="<?php echo $auth->profile_pic ?>"> -->
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="fname" class="col-sm-3 col-form-label form-label">First name</label>
+                                                        <label for="fname" class="col-sm-3 col-form-label form-label">ชื่อจริง</label>
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <input name="fname" id="fname" type="text" class="form-control" placeholder="Your first name" value="<?php echo $user->fname ?>">
+                                                                    <input name="fname" id="fname" type="text" class="form-control" placeholder="กรอกชื่อจริง ของคุณ" value="<?php echo $user->fname ?>">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="lname" class="col-sm-3 col-form-label form-label">Last name</label>
+                                                        <label for="lname" class="col-sm-3 col-form-label form-label">นามสกุล</label>
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <input name="lname" id="lname" type="text" class="form-control" placeholder="Your last name" value="<?php echo $user->lname ?>">
+                                                                    <input name="lname" id="lname" type="text" class="form-control" placeholder="กรอกนามสกุล ของคุณ" value="<?php echo $user->lname ?>">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -119,7 +115,7 @@
 
                                                     <!-- Flatpickr -->
                                                     <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label form-label" for="bdate">Birth Date:</label>
+                                                        <label class="col-sm-3 col-form-label form-label" for="bdate">วันเกิด:</label>
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
@@ -130,7 +126,7 @@
                                                     </div>
 
                                                     <div class="form-group row">
-                                                    <label class="col-sm-3 col-form-label form-label" for="gender">Gender</label>
+                                                    <label class="col-sm-3 col-form-label form-label" for="gender">เพศ</label>
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
@@ -140,22 +136,22 @@
                                                                             case 'male':
                                                                             ?>
                                                                                 <option>-</option>
-                                                                                <option value="male" selected>Male</option>
-                                                                                <option value="female">Female</option>
+                                                                                <option value="male" selected>ชาย</option>
+                                                                                <option value="female">หญิง</option>
                                                                             <?php
                                                                                 break;
                                                                             case 'female':
                                                                             ?>
                                                                                 <option>-</option>
-                                                                                <option value="male">Male</option>
-                                                                                <option value="female" selected>Female</option>
+                                                                                <option value="male">ชาย</option>
+                                                                                <option value="female" selected>หญิง</option>
                                                                             <?php
                                                                                 break;
                                                                             default:
                                                                             ?>
                                                                                 <option selected>-</option>
-                                                                                <option value="male">Male</option>
-                                                                                <option value="female">Female</option>
+                                                                                <option value="male">ชาย</option>
+                                                                                <option value="female">หญิง</option>
                                                                             <?php
                                                                                 break;
                                                                         }
@@ -167,7 +163,7 @@
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label form-label" for="address">Address</label>
+                                                        <label class="col-sm-3 col-form-label form-label" for="address">ที่อยู่ปัจจุบัน</label>
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
@@ -179,7 +175,7 @@
 
                                                     <!-- jQuery Mask Plugin -->
                                                     <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label form-label" for="phone">Phone</label>
+                                                        <label class="col-sm-3 col-form-label form-label" for="phone">เบอร์โทรศัพท์</label>
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
@@ -190,22 +186,22 @@
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="facebook" class="col-sm-3 col-form-label form-label">Facebook</label>
+                                                        <label for="facebook" class="col-sm-3 col-form-label form-label">ชื่อ Facebook</label>
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <input name="facebookURL" id="facebook" type="url" class="form-control" placeholder="Your facebook url" value="<?php echo $user->facebookURL ?>">
+                                                                    <input name="facebookURL" id="facebook" type="url" class="form-control" placeholder="กรอกชื่อ หรือ URL Facebook ของคุณ" value="<?php echo $user->facebookURL ?>">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="lineid" class="col-sm-3 col-form-label form-label">LineID</label>
+                                                        <label for="lineid" class="col-sm-3 col-form-label form-label">id ไลน์</label>
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <input name="lineID" id="lineid" type="text" class="form-control" placeholder="Your LineID" value="<?php echo $user->lineID ?>">
+                                                                    <input name="lineID" id="lineid" type="text" class="form-control" placeholder="กรอก id ไลน์ ของคุณ" value="<?php echo $user->lineID ?>">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -216,7 +212,7 @@
                                                         <div class="col-sm-8 offset-sm-3">
                                                             <div class="media align-items-center">
                                                                 <div class="media-left">
-                                                                    <button type="submit" class="btn btn-success">Save Changes</button>
+                                                                    <button type="submit" class="btn btn-success">บันทึก การเปลี่ยนแปลง</button>
                                                                 </div>
                                                                 <div class="media-body pl-1">
                                                                     <div class="custom-control custom-checkbox">
@@ -227,15 +223,13 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
-
                                                 </form>
                                                 <form action="<?php Nav::echoURL($dir, App::$routeLogOut); ?>" method="POST" class="form-horizontal">
                                                     <div class="form-group row">
                                                         <div class="col-sm-8 offset-sm-3">
                                                             <div class="media align-items-center">
                                                                 <div class="media-left">
-                                                                    <button type="submit" class="btn btn-danger">Log Out</button>
+                                                                    <button type="submit" class="btn btn-danger">ออกจากระบบ</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -334,8 +328,8 @@
                 <script src="assets/js/flatpickr.js"></script>
                 <!-- jQuery Mask Plugin -->
                 <script src="assets/vendor/jquery.mask.min.js"></script>
-                <!-- Custom Script -->
-                <?php Script::customScript($dir, 'common.js') ?>
+                
+                
 <?php
         }
 

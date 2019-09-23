@@ -10,7 +10,36 @@ function confirmCancel(url){
     }
 }
 
-function urlToBase64(input, width, height, img_id, input_id) {
+function uploadToBase64(input, width, height){
+    return new Promise((resolve, reject) => {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+    
+            reader.onload = function (e) {    
+                var img = document.createElement("img");
+                img.src = e.target.result;
+                img.onload = function(){
+                    var canvas = document.createElement("canvas");
+                    canvas.width = width;
+                    canvas.height = height;
+                    var ctx = canvas.getContext("2d");
+                    ctx.fillStyle = "#FFFFFF";
+                    ctx.fillRect(0, 0, width, height);
+                    ctx.drawImage(img, 0, 0, width, height);
+                    var dataurl = canvas.toDataURL('image/jpeg', 0.8);
+    
+                    resolve(dataurl);
+                }
+            };
+    
+            reader.readAsDataURL(input.files[0]);
+        }else{
+            reject(null);
+        }
+    });
+}
+
+function uploadToPicture(input, width, height, img_id, input_id) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 

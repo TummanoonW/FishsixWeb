@@ -14,9 +14,9 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home', $dir),
-        new Path(FALSE, 'Admin Panel', $dir . App::$pageAdminPanel),
-        new Path(TRUE, 'Manage Categories', $dir . App::$pageAdminManageCategories)
+        new Path(FALSE, 'หน้าหลัก', $dir),
+        new Path(FALSE, 'ระบบจัดการ', $dir . App::$pageAdminPanel),
+        new Path(TRUE, 'จัดการหมวดหมู่', $dir . App::$pageAdminManageCategories)
     );
 
     if(Session::checkUserAdmin()){
@@ -44,7 +44,7 @@
         $result = FunCategory::getFiltered($api, $filter);
         $categories = $result->response;
 
-        Header::initHeader($dir, "Admin - Manage Categories"); 
+        Header::initHeader($dir, "แอดมิน - จัดการหมวดหมู่"); 
         AdminManageCategoriesView::initView($dir, $paths, $pages, $categories, $count, $api);
         Footer::initFooter($dir); 
     }else{

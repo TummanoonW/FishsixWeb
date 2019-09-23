@@ -15,21 +15,55 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home', $dir),
-        new Path(TRUE, 'My Cart', $dir . App::$pageMyCart)
+        new Path(FALSE, 'หน้าหลัก', $dir),
+        new Path(TRUE, 'ตะกร้าสินค้า ของฉัน', $dir . App::$pageMyCart)
     );
-
+    
+    $carts = [];    
     if(Session::checkUserExisted()){
-        $ownerID = Session::getAuth()->ID;
-        $result = FunMyCart::getMyCartFull($api, $ownerID);
-        if($result->success){
-            $cart = $result->response;
-            Header::initHeader($dir,"My Cart"); 
-            MyCartView::initView($dir, $paths, $cart);
-            Footer::initFooter($dir); 
-        }else{
-            ErrorPage::showError($dir, $result);
+        $authID = Session::getAuth()->ID;
+
+        if(isset($io->query->ID)){
+            $package = $io->query;
+            $cart = (object)array(
+                'ownerID' => $authID,
+                'packageID' => $package->ID
+            );
+            $result = FunMyCart::add($api, $cart);
         }
+
+        $result = FunMyCart::getByAuthID($api, $authID);
+        $response = $result->response;
+        array_merge($carts, $response);
+
+        $isLoggedIn = TRUE;
     }else{
-        Nav::gotoHome($dir);
+        $isLoggedIn = FALSE;
     }
+
+    $s_carts = Session::get('mycart');
+    if($s_carts == NULL) $s_carts = [];
+
+    if(isset($io->query->ID)){
+        $package = $io->query;
+        $cart = (object)array(
+            'ID' => NULL,
+            'ownerID' => NULL,
+            'packageID' => $package->ID,
+            'courseID' => $package->courseID,
+            'package' => $package
+        );
+        array_push($s_carts, $cart);
+        Session::set('mycart', $s_carts);
+    }
+
+    $cartsS = [];
+    foreach ($s_carts as $key => $c) {
+        $result = FunCourse::get($api, $c->courseID);
+        $c->course = $result->response;
+        array_push($cartsS, $c);
+    }
+
+    Header::initHeader($dir, "ตระกร้าสินค้า ของฉัน"); 
+    MyCartView::initView($dir, $paths, $carts, $cartsS, $isLoggedIn);
+    Footer::initFooter($dir); 

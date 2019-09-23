@@ -1,10 +1,17 @@
 <?php
     class CourseView{
-        public static function initView($dir, $paths, $course){
+        public static function initView($dir, $paths, $course, $teachers, $comments){
             $auth = Session::getAuth();
+            $lessons = $course->lessons;
+            $pictures = $course->pictures;
+            $classes = $course->classes;
+            $packages = $course->packages;
+            $urls = array(
+                'pageMyCart' => $dir . App::$pageMyCart
+            );
 ?>
             <body class="layout-fluid">
-
+                <link type="text/css" rel="stylesheet" href="<?php Nav::echoURL($dir, 'assets/css/lightgallery.min.css') ?>" /> 
                 <!-- Pre Loader -->
                 <?php Preloader::initPreloader($dir) ?>
 
@@ -12,7 +19,7 @@
                 <div class="mdk-header-layout js-mdk-header-layout">
 
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir) ?>
+                    <?php Toolbar::initToolbar($dir, '') ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
@@ -25,175 +32,136 @@
                                     <!-- Navigation Paths -->
                                     <?php Breadcrumb::initBreadcrumb($dir, $paths) ?>
                                     
-                                    <h1 class="h2"><?php echo $course->title ?></h1>
+                                    <div class="row">
+                                        <div class="col-12 col-sm-7">
+                                            <h1 class="h2" id="pageTitle"><?php echo $course->title ?></h1>
+                                        </div>
+                                        <div class="col-12 col-sm-5 text-right pt-3">
+                                            <span class="text-muted">อัพเดทเมื่อ: <span id="cEditedDate"><? echo $course->editedDate ?></span></span>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="card">
-                                                <div class="embed-responsive embed-responsive-16by9">
+                                                <!--<div class="embed-responsive embed-responsive-16by9">
                                                     <iframe class="embed-responsive-item" src="<?php Asset::echoImage($dir,'https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0') ?>" allowfullscreen=""></iframe>
+                                                </div> -->
+                                                <!--<div class="card-header p-0">
+                                                    <img style="object-fit: cover; height: 256px; width: 100%;" src="<?php Asset::echoImage($dir, $course->thumbnail) ?>">
+                                                </div> -->
+                                                <div class="card-header">
+                                                    <div class="media align-items-center">
+                                                        <div class="media-left">
+                                                            <span class="col-12 col-md-6">
+                                                                <i class="material-icons text-muted-light">assessment</i>
+                                                                สำหรับ<?php self::echoLevel($course->level) ?>
+                                                            </span>
+                                                            <span class="col-12 col-md-6">
+                                                            <i class="material-icons text-muted-light">schedule</i>
+                                                            <?echo ((int)$course->duration / 60)?> ชม. <?echo ((int)$course->duration % 60)?> นาที
+                                                            </span>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            
+                                                        </div>
+                                                        <div class="media-right">
+                                                        <?php self::initRating($dir, $course->ratingScore, $course->ratingCount) ?> (<? echo $course->ratingCount ?>)
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="card-body">
-                                                    <?php echo $course->description_short ?>
+                                                    <div>
+                                                        <h4>คำอธิบายย่อ</h4>
+                                                        <p class="text-black-70"><? echo $course->content ?></p>
+                                                    </div>
+                                                    <div>
+                                                        <h4>รายละเอียด</h4>
+                                                        <p class="text-black-70"><?php echo $course->description ?></p>
+                                                    </div>
                                                 </div>
                                             </div>
 
                                             <!-- Lessons -->
-                                            <ul class="card list-group list-group-fit">
-                                                <li class="list-group-item">
-                                                    <div class="media">
-                                                        <div class="media-left">
-                                                            <div class="text-muted">1.</div>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <a href="#">Installation</a>
-                                                        </div>
-                                                        <div class="media-right">
-                                                            <small class="text-muted-light">2:03</small>
-                                                        </div>
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title"><i class="fas fa-graduation-cap"></i> &nbsp; บทเรียน</h4>
+                                                </div>
+                                                <div class="card-body p-0">
+                                                    <ul class="list-group list-group-fit">
+                                                        <?php self::initLessonItems($dir, $lessons) ?>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title"><i class="far fa-images"></i> &nbsp;ภาพตัวอย่าง</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row" id="lightgallery">
+                                                      <? self::initPictureItems($dir, $pictures) ?>
                                                     </div>
-                                                </li>
-                                                <li class="list-group-item active">
-                                                    <div class="media">
-                                                        <div class="media-left">2.</div>
-                                                        <div class="media-body">
-                                                            <a class="text-white" href="#">The MVC architectural pattern</a>
-                                                        </div>
-                                                        <div class="media-right">
-                                                            <small>25:01</small>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <div class="media">
-                                                        <div class="media-left">
-                                                            <div class="text-muted">3.</div>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <a href="#">Database Models</a>
-                                                        </div>
-                                                        <div class="media-right">
-                                                            <small class="text-muted-light">12:10</small>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <div class="media">
-                                                        <div class="media-left">
-                                                            <div class="text-muted">4.</div>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <div class="text-muted-light">Database Access</div>
-                                                        </div>
-                                                        <div class="media-right">
-                                                            <small class="badge badge-primary ">PRO</small>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <div class="media">
-                                                        <div class="media-left">
-                                                            <div class="text-muted">5.</div>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <div class="text-muted-light">Eloquent Basics</div>
-                                                        </div>
-                                                        <div class="media-right">
-                                                            <small class="badge badge-primary ">PRO</small>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <div class="media">
-                                                        <div class="media-left">
-                                                            <div class="text-muted">6.</div>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <div class="text-muted-light">Take Quiz</div>
-                                                        </div>
-                                                        <div class="media-right">
-                                                            <small class="badge badge-primary ">PRO</small>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                                </div>
+                                            </div>
                                         </div>
                                         
                                         <div class="col-md-4">
-
                                             <!-- Pricing Card -->
                                             <div class="card">
                                                 <div class="card-body text-center">
                                                     <p>
-                                                        <a href="#" class="btn btn-outline-danger btn-block flex-column">
-                                                            <i class="material-icons">favorite</i> Add to Wish List
-                                                        </a>
+                                                        <select id="custom-select" class="flex form-control custom-select" onchange="changeCost(this)">
+                                                            <? self::initPackageItems($dir, $packages) ?>
+                                                        </select>
                                                     </p>
-                                                    <div class="page-separator">
-                                                        <div class="page-separator__text">OR</div>
-                                                    </div>
-                                                    <a href="<?php Nav::echoURL($dir, App::$routeMyCart . "?m=add&id=$course->ID") ?>" class="btn btn-success btn-block flex-column">
-                                                        Purchase Course
-                                                        <strong>starts at &#3647;<?php echo $course->minPrice ?></strong>
-                                                    </a>
+                                                    <button onclick="buy()" class="btn btn-success btn-block flex-column">
+                                                        <strong style="font-size:18px">ซื้อคอร์ส</strong>
+                                                        <strong>ในราคา &#3647;<span id="price"></span></strong>
+                                                    </button>
                                                 </div>
-                                            </div>
-
-                                            <div class="card">
-                                                <div class="card-header">
-                                                    <div class="media align-items-center">
-                                                        <div class="media-left">
-                                                            <img src="<?php Asset::echoImage($dir,'assets/images/people/110/guy-6.jpg') ?> " alt="About Adrian" width="50" class="rounded-circle">
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h4 class="card-title"><a href="<?php Nav::echoURL($dir,'student-profile.html') ?> ">Adrian Demian</a></h4>
-                                                            <p class="card-subtitle">Instructor</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card-body">
-                                                    <p>Having over 12 years exp. Adrian is one of the lead UI designers in the industry Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, aut.</p>
-                                                    <a href="" class="btn btn-light"><i class="fab fa-facebook"></i></a>
-                                                    <a href="" class="btn btn-light"><i class="fab fa-twitter"></i></a>
-                                                    <a href="" class="btn btn-light"><i class="fab fa-github"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="card">
-                                                <ul class="list-group list-group-fit">
-                                                    <li class="list-group-item">
-                                                        <div class="media align-items-center">
-                                                            <div class="media-left">
-                                                                <i class="material-icons text-muted-light">assessment</i>
-                                                            </div>
-                                                            <div class="media-body">
-                                                                Beginner
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <div class="media align-items-center">
-                                                            <div class="media-left">
-                                                                <i class="material-icons text-muted-light">schedule</i>
-                                                            </div>
-                                                            <div class="media-body">
-                                                                2 <small class="text-muted">hrs</small> &nbsp; 26 <small class="text-muted">min</small>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
                                             </div>
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h4 class="card-title">Ratings</h4>
+                                                    <h4 class="card-title"><i class="far fa-calendar-alt"></i> &nbsp;รอบเรียน</h4>
+                                                </div>
+                                                <div class="card-body p-2">
+                                                <table class="table mb-0">
+                                                    <thead class="text-muted">
+                                                        <tr>
+                                                            <th>วัน</th>
+                                                            <th>ที่นั่ง</th>
+                                                            <th>เวลา</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="list">
+                                                        <?php self::initClassItems($dir, $classes) ?>
+                                                    </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title"><i class="fas fa-chalkboard-teacher"></i> &nbsp;ครูผู้สอน</h4>
                                                 </div>
                                                 <div class="card-body">
+                                                    <?php self::initTeacherItems($dir, $teachers) ?>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title"><i class="far fa-comment"></i> &nbsp;ความคิดเห็น (<? echo $course->ratingCount ?>)</h4>
+                                                </div>
+                                                <div class="card-body pb-0">
                                                     <div class="rating">
-                                                        <i class="material-icons">star</i>
-                                                        <i class="material-icons">star</i>
-                                                        <i class="material-icons">star</i>
-                                                        <i class="material-icons">star</i>
-                                                        <i class="material-icons">star_border</i>
+                                                        เรตติ้ง <?php self::initRating($dir, $course->ratingScore, $course->ratingCount) ?>
+                                                        &nbsp; <small class="text-muted">ผู้ริวิว <? echo $course->ratingCount ?> ราย</small>
                                                     </div>
-                                                    <small class="text-muted">20 ratings</small>
+                                                    <ul class="list-group mt-3">
+                                                      <? self::initCommentItems($dir, $comments) ?>
+                                                    </ul>
+                                                </div>
+                                                <div class="card-footer p-0">
+                                                    <a class="btn btn-block text-primary" href="#">ดูเพิ่มเติม</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -205,8 +173,172 @@
                     </div>
                 </div>
                 <?php Script::initScript($dir) ?>
-
+                
+                <script id="obj-packages"><?php echo json_encode($packages) ?></script>
+                <script id="obj-urls"><?php echo json_encode($urls) ?></script>
+                
+                <?php Script::customScript($dir, 'viewcourse.js') ?>
+                
+                <script src="<?php Nav::echoURL($dir, 'assets/js/lightgallery.min.js')?>"></script>
+                <script type="text/javascript">
+                    lightGallery(
+                        document.getElementById('lightgallery'),
+                        {
+                            thumbnail:true
+                        }); 
+                </script>
 <?php
+        }
+
+        public static function initRating($dir, $score, $count){
+            if((int)$count <= 0) $count = 1;
+            $rating = (int)$score / (int)$count;
+            
+            for ($i=0; $i < 5; $i++) { 
+                if($rating < $i + 0.5) echo '<i class="text-warning far fa-star"></i>';
+                elseif($rating < $i + 1) echo '<i class="text-warning fas fa-star-half-alt"></i>';
+                else echo '<i class="text-warning fas fa-star"></i>';              
+            }
+        }
+
+        public static function initTeacherItems($dir, $teachers){
+            foreach ($teachers as $key => $t) {
+                ?>
+                    <div class="media align-items-center mb-3">
+                        <div class="media-left">
+                            <img src="<?php Asset::echoIcon($dir, $t->profile_pic) ?> " alt="<?php echo $t->username ?>" width="48" class="rounded-circle">
+                        </div>
+                        <div class="media-body">
+                            <h4 class="card-title"><a href="#"><? echo $t->username ?></a></h4>
+                        </div>
+                    </div>
+                <?
+            }
+        }
+
+        public static function initLessonItems($dir, $lessons){
+            foreach ($lessons as $key => $l) {
+                ?>
+                    <li class="list-group-item" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+                        <div class="media">
+                            <div class="media-left">
+                                <div class="text-muted"><? echo (int)$key+1?>.</div>
+                            </div>
+                            <div class="media-body">
+                                <a href="#multiCollapseExample1"><? echo $l->title ?></a>
+                            </div>
+                            <div class="media-right">
+                                <small class="text-muted-light"><? echo $l->duration ?> นาที</small>
+                            </div>
+                        </div>
+                        <div class="collapse multi-collapse mt-2" id="multiCollapseExample1">
+                          <div class="card card-body">
+                            <? echo $l->content ?>
+                          </div>
+                        </div>
+                    </li>
+                <?
+            }
+        }
+
+        public static function initPictureItems($dir, $pictures){
+            foreach ($pictures as $key => $p) {
+                ?>
+                    <a class="col-sm-6 col-md-4 col-lg-3 p-0" href="<? echo $p->picture ?>">
+                        <img class="w-100 h-auto" style="object-fit: cover; background: black;" src="<? echo $p->picture ?>" />
+                    </a>
+                <?
+            }
+        }
+
+        public static function initClassItems($dir, $classes){
+            foreach ($classes as $key => $c) {
+                ?>
+                    <tr>
+                        <td><? echo self::properDay($c->day) ?></td>
+                        <td><? echo $c->seats ?></td>
+                        <td class="pr-0"><? echo self::properTime($c->startTime) . ' - ' . self::properTime($c->endTime) ?></td>
+                    </tr>
+                <?
+            }
+        }
+
+        public static function initPackageItems($dir, $packages){
+            foreach ($packages as $key => $p) {
+                ?>
+                    <option value="<? echo $p->ID ?>" <?if($key==0)echo 'selected'?>><? echo $p->credit ?> ชั่วโมง - &#3647;<? echo $p->price ?></option>
+                <?
+            }
+        }
+
+        public static function initCommentItems($dir, $comments){
+            foreach ($comments as $key => $c) {
+                $a = $c->auth;
+                ?>
+                    <li class="list-group-item">
+                        <div class="d-flex w-100 justify-content-between">
+                            <a href="#" class="h5 mb-1 card-title">
+                                <img src="<?php Asset::echoIcon($dir, $a->profile_pic) ?> " alt="<?php echo $a->username ?>" width="32" class="rounded-circle">
+                                <span class="ml-1"><? echo $a->username ?></span>
+                            </a>
+                        </div>
+                        <div><?php self::initRating($dir, $c->score, 1) ?></div>
+                        <p class="mb-1 text-dark-75"><? echo $c->text ?></p>
+                        <small class="text-muted"><? echo $c->date ?></small>
+                    </li>
+                <?
+            }
+        }
+
+        public static function echoLevel($level){
+            switch($level){
+                case 1:
+                    echo 'ผู้เริ่มต้น';
+                    break;
+                case 2:
+                    echo 'ผู้มีความรู้เบื้องต้น';
+                    break;
+                case 3:
+                    echo 'ผู้เชี่ยวชาญ';
+                    break;
+                default:
+                    echo 'ทุกคน';
+                    break;
+            }
+        }
+
+        private static function properTime($time){
+            $x = explode(':', $time);
+            return $x[0] . ':' . $x[1];
+        }
+
+        private static function properDay($day){
+            switch($day){
+                case 'mon':
+                    return 'จันทร์';
+                    break;
+                case 'tue':
+                    return 'อังคาร';
+                    break;
+                case 'wed':
+                    return 'พุธ';
+                    break;
+                case 'thu':
+                    return 'พฤหัส';
+                    break;
+                case 'fri':
+                    return 'ศุกร์';
+                    break;
+                case 'sat':
+                    return 'เสาร์';
+                    break;
+                case 'sun':
+                    return 'อาทิตย์';
+                    break;
+                default:
+                    return '-';
+                    break;
+            }
         }
     }
 ?>

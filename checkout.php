@@ -12,18 +12,10 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home', $dir),
-        new Path(TRUE, 'Pay', $dir . App::$pageCheckOut)
+        new Path(FALSE, 'หน้าหลัก', $dir),
+        new Path(TRUE, 'ชำระสินค้า', '')
     );
 
-    if(Session::checkUserExisted()){
-            
-        Header::initHeader($dir,"Pay"); 
-
-        CheckOutView::initView($dir, $paths);
-
-        Footer::initFooter($dir); 
-
-    }else{
-        Nav::gotoHome($dir);
-    }
+    Header::initHeader($dir, "ชำระสินค้า"); 
+    CheckOutView::initView($dir, $paths);
+    Footer::initFooter($dir); 

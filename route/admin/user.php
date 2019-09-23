@@ -15,6 +15,23 @@
         switch($io->method){
             case 'edit':
                 $form = $io->post;
+
+                if($_FILES['profile_pic']['error'] == 0){
+                    $file = new File($dir, 'uploads/profile_pics/');
+                    $option = new FileOption();
+                    $option->set(
+                        TRUE,
+                        TRUE,
+                        TRUE,
+                        "u_",
+                        1 * 1000 * 1000,
+                        ['jpg', 'jpeg', 'png', 'gif']
+                    );
+                    $result = $file->upload('profile_pic', $option);
+                    if($result->success) $form->profile_pic = $result->response->downloadURL;
+                    else $form->profile_pic = '';
+                }
+
                 if(isset($form->ID)){
                     $result = FunAdminAuth::edit($api, $form);
                 }else{

@@ -12,8 +12,8 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home', $dir),
-        new Path(TRUE, 'My Courses', $dir . App::$pageMyCourses)
+        new Path(FALSE, 'หน้าหลัก', $dir),
+        new Path(TRUE, 'คอร์สของฉัน', $dir . App::$pageMyCourses)
     );
 
     $pages = array(
@@ -31,7 +31,7 @@
         }
         $pages[$c_page]->active = TRUE;
 
-        Header::initHeader($dir, $auth->username . " - My Courses"); 
+        Header::initHeader($dir, $auth->username . " - คอร์สของฉัน"); 
 
         MyCoursesView::initView($dir, $paths, $pages);
 

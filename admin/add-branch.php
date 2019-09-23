@@ -7,17 +7,17 @@
     Includer::include_fun($dir, 'fun_branch.php');
 
 
-    $auth = Session::getAuth(); 
+    $auth = Session::getAuth();
     $apiKey = Session::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home', $dir),
-        new Path(FALSE, 'Admin Panel', $dir . App::$pageAdminPanel),
-        new Path(FALSE, 'Manage Branch', $dir . App::$pageAdminManageBranch),
-        new Path(TRUE, 'Branch Editor', $dir . App::$pageAdminAddBranch)
+        new Path(FALSE, 'หน้าหลัก', $dir),
+        new Path(FALSE, 'ระบบจัดการ', $dir . App::$pageAdminPanel),
+        new Path(FALSE, 'จัดการสาขา', $dir . App::$pageAdminManageBranch),
+        new Path(TRUE, 'โปรแกรมแก้ไขสาขา', $dir . App::$pageAdminAddBranch)
     );
 
     if(Session::checkUserAdmin()){
@@ -31,7 +31,7 @@
             $branch = $result->response;
         }
 
-        Header::initHeader($dir, "Admin - Branch Editor"); 
+        Header::initHeader($dir, "แอดมิน - โปรแกรมแก้ไขสาขา"); 
         AdminAddBranchView::initView($dir, $paths, $isNew, $branch);
         Footer::initFooter($dir); 
 

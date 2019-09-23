@@ -21,7 +21,7 @@
                             <i class="material-icons">school</i> คอร์สของฉัน
                         </a>
                         <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageProfile) ?>">
-                            <i class="material-icons">edit</i> แก้ไขบัยชี
+                            <i class="material-icons">edit</i> แก้ไขบัญชี
                         </a>
                         <!--<a class="dropdown-item" href="student-profile.html">
                             <i class="material-icons">person</i> Public Profile

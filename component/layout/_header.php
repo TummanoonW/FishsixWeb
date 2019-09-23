@@ -31,9 +31,10 @@
                 <link type="text/css" href="<?php Nav::echoURL($dir, 'assets/css/app.css') ?>" rel="stylesheet">
                 <link type="text/css" href="<?php Nav::echoURL($dir, 'assets/css/app.rtl.css') ?>" rel="stylesheet">
 
-
                 <!-- jQuery -->
                 <script src="<?php Nav::echoURL($dir, 'assets/vendor/jquery.min.js') ?>"></script>
+
+                <link type="text/css" href="<?php Nav::echoURL($dir, 'assets/css/custom/main.css') ?>" rel="stylesheet">
             </head>
 <?php
         }

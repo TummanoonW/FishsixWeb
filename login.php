@@ -18,7 +18,7 @@
     if(Session::checkUserExisted()){
         Nav::gotoHome($dir); //go to Profile page
     }else{
-        Header::initHeader($dir, "Login"); //initialize HTML header elements with 'Login' as Title
+        Header::initHeader($dir, "เข้าสู่ระบบ"); //initialize HTML header elements with 'Login' as Title
         LoginView::initView($dir); //initialize HTML login elements
         Footer::initFooter($dir); //initialize HTML footer elements
     }

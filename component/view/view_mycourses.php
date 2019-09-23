@@ -11,7 +11,7 @@
                 <div class="mdk-header-layout js-mdk-header-layout">
 
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir) ?>
+                    <?php Toolbar::initToolbar($dir, '') ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
@@ -27,7 +27,7 @@
 
                                     <div class="media mb-headings align-items-center">
                                         <div class="media-body">
-                                            <h1 class="h2">My Courses</h1>
+                                            <h1 class="h2">คอร์สของฉัน</h1>
                                         </div>
                                         <div class="media-right">
                                             <div class="btn-group btn-group-sm">

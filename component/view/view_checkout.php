@@ -9,7 +9,7 @@
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir) ?>
+                    <?php Toolbar::initToolbar($dir, '') ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
@@ -19,7 +19,7 @@
                                 <div class="container-fluid page__container">
                                     <!-- Navigation Paths -->
                                     <?php Breadcrumb::initBreadcrumb($dir, $paths); ?>
-                                    <h1 class="h2">Payment method</h1>
+                                    <h1 class="h2">ชำระสินค้า</h1>
                                     <div class="row">
                                         <div class="col-lg">
                                             <ul class="card list-group list-group-fit">

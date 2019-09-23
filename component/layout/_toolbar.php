@@ -1,6 +1,6 @@
 <?php
     class Toolbar{ ////common toolbar HTML elements loader
-        public static function initToolbar($dir){  
+        public static function initToolbar($dir, $search){  
             $auth = Session::getAuth();
 ?>
             <!-- Header -->
@@ -16,12 +16,12 @@
                             <!-- Brand -->
                             <a href="<?php Nav::echoHome($dir) ?>" class="navbar-brand">
                                 <img src="<?php Asset::embedIcon($dir, Asset::$iconURL2) ?>" class="mr-2" alt="<?php echo App::$name ?>" />
-                                <span class="d-none d-xs-md-block"><?php echo App::$name ?></span>
+                                <span class="d-none d-xs-md-block" style="font-size: 20px;"><?php echo App::$name ?></span>
                             </a>
                             <!-- Search -->
-                            <form class="search-form d-none d-md-flex">
-                                <input type="text" class="form-control" placeholder="คำค้นหา">
-                                <button class="btn" type="button"><i class="material-icons font-size-24pt">search</i></button>
+                            <form class="search-form d-none d-md-flex" action="<?php Nav::echoURL($dir, App::$pageCourses)?>" method="GET">
+                                <input name="search" type="text" class="form-control" placeholder="คำค้นหา" value="<?php echo $search ?>">
+                                <button type="submit" class="btn"><i class="material-icons font-size-24pt">search</i></button>
                             </form>
                             <!-- // END Search -->
                             <div class="flex"></div>

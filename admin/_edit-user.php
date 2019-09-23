@@ -13,9 +13,9 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home', $dir),
-        new Path(FALSE, 'Admin Panel', $dir . App::$pageAdminPanel),
-        new Path(FALSE, 'Manage User', $dir . App::$pageAdminManageUser),
+        new Path(FALSE, 'หน้าหลัก', $dir),
+        new Path(FALSE, 'ระบบจัดการ', $dir . App::$pageAdminPanel),
+        new Path(FALSE, 'จัดการผู้ใช้', $dir . App::$pageAdminManageUser),
         new Path(TRUE, 'Edit User', $dir . App::$pageAdminEditUser)
     );
 

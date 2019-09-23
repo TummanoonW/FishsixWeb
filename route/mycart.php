@@ -12,6 +12,18 @@
  
      if(Session::checkUserExisted()){
         switch($io->method){
+            case 'delete':
+                $id = $io->query->id;
+                $result = FunMyCart::delete($api, $id);
+                echo 'success';
+                break;
+            case 'deleteS':
+                $index = $io->query->index;
+                $s_carts = Session::get('mycart');
+                array_splice($s_carts, $index, 1);
+                Session::set('mycart', $s_carts);
+                echo 'success';
+                break;
             case 'add':
                 $ownerID = Session::getAuth()->ID;
                 if($io->id != NULL){

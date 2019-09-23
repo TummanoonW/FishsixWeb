@@ -12,9 +12,9 @@
     $io = new IO();
 
 
-        Header::initHeader($dir, "Reset password Succeend"); 
-        ResetPasswordSucceedView::initView($dir);
-        Footer::initFooter($dir); 
+    Header::initHeader($dir, "การตั้งรหัสผ่านใหม่ สำเร็จ!"); 
+    ResetPasswordSucceedView::initView($dir);
+    Footer::initFooter($dir); 
     
 
         

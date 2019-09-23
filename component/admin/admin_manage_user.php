@@ -10,7 +10,7 @@
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir) ?>
+                    <?php Toolbar::initToolbar($dir, '') ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
@@ -26,9 +26,9 @@
 
                                     <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
                                         <div class="flex mb-2 mb-sm-0">
-                                            <h1 class="h2">Manage User</h1>
+                                            <h1 class="h2">จัดการผู้ใช้</h1>
                                         </div> 
-                                        <a href="<?php Nav::echoURL($dir, App::$pageAdminAddUser) ?>" class="btn btn-success">+ Add user</a>
+                                        <a href="<?php Nav::echoURL($dir, App::$pageAdminAddUser) ?>" class="btn btn-success">+ เพิ่มผู้ใช้</a>
                                     </div>
 
                                     <div class="card card-body border-left-3 border-left-primary navbar-shadow mb-4">
@@ -55,21 +55,21 @@
                                                                 break;
                                                         }
                                                     ?>
-                                                    <option value="" <?php echo $x ?>>All Users</option>
-                                                    <option value="user" <?php echo $u ?>>Users</option>
-                                                    <option value="teacher" <?php echo $t ?>>Teachers</option>
-                                                    <option value="admin" <?php echo $a ?>>Admins</option>
+                                                    <option value="" <?php echo $x ?>>ทุกประเภท</option>
+                                                    <option value="user" <?php echo $u ?>>ผู้ใช้ทั่วไป</option>
+                                                    <option value="teacher" <?php echo $t ?>>ครู</option>
+                                                    <option value="admin" <?php echo $a ?>>แอดมิน</option>
                                                 </select>
                                                 <div class="flex search-form ml-3 search-form--light">
-                                                    <input name="query" id="query" type="text" class="form-control" placeholder="Search user" id="searchSample02" value="<?php echo $search->query ?>">
+                                                    <input name="query" id="query" type="text" class="form-control" placeholder="ค้นหา" id="searchSample02" value="<?php echo $search->query ?>">
                                                     <button onclick="searchQuery()" class="btn" type="button" role="button"><i class="material-icons">search</i></button>
                                                 </div>
                                             </div>
 
                                             <div class="d-flex flex-column flex-sm-row align-items-sm-center" style="white-space: nowrap">
-                                                <small class="flex text-muted text-uppercase mr-3 mb-2 mb-sm-0">Displaying <?php echo count($auths) ?> out of <?php echo $count ?> Users</small>
+                                                <small class="flex text-muted text-uppercase mr-3 mb-2 mb-sm-0">แสดงผลลัพธ์ <?php echo count($auths) ?> จาก <?php echo $count ?> รายการ</small>
                                                 <div class="w-auto ml-sm-auto table d-flex align-items-center mb-0">
-                                                    <small class="text-muted text-uppercase mr-3 d-none d-sm-block">Sort by</small>
+                                                    <small class="text-muted text-uppercase mr-3 d-none d-sm-block">จัดลำดับโดย</small>
                                                     <?php 
                                                           if($search->desc){ 
                                                     ?>
@@ -83,7 +83,7 @@
                                         </form>
                                     </div>
                                     <!-- Alert -->
-                                    <?php if(count($auths) == 0)Alert::initAlert($dir, "Ohh no! No user to display.") ?>
+                                    <?php if(count($auths) == 0)Alert::initAlert($dir, "น่าเศร้า! คุณไม่มีรายการผู้ใช้ให้แสดง") ?>
                                     <!-- User Card -->
                                     <div class="row">
                                         <?php self::initCards($dir, $auths) ?>
@@ -98,8 +98,8 @@
                     </div>
                 </div>   
                 <?php Script::initScript($dir) ?> 
-                <!-- Custom Script -->
-                <?php Script::customScript($dir, 'common.js') ?>
+                
+                
                 <script id="q">
                     <?php echo json_encode($search) ?>
                 </script>
@@ -156,13 +156,14 @@
                                 <div class="flex" style="min-width: 200px">
                                     <h4 class="card-title mb-1"><a href="<?php Nav::echoURL($dir, App::$pageAdminEditUser . "?id=$id") ?>"><?php echo $auth->username ?></a></h4>
                                     <span>ID: <?php echo $id ?></span><br>
-                                    <span>Email: <?php echo $auth->email ?></span> 
+                                    <span>อีเมล: <?php echo $auth->email ?></span><br>
+                                    <span>ประเภท: <?php echo $auth->type ?></span>
                                 </div>
                             </div>
                         </div>
                         <div class="card-footer text-center">
-                            <a href="<?php Nav::echoURL($dir, App::$pageAdminAddUser . "?id=$id") ?>" class="btn btn-primary btn-sm float-right ml-2"><i class="material-icons btn__icon--left">edit</i>Edit</a>
-                            <button onclick="confirmDelete('<?php Nav::echoURL($dir, App::$routeAdminUser . '?m=delete&id=' . $id) ?>');" class="btn btn-default btn-sm float-right"><i class="material-icons btn__icon--left">delete_forever</i>Delete</button>
+                            <a href="<?php Nav::echoURL($dir, App::$pageAdminAddUser . "?id=$id") ?>" class="btn btn-primary btn-sm float-right ml-2"><i class="material-icons btn__icon--left">edit</i>แก้ไข</a>
+                            <button onclick="confirmDelete('<?php Nav::echoURL($dir, App::$routeAdminUser . '?m=delete&id=' . $id) ?>');" class="btn btn-default btn-sm float-right"><i class="material-icons btn__icon--left">delete_forever</i>ลบ</button>
                         </div>
                     </div>
                 </div>

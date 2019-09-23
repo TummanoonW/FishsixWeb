@@ -1,6 +1,6 @@
 <?php
     class App{
-        public static $name = "fishsix";
+        public static $name = "FISHSIX";
         public static $framework = "Proto-Framework Plus";
         public static $version = "4";
         public static $platform = ["PHP", "HTML5"]; 
@@ -10,6 +10,7 @@
         public static $pageProfile = "profile.php";
         public static $pageMyCourses = "mycourses.php";
         public static $pageCourseView = "viewcourse.php";
+        public static $pageCourses = "courses.php";
         public static $pageMyCart = "mycart.php";
         public static $pageCheckOut = "checkout.php";
         public static $pageBookClass = "bookclass.php";
@@ -58,6 +59,8 @@
         public static $apiCourse = "apiCourse.php";
         public static $apiCategory = "category.php";
         public static $apiBranch = "branch.php";
+        public static $apiTeacher = "teacher.php";
+        public static $apiMyCart = "mycart.php";
 
         public static $apiAdminCourse = "admin-course.php";
         public static $apiAdminCategory = "admin-category.php";

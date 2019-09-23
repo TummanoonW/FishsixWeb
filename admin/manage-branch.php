@@ -13,9 +13,9 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home', $dir),
-        new Path(FALSE, 'Admin Panel', $dir . App::$pageAdminPanel),
-        new Path(TRUE, 'Manage Branch', $dir . App::$pageAdminManageBranch)
+        new Path(FALSE, 'หน้าหลัก', $dir),
+        new Path(FALSE, 'ระบบจัดการ', $dir . App::$pageAdminPanel),
+        new Path(TRUE, 'จัดการสาขา', $dir . App::$pageAdminManageBranch)
     );
 
     if(Session::checkUserAdmin()){
@@ -43,7 +43,7 @@
         $result = FunBranch::getFiltered($api, $filter);
         $branches = $result->response;
 
-        Header::initHeader($dir, "Admin - Manage Branch"); 
+        Header::initHeader($dir, "แอดมิน - จัดการสาขา"); 
         AdminManageBranchView::initView($dir, $paths, $pages, $branches, $count);
         Footer::initFooter($dir); 
 

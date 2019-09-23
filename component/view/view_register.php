@@ -13,7 +13,7 @@
                 <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px;">
                     <div class="text-center mt-5 mb-1">
                         <div class="avatar avatar-lg">
-                            <img src="<?php Asset::embedIcon($dir, Asset::$iconURL) ?>" class="avatar-img rounded-circle" alt="LearnPlus" />
+                            <img src="<?php Asset::embedIcon($dir, Asset::$iconURL) ?>" class="avatar-img rounded-circle" alt="Fishsix" />
                         </div>
                     </div>
                     <div class="d-flex justify-content-center mb-5 navbar-light">
@@ -21,23 +21,23 @@
                     </div>
                     <div class="card navbar-shadow">
                         <div class="card-header text-center">
-                            <h4 class="card-title">Register</h4>
-                            <p class="card-subtitle">Create a new account</p>
+                            <h4 class="card-title">สมัครสมาชิก</h4>
+                            <p class="card-subtitle">สร้างบัญชีผู้ใช้ของคุณ</p>
                         </div>
                         <div class="card-body">
 
                             <a href="#" class="btn btn-light btn-block">
                                 <span class="fab fa-google mr-2"></span>
-                                Continue with Google
+                                สมัครด้วยบัญชี Google
                             </a>
 
                             <div class="page-separator">
-                                <div class="page-separator__text">or</div>
+                                <div class="page-separator__text">หรือ</div>
                             </div>
 
                             <form action="<?php Nav::echoURL($dir, App::$routeRegister); ?>" method="POST">
                                 <div class="form-group">
-                                    <label class="form-label" for="email">Email address:</label>
+                                    <label class="form-label" for="email">อีเมล:</label>
                                     <div class="input-group input-group-merge">
                                         <input name="email" id="email" type="email" class="form-control form-control-prepended" placeholder="Your email address" required>
                                         <div class="input-group-prepend">
@@ -48,7 +48,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" for="password">Password:</label>
+                                    <label class="form-label" for="password">รหัสผ่าน:</label>
                                     <div class="input-group input-group-merge">
                                         <input name="password" id="password" type="password" class="form-control form-control-prepended" placeholder="Choose a password" onchange="checkPass()" minlength="6" required>
                                         <div class="input-group-prepend">
@@ -59,7 +59,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" for="password2">Confirm Password:</label>
+                                    <label class="form-label" for="password2">รหัสผ่านอีกครั้ง:</label>
                                     <div class="input-group input-group-merge">
                                         <input name="password2" id="password2" type="password" class="form-control form-control-prepended" placeholder="Confirm password" onchange="checkPass()" minlength="6" required>
                                         <div class="input-group-prepend">
@@ -68,10 +68,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <small id="err-pass" class="text-danger">password not matching!</small>
+                                    <small id="err-pass" class="text-danger">รหัสผ่านทั้ง 2 ช่องไม่ตรงกัน!</small>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" for="username">User name:</label>
+                                    <label class="form-label" for="username">ชื่อผู้ใช้งาน:</label>
                                     <div class="input-group input-group-merge">
                                         <input name="username" id="username" type="text" class="form-control form-control-prepended" placeholder="Your User name" required>
                                         <div class="input-group-prepend">
@@ -82,10 +82,10 @@
                                     </div>
                                 </div>
                                 <div class="page-separator">
-                                    <div class="page-separator__text">User Info</div>
+                                    <div class="page-separator__text">ข้อมูลผู้ใช้ เบื้องต้น</div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" for="fname">Frist name:</label>
+                                    <label class="form-label" for="fname">ชื่อจริง:</label>
                                     <div class="input-group input-group-merge">
                                         <input name="fname" id="fname" type="text" class="form-control form-control-prepended" placeholder="Your first name" required>
                                         <div class="input-group-prepend">
@@ -96,7 +96,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" for="lname">Last name:</label>
+                                    <label class="form-label" for="lname">นามสกุล:</label>
                                     <div class="input-group input-group-merge">
                                         <input name="lname" id="lname" type="text" class="form-control form-control-prepended" placeholder="Your last name" required>
                                         <div class="input-group-prepend">
@@ -108,21 +108,20 @@
                                 </div>
                                 <!-- Flatpickr -->
                                 <div class="form-group">
-                                        <label class="form-label" for="bdate">Birth Date:</label>
+                                        <label class="form-label" for="bdate">วันเกิด:</label>
                                         <input name="bdate" id="bdate" type="hidden" class="form-control flatpickr-input" data-toggle="flatpickr">
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="form-label" for="gender">Gender:</label>
+                                    <label class="form-label" for="gender">เพศ:</label>
                                     <select name="gender" id="gender" class="form-control custom-select">
                                         <option selected="">-</option>
-                                        <option value="male" >Male</option>
-                                        <option value="female">Female</option>
-                                        <option value="alternative">Alternative sex</option>
+                                        <option value="male" >ชาย</option>
+                                        <option value="female">หญิง</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" for="address">Address:</label>
+                                    <label class="form-label" for="address">ที่อยู่ปัจจุบัน:</label>
                                     <div class="input-group input-group-merge">
                                         <input name="address" id="address"  type="text" class="form-control form-control-prepended" placeholder="Your address">
                                         <div class="input-group-prepend">
@@ -135,20 +134,20 @@
                                 
                                 <!-- jQuery Mask Plugin -->
                                 <div class="form-group">
-                                    <label class="form-label" for="phone">Phone:</label>
+                                    <label class="form-label" for="phone">เบอร์โทรศัพท์:</label>
                                     <input name="phone" id="phone" type="text" class="form-control" placeholder="123-456-7890" data-mask="000-000-0000" autocomplete="off" maxlength="12">
                                 </div>
 
-                                <button type="submit" id="btn-register" class="btn btn-primary btn-block mb-3" disabled>Register</button>
+                                <button type="submit" id="btn-register" class="btn btn-primary btn-block mb-3" disabled>สมัคร</button>
                                 <div class="form-group text-center mb-0">
                                     <div class="custom-control custom-checkbox">
                                         <input name="terms" id="terms" type="checkbox" class="custom-control-input" checked required="">
-                                        <label for="terms" class="custom-control-label text-black-70">I agree to the <a href="#" class="text-black-70" style="text-decoration: underline;">Terms of Use</a></label>
+                                        <label for="terms" class="custom-control-label text-black-70">ฉันยอมรับข้อตกลง <a href="#" class="text-black-70" style="text-decoration: underline;">ข้อตกลงการใช้งาน</a></label>
                                     </div>
                                 </div>
                             </form>
                         </div>
-                        <div class="card-footer text-center text-black-50">Already registered up? <a href="<?php Nav::echoURL($dir, App::$pageLogin) ?>">Login</a></div>
+                        <div class="card-footer text-center text-black-50">คุณสมัครสมาชิกแล้วใช่ไหม ? <a href="<?php Nav::echoURL($dir, App::$pageLogin) ?>">เข้าสู่ระบบ</a> เลย</div>
                     </div>
                 </div>
             </div>

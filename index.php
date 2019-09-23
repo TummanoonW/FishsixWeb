@@ -41,7 +41,7 @@
     
     $pages = genPages($dir, $limit, $c_page, $c_courses);
 
-    $result = FunCourse::getCoursesFilter($api, $filter);
+    $result = FunCourse::getFiltered($api, $filter);
     $courses = $result->response;
 
     Header::initHeader($dir, App::$name); 

@@ -13,9 +13,9 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home', $dir),
-        new Path(FALSE, 'Admin Panel', $dir . App::$pageAdminPanel),
-        new Path(TRUE, 'Manage User', $dir . App::$pageAdminManageUser)
+        new Path(FALSE, 'หน้าหลัก', $dir),
+        new Path(FALSE, 'ระบบจัดการ', $dir . App::$pageAdminPanel),
+        new Path(TRUE, 'จัดการผู้ใช้', $dir . App::$pageAdminManageUser)
     );
 
     if(Session::checkUserAdmin()){
@@ -49,7 +49,7 @@
         $result = FunAuth::getFiltered($api, $search);
         $auths = $result->response;
 
-        Header::initHeader($dir, "Admin - Manage User"); 
+        Header::initHeader($dir, "แอดมิน - จัดการผู้ใช้"); 
         AdminManageUserView::initView($dir, $paths, $pages, $auths, $count, $search);
         Footer::initFooter($dir); 
 

@@ -12,18 +12,15 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home', $dir),
-        new Path(FALSE, 'My Courses', $dir . App::$pageMyCourses),
-        new Path(FALSE, 'Booking Class', $dir . App::$pageBookClass),
-        new Path(TRUE, 'MY Schedule', $dir . App::$pageMySchedule)
+        new Path(FALSE, 'หน้าหลัก', $dir),
+        new Path(FALSE, 'คอร์สของฉัน', $dir . App::$pageMyCourses),
+        new Path(FALSE, 'จองรอบเรียน', $dir . App::$pageBookClass),
+        new Path(TRUE, 'ตารางการจอง', $dir . App::$pageMySchedule)
     );
 
    if(Session::checkUserExisted()){
-        
-        Header::initHeader($dir,"MY Schedule"); 
-
+        Header::initHeader($dir,"ตารางการจอง"); 
         MySchedule::initView($dir, $paths);
-    
         Footer::initFooter($dir); 
     
    }else{

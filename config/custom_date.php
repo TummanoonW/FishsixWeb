@@ -19,6 +19,11 @@
             return new DateTime($datestr);
         }
 
+        public static function timeStamp(){
+            $dateTime = self::getDateNow();
+            return $dateTime->format('Y_m_d_H_i_s');
+        }
+
         public static function parseDateNow(){
             $dateTime = self::getDateNow();
             return $dateTime->format(self::getFormat());

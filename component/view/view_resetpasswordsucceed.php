@@ -7,7 +7,7 @@
                 <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px;">
                     <div class="text-center mt-5 mb-1">
                         <div class="avatar avatar-lg">
-                            <img src="<?php Asset::embedIcon($dir, Asset::$iconURL); ?>" class="avatar-img rounded-circle" alt="LearnPlus" />
+                            <img src="<?php Asset::embedIcon($dir, Asset::$iconURL); ?>" class="avatar-img rounded-circle" alt="Fishsix" />
                         </div>
                     </div>
                     <div class="d-flex justify-content-center mb-5 navbar-light">
@@ -16,12 +16,12 @@
                     <div class="card navbar-shadow">
                         <div class="card-header text-center" >
                         <i class="far fa-check-circle" style="font-size: 100px;color:green" ></i>
-                            <h2>Resetpassword Succeed!</h2>
-                            <h3>Now you can login with new password</h3>
+                            <h2>การตั้งรหัสผ่านใหม่ สำเร็จแล้ว!</h2>
+                            <h3>คุณสามารถ เข้าสู่ระบบ ด้วยรหัสผ่านใหม่ได้!</h3>
                         </div>
                         <div class="card-footer text-center text-black-50">
                            <span>
-                               Back to <a href="<?php Nav::echoURL($dir, App::$pageLogin); ?>">Login </a>(<span id="countdown">11</span>)
+                               กลับไปยังหน้า <a href="<?php Nav::echoURL($dir, App::$pageLogin); ?>">เข้าสู่ระบบ </a>(<span id="countdown">11</span>)
                             </span> 
                         </div>
                     </div>

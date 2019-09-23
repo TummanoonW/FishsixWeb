@@ -10,7 +10,7 @@
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir) ?>
+                    <?php Toolbar::initToolbar($dir, '') ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
@@ -26,9 +26,9 @@
 
                                     <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
                                         <div class="flex mb-2 mb-sm-0">
-                                            <h1 class="h2">Manage Courses</h1>
+                                            <h1 class="h2">จัดการคอร์ส</h1>
                                         </div>
-                                        <a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditor) ?>" class="btn btn-success">+ Add course</a>
+                                        <a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditor) ?>" class="btn btn-success">+ เพิ่มคอร์ส</a>
                                     </div>
 
                                     <div class="card card-body border-left-3 border-left-primary navbar-shadow mb-4">
@@ -46,7 +46,7 @@
                                                         <?php 
                                                             $s_cat = $search->category;
                                                         ?>
-                                                            <option value="" <?php if($s_cat == '') echo 'selected' ?>>All categories</option>
+                                                            <option value="" <?php if($s_cat == '') echo 'selected' ?>>ทุกหมวดหมู่</option>
                                                         <?php
                                                             foreach ($categories as $key => $category) {
                                                                 ?>
@@ -61,17 +61,17 @@
                                                         <?php 
                                                             $s_public = $search->public;
                                                         ?>
-                                                        <option value="1" <?php if($s_public == 1) echo 'selected' ?>>Published courses</option>
-                                                        <option value="0" <?php if($s_public == 0) echo 'selected' ?>>Draft courses</option>
-                                                        <option value="" <?php if($s_public == '') echo 'selected' ?>>All courses</option>
+                                                        <option value="1" <?php if($s_public == 1) echo 'selected' ?>>เผยแพร่แล้ว</option>
+                                                        <option value="0" <?php if($s_public == 0) echo 'selected' ?>>ยังไม่เผยแพร่</option>
+                                                        <option value="" <?php if($s_public == '') echo 'selected' ?>>ทุกคอร์ส</option>
                                                     </select>
                                                 </div>
                                             </div>
 
                                             <div class="d-flex flex-column flex-sm-row align-items-sm-center" style="white-space: nowrap">
-                                                <small class="flex text-muted text-uppercase mr-3 mb-2 mb-sm-0">Displaying <?php echo count($courses) ?> out of <?php echo $count ?> courses</small>
+                                                <small class="flex text-muted text-uppercase mr-3 mb-2 mb-sm-0">แสดงผลลัพธ์ <?php echo count($courses) ?> จาก <?php echo $count ?> รายการ</small>
                                                 <div class="w-auto ml-sm-auto table d-flex align-items-center mb-0">
-                                                    <small class="text-muted text-uppercase mr-3 d-none d-sm-block">Sort by</small>
+                                                    <small class="text-muted text-uppercase mr-3 d-none d-sm-block">จัดเรียงโดย</small>
                                                     <?php 
                                                           if($search->desc){ 
                                                     ?>
@@ -99,8 +99,8 @@
                     </div>
                 </div>   
                 <?php Script::initScript($dir) ?> 
-                <!-- Custom Script -->
-                <?php Script::customScript($dir, 'common.js') ?>
+                
+                
                 <script id="q">
                     <?php echo json_encode($search) ?>
                 </script>
@@ -195,16 +195,16 @@
                                     <small class="text-secondary">
                                         <strong>
                                         <?php
-                                            if($course->public == 0)echo 'Drafting';
-                                            else echo 'Published';
+                                            if($course->public == 0)echo 'ยังไม่เผยแพร่';
+                                            else echo 'เผยแพร่';
                                         ?>
                                         </strong>
                                     </small>
                                 </div>
                             </div>
                             <div class="text-center">
-                                <a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditor . "?id=$id") ?>" class="btn btn-primary btn-sm float-right"><i class="material-icons btn__icon--left">edit</i>Edit</a>
-                                <button onclick="return confirmDelete('<?php echo App::$routeAdminCourse . '?m=delete&id=' . $id ?>');" class="btn btn-default btn-sm float-right" style="margin-right:8px;" ><i class="material-icons btn__icon--left">delete_forever</i>Delete</button>
+                                <a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditor . "?id=$id") ?>" class="btn btn-primary btn-sm float-right"><i class="material-icons btn__icon--left">edit</i>แก้ไข</a>
+                                <button onclick="return confirmDelete('<?php echo App::$routeAdminCourse . '?m=delete&id=' . $id ?>');" class="btn btn-default btn-sm float-right" style="margin-right:8px;" ><i class="material-icons btn__icon--left">delete_forever</i>ลบ</button>
                             </div>
                         </div>
                         <div class="card__options dropdown right-0 pr-2">
@@ -212,10 +212,10 @@
                                 <i class="material-icons">more_vert</i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditor . "?id=$id") ?>">Edit course</a>
-                                <a class="dropdown-item" href="#">Course Insights</a>
+                                <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditor . "?id=$id") ?>">แก้ไขคอร์ส</a>
+                                <a class="dropdown-item" href="#">ดูคอร์ส</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item text-danger" href="#" onclick="return confirmDelete('<?php echo App::$routeAdminCourse . '?m=delete&id=' . $id ?>');">Delete course</a>
+                                <a class="dropdown-item text-danger" href="#" onclick="return confirmDelete('<?php echo App::$routeAdminCourse . '?m=delete&id=' . $id ?>');">ลบคอร์ส</a>
                             </div>
                         </div>
                     </div>

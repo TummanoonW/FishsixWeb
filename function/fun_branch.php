@@ -1,5 +1,10 @@
 <?php
     class FunBranch{
+        public static function get($api){
+            $url = $api->getURL(App::$apiBranch, 'all', NULL);
+            $result = $api->get($url);
+            return $result;
+        }
         public static function getSingle($api, $id){
             $query = (object)array('id' => $id);
             $url = $api->getURL(App::$apiBranch, 'single', $query);

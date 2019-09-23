@@ -12,12 +12,12 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'Home', $dir),
-        new Path(TRUE, 'Admin Panel', $dir . App::$pageAdminPanel)
+        new Path(FALSE, 'หน้าหลัก', $dir),
+        new Path(TRUE, 'ระบบจัดการ', $dir . App::$pageAdminPanel)
     );
 
     if(Session::checkUserAdmin()){
-        Header::initHeader($dir, App::$name . " - Admin Panel"); 
+        Header::initHeader($dir, App::$name . " - ระบบจัดการ"); 
         AdminHomeView::initView($dir, $paths);
         Footer::initFooter($dir); 
     }else{

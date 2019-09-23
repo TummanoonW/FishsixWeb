@@ -1,19 +1,30 @@
 <?php
     class Menu{
         public static function initMenu($dir){
+            $countC = 0;
+            $s_carts = (array)Session::get('mycart');
+            $countC = $countC + count($s_carts);
+
+            if(Session::checkUserExisted()){
+                Includer::include_fun($dir, 'fun_mycart.php');
+                $auth = Session::getAuth();
+                $apiKey = Session::getAPIKey(); 
+                $api = new API($apiKey);
+
+                $result = FunMyCart::countByAuthID($api, $auth->ID);
+                $carts = (int)$result->response;
+                $countC = $countC + $carts;
+            }
 ?>
             <ul class="nav navbar-nav flex-nowrap">
-                <?php 
-                    if(Session::checkUserExisted()){ 
-                ?>
-                        <li class="nav-item d-none d-md-flex">
-                            <a href="<?php Nav::echoURL($dir, App::$pageMyCart) ?>" class="nav-link">
-                                <i class="material-icons">shopping_cart</i>
-                            </a>
-                        </li>
-                <?php 
-                    }
-                ?>
+                <li class="nav-item d-none d-md-flex dropdown-notifications dropdown-menu-sm-full">
+                    <a href="<?php Nav::echoURL($dir, App::$pageMyCart) ?>" class="nav-link">
+                        <i class="material-icons">shopping_cart</i>
+                        <?php if($countC > 0){ ?>
+                            <span class="badge badge-notifications badge-danger"><?php echo $countC  ?></span>
+                        <?php } ?>
+                    </a>
+                </li>
 
                 <!-- Notification dropdown -->
                 <?php Notification::initNotification($dir) ?>

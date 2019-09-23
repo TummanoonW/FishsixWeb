@@ -18,7 +18,7 @@
     if(Session::checkUserExisted()){
         Nav::gotoHome($dir); //go to Profile page
     }else{
-        Header::initHeader($dir, "Forgot password"); //initialize HTML header elements with 'Login' as Title
+        Header::initHeader($dir, "ลืมรหัสผ่าน"); //initialize HTML header elements with 'Login' as Title
 
         if($io->method == 'show'){
             ForgotPasswordView::initView($dir, TRUE); //initialize HTML login elements

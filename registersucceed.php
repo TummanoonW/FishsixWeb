@@ -12,7 +12,7 @@
     $io = new IO();
 
 
-    Header::initHeader($dir, "Register Succeed"); 
+    Header::initHeader($dir, "สมัครสมาชิกสำเร็จ"); 
     RegisterSucceedView::initView($dir);
     Footer::initFooter($dir); 
     
