@@ -89,7 +89,7 @@
 
                                                     <div class="d-flex flex-column flex-sm-row">
                                                         <a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditor) ?>" class="avatar avatar-lg avatar-4by3 mb-3 w-xs-plus-down-100 mr-sm-3">
-                                                            <img src="../assets/images/thumbs/def.png" alt="Card image cap" class="avatar-img rounded">
+                                                            <img src="<?php Asset::echoThumb($dir,'assets/images/thumbs/def.png') ?>" alt="Card image cap" class="avatar-img rounded">
                                                         </a>
                                                         <div class="flex" style="min-width: 200px;">
                                                             <!-- <h5 class="card-title text-base m-0"><a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditor) ?>"><strong>Learn Vue.js</strong></a></h5> -->

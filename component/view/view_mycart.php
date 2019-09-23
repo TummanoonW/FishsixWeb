@@ -103,9 +103,7 @@
                 </td>
                 <td class="text-center">
                     <div class="d-flex align-items-center">
-                        <a href="#" class="text-muted px-2"><i class="material-icons font-size-16pt">remove</i></a>
-                        <input type="number" class="form-control" style="width: 64px" value="<?php echo $item->credit ?>">
-                        <a href="#" class="text-muted px-2"><i class="material-icons font-size-16pt">add</i></a>
+                        <input type="number" class="form-control" style="width: 64px" value="<?php echo $item->credit ?>" disabled>
                     </div>
                 </td>
                 <td class="text-right">

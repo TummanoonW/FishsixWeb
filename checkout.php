@@ -12,8 +12,9 @@
     $io = new IO(); 
 
     $paths = array(
-        new Path(FALSE, 'หน้าหลัก', $dir),
-        new Path(TRUE, 'ชำระสินค้า', '')
+        new Path(FALSE, 'Home', $dir),
+        new Path(FALSE, 'My Cart', $dir . App::$pageMyCart),
+        new Path(TRUE, 'Pay', $dir . App::$pageCheckOut)
     );
 
     Header::initHeader($dir, "ชำระสินค้า"); 
