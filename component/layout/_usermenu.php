@@ -20,8 +20,11 @@
                         <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageMyCourses) ?>">
                             <i class="material-icons">school</i> คอร์สของฉัน
                         </a>
-                        <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageMyOrder) ?>">
-                            <i class="fas fa-history"></i><span style="margin-left:8px;" >My Order</span>
+                        <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageMyOrders) ?>">
+                            <i class="material-icons">all_inbox</i> คำสั่งซื้อของฉัน
+                        </a>
+                        <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageMySchedule); ?>">
+                            <i class="material-icons">schedule</i> ตารางเรียน
                         </a>
                         <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageProfile) ?>">
                             <i class="material-icons">edit</i> แก้ไขบัญชี

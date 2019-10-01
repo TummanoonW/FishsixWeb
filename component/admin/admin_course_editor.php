@@ -147,7 +147,7 @@
                                                 <div class="card-body">
                                                     <p><a id="btn-add-class" class="btn btn-primary text-light">เพิ่มรอบเรียน<i class="material-icons">add</i></a></p>
                                                     <div class="nestable" id="nestable-handles-primary">
-                                                    <table class="table mb-0">
+                                                        <table class="table mb-0">
                                                             <thead>
                                                                 <tr>
                                                                     <th>วัน</th>

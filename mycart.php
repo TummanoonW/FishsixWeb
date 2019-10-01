@@ -20,41 +20,45 @@
     );
     
     $carts = [];    
-    if(Session::checkUserExisted()){
-        $authID = Session::getAuth()->ID;
-
-        if(isset($io->query->ID)){
-            $package = $io->query;
-            $cart = (object)array(
-                'ownerID' => $authID,
-                'packageID' => $package->ID
-            );
-            $result = FunMyCart::add($api, $cart);
-        }
-
-        $result = FunMyCart::getByAuthID($api, $authID);
-        $response = $result->response;
-        array_merge($carts, $response);
-
-        $isLoggedIn = TRUE;
-    }else{
-        $isLoggedIn = FALSE;
-    }
 
     $s_carts = Session::get('mycart');
     if($s_carts == NULL) $s_carts = [];
 
-    if(isset($io->query->ID)){
-        $package = $io->query;
-        $cart = (object)array(
-            'ID' => NULL,
-            'ownerID' => NULL,
-            'packageID' => $package->ID,
-            'courseID' => $package->courseID,
-            'package' => $package
-        );
-        array_push($s_carts, $cart);
+    if(Session::checkUserExisted()){
+        $result = FunMyCart::addMultiple($api, $s_carts);
+        $s_carts = [];
         Session::set('mycart', $s_carts);
+
+        if(isset($io->query->ID)){
+            $package = $io->query;
+            $cart = (object)array(
+                'ownerID' => $auth->ID,
+                'packageID' => $package->ID,
+                'courseID' => $package->courseID
+            );
+            $result = FunMyCart::add($api, $cart);
+        }
+
+        $result = FunMyCart::getByAuthID($api, $auth->ID);
+        $carts = $result->response;
+
+        $isLoggedIn = TRUE;
+    }else{
+
+        if(isset($io->query->ID)){
+            $package = $io->query;
+            $cart = (object)array(
+                'ID' => NULL,
+                'ownerID' => NULL,
+                'packageID' => $package->ID,
+                'courseID' => $package->courseID,
+                'package' => $package
+            );
+            array_push($s_carts, $cart);
+            Session::set('mycart', $s_carts);
+        }
+
+        $isLoggedIn = FALSE;
     }
 
     $cartsS = [];

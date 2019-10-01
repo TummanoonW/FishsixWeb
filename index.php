@@ -14,41 +14,37 @@
     $api = new API($apiKey);
     $io = new IO(); 
 
-    $pages = array(
-        new Path(FALSE, '1', $dir . "?page=0"),
-        new Path(FALSE, '2', $dir . "?page=1"),
-        new Path(FALSE, '3', $dir . "?page=2"),
-        new Path(FALSE, '4', $dir . "?page=3"),
-        new Path(FALSE, '5', $dir . "?page=4"),
-        new Path(FALSE, '6', $dir . "?page=5")
-    );
-
-    $categories = FunCategory::get($api);
-
-    if(isset($io->query->limit)) $limit = $io->query->limit;
-    else $limit = 20;
+    $result = FunCategory::get($api);
+    $categories = $result->response;
+    
+    if(!isset($io->query->search))
+    if(isset($_GET['search'])) $io->query->search = $_GET['search'];
+    else $io->query->search = "";
+    if(!isset($io->query->desc)) $io->query->desc = FALSE;
+    if(!isset($io->query->sort)) $io->query->sort = 'char';
+    if(!isset($io->query->category)) $io->query->category = '';
+    if(!isset($io->query->limit)) $io->query->limit = 20;
 
     if($io->page != NULL) $c_page = $io->page;
     else $c_page = 0;
 
-    $offset = ($c_page * $limit);        
-    $filter = new StdClass();
-    $filter->limit = $limit;
-    $filter->offset = $offset;
+    $offset = ($c_page * $io->query->limit);        
+    $io->query->offset = $offset;
 
-    $count_courses = FunCourse::countCourses($api);
-    $c_courses = $count_courses->response;
-    
-    $pages = genPages($dir, $limit, $c_page, $c_courses);
+    $query2 = (array)$io->query;
+    unset($query2['limit']);
+    unset($query2['offset']);
+    $result = FunCourse::countFilteredPublished($api, $query2);
+    $countTotal = $result->response;
 
-    $result = FunCourse::getFiltered($api, $filter);
+    $pages = genPages($dir, $io->query->limit, $c_page, $countTotal);
+
+    $result = FunCourse::getFilteredPublished($api, $io->query);
     $courses = $result->response;
 
     Header::initHeader($dir, App::$name); 
     HomeView::initView($dir, $pages, $courses, $categories);
     Footer::initFooter($dir); 
-
-
 
     function genPages($dir, $limit, $c_page, $c_courses){
         $pages = array();

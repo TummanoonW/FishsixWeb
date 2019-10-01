@@ -4,6 +4,7 @@
     include_once $dir . 'includer/includer.php'; 
     Includer::include_proto($dir); 
     Includer::include_view($dir, 'view_myschedule.php');
+    Includer::include_fun($dir, 'fun_schedule.php');
 
     $auth = Session::getAuth(); 
     $apiKey = Session::getAPIKey(); 
@@ -14,15 +15,16 @@
     $paths = array(
         new Path(FALSE, 'หน้าหลัก', $dir),
         new Path(FALSE, 'คอร์สของฉัน', $dir . App::$pageMyCourses),
-        new Path(FALSE, 'จองรอบเรียน', $dir . App::$pageBookClass),
-        new Path(TRUE, 'ตารางการจอง', $dir . App::$pageMySchedule)
+        new Path(TRUE, 'ตารางเรียน', $dir . App::$pageMySchedule)
     );
 
    if(Session::checkUserExisted()){
-        Header::initHeader($dir,"ตารางการจอง"); 
-        MySchedule::initView($dir, $paths);
+        $result = FunSchedule::getMySchedule($api, $auth->ID);
+        $schedules = $result->response;
+
+        Header::initHeader($dir, "ตารางเรียน"); 
+        MySchedule::initView($dir, $paths, $schedules);
         Footer::initFooter($dir); 
-    
    }else{
         Nav::gotoHome();
     }

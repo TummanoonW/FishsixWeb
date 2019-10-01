@@ -104,83 +104,9 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        
                                         <div class="col-md-4">
                                             <!-- Pricing Card -->
-                                            <?php  if(Session::checkUserExisted()){ ?>
-                                            
-                                            <div class="card">
-                                                <div class="card-body text-center">                            
-                                                    <a href="<?php Nav::echoURL($dir, App::$pageBookClass) ?>" class="btn btn-primary btn-block flex-column">
-                                                        <i class="fas fa-bookmark"></i> Book Class
-                                                    </a>
-                                                </div>
-                                            </div>
-
-                                            <div class="card">
-                                                <div class="card-header">
-                                                    <div class="media align-items-center">
-                                                        <div class="media-body">
-                                                            <h4 class="card-title">Your Branch and Time</h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card-body">
-                                                    <h3 class="h3">สาขา สยาม</h3>
-                                                    <table class="table mb-0">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Day</th>
-                                                                <th>Start</th>
-                                                                <th></th>
-                                                                <th>End</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody class="list" id="staff">
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="media align-items-center">
-                                                                        <div class="media-body">
-                                                                            <span class="js-lists-values-employee-name">Monday</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td><span>10:00</span></td>
-                                                                <td>To</td>
-                                                                <td><span>19:00</span></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="media align-items-center">
-                                                                        
-                                                                        <div class="media-body">
-                                                                            <span class="js-lists-values-employee-name">Saturday</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td><span>8:00</span></td>
-                                                                <td>To</td>
-                                                                <td><span>17:00</span></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="media align-items-center">
-                                                                        
-                                                                        <div class="media-body">
-                                                                            <span class="js-lists-values-employee-name">Sunday</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td><span>8:00</span></td>
-                                                                <td>To</td>
-                                                                <td><span>17:00</span></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            
-                                            <?php }else{ ?>
-
                                             <div class="card">
                                                 <div class="card-body text-center">
                                                     <p>
@@ -213,7 +139,6 @@
                                                     </table>
                                                 </div>
                                             </div>
-
                                             <div class="card">
                                                 <div class="card-header">
                                                     <h4 class="card-title"><i class="fas fa-chalkboard-teacher"></i> &nbsp;ครูผู้สอน</h4>

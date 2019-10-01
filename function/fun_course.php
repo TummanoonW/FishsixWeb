@@ -1,6 +1,19 @@
 <?php
     class FunCourse{
 
+        public static function getWhatIOwned($api, $id, $limit, $offset){
+            $query = array(
+                'id' => $id,
+                'limit' => $limit,
+                'offset' => $offset
+            );
+
+            $url = $api->getURL(App::$apiCourse, 'getWhatIOwned', $query);
+            $result = $api->get($url);
+
+            return $result;
+        }
+
         public static function get($api, $id){
             $query = new StdClass();
             $query->id = $id;
@@ -12,8 +25,7 @@
         }
 
         public static function getFull($api, $id){
-            $query = new StdClass();
-            $query->id = $id;
+            $query = (object)array('id' => $id);
 
             $url = $api->getURL(App::$apiCourse, 'singleFull', $query);
             $result = $api->get($url);
@@ -82,11 +94,41 @@
             return $result;
         }
 
+        public static function getClassSingle($api, $classID){
+            $query = array(
+                'id' => $classID
+            );
+            $url = $api->getURL(App::$apiCourse, 'classSingle', $query);
+            $result = $api->get($url);
+
+            return $result;
+        }
+
+        public static function getClassesByCourseID($api, $courseID){
+            $query = array(
+                'id' => $courseID
+            );
+            $url = $api->getURL(App::$apiCourse, 'classesByCourseID', $query);
+            $result = $api->get($url);
+
+            return $result;
+        }
+
         public static function getBranch($api, $bID){
             $query = array(
                 'id' => $bID
             );
-            $url = $api->getURL(App::$apiCourse, 'branch', NULL);
+            $url = $api->getURL(App::$apiCourse, 'branch', $query);
+            $result = $api->get($url);
+
+            return $result;
+        }
+
+        public static function getBranchesByCourseID($api, $courseID){
+            $query = array(
+                'id' => $courseID
+            );
+            $url = $api->getURL(App::$apiCourse, 'branchesByCourseID', $query);
             $result = $api->get($url);
 
             return $result;

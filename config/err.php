@@ -13,6 +13,7 @@
         public static $ERR_FILE_INVALID_TYPE    = array("code" => 11, "msg" => "Invalid file type");
         public static $ERR_FILE_FAILED          = array("code" => 12, "msg" => "Something went wrong with the file upload");
         public static $ERR_FILE_OVERSIZE        = array("code" => 13, "msg" => "File oversized");
+        public static $ERR_INSUFFICIENT_FUND    = array("code" => 14, "msg" => "Insufficient credit");
         //allow developers to create their owner constant Err
         public static function genErr($code, $msg){
             return array("code" => $code, "msg" => $msg);

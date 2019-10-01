@@ -1,11 +1,29 @@
 <?php
     class FunMyCart{
 
+        public static function checkout($api, $form){
+            $query = array(
+                'form' => $form
+            );
+            $url = $api->getURL(App::$apiMyCart, 'checkout', NULL);
+            $result = $api->post($url, $query);
+            return $result;
+        }
+
         public static function add($api, $cart){
             $query = array(
                 'cart' => $cart
             );
             $url = $api->getURL(App::$apiMyCart, 'add', NULL);
+            $result = $api->post($url, $query);
+            return $result;
+        }
+
+        public static function addMultiple($api, $carts){
+            $query = array(
+                'carts' => $carts
+            );
+            $url = $api->getURL(App::$apiMyCart, 'addMultiple', NULL);
             $result = $api->post($url, $query);
             return $result;
         }
@@ -25,39 +43,6 @@
             );
             $url = $api->getURL(App::$apiMyCart, 'getByAuthID', $query);
             $result = $api->get($url);
-            return $result;
-        }
-
-        //Mock
-        public static function setMyCart($api, $arr){
-            Session::set('cart', $arr);
-            $result = new Result();
-            $result->setResult(TRUE, $arr, NULL);
-            return $result;
-        }
-
-        //Mock
-        public static function addToCart($api, $courseID, $ownerID){
-            $item = new StdClass();
-            $item->ownerID = $ownerID;
-            $item->courseID = $courseID;
-            $item->credit = 1;
-
-            $result = self::getMyCart($api, $ownerID);
-            $arr = $result->response;
-            array_push($arr, $item);
-
-            $result = self::setMyCart($api, $arr);
-            return $result;
-        }
-
-        //Mock
-        public static function getMyCart($api, $ownerID){
-            $cart = Session::get('cart');
-            if($cart == NULL) $cart = [];
-            
-            $result = new Result();
-            $result->setResult(TRUE, $cart, NULL);
             return $result;
         }
 

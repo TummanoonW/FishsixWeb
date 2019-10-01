@@ -24,6 +24,9 @@
             <!-- App Settings (safe to remove) -->
             <script src="<?php Nav::echoURL($dir, 'assets/js/app-settings.js') ?>"></script>
 
+            <!-- Proto DB -->
+            <script src="<?php Nav::echoURL($dir, 'assets/js/custom/connect.js') ?>"></script>
+
 
 <?php
         }

@@ -336,7 +336,7 @@ function initClassItems(input, classes){
                         '</div>' +
                     '</td>' +
                     '<td><span>'+element.startTime+'</span></td>' +
-                    '<td>To</td>' +
+                    '<td>ถึง</td>' +
                     '<td><span>'+element.endTime+'</span></td>' +
                     '<td><a onclick="return confirmDeleteClass('+id+');" class="btn btn-white btn-sm"><i class="material-icons">delete_forever</i></a></td>' +
                 '</tr>' ;

@@ -19,10 +19,10 @@
                                 <div class="container-fluid page__container">
                                     <!-- Navigation Paths -->
                                     <?php Breadcrumb::initBreadcrumb($dir, $paths); ?>
-                                    <h1 class="h2">Payment method</h1>
+                                    <h1 class="h2">ชำระสินค้า</h1>
                                         <div class="col-lg">
                                             <div class="card">
-                                                <form action="<?php Nav::echoURL($dir, App::$pageOrderCourses) ?>" class="form-horizontal">
+                                                <form action="<?php Nav::echoURL($dir, App::$routeCheckOut . '?m=checkout') ?>" method="POST" enctype="multipart/form-data" class="form-horizontal">
                                                     <div class="card-body">
 
                                                         <div class="form-group row">
@@ -43,25 +43,25 @@
                                                         </div>
 
                                                         <div class="form-group row">
-                                                            <label for="slip" class="col-sm-3 col-form-label form-label">Your slip</label>
+                                                            <label for="slip" class="col-sm-3 col-form-label form-label">ใบเสร็จของคุณ</label>
                                                             <div class="col-sm-9">
                                                                 <div class="media align-items-center">
                                                                     <div class="media-left">
-                                                                        <div class="icon-block rounded">
-                                                                            <i class="material-icons text-muted-light md-36">photo</i>
+                                                                        <div class="icon-block rounded bg-transparent">
+                                                                            <img id="slip" class="w-100 h-100" src="<?php Asset::echothumb($dir, '') ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="media-body">
                                                                         <div class="custom-file" style="width: auto;">
-                                                                            <input type="file" id="slip" class="custom-file-input">
-                                                                            <label for="slip" class="custom-file-label">Choose file</label>
+                                                                            <input name="slip_pic" type="file" class="custom-file-input" accept="image/*" onchange="uploadToPictureRaw(this, '#slip')">
+                                                                            <label for="slip" class="custom-file-label">อัพโหลดไฟล์</label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="card-footer text-center">
-                                                            <button type="submit" class="btn btn-success">Make Payment</button>
+                                                            <button type="submit" class="btn btn-success">ยืนยันการชำระเงิน</button>
                                                         </div>
                                                 </form>
                                             </div>
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                 </div>
-                    <?php Script::initScript($dir) ?>
+                <?php Script::initScript($dir) ?>
 <?php
         }
     }

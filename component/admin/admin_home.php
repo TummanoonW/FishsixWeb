@@ -64,10 +64,18 @@
                                     <h3>การค้าขาย</h3>
                                     <div class="row">
                                         <div class="col-md-3 col-sm-4 pb-3">
-                                            <a href="<?php Nav::echoURL($dir, App::$pageAdminManageOrder) ?>" class="btn btn-primary w-100 h-100">
+                                            <a href="<?php Nav::echoURL($dir, App::$pageAdminManageOrders) ?>" class="btn btn-success w-100 h-100">
                                                 <div class="pb-2 pt-2">
-                                                    <i class="far fa-building"></i>
-                                                    <div class="mt-1">จัดการรายการขาย</div>
+                                                    <i class="fas fa-boxes"></i>
+                                                    <div class="mt-1">จัดการคำสั่งซื้อ</div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-3 col-sm-4 pb-3">
+                                            <a href="<?php Nav::echoURL($dir, App::$pageAdminManageBookings) ?>" class="btn btn-success w-100 h-100">
+                                                <div class="pb-2 pt-2">
+                                                    <i class="fas fa-book-open"></i>
+                                                    <div class="mt-1">จัดการการจอง</div>
                                                 </div>
                                             </a>
                                         </div>

@@ -35,7 +35,19 @@
                                         <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageMyCourses); ?>">
                                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> คอร์สของฉัน
                                         </a>
-                                    </li>      
+                                    </li>  
+
+                                    <li class="sidebar-menu-item">
+                                        <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageMyOrders); ?>">
+                                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">all_inbox</i> คำสั่งซื้อของฉัน
+                                        </a>
+                                    </li> 
+
+                                    <li class="sidebar-menu-item">
+                                        <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageMySchedule); ?>">
+                                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">schedule</i> ตารางเรียน
+                                        </a>
+                                    </li> 
                                 </ul>
                             <?php } ?>
 

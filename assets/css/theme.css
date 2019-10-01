@@ -53,13 +53,6 @@ h1 {
 
 .image:hover > a > i {
    opacity: 1;
-   margin-left:15px;
-}
-
-.image:hover {
-   -webkit-transform: scale(1.35);
-   transform: scale(1.35);
-   opacity: .9;
 }
 
 .image {

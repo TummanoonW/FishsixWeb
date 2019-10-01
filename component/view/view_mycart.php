@@ -103,11 +103,13 @@
                 </td>
                 <td class="text-center">
                     <div class="d-flex align-items-center">
-                        <input type="number" class="form-control" style="width: 64px" value="<?php echo $item->credit ?>" disabled>
+                        <a href="#" class="text-muted px-2"><i class="material-icons font-size-16pt">remove</i></a>
+                        <input type="number" class="form-control" style="width: 64px" value="<?php echo $item->credit ?>">
+                        <a href="#" class="text-muted px-2"><i class="material-icons font-size-16pt">add</i></a>
                     </div>
                 </td>
                 <td class="text-right">
-                    <p class="mb-0">&#3647;<?php echo self::calPrice($item->credit, $item->course->minPrice) ?> THB</p>
+                    <p class="mb-0">&#3647;<?php echo self::calPrice($item->credit, $item->course->minPrice) ?> บาท</p>
                 </td>
                 <td class="text-center">
                     <a href="#" class="text-muted"><i class="material-icons font-size-24pt">close</i></a>

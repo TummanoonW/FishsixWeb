@@ -1,10 +1,11 @@
 <?php
     class BookingClass{
-        public static function initView($dir, $paths){
+        public static function initView($dir, $paths, $ownership, $course, $classes, $branches){
             $auth = Session::getAuth();
 ?>
             <body class=" layout-fluid">
                 <!-- Pre Loader -->
+                <?php Preloader::initPreloader($dir) ?>
                 
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
@@ -26,27 +27,25 @@
 
                                     <div class="media mb-headings align-items-center">
                                         <div class="media-body">
-                                            <h1 class="h2">Booking Class</h1>
+                                            <h1 class="h2">จองรอบเรียน <? echo $course->title ?></h1>
                                         </div>
                                     </div>
-                                    <form action="<?php Nav::echoURL($dir, App::$pageMySchedule); ?>" novalidate method="POST">
+                                    <form action="<?php Nav::echoURL($dir, App::$routeBookClass . "?m=book"); ?>" method="POST">
                                         <table class="table table-nowrap mb-0 table--elevated">
                                                 <tbody>
                                                     <tr>
                                                         <td>
                                                             <div class="d-flex align-items-center">
                                                                 <div class="media-body">
-                                                                    <a href="#" class="text-body"><strong>สาขา</strong></a>
+                                                                    <strong>สาขา</strong>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td class="text-center">
                                                             <div class="d-flex align-items-center">
-                                                                <select class="form-control" style="width: 800px;">
-                                                                    <option value="" disabled selected hidden>เลือกสาขา</option>
-                                                                    <option value="branch1">สาขา งามวงศ์วาน</option>
-                                                                    <option value="branch2">สาขา สยาม</option>
-                                                                    <option value="branch3">สาขา พระราม2</option>
+                                                                <select name="cBranchID" class="form-control">
+                                                                    <option value="" selected>เลือกสาขา</option>
+                                                                    <?php self::initBranches($dir, $branches) ?>
                                                                 </select>
                                                             </div>
                                                         </td>
@@ -55,25 +54,31 @@
                                                         <td>
                                                             <div class="d-flex align-items-center">
                                                                 <div class="media-body">
-                                                                    <a href="#" class="text-body"><strong>รอบเรียน</strong></a>
+                                                                    <strong>รอบเรียน</strong>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td class="text-center">
                                                             <div class="d-flex align-items-center">
-                                                                <select class="form-control" style="width: 800px;">
-                                                                    <option value="" disabled selected hidden>เลือกรอบเรียน</option>
-                                                                    <option value="branch1">9.00 น. - 12.00 น.</option>
-                                                                    <option value="branch2">13.00 น. - 15.00 น.</option>
-                                                                    <option value="branch3">16.00 น. - 17.00 น.</option>
+                                                                <select name="cClassID" class="form-control">
+                                                                    <option value="" selected>เลือกรอบเรียน</option>
+                                                                    <?php self::initClasses($dir, $classes) ?>
                                                                 </select>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr style="visibility: collapse;">
+                                                        <td></td>
+                                                        <td class="text-center">
+                                                            <div class="d-flex align-items-center">
+                                                                <input type="text" name="ownershipID" value="<?php echo $ownership->ID ?>" readonly>
                                                             </div>
                                                         </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                             <div style="margin-top: 20px;text-align:center">
-                                             <button type="submit" onclick="return confirm('Are you sure?');" class="btn btn-success ml-auto">Book now</button>
+                                             <button type="submit" onclick="return confirm('คุณต้องการจองรอบเรียนนี้ใช่ไหม?');" class="btn btn-success ml-auto">จองรอบเรียน</button>
                                             </div>
                                         </form>
                                     </div>
@@ -87,6 +92,22 @@
 
 
 <?php
+        }
+
+        private static function initBranches($dir, $branches){
+            foreach ($branches as $key => $b) {
+                ?>
+                    <option value="<? echo $b->ID ?>">สาขา <? echo $b->branch->title ?></option>
+                <?
+            }
+        }
+
+        private static function initClasses($dir, $classes){
+            foreach ($classes as $key => $c) {
+                ?>
+                    <option value="<? echo $c->ID ?>"><?echo $c->startTime?> น. - <?echo $c->endTime?> น.</option>
+                <?
+            }
         }
     }
 ?>

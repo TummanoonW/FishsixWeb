@@ -25,7 +25,7 @@
                 echo 'success';
                 break;
             case 'add':
-                $ownerID = Session::getAuth()->ID;
+                $ownerID = $auth->ID;
                 if($io->id != NULL){
                     $result = FunMyCart::addToCart($api, $io->id, $ownerID);
                     if($result->success) Nav::goto($dir, App::$pageMyCart);
