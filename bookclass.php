@@ -36,6 +36,11 @@
                     $result = FunCourse::getBranchesByCourseID($api, $course->ID);
                     $branches = $result->response;
 
+
+                    //ตย. การดูข้อมูลที่เรียกมา ด้วย console log
+                    Console::log('classes', $classes);
+                    Console::log('branches', $branches);
+
                     Header::initHeader($dir, "จองรอบเรียน - $course->title"); 
                     BookingClass::initView($dir, $paths, $ownership, $course, $classes, $branches);
                     Footer::initFooter($dir);

@@ -34,7 +34,12 @@
                 <!-- jQuery -->
                 <script src="<?php Nav::echoURL($dir, 'assets/vendor/jquery.min.js') ?>"></script>
 
+                <!-- Kanit Font -->
+                <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
+
                 <link type="text/css" href="<?php Nav::echoURL($dir, 'assets/css/custom/main.css') ?>" rel="stylesheet">
+
+                <script>var json = null;</script>
             </head>
 <?php
         }

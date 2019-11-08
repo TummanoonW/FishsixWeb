@@ -166,6 +166,7 @@
                                 <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$routeAdminOrder . "?m=pending&id=$id") ?>">รอการตรวจสอบ</a>
                                 <div role="separator" class="dropdown-divider"></div>
                                 <a class="dropdown-item text-danger" href="<?php Nav::echoURL($dir, App::$routeAdminOrder . "?m=rejected&id=$id") ?>">ปฏิเสธ</a>
+                                <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageAdminViewOrder . "?id=$id") ?>">ดูรายละเอียด</a>
                               </div>
                             </div>
                         </td>

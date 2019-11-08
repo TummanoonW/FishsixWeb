@@ -92,7 +92,7 @@
                             <div class="media-body">
                             </div>
                             <div class="media-right">
-                                <button type="button" class="btn btn-light btn-sm">ชม.ที่เหลือ <span class="badge badge-success ml-2">27</span></button>
+                                <button type="button" class="btn btn-light btn-sm">ชม.ที่เหลือ <span class="badge badge-success ml-2"><? echo $item->credit ?></span></button>
                             </div>    
                         </div>
                         </div>

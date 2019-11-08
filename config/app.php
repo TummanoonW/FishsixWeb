@@ -3,7 +3,9 @@
         public static $name = "FISHSIX";
         public static $framework = "Proto-Framework Plus";
         public static $version = "4";
-        public static $platform = ["PHP", "HTML5"]; 
+        public static $platform = ["PHP", "HTML5"];
+        
+        public static $debuggingMode = TRUE;
 
         public static $hostName = "Fishsix. co, ltd.";
         public static $hostAddress = "129/56 ถนนแจ้งวัฒนา เขตคลองสามวา กรุงเทพมหานคร 11010";
@@ -48,6 +50,7 @@
         public static $pageAdminAddBranch = "admin/add-branch.php";
         public static $pageAdminEditBranch = "admin/edit-branch.php";
         public static $pageAdminViewOrder = "admin/view-order.php";
+        public static $pageAdminViewBooking = "admin/view-booking.php";
         public static $pageAdminManageBookings = "admin/manage-bookings.php";
 
         public static $routeRecovery= "route/login-register/recovery.php";

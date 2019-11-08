@@ -33,6 +33,7 @@
             
                                 
 <?php
+            Console::log('Result', $result);
             Script::initScript($dir); 
             Footer::initFooter($dir); //initialize HTML footer elements
 

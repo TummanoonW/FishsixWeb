@@ -128,7 +128,7 @@
                             </div>
                         </td>
                         <td>
-                           <a class="btn btn-primary btn-sm" href="<?php Nav::echoURL($dir, App::$pageViewBooking . "?id=$item->ID") ?>">
+                           <a class="btn btn-primary btn-sm" href="<?php Nav::echoURL($dir, App::$pageAdminViewBooking . "?id=$item->ID") ?>">
                                 <i class="far fa-eye"></i>
                            </a>
                         </td>
