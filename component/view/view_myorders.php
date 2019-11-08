@@ -103,7 +103,7 @@
                         </div>
                     </div>
                     <?php Script::initScript($dir) ?>
-            <?
+            <?php
         }
 
         private static function initItems($dir, $orders){
@@ -160,7 +160,8 @@
                             </div>
                         </td>
                     </tr>
-                <?
+                <?php
             }
         }
     }
+?>

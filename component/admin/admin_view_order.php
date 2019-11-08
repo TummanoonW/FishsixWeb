@@ -215,7 +215,7 @@
                         </td>
                         <td class="text-right"><strong>&#3647;<? echo $item->price ?> บาท</strong></td>
                     </tr>
-                <?
+                <?php
             }
         }
     }

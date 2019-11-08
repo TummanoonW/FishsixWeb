@@ -315,7 +315,7 @@
                         <td><span><?php echo $sTime[0] . ":" . $sTime[1] ?></span></td> 
                         <td><span><?php echo $eTime[0] . ":" . $eTime[1] ?></span></td> 
                     </tr>
-                <?
+                <?php
                 }
             }
         }

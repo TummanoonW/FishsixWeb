@@ -286,7 +286,7 @@
                         <p class="mb-1 text-dark-75"><? echo $c->text ?></p>
                         <small class="text-muted"><? echo $c->date ?></small>
                     </li>
-                <?
+                <?php
             }
         }
 

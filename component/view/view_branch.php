@@ -75,6 +75,6 @@
                                 thumbnail:true
                             }); 
                     </script>
-            <?
+            <?php
         }
     }

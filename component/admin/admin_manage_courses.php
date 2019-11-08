@@ -144,7 +144,7 @@
                         }
                     });
                 </script>
-<?php
+<?
         }
 
         private static function initCards($dir, $courses, $categories){

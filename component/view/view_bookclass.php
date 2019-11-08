@@ -106,7 +106,7 @@
             foreach ($classes as $key => $c) {
                 ?>
                     <option value="<? echo $c->ID ?>"><?echo $c->startTime?> น. - <?echo $c->endTime?> น.</option>
-                <?
+                <?php
             }
         }
     }

@@ -118,7 +118,7 @@
                 
                 <?php Script::customScript($dir, 'courses.js') ?>
 
-<?php
+<?
         }
 
         public static function initCard($dir, $courses, $categories){
@@ -174,7 +174,7 @@
                             </div>
                         </div>
                     </div>
-                <?
+                <?php
             }
         }
 
