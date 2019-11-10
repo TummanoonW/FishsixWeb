@@ -37,7 +37,7 @@
                                             <h1 class="h2" id="pageTitle"><?php echo $course->title ?></h1>
                                         </div>
                                         <div class="col-12 col-sm-5 text-right pt-3">
-                                            <span class="text-muted">อัพเดทเมื่อ: <span id="cEditedDate"><? echo $course->editedDate ?></span></span>
+                                            <span class="text-muted">อัพเดทเมื่อ: <span id="cEditedDate"><?php echo $course->editedDate ?></span></span>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -58,21 +58,21 @@
                                                             </span>
                                                             <span class="col-12 col-md-6">
                                                             <i class="material-icons text-muted-light">schedule</i>
-                                                            <?echo ((int)$course->duration / 60)?> ชม. <?echo ((int)$course->duration % 60)?> นาที
+                                                            <?php echo ((int)$course->duration / 60)?> ชม. <?php echo ((int)$course->duration % 60)?> นาที
                                                             </span>
                                                         </div>
                                                         <div class="media-body">
                                                             
                                                         </div>
                                                         <div class="media-right">
-                                                        <?php self::initRating($dir, $course->ratingScore, $course->ratingCount) ?> (<? echo $course->ratingCount ?>)
+                                                        <?php self::initRating($dir, $course->ratingScore, $course->ratingCount) ?> (<?php echo $course->ratingCount ?>)
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="card-body">
                                                     <div>
                                                         <h4>คำอธิบายย่อ</h4>
-                                                        <p class="text-black-70"><? echo $course->content ?></p>
+                                                        <p class="text-black-70"><?php echo $course->content ?></p>
                                                     </div>
                                                     <div>
                                                         <h4>รายละเอียด</h4>
@@ -99,7 +99,7 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="row" id="lightgallery">
-                                                      <? self::initPictureItems($dir, $pictures) ?>
+                                                      <?php self::initPictureItems($dir, $pictures) ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -111,7 +111,7 @@
                                                 <div class="card-body text-center">
                                                     <p>
                                                         <select id="custom-select" class="flex form-control custom-select" onchange="changeCost(this)">
-                                                            <? self::initPackageItems($dir, $packages) ?>
+                                                            <?php self::initPackageItems($dir, $packages) ?>
                                                         </select>
                                                     </p>
                                                     <button onclick="buy()" class="btn btn-success btn-block flex-column">
@@ -149,15 +149,15 @@
                                             </div>
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h4 class="card-title"><i class="far fa-comment"></i> &nbsp;ความคิดเห็น (<? echo $course->ratingCount ?>)</h4>
+                                                    <h4 class="card-title"><i class="far fa-comment"></i> &nbsp;ความคิดเห็น (<?php echo $course->ratingCount ?>)</h4>
                                                 </div>
                                                 <div class="card-body pb-0">
                                                     <div class="rating">
                                                         เรตติ้ง <?php self::initRating($dir, $course->ratingScore, $course->ratingCount) ?>
-                                                        &nbsp; <small class="text-muted">ผู้ริวิว <? echo $course->ratingCount ?> ราย</small>
+                                                        &nbsp; <small class="text-muted">ผู้ริวิว <?php echo $course->ratingCount ?> ราย</small>
                                                     </div>
                                                     <ul class="list-group mt-3">
-                                                      <? self::initCommentItems($dir, $comments) ?>
+                                                      <?php self::initCommentItems($dir, $comments) ?>
                                                     </ul>
                                                 </div>
                                                 <div class="card-footer p-0">
@@ -209,10 +209,10 @@
                             <img src="<?php Asset::echoIcon($dir, $t->profile_pic) ?> " alt="<?php echo $t->username ?>" width="48" class="rounded-circle">
                         </div>
                         <div class="media-body">
-                            <h4 class="card-title"><a href="#"><? echo $t->username ?></a></h4>
+                            <h4 class="card-title"><a href="#"><?php echo $t->username ?></a></h4>
                         </div>
                     </div>
-                <?
+                <?php
             }
         }
 
@@ -222,32 +222,32 @@
                     <li class="list-group-item" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
                         <div class="media">
                             <div class="media-left">
-                                <div class="text-muted"><? echo (int)$key+1?>.</div>
+                                <div class="text-muted"><?php echo (int)$key+1?>.</div>
                             </div>
                             <div class="media-body">
-                                <a href="#multiCollapseExample1"><? echo $l->title ?></a>
+                                <a href="#multiCollapseExample1"><?php echo $l->title ?></a>
                             </div>
                             <div class="media-right">
-                                <small class="text-muted-light"><? echo $l->duration ?> นาที</small>
+                                <small class="text-muted-light"><?php echo $l->duration ?> นาที</small>
                             </div>
                         </div>
                         <div class="collapse multi-collapse mt-2" id="multiCollapseExample1">
                           <div class="card card-body">
-                            <? echo $l->content ?>
+                            <?php echo $l->content ?>
                           </div>
                         </div>
                     </li>
-                <?
+                <?php
             }
         }
 
         public static function initPictureItems($dir, $pictures){
             foreach ($pictures as $key => $p) {
                 ?>
-                    <a class="col-sm-6 col-md-4 col-lg-3 p-0" href="<? echo $p->picture ?>">
-                        <img class="w-100 h-auto" style="object-fit: cover; background: black;" src="<? echo $p->picture ?>" />
+                    <a class="col-sm-6 col-md-4 col-lg-3 p-0" href="<?php echo $p->picture ?>">
+                        <img class="w-100 h-auto" style="object-fit: cover; background: black;" src="<?php echo $p->picture ?>" />
                     </a>
-                <?
+                <?php
             }
         }
 
@@ -255,19 +255,19 @@
             foreach ($classes as $key => $c) {
                 ?>
                     <tr>
-                        <td><? echo self::properDay($c->day) ?></td>
-                        <td><? echo $c->seats ?></td>
-                        <td class="pr-0"><? echo self::properTime($c->startTime) . ' - ' . self::properTime($c->endTime) ?></td>
+                        <td><?php echo self::properDay($c->day) ?></td>
+                        <td><?php echo $c->seats ?></td>
+                        <td class="pr-0"><?php echo self::properTime($c->startTime) . ' - ' . self::properTime($c->endTime) ?></td>
                     </tr>
-                <?
+                <?php
             }
         }
 
         public static function initPackageItems($dir, $packages){
             foreach ($packages as $key => $p) {
                 ?>
-                    <option value="<? echo $p->ID ?>" <?if($key==0)echo 'selected'?>><? echo $p->credit ?> ชั่วโมง - &#3647;<? echo $p->price ?></option>
-                <?
+                    <option value="<?php echo $p->ID ?>" <?php if($key==0)echo 'selected'?>><?php echo $p->credit ?> ชั่วโมง - &#3647;<?php echo $p->price ?></option>
+                <?php
             }
         }
 
@@ -279,14 +279,14 @@
                         <div class="d-flex w-100 justify-content-between">
                             <a href="#" class="h5 mb-1 card-title">
                                 <img src="<?php Asset::echoIcon($dir, $a->profile_pic) ?> " alt="<?php echo $a->username ?>" width="32" class="rounded-circle">
-                                <span class="ml-1"><? echo $a->username ?></span>
+                                <span class="ml-1"><?php echo $a->username ?></span>
                             </a>
                         </div>
                         <div><?php self::initRating($dir, $c->score, 1) ?></div>
-                        <p class="mb-1 text-dark-75"><? echo $c->text ?></p>
-                        <small class="text-muted"><? echo $c->date ?></small>
+                        <p class="mb-1 text-dark-75"><?php echo $c->text ?></p>
+                        <small class="text-muted"><?php echo $c->date ?></small>
                     </li>
-                <?
+                <?php
             }
         }
 

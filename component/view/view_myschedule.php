@@ -153,7 +153,7 @@
             <!--<script src="<?php Nav::echoURL($dir, 'assets/js/fullcalendar.js') ?>"></script>-->
 
             <!-- Custom Script -->
-            <script id="obj-schedules"><? echo json_encode($schedules) ?></script>
+            <script id="obj-schedules"><?php echo json_encode($schedules) ?></script>
             <?php Script::customScript($dir, 'myschedule.js') ?>
 <?php
         }
@@ -241,13 +241,13 @@
                     }
                 ?>
                     <tr> 
-                        <td><span><? echo $day ?></span> </td>
-                        <td><? echo $course->title ?></td>
-                        <td><a href="<?php Nav::echoURL($dir, App::$pageViewBranch . "?id=$branch->ID") ?>"><? echo $branch->title ?></a></td>
+                        <td><span><?php echo $day ?></span> </td>
+                        <td><?php echo $course->title ?></td>
+                        <td><a href="<?php Nav::echoURL($dir, App::$pageViewBranch . "?id=$branch->ID") ?>"><?php echo $branch->title ?></a></td>
                         <td><span><?php echo $sTime[0] . ":" . $sTime[1] ?></span></td> 
                         <td><span><?php echo $eTime[0] . ":" . $eTime[1] ?></span></td> 
                     </tr>
-                <?
+                <?php
                 }
             }
         }
@@ -309,13 +309,13 @@
                     $dDate = explode(" ", $item->startDate);
                 ?>
                     <tr> 
-                        <td><span><? echo $dDate[0] ?></span> </td> 
-                        <td><? echo $course->title ?></td>
-                        <td><a href="<?php Nav::echoURL($dir, App::$pageViewBranch . "?id=$branch->ID") ?>"><? echo $branch->title ?></a></td>
+                        <td><span><?php echo $dDate[0] ?></span> </td> 
+                        <td><?php echo $course->title ?></td>
+                        <td><a href="<?php Nav::echoURL($dir, App::$pageViewBranch . "?id=$branch->ID") ?>"><?php echo $branch->title ?></a></td>
                         <td><span><?php echo $sTime[0] . ":" . $sTime[1] ?></span></td> 
                         <td><span><?php echo $eTime[0] . ":" . $eTime[1] ?></span></td> 
                     </tr>
-                <?
+                <?php
                 }
             }
         }

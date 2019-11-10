@@ -41,7 +41,7 @@
                                                     </div>
                                                 </div>-->
 
-                                                <? if(count($orders) > 0){ ?>
+                                                <?php if(count($orders) > 0){ ?>
                                                 <div class="card table-responsive" data-toggle="lists" data-lists-values='[
                                                     "js-lists-values-document", 
                                                     "js-lists-values-amount",
@@ -60,11 +60,11 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody class="list">
-                                                            <? self::initItems($dir, $orders) ?>
+                                                            <?php self::initItems($dir, $orders) ?>
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                <? } else {
+                                                <?php } else {
                                                     Alert::initAlert($dir, "ไม่มีรายการคำสั่งซื้อ ที่ต้องแสดง");
                                                    } ?>
                                                 
@@ -103,7 +103,7 @@
                         </div>
                     </div>
                     <?php Script::initScript($dir) ?>
-            <?
+            <?php
         }
 
         private static function initItems($dir, $orders){
@@ -113,7 +113,7 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 <small class="text-uppercase text-muted mr-2">รหัสคำสั่งซื้อ</small>
-                                <a href="<?php Nav::echoURL($dir, App::$pageViewOrder . "?id=$item->ID") ?>" class="text-body small">#<span class="js-lists-values-document"><? echo $item->ID ?></span></a>
+                                <a href="<?php Nav::echoURL($dir, App::$pageViewOrder . "?id=$item->ID") ?>" class="text-body small">#<span class="js-lists-values-document"><?php echo $item->ID ?></span></a>
                             </div>
                         </td>
                         <td class="text-center">
@@ -125,30 +125,30 @@
                         <td class="text-center">
                             <div class="d-flex align-items-center">
                                 <small class="text-uppercase text-muted mr-2">สถานะ</small>
-                                <? switch($item->status){
+                                <?php switch($item->status){
                                     case 'pending':
                                 ?>
                                         <i class="material-icons text-secondary md-18 mr-2">lens</i>
                                         <small class="text-uppercase js-lists-values-status">รอการตรวจสอบ</small>
-                                <?
+                                <?php
                                         break;
                                     case 'confirm':
                                 ?>
                                         <i class="material-icons text-success md-18 mr-2">lens</i>
                                         <small class="text-uppercase js-lists-values-status">ยืนยันแล้ว</small>
-                                <?
+                                <?php
                                         break;
                                     case 'rejected':
                                 ?>
                                         <i class="material-icons text-danger md-18 mr-2">lens</i>
                                         <small class="text-uppercase js-lists-values-status">ถูกปฏิเสธ</small>
-                                <?
+                                <?php
                                         break;
                                     default: 
                                 ?>
                                         <i class="material-icons text-light md-18 mr-2">lens</i>
                                         <small class="text-uppercase js-lists-values-status">ไม่ทราบสถานะ</small>
-                                <?      break;
+                                <?php   break;
                                     } 
                                 ?>
                             </div>
@@ -156,11 +156,12 @@
                         <td class="text-right">
                             <div class="d-flex align-items-center text-right">
                                 <small class="text-uppercase text-muted mr-2">วันที่</small>
-                                <small class="text-uppercase js-lists-values-date"><? echo $item->date ?></small>
+                                <small class="text-uppercase js-lists-values-date"><?php echo $item->date ?></small>
                             </div>
                         </td>
                     </tr>
-                <?
+                <?php
             }
         }
     }
+?>

@@ -103,6 +103,6 @@
                     modal.find('.modal-body input').val(recipient)
                 });
             </script>
-        <?
+        <?php
     }
 }

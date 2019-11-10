@@ -32,19 +32,19 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <img src="<? Asset::echoIcon($dir, $booking->owner->profile_pic) ?>" class="icon-block avatar">
-                                            <h4 class="mt-4">ผู้จอง: คุณ <? echo $fname . " " . $lname ?></h4>
-                                            <h4 class="mt-4">คอร์ส: <? echo $booking->course->title ?></h4>
-                                            <h4 class="mt-4">เรียนที่สาขา: <? echo $booking->courseBranch->branch->title ?></h4>
+                                            <img src="<?php Asset::echoIcon($dir, $booking->owner->profile_pic) ?>" class="icon-block avatar">
+                                            <h4 class="mt-4">ผู้จอง: คุณ <?php echo $fname . " " . $lname ?></h4>
+                                            <h4 class="mt-4">คอร์ส: <?php echo $booking->course->title ?></h4>
+                                            <h4 class="mt-4">เรียนที่สาขา: <?php echo $booking->courseBranch->branch->title ?></h4>
                                             <div class="media align-items-center">
                                                 <div class="media-left">
                                                     <span class="col-12 col-md-6 text-muted">
                                                         <i class="fas fa-book-open mr-2"></i>
-                                                        วันที่จอง: <? echo $booking->date ?>
+                                                        วันที่จอง: <?php echo $booking->date ?>
                                                     </span>
                                                     <span class="col-12 col-md-6 text-muted">
                                                     <i class="fas fa-user-graduate mr-2"></i>
-                                                        วันที่เรียน: <? echo $booking->startDate ?>
+                                                        วันที่เรียน: <?php echo $booking->startDate ?>
                                                     </span>
                                                 </div>
                                                 <div class="media-body">
@@ -76,6 +76,6 @@
                                 thumbnail:true
                             }); 
                     </script>
-            <?
+            <?php
         }
     }
