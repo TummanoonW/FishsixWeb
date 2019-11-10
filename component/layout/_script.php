@@ -27,7 +27,9 @@
             <!-- Proto DB -->
             <script src="<?php Nav::echoURL($dir, 'assets/js/custom/connect.js') ?>"></script>
 
-
+            <!-- List.js -->
+            <script src="<?php Nav::echoURL($dir, 'assets/vendor/list.min.js') ?>"></script>
+            <script src="<?php Nav::echoURL($dir, 'assets/js/list.js') ?>"></script>
 <?php
         }
 

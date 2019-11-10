@@ -14,8 +14,11 @@
      if(Session::checkUserExisted()){
         switch($io->method){
             case 'checkout':
-                $result = FunMyCart::getByAuthID($api, $auth->ID);
-                $cartItems = $result->response;
+                /*$result = FunMyCart::getByAuthID($api, $auth->ID);
+                $cartItems = $result->response;*/
+
+                $cartItems = Session::get('mycart');
+                if($cartItems == NULL) $cartItems = [];
 
                 $result = FunAuth::getUserByAuthID($api, $auth->ID);
                 $user = $result->response;
@@ -24,6 +27,7 @@
 
                 $result = FunMyCart::checkout($api, $form);
                 if($result->success){
+                    Session::set('mycart', NULL);
                     $id = $result->response->ID;
                     Nav::goto($dir, App::$pageViewOrder . '?id=' . $id);
                 }else{

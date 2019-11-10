@@ -11,9 +11,9 @@
                 $apiKey = Session::getAPIKey(); 
                 $api = new API($apiKey);
 
-                $result = FunMyCart::countByAuthID($api, $auth->ID);
+                /*$result = FunMyCart::countByAuthID($api, $auth->ID);
                 $carts = (int)$result->response;
-                $countC = $countC + $carts;
+                $countC = $countC + $carts;*/
             }
 ?>
             <ul class="nav navbar-nav flex-nowrap">

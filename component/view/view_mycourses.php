@@ -71,28 +71,32 @@
                         <div class="card-header">
                             <div class="media">
                                 <div class="media-left">
-                                    <a href="<?php Nav::echoURL($dir, App::$pageCourseView . "?id=$courseID") ?>">
+                                    <a href="<?php if($item->isExpired != TRUE) Nav::echoURL($dir, App::$pageCourseView . "?id=$courseID"); else echo "#"; ?>">
                                         <img src="<?php Asset::echoThumb($dir, $course->thumbnail) ?>" alt="<? echo $course->title ?>" width="100" class="rounded">
                                     </a>
                                 </div>
                                 <div class="media-body">
-                                    <h4 class="card-title m-0"><a href="<?php Nav::echoURL($dir, App::$pageCourseView . "?id=$courseID") ?>"><? echo $course->title ?></a></h4>
-                                    <small class="text-muted">จำนวนชั่วโมงที่เหลือ: <? echo $item->credit ?> ชม.</small>
+                                    <h4 class="card-title m-0"><a href="<?php if($item->isExpired != TRUE) Nav::echoURL($dir, App::$pageCourseView . "?id=$courseID"); else echo "#";  ?>" class="<?php if($item->isExpired) echo "text-muted" ?>"><? echo $course->title ?><?php if($item->isExpired) echo " (หมดอายุ)" ?></a></h4>
+                                    <small class="text-muted">วันที่หมดอายุ: <? echo $item->expiration ?></small>
                                 </div>
                             </div>
                         </div>
                         <div class="progress rounded-0">
-                            <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: <?echo $progress ?>%" aria-valuenow="<?echo $progress?>" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar progress-bar-striped <?php if($item->isExpired) echo 'bg-dark'; else echo 'bg-primary'; ?>" role="progressbar" style="width: <?echo $progress ?>%" aria-valuenow="<? echo $progress?>" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                         <div class="card-footer bg-white">
                             <div class="media">
                                 <div class="media-left">
-                                <a href="<?php Nav::echoURL($dir, App::$pageBookClass . "?id=$id") ?>" class="btn btn-primary btn-sm">จองรอบเรียน<i class="material-icons btn__icon--right">play_circle_outline</i></a>
+                                <?php if($item->isExpired){ ?>
+
+                                <?php }else{ ?>
+                                    <a href="<?php Nav::echoURL($dir, App::$pageBookClass . "?id=$id") ?>" class="btn btn-primary btn-sm">จองรอบเรียน<i class="material-icons btn__icon--right">play_circle_outline</i></a>
+                                <?php } ?>
                             </div>
                             <div class="media-body">
                             </div>
                             <div class="media-right">
-                                <button type="button" class="btn btn-light btn-sm">ชม.ที่เหลือ <span class="badge badge-success ml-2"><? echo $item->credit ?></span></button>
+                                <button type="button" class="btn btn-light btn-sm <?php if($item->isExpired) echo "text-muted" ?>">ชม.ที่เหลือ <span class="badge <?php if($item->isExpired) echo 'badge-dark'; else echo 'badge-success'; ?> ml-2"><? echo $item->credit ?></span></button>
                             </div>    
                         </div>
                         </div>

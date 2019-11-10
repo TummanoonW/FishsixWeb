@@ -43,6 +43,8 @@
         $result = FunAdminOrder::getFiltered($api, $filter);
         $orders = $result->response;
 
+        Console::log('orders', $orders);
+
         Header::initHeader($dir, "แอดมิน - จัดการคำสั่งซื้อ"); 
         AdminManageOrdersView::initView($dir, $paths, $pages, $orders);
         Footer::initFooter($dir); 

@@ -31,34 +31,27 @@
                                     </div>
 
                                     <?php if(count($orders) > 0){ ?>
-                                        <div class="card table-responsive" data-toggle="lists" data-lists-values='[
-                                            "js-lists-values-slip"
-                                            "js-lists-values-document", 
-                                            "js-lists-values-owner", 
-                                            "js-lists-values-amount",
-                                            "js-lists-values-status",
-                                            "js-lists-values-date"
-                                            ]' data-lists-sort-by="js-lists-values-document" data-lists-sort-desc="true">
+                                        <div class="card table-responsive" data-toggle="lists" data-lists-values='["ID", "owner", "amount", "status", "date"]'>
                                             <table class="table mb-0">
                                                 <thead class="thead-light">
                                                     <tr>
                                                         <td>
-                                                            <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-slip">ใบเสร็จ</a>
+                                                            ใบเสร็จ
                                                         </td>
                                                         <td>
-                                                            <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-document">รหัสคำสั่งซื้อ</a>
+                                                            <a href="javascript:void(0)" class="sort" data-sort="ID">รหัสคำสั่งซื้อ</a>
                                                         </td>
                                                         <td>
-                                                            <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-owner">ผู้สั่งซืื้อ</a>
+                                                            <a href="javascript:void(0)" class="sort" data-sort="owner">ผู้สั่งซืื้อ</a>
                                                         </td>
                                                         <td>
-                                                            <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-amount">ยอดชำระ</a>
+                                                            <a href="javascript:void(0)" class="sort" data-sort="amount">ยอดชำระ</a>
                                                         </td>
                                                         <td>
-                                                            <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-status">สถานะ</a>
+                                                            <a href="javascript:void(0)" class="sort" data-sort="status">สถานะ</a>
                                                         </td>
                                                         <td>
-                                                            <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-date">วันที่</a>
+                                                            <a href="javascript:void(0)" class="sort" data-sort="date">วันที่</a>
                                                         </td>
                                                         <td></td>
                                                     </tr>
@@ -110,17 +103,17 @@
                         </td>
                         <td>
                             <div class="d-flex align-items-center">
-                                <a href="<?php Nav::echoURL($dir, App::$pageAdminViewOrder . "?id=$id") ?>" class="text-body small">#<span class="js-lists-values-document"><? echo $id ?></span></a>
+                                <a href="<?php Nav::echoURL($dir, App::$pageAdminViewOrder . "?id=$id") ?>" class="text-body small">#<span class="ID"><? echo $id ?></span></a>
                             </div>
                         </td>
                         <td>
                             <div class="d-flex align-items-center">
-                                <a href="#" class="text-body small"><span class="js-lists-values-owner"><? echo $fname . " " . $lname ?></span></a>
+                                <a href="#" class="text-body small"><span class="owner"><? echo $fname . " " . $lname ?></span></a>
                             </div>
                         </td>
                         <td class="text-center">
                             <div class="d-flex align-items-center">
-                                <small class="text-uppercase">&#3647;<span class="js-lists-values-amount"><?php echo $item->totalPrice ?></span> บาท</small>
+                                <small class="text-uppercase">&#3647;<span class="amount"><?php echo $item->totalPrice ?></span> บาท</small>
                             </div>
                         </td>
                         <td class="text-center">
@@ -129,25 +122,25 @@
                                     case 'pending':
                                 ?>
                                         <i class="material-icons text-secondary md-18 mr-2">lens</i>
-                                        <small class="text-uppercase js-lists-values-status">รอการตรวจสอบ</small>
+                                        <small class="text-uppercase status">รอการตรวจสอบ</small>
                                 <?
                                         break;
                                     case 'confirm':
                                 ?>
                                         <i class="material-icons text-success md-18 mr-2">lens</i>
-                                        <small class="text-uppercase js-lists-values-status">ยืนยันแล้ว</small>
+                                        <small class="text-uppercase status">ยืนยันแล้ว</small>
                                 <?
                                         break;
                                     case 'rejected':
                                 ?>
                                         <i class="material-icons text-danger md-18 mr-2">lens</i>
-                                        <small class="text-uppercase js-lists-values-status">ถูกปฏิเสธ</small>
+                                        <small class="text-uppercase status">ถูกปฏิเสธ</small>
                                 <?
                                         break;
                                     default: 
                                 ?>
                                         <i class="material-icons text-light md-18 mr-2">lens</i>
-                                        <small class="text-uppercase js-lists-values-status">ไม่ทราบสถานะ</small>
+                                        <small class="text-uppercase status">ไม่ทราบสถานะ</small>
                                 <?      break;
                                     } 
                                 ?>
@@ -155,7 +148,7 @@
                         </td>
                         <td class="text-right">
                             <div class="d-flex align-items-center text-right">
-                                <small class="text-uppercase js-lists-values-date"><? echo $item->date ?></small>
+                                <small class="text-uppercase date"><? echo $item->date ?></small>
                             </div>
                         </td>
                         <td>
@@ -164,9 +157,9 @@
                               <div class="dropdown-menu">
                                 <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$routeAdminOrder . "?m=confirm&id=$id") ?>">ยืนยัน</a>
                                 <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$routeAdminOrder . "?m=pending&id=$id") ?>">รอการตรวจสอบ</a>
+                                <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageAdminViewOrder . "?id=$id") ?>">ดูรายละเอียด</a>
                                 <div role="separator" class="dropdown-divider"></div>
                                 <a class="dropdown-item text-danger" href="<?php Nav::echoURL($dir, App::$routeAdminOrder . "?m=rejected&id=$id") ?>">ปฏิเสธ</a>
-                                <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageAdminViewOrder . "?id=$id") ?>">ดูรายละเอียด</a>
                               </div>
                             </div>
                         </td>

@@ -52,14 +52,14 @@
         }
 
         public static function getFilteredPublished($api, $filter){
-            $url = $api->getURL(App::$apiCourse, 'getFilteredPublished', $filter);
-            $result = $api->get($url);
+            $url = $api->getURL(App::$apiCourse, 'getFilteredPublished', NULL);
+            $result = $api->post($url, $filter);
             return $result;
         }
 
         public static function countFilteredPublished($api, $filter){
-            $url = $api->getURL(App::$apiCourse, 'countFilteredPublished', $filter);
-            $result = $api->get($url);
+            $url = $api->getURL(App::$apiCourse, 'countFilteredPublished', NULL);
+            $result = $api->post($url, $filter);
             return $result;
         }
 

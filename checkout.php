@@ -13,10 +13,13 @@
     $io = new IO(); 
 
     if(Session::checkUserExisted()){
-        $result = FunMyCart::countByAuthID($api, $auth->ID);
-        $count = $result->response;
+        /*$result = FunMyCart::countByAuthID($api, $auth->ID);
+        $count = $result->response;*/
 
-        if($count > 0){
+        $s_carts = Session::get('mycart');
+        if($s_carts == NULL) $s_carts = [];
+
+        if(count($s_carts) > 0){
             $paths = array(
                 new Path(FALSE, 'หน้าหลัก', $dir),
                 new Path(TRUE, 'ชำระสินค้า', '')

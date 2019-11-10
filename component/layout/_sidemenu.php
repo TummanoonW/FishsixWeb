@@ -29,7 +29,17 @@
                                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">apps</i> ระบบจัดการ
                                             </a>
                                         </li>
-                                    <?php } ?>
+                                    <?php } 
+                                        if(Session::checkUserTeacher()){ 
+                                    ?>
+                                        <li class="sidebar-menu-item">
+                                            <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageTeacherPanel); ?>">
+                                                <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">class</i> ระบบการสอน
+                                            </a>
+                                        </li>
+                                    <?php
+                                        }
+                                    ?>
 
                                     <li class="sidebar-menu-item">
                                         <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageMyCourses); ?>">

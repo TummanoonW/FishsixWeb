@@ -53,6 +53,9 @@
         public static $pageAdminViewBooking = "admin/view-booking.php";
         public static $pageAdminManageBookings = "admin/manage-bookings.php";
 
+        public static $pageTeacherPanel = "teacher/index.php";
+        public static $pageTeacherManageStudent = "teacher/manage-students.php";
+
         public static $routeRecovery= "route/login-register/recovery.php";
         public static $routeLogIn = "route/login-register/login.php";
         public static $routeLogOut = "route/login-register/logout.php";
@@ -90,6 +93,8 @@
         public static $apiAdminBranch = "admin-branch.php";
         public static $apiAdminAuth = "admin-auth.php";
         public static $apiAdminOrder = "admin-order.php";
+
+        public static $apiTeacherCourse = "teacher-course.php";
 
     }
 ?>

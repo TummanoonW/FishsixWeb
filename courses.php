@@ -34,6 +34,7 @@
     $query2 = (array)$io->query;
     unset($query2['limit']);
     unset($query2['offset']);
+    
     $result = FunCourse::countFilteredPublished($api, $query2);
     $countTotal = $result->response;
     

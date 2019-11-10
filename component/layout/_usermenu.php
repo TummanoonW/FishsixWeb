@@ -16,7 +16,15 @@
                             <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageAdminPanel) ?>">
                                 <i class="material-icons">apps</i> ระบบจัดการ
                             </a>
-                        <?php } ?>
+                        <?php } 
+                            if(Session::checkUserTeacher()){ 
+                        ?>
+                            <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageTeacherPanel); ?>">
+                                <i class="material-icons">class</i> ระบบการสอน
+                            </a>
+                        <?php
+                            }
+                        ?>
                         <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageMyCourses) ?>">
                             <i class="material-icons">school</i> คอร์สของฉัน
                         </a>

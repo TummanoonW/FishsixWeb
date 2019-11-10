@@ -20,6 +20,25 @@
             }
         }
 
+
+        public static function checkUserTeacher(){
+            $auth = self::getAuth();
+            if($auth != NULL){
+                return ($auth->type == Auth::$TYPE_TEACHER);
+            }else{
+                return FALSE;
+            }
+        }
+
+        public static function checkUserStudent(){
+            $auth = self::getAuth();
+            if($auth != NULL){
+                return ($auth->type == Auth::$TYPE_USER);
+            }else{
+                return FALSE;
+            }
+        }
+
         //save user and API Key in session
         public static function logIn($auth){
             self::setAuth($auth);

@@ -25,7 +25,7 @@
     if($s_carts == NULL) $s_carts = [];
 
     if(Session::checkUserExisted()){
-        $result = FunMyCart::addMultiple($api, $s_carts);
+        /*$result = FunMyCart::addMultiple($api, $s_carts);
         $s_carts = [];
         Session::set('mycart', $s_carts);
 
@@ -43,6 +43,20 @@
         $carts = $result->response;
 
         $isLoggedIn = TRUE;
+    }else{*/
+        if(isset($io->query->ID)){
+            $package = $io->query;
+            $cart = (object)array(
+                'ID' => NULL,
+                'ownerID' => $auth->ID,
+                'packageID' => $package->ID,
+                'courseID' => $package->courseID,
+                'package' => $package
+            );
+            array_push($s_carts, $cart);
+            Session::set('mycart', $s_carts);
+        }
+        $isLoggedIn = TRUE;
     }else{
 
         if(isset($io->query->ID)){
@@ -57,7 +71,6 @@
             array_push($s_carts, $cart);
             Session::set('mycart', $s_carts);
         }
-
         $isLoggedIn = FALSE;
     }
 
@@ -67,6 +80,8 @@
         $c->course = $result->response;
         array_push($cartsS, $c);
     }
+
+    Console::log('carts', $cartsS);
 
     Header::initHeader($dir, "ตระกร้าสินค้า ของฉัน"); 
     MyCartView::initView($dir, $paths, $carts, $cartsS, $isLoggedIn);

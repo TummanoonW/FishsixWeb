@@ -24,29 +24,34 @@
         $result = FunOwnership::getSingle($api, $id);
         if($result->success){
             if($result->response != NULL){
-                $ownership = $result->response;
-                
-                $result = FunCourse::get($api, $ownership->courseID);
-                if($result->response != NULL){
-                    $course = $result->response;
+                if($result->response->isExpired != TRUE){
+                    $ownership = $result->response;
+                    
+                    $result = FunCourse::get($api, $ownership->courseID);
+                    if($result->response != NULL){
+                        $course = $result->response;
 
-                    $result = FunCourse::getClassesByCourseID($api, $course->ID);
-                    $classes = $result->response;
+                        $result = FunCourse::getClassesByCourseID($api, $course->ID);
+                        $classes = $result->response;
 
-                    $result = FunCourse::getBranchesByCourseID($api, $course->ID);
-                    $branches = $result->response;
+                        $result = FunCourse::getBranchesByCourseID($api, $course->ID);
+                        $branches = $result->response;
 
 
-                    //ตย. การดูข้อมูลที่เรียกมา ด้วย console log
-                    Console::log('classes', $classes);
-                    Console::log('branches', $branches);
+                        //ตย. การดูข้อมูลที่เรียกมา ด้วย console log
+                        Console::log('classes', $classes);
+                        Console::log('branches', $branches);
 
-                    Header::initHeader($dir, "จองรอบเรียน - $course->title"); 
-                    BookingClass::initView($dir, $paths, $ownership, $course, $classes, $branches);
-                    Footer::initFooter($dir);
+                        Header::initHeader($dir, "จองรอบเรียน - $course->title"); 
+                        BookingClass::initView($dir, $paths, $ownership, $course, $classes, $branches);
+                        Footer::initFooter($dir);
+                    }else{
+                        $result->err = Err::$ERR_NO_DATA;
+                        ErrorPage::showError($dir, $result);
+                    }
                 }else{
-                    $result->err = Err::$ERR_NO_DATA;
-                    ErrorPage::showError($dir, $result);
+                    $result->err = Err::$ERR_COURSE_EXPIRED;
+                    ErrorPage::showError($dir, $result); 
                 }
             }else{
                 $result->err = Err::$ERR_NO_DATA;

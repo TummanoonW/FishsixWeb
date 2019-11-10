@@ -12,31 +12,31 @@ input.addEventListener("keyup", function(event) {
     }
 });
 
-async function search(){
+function search(){
     window.location.href = urls.pageCourses + "?q=" + JSON.stringify(query);
 }
 
 async function searchQuery(){
-    let search = input.value;
-    query.search = search;
-    search();
+    let value = input.value;
+    query.search = value;
+    await search();
 }
 
 async function searchCategory(input){
     let ID = input.value;
     query.category = ID;
-    search();
+    await search();
 }
 
 async function searchChar(bool){
     query.desc = bool;
     query.sort = 'char';
-    search();
+    await search();
 }
 
 async function searchPopular(bool){
     query.desc = bool;
     query.sort = 'popular';
-    search();
+    await search();
 }
 

@@ -36,8 +36,7 @@
 
         Header::initHeader($dir, $auth->username . " - คอร์สของฉัน"); 
         MyCoursesView::initView($dir, $paths, $pages, $ownerships);
-        Footer::initFooter($dir); 
-
+        Footer::initFooter($dir);
     }else{
         Nav::gotoHome($dir);
     }

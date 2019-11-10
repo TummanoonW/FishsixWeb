@@ -31,34 +31,27 @@
                                     </div>
 
                                     <?php if(count($bookings) > 0){ ?>
-                                        <div class="card table-responsive" data-toggle="lists" data-lists-values='[
-                                            "js-lists-values-document"
-                                            "js-lists-values-owner", 
-                                            "js-lists-values-startdate",
-                                            "js-lists-values-branch",
-                                            "js-lists-values-course",
-                                            "js-lists-values-credit"
-                                            ]' data-lists-sort-by="js-lists-values-startdate" data-lists-sort-desc="true">
+                                        <div class="card table-responsive" data-toggle="lists" data-lists-values='["ID", "owner", "startDate", "branch", "course", "credit"]'>
                                             <table class="table mb-0">
                                                 <thead class="thead-light">
                                                     <tr>
                                                         <td>
-                                                            <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-document">รหัสการจอง</a>
+                                                            <a href="javascript:void(0)" class="sort" data-sort="ID">รหัสการจอง</a>
                                                         </td>
                                                         <td>
-                                                            <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-owner">ผู้เรียน</a>
+                                                            <a href="javascript:void(0)" class="sort" data-sort="owner">ผู้เรียน</a>
                                                         </td>
                                                         <td>
-                                                            <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-startdate">วันที่เรียน</a>
+                                                            <a href="javascript:void(0)" class="sort" data-sort="startDate">วันที่เรียน</a>
                                                         </td>
                                                         <td>
-                                                            <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-branch">สาขา</a>
+                                                            <a href="javascript:void(0)" class="sort" data-sort="branch">สาขา</a>
                                                         </td>
                                                         <td>
-                                                            <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-course">คอร์ส</a>
+                                                            <a href="javascript:void(0)" class="sort" data-sort="course">คอร์ส</a>
                                                         </td>
                                                         <td>
-                                                            <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-credit">จำนวนชม.</a>
+                                                            <a href="javascript:void(0)" class="sort" data-sort="credit">จำนวนชม.</a>
                                                         </td>
                                                         <td>
                                                             
@@ -99,32 +92,32 @@
                     <tr>
                         <td>
                             <div class="d-flex align-items-center">
-                                <a href="#" class="text-body small">#<span class="js-lists-values-document"><? echo $id ?></span></a>
+                                <a href="#" class="text-body small">#<span class="ID"><? echo $id ?></span></a>
                             </div>
                         </td>
                         <td>
                             <div class="d-flex align-items-center">
-                                <a href="#" class="text-body small"><span class="js-lists-values-owner"><? echo $owner->user->fname . " " . $owner->user->lname ?></span></a>
+                                <a href="#" class="text-body small"><span class="owner"><? echo $owner->user->fname . " " . $owner->user->lname ?></span></a>
                             </div>
                         </td>
                         <td class="text-center">
                             <div class="d-flex align-items-center">
-                                <small class="text-uppercase"><span class="js-lists-values-startdate"><?php echo $startDate ?></span></small>
+                                <small class="text-uppercase"><span class="startDate"><?php echo $startDate ?></span></small>
                             </div>
                         </td>
                         <td class="text-center">
                             <div class="d-flex align-items-center">
-                                <small class="text-uppercase"><span class="js-lists-values-branch"><?php echo $branch->title ?></span></small>
+                                <small class="text-uppercase"><span class="branch"><?php echo $branch->title ?></span></small>
                             </div>
                         </td>
                         <td class="text-right">
                             <div class="d-flex align-items-center text-right">
-                                <small class="text-uppercase js-lists-values-course"><? echo $course->title ?></small>
+                                <small class="text-uppercase course"><? echo $course->title ?></small>
                             </div>
                         </td>
                         <td>
                             <div class="d-flex align-items-center text-right">
-                                <small class="text-uppercase js-lists-values-credit"><? echo $item->creditUsed ?></small>
+                                <small class="text-uppercase credit"><? echo $item->creditUsed ?></small>
                             </div>
                         </td>
                         <td>
