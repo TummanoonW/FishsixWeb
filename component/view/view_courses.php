@@ -42,7 +42,7 @@
                                                         foreach ($categories as $key => $category) {
                                                             ?>
                                                                 <option value="<?php echo $category->ID ?>" <?php if($s_cat == $category->ID) echo 'selected' ?>><?php echo $category->title ?></option>
-                                                            <?
+                                                            <?php
                                                         }
                                                     ?>
                                                 </select>
@@ -111,14 +111,14 @@
                 </div>
                 <?php Script::initScript($dir) ?>
                 
-                <script id="obj-query"><? echo json_encode($query) ?></script>
-                <script id="obj-urls"><? echo json_encode($urls) ?></script>
+                <script id="obj-query"><?php echo json_encode($query) ?></script>
+                <script id="obj-urls"><?php echo json_encode($urls) ?></script>
 
                 
                 
                 <?php Script::customScript($dir, 'courses.js') ?>
 
-<?
+<?php
         }
 
         public static function initCard($dir, $courses, $categories){

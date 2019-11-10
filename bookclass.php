@@ -6,6 +6,7 @@
     Includer::include_view($dir, 'view_bookclass.php');
     Includer::include_fun($dir, 'fun_course.php');
     Includer::include_fun($dir, 'fun_ownership.php');
+    Includer::include_fun($dir, 'fun_schedule.php');
 
     $auth = Session::getAuth(); 
     $apiKey = Session::getAPIKey(); 
@@ -36,13 +37,17 @@
                     $result = FunCourse::getBranchesByCourseID($api, $course->ID);
                     $branches = $result->response;
 
+                    $result = FunSchedule::getMySchedule($api, $auth->ID);
+                    $schedules = $result->response;
+
 
                     //ตย. การดูข้อมูลที่เรียกมา ด้วย console log
                     Console::log('classes', $classes);
+                    Console::log('schedules', $schedules);
                     Console::log('branches', $branches);
 
                     Header::initHeader($dir, "จองรอบเรียน - $course->title"); 
-                    BookingClass::initView($dir, $paths, $ownership, $course, $classes, $branches);
+                    BookingClass::initView($dir, $paths, $ownership, $course, $classes, $branches, $schedules);
                     Footer::initFooter($dir);
                 }else{
                     $result->err = Err::$ERR_NO_DATA;

@@ -45,16 +45,16 @@
                                                                 <div class="row">
                                                                     <div class="col-6">
                                                                         <p class="text-black-70 m-0"><strong>ผู้ชำระเงิน</strong></p>
-                                                                        <h2><? echo $order->ownerName ?></h2>
+                                                                        <h2><?php echo $order->ownerName ?></h2>
                                                                         <div class="text-black-50">
-                                                                            <? echo $order->ownerAddress ?>
+                                                                            <?php echo $order->ownerAddress ?>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-6">
                                                                         <p class="text-black-70 m-0"><strong>ผู้รับชำระเงิน</strong></p>
-                                                                        <h2><? echo $order->hostName ?></h2>
+                                                                        <h2><?php echo $order->hostName ?></h2>
                                                                         <div class="text-black-50">
-                                                                            <? echo $order->hostAddress ?>
+                                                                            <?php echo $order->hostAddress ?>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -71,7 +71,7 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <? self::initItems($dir, $orderItems) ?>
+                                                                <?php self::initItems($dir, $orderItems) ?>
                                                                 <!--<tr>
                                                                     <td>
                                                                         <p class="mb-1"><strong>Basic Plan - Monthly Subscription</strong></p>
@@ -94,7 +94,7 @@
                                                                 </tr>-->
                                                                 <tr>
                                                                     <td class="text-right text-black-70"><strong>รวมยอดชำระ</strong></td>
-                                                                    <td style="width: 120px;" class="text-right"><strong>&#3647;<? echo $order->totalPrice ?> บาท</strong></td>
+                                                                    <td style="width: 120px;" class="text-right"><strong>&#3647;<?php echo $order->totalPrice ?> บาท</strong></td>
                                                                 </tr>
                                                             </tfoot>
                                                         </table>
@@ -111,7 +111,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                <? }else{ 
+                                                <?php }else{ 
                                                         Alert::initAlert($dir, "ขออภัย! เราไม่พบคำสั่งซื้อที่คุณต้องการ");
                                                    } 
                                                 ?>
@@ -123,14 +123,14 @@
                                                         <div class="page-section pt-lg-32pt">
                                                             <ul class="nav page-nav__menu">
                                                                 <li class="nav-item">
-                                                                    <a href="#" class="nav-link <? if($order->status == 'pending') echo 'active' ?>">รอการตรวจสอบ</a>
+                                                                    <a href="#" class="nav-link <?php if($order->status == 'pending') echo 'active' ?>">รอการตรวจสอบ</a>
                                                                 </li>
                                                                 <li class="nav-item">
-                                                                    <a href="#" class="nav-link <? if($order->status == 'confirm') echo 'active' ?>">ยืนยันแล้ว</a>
+                                                                    <a href="#" class="nav-link <?php if($order->status == 'confirm') echo 'active' ?>">ยืนยันแล้ว</a>
                                                                 </li>
                                                                 <li class="nav-item">
-                                                                    <a href="#" class="nav-link <? if($order->status == 'rejected') echo 'active' ?>">
-                                                                        <? 
+                                                                    <a href="#" class="nav-link <?php if($order->status == 'rejected') echo 'active' ?>">
+                                                                        <?php 
                                                                             if($order->status == 'rejected') echo 'ถูกปฏิเสธ'; 
                                                                             else echo '<span class="text-muted">ถูกปฏิเสธ</span>';
                                                                         ?>
@@ -142,8 +142,8 @@
                                                 </div>
                                                 <div class="mt-4">
                                                     <h3>ภาพใบเสร็จแนบ</h3>
-                                                    <a class="" href="<? echo $order->slip_pic ?>" target="_blank">
-                                                        <img class="" style="object-fit: cover;background: black;width: 200px;height: auto;" src="<? echo $order->slip_pic ?>" />
+                                                    <a class="" href="<?php echo $order->slip_pic ?>" target="_blank">
+                                                        <img class="" style="object-fit: cover;background: black;width: 200px;height: auto;" src="<?php echo $order->slip_pic ?>" />
                                                     </a>
                                                 </div>
                                             </div>
@@ -155,7 +155,7 @@
                         </div>
                     </div>
                     <?php Script::initScript($dir) ?>
-            <?
+            <?php
         }
 
         private static function initBtnStatus($dir, $status){
@@ -163,22 +163,22 @@
                 case 'pending':
                     ?>
                         <a href="#status" class="btn btn-secondary">รอการตรวจสอบ</a>
-                    <?
+                    <?php
                     break;
                 case 'confirm':
                     ?>
                         <a href="#status" class="btn btn-success">ยืนยันแล้ว</a>
-                    <?
+                    <?php
                     break;
                 case 'rejected':
                     ?>
                         <a href="#status" class="btn btn-danger">ถูกปฏิเสธ</a>
-                    <?
+                    <?php
                     break;
                 default:
                     ?>
                         <a href="#status" class="btn btn-light">ไม่ทราบสถานะ</a>
-                    <?
+                    <?php
                     break;
             }
         }
@@ -190,19 +190,20 @@
                     <tr>
                         <td>
                             <div class="d-flex align-items-center">
-                                <a href="<? Nav::echoURL($dir, App::$pageCourseView . '?id=' . $course->ID) ?>" class="avatar avatar-4by3 avatar-sm mr-3">
-                                    <img src="<? Asset::echoThumb($dir, $course->thumbnail) ?>" alt="<? echo $course->title ?>" class="avatar-img rounded">
+                                <a href="<?php Nav::echoURL($dir, App::$pageCourseView . '?id=' . $course->ID) ?>" class="avatar avatar-4by3 avatar-sm mr-3">
+                                    <img src="<?php Asset::echoThumb($dir, $course->thumbnail) ?>" alt="<?php echo $course->title ?>" class="avatar-img rounded">
                                 </a>
                                 <div class="flex">
-                                    <a href="<? Nav::echoURL($dir, App::$pageCourseView . '?id=' . $course->ID) ?>" class="text-body">
-                                        <strong><? echo $course->title . " ($item->credit)" ?></strong>
+                                    <a href="<?php Nav::echoURL($dir, App::$pageCourseView . '?id=' . $course->ID) ?>" class="text-body">
+                                        <strong><?php echo $course->title . " ($item->credit)" ?></strong>
                                     </a>
                                 </div>
                             </div>
                         </td>
-                        <td class="text-right"><strong>&#3647;<? echo $item->price ?> บาท</strong></td>
+                        <td class="text-right"><strong>&#3647;<?php echo $item->price ?> บาท</strong></td>
                     </tr>
                 <?php
             }
         }
     }
+?>

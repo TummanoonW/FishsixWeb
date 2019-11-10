@@ -26,7 +26,7 @@
 
                                         <div class="media mb-headings align-items-center">
                                             <div class="media-body">
-                                                <h1 class="h2"><? echo $branch->title ?></h1>
+                                                <h1 class="h2"><?php echo $branch->title ?></h1>
                                             </div>
                                         </div>
                                         <div>
@@ -34,16 +34,16 @@
                                                 <img src="<?php Asset::echoThumb($dir, $branch->thumbnail) ?>" style="height: 256px; width: 100%; object-fit: cover;">
                                             </a>
                                             <h4 class="mt-4">คำอธิบาย</h4>
-                                            <p class="mt-2 text-dark"><? echo $branch->description ?><p>
+                                            <p class="mt-2 text-dark"><?php echo $branch->description ?><p>
                                             <div class="media align-items-center">
                                                 <div class="media-left">
                                                     <span class="col-12 col-md-6 text-muted">
                                                         <i class="fas fa-place-of-worship mr-2"></i>
-                                                        จุดสังเกตุ: <? echo $branch->nearbyPlace ?>
+                                                        จุดสังเกตุ: <?php echo $branch->nearbyPlace ?>
                                                     </span>
                                                     <span class="col-12 col-md-6 text-muted">
                                                         <i class="fas fa-map-marker-alt mr-2"></i>
-                                                        <? echo $branch->address ?>
+                                                        <?php echo $branch->address ?>
                                                     </span>
                                                 </div>
                                                 <div class="media-body">

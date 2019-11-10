@@ -72,12 +72,12 @@
                             <div class="media">
                                 <div class="media-left">
                                     <a href="<?php Nav::echoURL($dir, App::$pageCourseView . "?id=$courseID") ?>">
-                                        <img src="<?php Asset::echoThumb($dir, $course->thumbnail) ?>" alt="<? echo $course->title ?>" width="100" class="rounded">
+                                        <img src="<?php Asset::echoThumb($dir, $course->thumbnail) ?>" alt="<?php echo $course->title ?>" width="100" class="rounded">
                                     </a>
                                 </div>
                                 <div class="media-body">
-                                    <h4 class="card-title m-0"><a href="<?php Nav::echoURL($dir, App::$pageCourseView . "?id=$courseID") ?>"><? echo $course->title ?></a></h4>
-                                    <small class="text-muted">จำนวนชั่วโมงที่เหลือ: <? echo $item->credit ?> ชม.</small>
+                                    <h4 class="card-title m-0"><a href="<?php Nav::echoURL($dir, App::$pageCourseView . "?id=$courseID") ?>"><?php echo $course->title ?></a></h4>
+                                    <small class="text-muted">จำนวนชั่วโมงที่เหลือ: <?php echo $item->credit ?> ชม.</small>
                                 </div>
                             </div>
                         </div>
@@ -92,7 +92,7 @@
                             <div class="media-body">
                             </div>
                             <div class="media-right">
-                                <button type="button" class="btn btn-light btn-sm">ชม.ที่เหลือ <span class="badge badge-success ml-2"><? echo $item->credit ?></span></button>
+                                <button type="button" class="btn btn-light btn-sm">ชม.ที่เหลือ <span class="badge badge-success ml-2"><?php echo $item->credit ?></span></button>
                             </div>    
                         </div>
                         </div>
