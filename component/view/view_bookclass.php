@@ -29,7 +29,7 @@
                                     <?php Breadcrumb::initBreadcrumb($dir, $paths); ?>
                                 
                                 <div class="row">
-                                    <div class="col-md-4">  
+                                    <div class="col-xl-4 col-md-6">  
                                         <div class="media mb-headings align-items-center">
                                             <div class="media-body">
                                                 <h1 class="h2">จองรอบเรียน <?php echo $course->title; ?></h1>
@@ -83,7 +83,7 @@
                                                 </tbody>
                                             </table>
                                             <div style="margin-top: 20px;text-align:center">
-                                                <button type="submit" onclick="return confirm('คุณต้องการจองรอบเรียนนี้ใช่ไหม?');" class="btn btn-success ml-auto">จองรอบเรียน</button>
+                                                <button type="submit" onclick="return confirm('คุณต้องการจองรอบเรียนนี้ใช่ไหม?');" class="btn btn-success btn-block ml-auto">จองรอบเรียน</button>
                                             </div>
                                         </form>
                                         <div class="card mb-4 box-shadow">
@@ -105,7 +105,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-8">
+                                    <div class="col-xl-8 col-md-6">
                                                 <!-- Calendar -->
                                         <div id="calendar"></div>
                                     </div>
