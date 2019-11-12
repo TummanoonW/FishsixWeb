@@ -55,6 +55,7 @@
 
         public static $pageTeacherPanel = "teacher/index.php";
         public static $pageTeacherManageStudent = "teacher/manage-students.php";
+        public static $pageTeacherScoring = "teacher/scoring.php";
 
         public static $routeRecovery= "route/login-register/recovery.php";
         public static $routeLogIn = "route/login-register/login.php";
@@ -70,6 +71,8 @@
         public static $routeAdminUser = "route/admin/user.php";
         public static $routeAdminCourse = "route/admin/course.php";
         public static $routeAdminOrder = "route/admin/order.php";
+
+        public static $routeTeacherScoring = "route/teacher/scoring.php";
 
         public static $apiURL = "https://www.trialation.com/fishsix-api/"; //base URL to call API
         //public static $apiURL = "https://192.168.64.3/fishsix-api/"; //base URL to call API
@@ -95,6 +98,8 @@
         public static $apiAdminOrder = "admin-order.php";
 
         public static $apiTeacherCourse = "teacher-course.php";
+        public static $apiTeacherStudent = "teacher-student.php";
+        public static $apiTeacherScoring = "teacher-scoring.php";
 
     }
 ?>

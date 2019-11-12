@@ -78,7 +78,7 @@
             $query = array(
                 'id' => $teacherID
             );
-            $url = $api->getURL(App::$apiCourse, 'teacher', NULL);
+            $url = $api->getURL(App::$apiCourse, 'getTeacher', $query);
             $result = $api->get($url);
 
             return $result;
@@ -88,7 +88,7 @@
             $query = array(
                 'id' => $classID
             );
-            $url = $api->getURL(App::$apiCourse, 'class', NULL);
+            $url = $api->getURL(App::$apiCourse, 'classSingle', $query);
             $result = $api->get($url);
 
             return $result;
@@ -118,7 +118,7 @@
             $query = array(
                 'id' => $bID
             );
-            $url = $api->getURL(App::$apiCourse, 'branch', $query);
+            $url = $api->getURL(App::$apiCourse, 'getBranch', $query);
             $result = $api->get($url);
 
             return $result;

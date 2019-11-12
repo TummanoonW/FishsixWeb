@@ -6,6 +6,7 @@
         public $post;
         public $input;
         public $page;
+        public $get;
 
         function __construct(){
             //use method 'GET' protocol 'q' as JSON to query anything
@@ -36,8 +37,9 @@
                 $this->page = NULL;
             }
 
-            $p = $_POST;
-            $this->post = (object)$p;
+            $this->post = (object)$_POST;
+
+            $this->get = (object)$_GET;
 
             //use method 'POST/PUT' (aka 'input') as JSON to post anything
             $i = file_get_contents('php://input');

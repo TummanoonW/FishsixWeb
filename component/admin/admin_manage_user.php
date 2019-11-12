@@ -2,6 +2,9 @@
     class AdminManageUserView{
         public static function initView($dir, $paths, $pages, $auths, $count, $search){
             $auth = Session::getAuth();
+            $urls = (object)array(
+                'pageAdminManageUser' => Nav::getURL($dir, App::$pageAdminManageUser)
+            );
 ?>
             <body class=" layout-fluid">
                 <!-- Pre Loader -->
@@ -98,46 +101,10 @@
                     </div>
                 </div>   
                 <?php Script::initScript($dir) ?> 
-                
-                
-                <script id="q">
-                    <?php echo json_encode($search) ?>
-                </script>
-                <script>
-                    var q = JSON.parse(document.querySelector('#q').innerHTML);
 
-                    function search(){
-                        let param = JSON.stringify(q);
-                        window.location = "<?php Nav::echoURL($dir, App::$pageAdminManageUser) ?>" + "?q=" + param;
-                    }
-
-                    function searchType(element){
-                        q.type = element.value;
-                        search();
-                    }
-
-                    function searchQuery(){
-                        let element = document.querySelector('#query');
-                        q.query = element.value;
-                        search();
-                    }
-
-                    function searchDesc(isDesc){
-                        q.desc = isDesc;
-                        search();
-                    }
-
-                    var input = document.querySelector('#query');
-                    input.addEventListener("keyup", function(event) {
-                        // Number 13 is the "Enter" key on the keyboard
-                        if (event.keyCode === 13) {
-                          // Cancel the default action, if needed
-                          event.preventDefault();
-                          // Trigger the button element with a click
-                          searchQuery();
-                        }
-                    });
-                </script>
+                <script id="urls"><?php echo json_encode($urls) ?></script>
+                <script id="q"><?php echo json_encode($search) ?></script>
+                <?php Script::customScript($dir, 'admin-manage-user.js') ?>
 
 <?php
         }
