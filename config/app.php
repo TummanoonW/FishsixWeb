@@ -30,6 +30,7 @@
         public static $pageMyOrders = "myorders.php";
         public static $pageViewBranch = "viewbranch.php";
         public static $pageViewBooking = "viewbooking.php";
+        public static $pageFeedback = "feedback.php";
 
         public static $pageAdminPanel = "admin/index.php";
         public static $pageAdminManageCourses = "admin/manage-courses.php";
@@ -65,6 +66,7 @@
         public static $routeProfile = "route/profile.php";
         public static $routeCheckOut = "route/checkout.php";
         public static $routeBookClass = "route/bookclass.php";
+        public static $routeFeedback = "route/feedback.php";
 
         public static $routeAdminCategory = "route/admin/category.php";
         public static $routeAdminBranch = "route/admin/branch.php";
@@ -89,6 +91,7 @@
         public static $apiOwnership = "ownership.php";
         public static $apiBooking = "booking.php";
         public static $apiSchedule = "schedule.php";
+        public static $apiFeedback = "feedback.php";
 
 
         public static $apiAdminCourse = "admin-course.php";

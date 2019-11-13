@@ -41,6 +41,7 @@
         Nav::gotoHome($dir);
     }
 
+
     function genPages($dir, $limit, $c_page, $count){
         $pages = array();
 
