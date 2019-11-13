@@ -2,6 +2,12 @@
     class FeedbackView{
         public static function initView($dir, $paths){
             $auth = Session::getAuth();
+
+            if(isset($error_code)){
+                $err = "&err=$error_code";
+            }else{
+                $err = NULL;
+            }
 ?>
             <body class="layout-fluid">
                 <!-- Pre Loader -->
@@ -33,9 +39,29 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        /*//////
-                                            ใส่เนื้อหา content ตรงนี้
-                                        *//////
+                                    <div class="container mt-5">
+                                        <div class="card">
+                                            <form class="card-body" action="<?php Nav::echoURL($dir, App::$routeFeedback . '?m=submit' . $err) ?>" method="POST">
+                                                <div class="form-group">
+                                                <label for="exampleInputEmail">อีเมล</label>
+                                                    <?php if(Session::checkUserExisted()){ ?>
+                                                        <input name="email" type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="โปรดระบุอีเมลของท่าน" value="<?php echo $auth->email; ?>" required="" readonly>
+                                                    <?php }else{ ?>
+                                                        <input name="email" type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="โปรดระบุอีเมลของท่าน" maxlength="50" value="" required>
+                                                    <?php } ?>
+                                                </div>
+                                                <div class="form-group">
+                                                <label for="exampleInputTitle">หัวเรื่อง (ความยาวไม่เกิน 100 ตัวอักษร)</label>
+                                                <input value="" type="text" name="title" class="form-control" id="exampleInputTitle" placeholder="โปรดระบุหัวเรื่อง" maxlength="100" required>
+                                                </div>
+                                                <div class="form-group">
+                                                <label for="exampleInputDescription">คำอธิบายประกอบ (ความยาวไม่เกิน 1000 ตัวอักษร)</label>
+                                                <textarea name="description" class="form-control" id="exampleInputDescription" placeholder="แจ้งปัญหาที่คุณพบหรือความคิดเห็นใด ๆ ที่คุณต้องการแจ้งเรา" rows="6" maxlength="1000"></textarea>
+                                                </div>
+                                                <button type="submit" class="btn btn-success">Submit</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                     </div>
                                 </div>
                             </div>

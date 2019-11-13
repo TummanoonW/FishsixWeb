@@ -15,8 +15,8 @@
         new Path(FALSE, 'หน้าหลัก', $dir),
         new Path(TRUE, "รายงานข้อผิดพลาด", '')
     );
-
+    $error_code = $io->get->err;
     Header::initHeader($dir, 'รายงานข้อผิดพลาด'); 
-    FeedbackView::initView($dir, $paths);
+    FeedbackView::initView($dir, $paths, $error_code);
     Footer::initFooter($dir); 
 
