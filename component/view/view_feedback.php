@@ -58,7 +58,7 @@
                                                 <label for="exampleInputDescription">คำอธิบายประกอบ (ความยาวไม่เกิน 1000 ตัวอักษร)</label>
                                                 <textarea name="description" class="form-control" id="exampleInputDescription" placeholder="แจ้งปัญหาที่คุณพบหรือความคิดเห็นใด ๆ ที่คุณต้องการแจ้งเรา" rows="6" maxlength="1000"></textarea>
                                                 </div>
-                                                <button type="submit" class="btn btn-success">Submit</button>
+                                                <button type="submit" class="btn btn-success">ส่ง</button>
                                             </form>
                                         </div>
                                     </div>
