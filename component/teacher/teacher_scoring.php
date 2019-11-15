@@ -1,6 +1,6 @@
 <?php
     class TeacherScoringView{
-        public static function initView($dir, $paths, $student, $booking, $course, $score, $class, $courseBranch, $tid){
+        public static function initView($dir, $paths, $isNew, $student, $booking, $course, $scoring, $class, $courseBranch, $tid){
 ?>
             <body class=" layout-fluid">
                 <!-- Pre Loader -->
@@ -53,8 +53,52 @@
                                         </div>
                                     </div>
 
-                                    <form class="row" action="<?php Nav::echoURL($dir, App::$routeTeacherScoring . "?m=score&tid=$tid") ?>" method="POST">
-                                        
+                                    <form class="form-horizontal" action="<?php Nav::echoURL($dir, App::$routeTeacherScoring . "?m=score&tid=$tid") ?>" method="POST">
+                                        <?php if(!$isNew){ ?>
+                                            <div class="form-group row">
+                                                <label for="id" class="col-sm-3 col-form-label form-label">รหัสเอกสาร</label>
+                                                <div class="col-sm-8">
+                                                    <input name="ID" type="text" id="id" class="form-control" placeholder="" value="<?php if(!$isNew) echo $scoring->ID; ?>" readonly>
+                                                </div>
+                                            </div>
+                                        <?php } ?>
+                                        <div class="form-group row">
+                                            <label for="score" class="col-sm-3 col-form-label form-label">คะแนน (เต็ม 100)</label>
+                                            <div class="col-sm-8">
+                                                <input name="score" type="number" min="0" max="100" id="score" class="form-control" placeholder="0-100" value="<?php if(!$isNew) echo $scoring->score; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="comment" class="col-sm-3 col-form-label form-label">คำประเมิน (<span id="max-comment">0</span>/1000 ตัวอักษร)</label>
+                                            <div class="col-sm-8">
+                                                <textarea rows="10" name="comment" id="comment" class="form-control" placeholder="กรอกคำประเมินในนี้ อธิบายเหตุผลหรืองานที่ผู้เรียนทำ" maxlength="1000" onchange="updateComment(this)"><?php if(!$isNew) echo $scoring->comment; ?></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="suggestion" class="col-sm-3 col-form-label form-label">ข้อเสนอแนะ (<span id="max-suggestion">0</span>/500 ตัวอักษร)</label>
+                                            <div class="col-sm-8">
+                                                <textarea rows="5" name="suggestion" id="suggestion" class="form-control" placeholder="กรอกข้อเสนอแนะให้ผู้เรียนได้ปรับปรุงตน" maxlength="500" onchange="updateSuggestion(this)"><?php if(!$isNew) echo $scoring->suggestion; ?></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-8 offset-sm-3">
+                                                <div class="media align-items-center">
+                                                    <div class="media-left"></div>
+                                                    <div class="media-body"></div>
+                                                    <div class="media-right">
+                                                        <button type="submit" class="btn btn-success">
+                                                            <i class="material-icons mr-1">save</i>
+                                                            บันทึก
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input name="bookingID" value="<?php echo $booking->ID; ?>" style="visibility: collapse;">
+                                        <input name="ownerID" value="<?php echo $booking->ownerID; ?>" style="visibility: collapse;">
+                                        <input name="classID" value="<?php echo $booking->classID; ?>" style="visibility: collapse;">
+                                        <input name="courseBranchID" value="<?php echo $booking->courseBranchID; ?>" style="visibility: collapse;">
+                                        <input name="courseID" value="<?php echo $booking->courseID; ?>" style="visibility: collapse;">
                                     </form>                                   
                                 </div>
                             </div>
@@ -63,6 +107,8 @@
                     </div>
                 </div>
                 <?php Script::initScript($dir) ?>
+
+                <?php Script::customScript($dir, 'teacher_scoring.js'); ?>
 <?php
         }
 

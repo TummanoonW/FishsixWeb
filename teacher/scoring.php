@@ -23,6 +23,7 @@
         if($teacher->teacherID == $auth->ID){
             $result = FunTeacherScoring::getByBookingID($api, $bid);
             if($result->response != NULL){
+                $isNew = FALSE;
                 $score = $result->response;
                 $booking = $score->booking;
                 $student = $score->student;
@@ -38,6 +39,7 @@
             }else{
                 $result = FunBooking::getSingleFull($api, $bid);
                 
+                $isNew = TRUE;
                 $score = NULL;
                 $booking = $result->response;
                 $student = $booking->owner;
@@ -66,7 +68,7 @@
 
 
             Header::initHeader($dir, "ประเมิน - $student->username"); 
-            TeacherScoringView::initView($dir, $paths, $student, $booking, $course, $score, $class, $courseBranch, $tid);
+            TeacherScoringView::initView($dir, $paths, $isNew, $student, $booking, $course, $score, $class, $courseBranch, $tid);
             Footer::initFooter($dir); 
         }else{
             //Nav::gotoHome($dir);
