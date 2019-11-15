@@ -1,6 +1,6 @@
 <?php
     class FeedbackView{
-        public static function initView($dir, $paths){
+        public static function initView($dir, $paths, $error_code){
             $auth = Session::getAuth();
 
             if(isset($error_code)){
@@ -62,7 +62,7 @@
                                                  
                                                     <?php if($err != NULL){ ?>
                                                         <label for="exampleWarning">รหัสข้อผิดพลาด</label>
-                                                        <input name="error" type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="รหัสข้อผิดพลาด" value="<?php echo $err; ?>" required="" readonly>
+                                                        <input name="err" type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="รหัสข้อผิดพลาด" value="<?php echo $err; ?>" required="" readonly>
                                                     <?php } ?>
                                                         
                                                 </div>

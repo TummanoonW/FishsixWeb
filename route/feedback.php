@@ -26,7 +26,7 @@
                     $form->authID = $auth->ID;
                     $form->isGuest = 0;
                 }else{
-                    $form->authID =     ;
+                    $form->authID = NULL;
                     $form->isGuest = 1;
                 }
                 $result = FunFeedback::send($api, $form);
@@ -34,7 +34,7 @@
                     InfoPage::initPage($dir, 'รายงานข้อผิดพลาดเสร็จสิ้น');
                     Console::log('Result', $result);
                 }else{
-                  //  ErrorPage::initPage($dir, $result);
+                    //ErrorPage::initPage($dir, $result);
                     Console::log('Result', $result);
                 }
             
