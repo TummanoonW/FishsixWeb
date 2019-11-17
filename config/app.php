@@ -31,7 +31,7 @@
         public static $pageViewBranch = "viewbranch.php";
         public static $pageViewBooking = "viewbooking.php";
         public static $pageFeedback = "feedback.php";
-
+       
         public static $pageAdminPanel = "admin/index.php";
         public static $pageAdminManageCourses = "admin/manage-courses.php";
         public static $pageAdminCourseEditor = "admin/course-editor.php";
