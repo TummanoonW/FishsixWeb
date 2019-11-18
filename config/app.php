@@ -54,6 +54,10 @@
         public static $pageAdminViewOrder = "admin/view-order.php";
         public static $pageAdminViewBooking = "admin/view-booking.php";
         public static $pageAdminManageBookings = "admin/manage-bookings.php";
+        public static $pageAdminManageFeedbacks = "admin/manage-feedbacks.php";
+        public static $pageAdminViewFeedback = "admin/view-feedback.php";
+        public static $pageAdminManageInfo = "admin/manage-info.php";
+
 
         public static $pageTeacherPanel = "teacher/index.php";
         public static $pageTeacherManageStudent = "teacher/manage-students.php";
@@ -74,6 +78,8 @@
         public static $routeAdminUser = "route/admin/user.php";
         public static $routeAdminCourse = "route/admin/course.php";
         public static $routeAdminOrder = "route/admin/order.php";
+        public static $routeAdminFeedback = "route/admin/feedback.php";
+
 
         public static $routeTeacherScoring = "route/teacher/scoring.php";
 
@@ -100,6 +106,8 @@
         public static $apiAdminBranch = "admin-branch.php";
         public static $apiAdminAuth = "admin-auth.php";
         public static $apiAdminOrder = "admin-order.php";
+        public static $apiAdminFeedback = "admin-feedback.php";
+
 
         public static $apiTeacherCourse = "teacher-course.php";
         public static $apiTeacherStudent = "teacher-student.php";

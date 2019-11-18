@@ -62,7 +62,7 @@
                                                  
                                                     <?php if($err != NULL){ ?>
                                                         <label for="exampleWarning">รหัสข้อผิดพลาด</label>
-                                                        <input name="err" type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="รหัสข้อผิดพลาด" value="<?php echo $err; ?>" required="" readonly>
+                                                        <input name="err" type="text" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="รหัสข้อผิดพลาด" value="<?php echo $error_code; ?>" required="" readonly>
                                                     <?php } ?>
                                                         
                                                 </div>

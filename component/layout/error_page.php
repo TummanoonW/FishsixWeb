@@ -22,8 +22,8 @@
                                   <p class="lead"><?php echo $result->err->msg ?>!</p>
                                   <hr class="my-4">
                                   <p>หากคุณพบปัญหาขัดข้อง คุณสามารถย้อนกลับไปหน้าเดิม หรือส่งรายงานข้อผิดพลาดได้</p>
-                                  <a class="btn btn-outline-success btn-lg" href="<?php Nav::echoPrevious(); ?>" role="button">ย้อนกลับ</a>
-                                  <!--<a class="btn btn-outline-success btn-lg" href="<?php Nav::echoURL($dir, App::$pageFeedback); ?>" role="button">Send a Feedback</a> -->
+                                  <a class="btn btn-outline-secondary btn-lg" href="<?php Nav::echoPrevious(); ?>" role="button"><i class="fas fa-arrow-left mr-2"></i> ย้อนกลับ</a>
+                                  <a class="btn btn-danger btn-lg" href="<?php Nav::echoURL($dir, App::$pageFeedback . "?err=" . $result->err->code); ?>" role="button"><i class="fas fa-bug mr-2"></i> รายงานข้อผิดพลาด</a>
                                 </div>
                             </div>
                         </div>

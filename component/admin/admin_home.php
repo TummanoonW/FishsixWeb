@@ -84,10 +84,26 @@
                                     <h3>ทั่วไป</h3>
                                     <div class="row">
                                         <div class="col-md-3 col-sm-4 pb-3">
+                                            <a href="<?php Nav::echoURL($dir, App::$pageAdminManageInfo) ?>" class="btn btn-secondary w-100 h-100">
+                                                <div class="pb-2 pt-2">
+                                                    <i class="fas fa-users"></i>
+                                                    <div class="mt-1">จัดการข้อมูลบริษัท</div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-3 col-sm-4 pb-3">
                                             <a href="<?php Nav::echoURL($dir, App::$pageAdminManageUser) ?>" class="btn btn-secondary w-100 h-100">
                                                 <div class="pb-2 pt-2">
                                                     <i class="fas fa-users"></i>
                                                     <div class="mt-1">จัดการผู้ใช้</div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-3 col-sm-4 pb-3">
+                                            <a href="<?php Nav::echoURL($dir, App::$pageAdminManageFeedbacks) ?>" class="btn btn-secondary w-100 h-100">
+                                                <div class="pb-2 pt-2">
+                                                    <i class="fas fa-bug"></i>
+                                                    <div class="mt-1">จัดการรายงานข้อผิดพลาด</div>
                                                 </div>
                                             </a>
                                         </div>
