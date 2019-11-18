@@ -72,7 +72,7 @@
                                 </div>
                             </div>
                             <div class="card-footer text-center">
-                                 <a href="<?php Nav::echoURL($dir, App::$pageCourses . "?id=$id") ?>" class="btn btn-white btn-sm float-left">  ดูคอร์สที่เปิดสอน  </a>            
+                                 <a href="<?php Nav::echoURL($dir, App::$pageCourses . "?branchID=$id") ?>" class="btn btn-white btn-sm float-left">  ดูคอร์สที่เปิดสอน  </a>            
                             </div>
                         </div>
                     </div>
