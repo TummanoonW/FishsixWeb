@@ -86,7 +86,7 @@
                                         <div class="col-md-3 col-sm-4 pb-3">
                                             <a href="<?php Nav::echoURL($dir, App::$pageAdminManageInfo) ?>" class="btn btn-secondary w-100 h-100">
                                                 <div class="pb-2 pt-2">
-                                                    <i class="fas fa-users"></i>
+                                                    <i class="fas fa-info"></i>
                                                     <div class="mt-1">จัดการข้อมูลบริษัท</div>
                                                 </div>
                                             </a>
