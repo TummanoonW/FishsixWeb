@@ -32,6 +32,7 @@
         public static $pageViewBooking = "viewbooking.php";
         public static $pageFeedback = "feedback.php";
         public static $pageBranches = "courses.php";
+        public static $pageDashboard = "dashboard.php";
        
         public static $pageAdminPanel = "admin/index.php";
         public static $pageAdminManageCourses = "admin/manage-courses.php";
@@ -99,6 +100,7 @@
         public static $apiBooking = "booking.php";
         public static $apiSchedule = "schedule.php";
         public static $apiFeedback = "feedback.php";
+        public static $apiDashboard = "dashboard.php";
 
 
         public static $apiAdminCourse = "admin-course.php";
