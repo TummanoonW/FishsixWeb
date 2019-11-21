@@ -37,6 +37,9 @@
         public static $pagePrivacy = "privacy-policy.php";
         public static $pageTerm = "terms-and-conditions.php";
 
+        public static $pageDashboard = "dashboard.php";
+        public static $pageViewScore = "viewscore.php";
+       
         public static $pageAdminPanel = "admin/index.php";
         public static $pageAdminManageCourses = "admin/manage-courses.php";
         public static $pageAdminCourseEditor = "admin/course-editor.php";
@@ -103,6 +106,7 @@
         public static $apiBooking = "booking.php";
         public static $apiSchedule = "schedule.php";
         public static $apiFeedback = "feedback.php";
+        public static $apiDashboard = "dashboard.php";
 
 
         public static $apiAdminCourse = "admin-course.php";

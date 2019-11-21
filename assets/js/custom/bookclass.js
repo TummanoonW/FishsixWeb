@@ -44,7 +44,6 @@ async function changeEventsWithBranches(schedules, classes, input) {
         };
         await data.events.push(obj);
     });
-    console.log(data);
     await $('#calendar').fullCalendar(data)
 
     var postID;
@@ -114,7 +113,6 @@ function changeBranches(input) {
     changeEventsWithBranches(schedules, classes, document.querySelector('#branch-select'));
 
     let value = input.value;
-    console.log(value);
 
     branches.forEach(element => {
         if (value == element.ID) {
