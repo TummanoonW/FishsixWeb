@@ -27,108 +27,107 @@
 
                                     <!-- Navigation Paths -->
                                     <?php Breadcrumb::initBreadcrumb($dir, $paths); ?>
-                                
-                                <div class="row">
-                                    <div class="col-xl-4 col-md-6">  
-                                        <div class="media mb-headings align-items-center">
-                                            <div class="media-body">
-                                                <h1 class="h2">จองรอบเรียน <?php echo $course->title; ?></h1>
+                                    <div class="row">
+                                        <div class="col-xl-4 col-md-6">  
+                                            <div class="media mb-headings align-items-center">
+                                                <div class="media-body">
+                                                    <h1 class="h2">จองรอบเรียน <?php echo $course->title; ?></h1>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <form action="<?php Nav::echoURL($dir, App::$routeBookClass . "?m=book"); ?>" method="POST">
-                                            <table class="table table-nowrap mb-0 table--elevated">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="media-body">
-                                                                    <strong>สาขา</strong>
+                                            <form action="<?php Nav::echoURL($dir, App::$routeBookClass . "?m=book"); ?>" method="POST">
+                                                <table class="table table-nowrap mb-0 table--elevated">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="media-body">
+                                                                        <strong>สาขา</strong>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                        </td>
-                                                        <td class="text-center">
-                                                            <div class="d-flex align-items-center">
-                                                                <select id="branch-select" name="cBranchID" class="form-control" onchange="changeBranches(this)">
-                                                                    <option value="" selected>เลือกสาขา</option>
-                                                                    <?php self::initBranches($dir, $branches); ?>
-                                                                </select>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="media-body">
-                                                                    <strong>รอบเรียน</strong>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <div class="d-flex align-items-center">
+                                                                    <select id="branch-select" name="cBranchID" class="form-control" onchange="changeBranches(this)">
+                                                                        <option value="" selected>เลือกสาขา</option>
+                                                                        <?php self::initBranches($dir, $branches); ?>
+                                                                    </select>
                                                                 </div>
-                                                            </div>
-                                                        </td>
-                                                        <td class="text-center">
-                                                            <div class="d-flex align-items-center">
-                                                                <select name="cClassID" class="form-control">
-                                                                    <option value="" selected>เลือกรอบเรียน</option>
-                                                                    <?php self::initClasses($dir, $classes) ?>
-                                                                </select>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr style="visibility: collapse;">
-                                                        <td></td>
-                                                        <td class="text-center">
-                                                            <div class="d-flex align-items-center">
-                                                                <input type="text" name="ownershipID" value="<?php echo $ownership->ID ?>" readonly>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                            <div style="margin-top: 20px;text-align:center">
-                                                <button type="submit" onclick="return confirm('คุณต้องการจองรอบเรียนนี้ใช่ไหม?');" class="btn btn-success btn-block ml-auto">จองรอบเรียน</button>
-                                            </div>
-                                        </form>
-                                        <div class="card mb-4 box-shadow">
-                                            <div class="card-body">
-                                            <h4>ตารางเวลา</h4>
-                                            <table class="table mb-0">
-                                                <thead class="bg-light text-center">
-                                                    <tr>
-                                                        <th>วันที่</th>
-                                                        <th>เริ่ม</th>
-                                                        <th>จบ</th>
-                                                        <th>ที่นั่ง</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="list bg-white text-center" id="Table">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="media-body">
+                                                                        <strong>รอบเรียน</strong>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <div class="d-flex align-items-center">
+                                                                    <select name="cClassID" class="form-control">
+                                                                        <option value="" selected>เลือกรอบเรียน</option>
+                                                                        <?php self::initClasses($dir, $classes) ?>
+                                                                    </select>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr style="visibility: collapse;">
+                                                            <td></td>
+                                                            <td class="text-center">
+                                                                <div class="d-flex align-items-center">
+                                                                    <input type="text" name="ownershipID" value="<?php echo $ownership->ID ?>" readonly>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <div style="margin-top:20px; margin-bottom:15px; text-align:center">
+                                                    <button type="submit" onclick="return confirm('คุณต้องการจองรอบเรียนนี้ใช่ไหม?');" class="btn btn-success btn-block ml-auto">จองรอบเรียน</button>
+                                                </div>
+                                            </form>
+                                            <div class="card mb-4 box-shadow">
+                                                <div class="card-body">
+                                                <h4>ตารางเวลา</h4>
+                                                <table class="table mb-0">
+                                                    <thead class="bg-light text-center">
+                                                        <tr>
+                                                            <th>วันที่</th>
+                                                            <th>เริ่ม</th>
+                                                            <th>จบ</th>
+                                                            <th>ที่นั่ง</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="list bg-white text-center" id="Table">
 
-                                                </tbody>
-                                            </table>  
+                                                    </tbody>
+                                                </table>  
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="col-xl-8 col-md-6">
+                                            <!-- Calendar -->
+                                            <div id="calendar"></div>
+                                        </div>
                                     </div>
-                                    <div class="col-xl-8 col-md-6">
-                                                <!-- Calendar -->
-                                        <div id="calendar"></div>
+                                    <div class="py-3">
+                                        <a id="thumbnailURL" href="./assets/images/thumbs/def.png" target="_blank">
+                                            <img id="thumbnail" src="./assets/images/thumbs/def.png" style="height: 256px; width: 100%; object-fit: cover;">
+                                        </a>
+                                        <!-- Title -->
+                                        <h1 class="h2">สาขา: <span id="title"></span></h1>
+                                        <h4 class="mt-4">คำอธิบาย:</h4>
+                                        <p class="mt-2 text-dark"><span id="description"></span><p>
                                     </div>
-                                </div>
-                                <div class="py-3">
-                                    <a id="thumbnailURL" href="./assets/images/thumbs/def.png" target="_blank">
-                                        <img id="thumbnail" src="./assets/images/thumbs/def.png" style="height: 256px; width: 100%; object-fit: cover;">
-                                    </a>
-                                    <!-- Title -->
-                                    <h1 class="h2">สาขา: <span id="title"></span></h1>
-                                    <h4 class="mt-4">คำอธิบาย:</h4>
-                                    <p class="mt-2 text-dark"><span id="description"></span><p>
-                                </div>
-                                <div class="media-left">
-                                    <span class="col-12 col-md-6 text-muted">
-                                        <i class="fas fa-place-of-worship mr-2"></i>
-                                        จุดสังเกตุ: <span id="nearbyPlace"></span>
-                                    </span>
-                                    <span class="col-12 col-md-6 text-muted">
-                                        <i class="fas fa-map-marker-alt mr-2"></i>
-                                        <span id="address"></span>
-                                    </span>
-                                </div>
+                                    <div class="media-left">
+                                        <span class="col-12 col-md-6 text-muted">
+                                            <i class="fas fa-place-of-worship mr-2"></i>
+                                            จุดสังเกตุ: <span id="nearbyPlace"></span>
+                                        </span>
+                                        <span class="col-12 col-md-6 text-muted">
+                                            <i class="fas fa-map-marker-alt mr-2"></i>
+                                            <span id="address"></span>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                             <?php Sidemenu::initSideMenu($dir); ?>

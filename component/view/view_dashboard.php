@@ -1,8 +1,15 @@
 <?php
     class DashboardView{
-        public static function initView($dir, $paths){
+        public static function initView($dir, $paths, $ownership, $schedules, $dashboard){
             $auth = Session::getAuth();
-            $schedules = array();
+            $course = $dashboard->course;
+            $lessons = $dashboard->lessons;
+            $teachers = $dashboard->teachers;
+            $classes = $dashboard->classes;
+            $scores = $dashboard->scores;
+            Console::log('ownership', $ownership);
+            Console::log('schedules', $schedules);
+            Console::log('dashboard', $dashboard);
 ?>
             <body class=" layout-fluid">
                 <!-- Pre Loader -->
@@ -27,7 +34,7 @@
 
                                     <div class="row">
                                         <div class="col-12 col-sm-7">
-                                            <h1 class="h2" id="pageTitle">แดชบอร์ด</h1>
+                                            <h1 class="h2" id="pageTitle">แดชบอร์ด <?php echo $course->title; ?></h1>
                                         </div>
                                         <div class="col-12 col-sm-5 text-right pt-3">
                                             <!-- ขวา -->
@@ -45,36 +52,7 @@
                                                     </div>
                                                     <p></p>
                                                     <div class="row">
-                                                        <div class="col-sm-4">
-                                                            <div class="card bg-primary">
-                                                                <div class="btn">
-                                                                    <h4 class="card-title text-white">รอบที่ 1</h4>
-                                                                </div>
-                                                                <div class="btn">
-                                                                    <h1 class="text-center text-white">8</h1>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-4">
-                                                            <div class="card bg-primary">
-                                                                <div class="btn">
-                                                                    <h4 class="card-title text-white">รอบที่ 2</h4>
-                                                                </div>
-                                                                <div class="btn">
-                                                                    <h1 class="text-center text-white">9</h1>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-4">
-                                                            <div class="card bg-primary">
-                                                                <div class="btn">
-                                                                    <h4 class="card-title text-white">รอบที่ 3</h4>
-                                                                </div>
-                                                                <div class="btn">
-                                                                    <h1 class="text-center text-white">7</h1>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        <?php self::initScoreItems($dir, $scores) ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -86,24 +64,7 @@
                                                 </div>
                                                 <div class="card-body p-0">
                                                     <ul class="list-group list-group-fit">
-                                                        <li class="list-group-item" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
-                                                            <div class="media">
-                                                                <div class="media-left">
-                                                                    <div class="text-muted">1.</div>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <a href="#multiCollapseExample1">asdasdasfaertyerg</a>
-                                                                </div>
-                                                                <div class="media-right">
-                                                                    <small class="text-muted-light">0 นาที</small>
-                                                                </div>
-                                                            </div>
-                                                            <div class="collapse multi-collapse mt-2" id="multiCollapseExample1">
-                                                                <div class="card card-body">
-                                                                    dfscvedtgrtgrt
-                                                                </div>
-                                                            </div>
-                                                        </li>
+                                                        <?php self::initLessonItems($dir, $lessons) ?>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -223,7 +184,7 @@
                                         
                                         <div class="col-md-4">
                                             <div class="card">
-                                                <a href="" class="btn btn-primary btn-block ml-auto">จองรอบเรียน<i class="material-icons btn__icon--right">play_circle_outline</i></a>
+                                                <a href="<?php Nav::echoURL($dir, App::$pageBookClass . "?id=$ownership->ID") ?>" class="btn btn-primary btn-block ml-auto">จองรอบเรียน<i class="material-icons btn__icon--right">play_circle_outline</i></a>
                                             </div>
                                             <div class="card">
                                                 <div class="card-header">
@@ -239,16 +200,7 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody class="list">
-                                                            <tr>
-                                                                <td>10 ต.ค.</td>
-                                                                <td>DPU</td>
-                                                                <td class="pr-0">09:00 - 12:00</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>12 ต.ค.</td>
-                                                                <td>DPU</td>
-                                                                <td class="pr-0">09:00 - 12:00</td>
-                                                            </tr>
+                                                            <?php self::initBookingItems($dir, $schedules) ?>
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -267,28 +219,19 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody class="list">
-                                                            <tr>
-                                                                <td>พฤหัส</td>
-                                                                <td>80</td>
-                                                                <td class="pr-0">09:00 - 12:00</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>ศุกร์</td>
-                                                                <td>60</td>
-                                                                <td class="pr-0">09:00 - 12:00</td>
-                                                            </tr>
+                                                            <?php self::initClassItems($dir, $classes) ?>
                                                         </tbody>
                                                     </table>
                                                 </div>
                                             </div>
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h4 class="card-title"><i class="fas fa-hourglass-half"></i> &nbsp;ชม.ที่เหลือ <span class="badge badge-primary" style="font-size:20px;">10</span></h4>
+                                                    <h4 class="card-title"><i class="fas fa-hourglass-half"></i> &nbsp;ชม.ที่เหลือ <span class="badge badge-primary" style="font-size:20px;"><?php echo $dashboard->credit ?></span></h4>
                                                 </div>
                                                 <div class="card-footer bg-white">
                                                     <div class="media">
                                                         <div class="media-left">
-                                                            <p class="text-muted">วันที่หมดอายุ: 2019-12-10</p>
+                                                            <p class="text-muted">วันที่หมดอายุ: <?php echo $dashboard->expiration ?></p>
                                                         </div>
                                                         <div class="media-body">
                                                         </div>
@@ -303,14 +246,7 @@
                                                     <h4 class="card-title"><i class="fas fa-chalkboard-teacher"></i> &nbsp;ครูผู้สอน</h4>
                                                 </div>
                                                 <div class="card-body">
-                                                    <div class="media align-items-center mb-3">
-                                                        <div class="media-left">
-                                                            <img src="./assets/images/icons/user.svg" alt="" width="48" class="rounded-circle">
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h4 class="card-title"><a href="#">KanyeWest</a></h4>
-                                                        </div>
-                                                    </div>
+                                                    <?php self::initTeacherItems($dir, $teachers) ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -333,19 +269,19 @@
                 <script src="assets/js/chartjs-rounded-bar.js"></script>
                 <script src="assets/js/chartjs.js"></script>
 
+                <script id="obj-scores"><?php echo json_encode($scores) ?></script>
                 <script>
+                    var scores = JSON.parse(document.getElementById("obj-scores").innerHTML);
+
                     Charts.init()
                     
                     var options = {
-                        // Rounded Bar
                         barRoundness: 1.2,
-
-                        // Chart Specific Formatting (Orders)
                         scales: {
                             yAxes: [{
                                 ticks: {
                                 callback: function(a) {
-                                    if (!(a % 2))
+                                    if (!(a % 20))
                                     return a + " คะแนน"
                                 }
                                 }
@@ -363,19 +299,157 @@
                         }
                     }
                     
-                    var data = {
+                    var dataTem = {
                         labels: ["รอบที่ 1", "รอบที่ 2", "รอบที่ 3", "รอบที่ 4", "รอบที่ 5", "รอบที่ 6"],
                         datasets: [{
                         label: "Sales",
                         data: [8, 9, 7, 4, 10, 6]
                         }]
                     }
+
+                    var dataScore = {
+                        labels: [],
+                        datasets: [{
+                        label: "Score",
+                        data: [],
+                        }]
+                    }
+
+                    var count = 0;
+                    scores.forEach(async element => {
+                        if (element.score != null){
+                            count++;
+                            await dataScore.datasets[0].data.push(element.score);
+                        }
+                    });
+
+                    for (let i = 1; i <= count; i++) {
+                        dataScore.labels.push("รอบที่ " + i);
+                    }
+
+                    dataScore.datasets[0].data.push(100);
                     
-                    Charts.create('#ordersChart', 'roundedBar', options, data)
+                    Charts.create('#ordersChart', 'roundedBar', options, dataScore)
                 </script>
 
 <?php
         }
-        
+
+        public static function initScoreItems($dir, $scores){
+            $i = 0;
+            foreach ($scores as $key => $s) {
+                $i++;
+                ?>
+                    <div class="col-sm-4">
+                        <div class="card bg-primary">
+                        <a href="<?php Nav::echoURL($dir, App::$pageViewScore . "?id=$s->ID") ?>" target="_blank" class="btn">
+                                <h4 class="card-title text-white">รอบที่ <?php echo $i ?></h4>
+                            </a>
+                            <a href="<?php Nav::echoURL($dir, App::$pageViewScore . "?id=$s->ID") ?>" target="_blank" class="btn">
+                                <h1 class="text-center text-white"><?php echo $s->score ?></h1>
+                            </a>
+                        </div>
+                    </div>
+                <?php
+            }
+        }
+
+        public static function initLessonItems($dir, $lessons){
+            foreach ($lessons as $key => $l) {
+                ?>
+                    <li class="list-group-item" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+                        <div class="media">
+                            <div class="media-left">
+                                <div class="text-muted"><?php echo (int)$key+1?>.</div>
+                            </div>
+                            <div class="media-body">
+                                <a href="#multiCollapseExample1"><?php echo $l->title ?></a>
+                            </div>
+                            <div class="media-right">
+                                <small class="text-muted-light"><?php echo $l->duration ?> นาที</small>
+                            </div>
+                        </div>
+                        <div class="collapse multi-collapse mt-2" id="multiCollapseExample1">
+                          <div class="card card-body">
+                            <?php echo $l->content ?>
+                          </div>
+                        </div>
+                    </li>
+                <?php
+            }
+        }
+
+        public static function initBookingItems($dir, $bookings){
+            foreach ($bookings as $key => $c) {
+                ?>
+                    <tr>
+                        <td><?php echo self::properDay($c->class->day) ?></td>
+                        <td><?php echo $c->courseBranch->branch->title ?></td>
+                        <td class="pr-0"><?php echo self::properTime($c->class->startTime) . ' - ' . self::properTime($c->class->endTime) ?></td>
+                    </tr>
+                <?php
+            }
+        }
+
+        public static function initClassItems($dir, $classes){
+            foreach ($classes as $key => $c) {
+                ?>
+                    <tr>
+                        <td><?php echo self::properDay($c->day) ?></td>
+                        <td><?php echo $c->seats ?></td>
+                        <td class="pr-0"><?php echo self::properTime($c->startTime) . ' - ' . self::properTime($c->endTime) ?></td>
+                    </tr>
+                <?php
+            }
+        }
+
+        private static function properTime($time){
+            $x = explode(':', $time);
+            return $x[0] . ':' . $x[1];
+        }
+
+        private static function properDay($day){
+            switch($day){
+                case 'mon':
+                    return 'จันทร์';
+                    break;
+                case 'tue':
+                    return 'อังคาร';
+                    break;
+                case 'wed':
+                    return 'พุธ';
+                    break;
+                case 'thu':
+                    return 'พฤหัส';
+                    break;
+                case 'fri':
+                    return 'ศุกร์';
+                    break;
+                case 'sat':
+                    return 'เสาร์';
+                    break;
+                case 'sun':
+                    return 'อาทิตย์';
+                    break;
+                default:
+                    return '-';
+                    break;
+            }
+        }
+
+        public static function initTeacherItems($dir, $teachers){
+            foreach ($teachers as $key => $t) {
+                ?>
+                    <div class="media align-items-center mb-3">
+                        <div class="media-left">
+                            <img src="<?php Asset::echoIcon($dir, $t->teacher->profile_pic) ?> " alt="<?php echo $t->teacher->username ?>" width="48" class="rounded-circle">
+                        </div>
+                        <div class="media-body">
+                            <h4 class="card-title"><a href="#"><?php echo $t->teacher->username ?></a></h4>
+                        </div>
+                    </div>
+                <?php
+            }
+        }
     }
 ?>

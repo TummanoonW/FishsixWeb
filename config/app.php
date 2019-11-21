@@ -33,6 +33,7 @@
         public static $pageFeedback = "feedback.php";
         public static $pageBranches = "courses.php";
         public static $pageDashboard = "dashboard.php";
+        public static $pageViewScore = "viewscore.php";
        
         public static $pageAdminPanel = "admin/index.php";
         public static $pageAdminManageCourses = "admin/manage-courses.php";
