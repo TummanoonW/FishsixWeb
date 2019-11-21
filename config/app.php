@@ -32,7 +32,11 @@
         public static $pageViewBooking = "viewbooking.php";
         public static $pageFeedback = "feedback.php";
         public static $pageBranches = "courses.php";
-       
+        public static $pageAbout = "about.php";
+        public static $pageContact = "contact.php";
+        public static $pagePrivacy = "privacy-policy.php";
+        public static $pageTerm = "terms-and-conditions.php";
+
         public static $pageAdminPanel = "admin/index.php";
         public static $pageAdminManageCourses = "admin/manage-courses.php";
         public static $pageAdminCourseEditor = "admin/course-editor.php";

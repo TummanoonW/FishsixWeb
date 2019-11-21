@@ -1,0 +1,22 @@
+<?php
+
+    $dir = "./";
+    include_once $dir . 'includer/includer.php'; 
+    Includer::include_proto($dir); 
+    Includer::include_view($dir, 'view_about.php');
+
+    $auth = Session::getAuth(); 
+    $apiKey = Session::getAPIKey(); 
+
+    $api = new API($apiKey);
+    $io = new IO(); 
+
+    $paths = array(
+        new Path(FALSE, 'หน้าหลัก', $dir),
+        new Path(TRUE, "เกี่ยวกับบริษัท", '')
+    );
+    $error_code = $io->get->err;
+    Header::initHeader($dir, 'เกี่ยวกับบริษัท'); 
+    ViewAbout::initView($dir, $paths);
+    Footer::initFooter($dir); 
+
