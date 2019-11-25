@@ -3,7 +3,7 @@
     $dir = "./";
     include_once $dir . 'includer/includer.php'; 
     Includer::include_proto($dir); 
-    Includer::include_view($dir, 'view_dashboard.php');
+    Includer::include_view($dir, 'view_score.php');
     Includer::include_fun($dir, 'fun_course.php');
     Includer::include_fun($dir, 'fun_ownership.php');
     Includer::include_fun($dir, 'fun_dashboard.php');
@@ -19,33 +19,20 @@
         $paths = array(
             new Path(FALSE, 'หน้าหลัก', $dir),
             new Path(FALSE, 'คอร์สของฉัน', $dir . App::$pageMyCourses),
-            new Path(TRUE, 'viewscore', $dir . App::$pageDashboard)
+            new Path(FALSE, 'แดชบอร์ด', $dir . App::$pageDashboard),
+            new Path(TRUE, 'viewscore', $dir . App::$pageViewScore)
         );
         
         $id = $io->id;
-        $result = FunOwnership::getSingle($api, $id);
+        $result = FunDashboard::getScore($api, $id, $auth->ID);
         if($result->success){
             if($result->response != NULL){
-                if($result->response->isExpired != TRUE){
-                    $ownership = $result->response;
-                    
-                    $result = FunCourse::get($api, $ownership->courseID);
-                    if($result->response != NULL){
+                $score = $result->response;
+                $course = $score->course;
 
-                        $result = FunSchedule::getMySchedule($api, $auth->ID);
-                        $schedules = $result->response;
-
-                        $result = FunDashboard::getDashboard($api, $id, $auth->ID);
-                        $dashboard = $result->response;
-                        $course = $dashboard->course;
-
-                    Header::initHeader($dir, "viewscore - $course->title"); 
-                    DashboardView::initView($dir, $paths, $ownership, $schedules, $dashboard);
-                    Footer::initFooter($dir); 
-                }else{
-                    $result->err = Err::$ERR_COURSE_EXPIRED;
-                    ErrorPage::showError($dir, $result); 
-                }
+                Header::initHeader($dir, "viewscore - $course->title"); 
+                ScoreView::initView($dir, $paths, $score, $course);
+                Footer::initFooter($dir); 
             }else{
                 $result->err = Err::$ERR_NO_DATA;
                 ErrorPage::showError($dir, $result);
@@ -53,9 +40,8 @@
         }else{
             ErrorPage::showError($dir, $result);
         }
-        
    }else{
         Nav::gotoHome();
-    }
 }
+
 ?>
