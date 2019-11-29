@@ -36,6 +36,7 @@
         public static $pageContact = "contact.php";
         public static $pagePrivacy = "privacy-policy.php";
         public static $pageTerm = "terms-and-conditions.php";
+        public static $pageBranch = "branches.php";
 
         public static $pageDashboard = "dashboard.php";
         public static $pageViewScore = "viewscore.php";
