@@ -165,7 +165,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <form id="thumbForm" class="card">
+                                            <div id="thumbForm" class="card">
                                                 <div class="embed-responsive embed-responsive-16by9">
                                                     <img id="cThumb" src="<?php Asset::echoThumb($dir, '') ?>" alt="" width="100%" class="embed-responsive-item">
                                                 </div>
@@ -178,7 +178,17 @@
                                                     </div>
                                                 </div>
                                                 <input name="thumbnail" id="cThumbnail2" style="visibility: collapse; height: 1px;" value="">
-                                            </form>
+                                            </div>
+
+                                            <div class="card">
+                                                <div class="embed-responsive embed-responsive-16by9">
+                                                    <iframe id="cYoutube" class="embed-responsive-item" src="" allowfullscreen=""></iframe>
+                                                </div>
+                                                <div class="card-body">
+                                                    <label class="mb-2"><h5 class="card-title">วิดีโอตัวอย่าง (Youtube URL)</h5></label> 
+                                                    <input id="cPreview" type="text" class="form-control" value="" onchange="onPreviewChange(this, '#cYoutube')"/>
+                                                </div>
+                                            </div>
 
                                             <div class="card">
                                                 <div class="card-header">
@@ -198,6 +208,7 @@
                                                 </div>
                                                 <input name="picture2" id="cPicture2" style="visibility: collapse; height: 1px;" value="">
                                             </div>
+
 
                                             <div class="card">
                                                 <div class="card-header">
@@ -258,6 +269,13 @@
                                                     <div class="form-group">
                                                         <label class="form-label" for="cLineGroup"><img src="<?php Asset::embedIcon($dir, 'line-icon.png') ?>" alt="Avatar" class="rounded-circle" width="20">กลุ่ม LINE</label>
                                                         <input id="cLineGroup" type="text" class="form-control" placeholder="URL" value="">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="category">คอร์สแนะนำ</label>
+                                                        <select id="cRecommended" class="custom-select form-control" value="0">
+                                                            <option value="0">-</option>
+                                                            <option value="1">คอร์สแนะนำ</option>
+                                                        </select>
                                                     </div>
                                                 </form>
                                             </div>

@@ -22,7 +22,7 @@
     if(Session::checkUserAdmin()){
         $limit = 40;
 
-        $result = FunClassroom::count($api);
+        $result = FunClassroom::countFiltered($api);
         $count = $result->response;
 
         if($io->page == NULL){

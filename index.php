@@ -14,7 +14,7 @@
     $api = new API($apiKey);
     $io = new IO(); 
 
-    $result = FunCategory::get($api);
+    /*$result = FunCategory::get($api);
     $categories = $result->response;
     
     if(!isset($io->query->search))
@@ -40,13 +40,23 @@
     $pages = genPages($dir, $io->query->limit, $c_page, $countTotal);
 
     $result = FunCourse::getFilteredPublished($api, $io->query);
+    $courses = $result->response;*/
+
+    $result = FunCourse::getPublishedLite($api);
     $courses = $result->response;
 
+    $recommended_courses = array();
+    $all_courses = array();
+
+    foreach ($courses as $key => $item) {
+        if($item->recommended == 1) array_push($recommended_courses, $item);
+    }
+
     Header::initHeader($dir, App::$name); 
-    HomeView::initView($dir, $pages, $courses, $categories);
+    HomeView::initView($dir, $recommended_courses, $courses);
     Footer::initFooter($dir); 
 
-    function genPages($dir, $limit, $c_page, $c_courses){
+    /*function genPages($dir, $limit, $c_page, $c_courses){
         $pages = array();
 
         $mark = 0;
@@ -59,6 +69,6 @@
         } while ($c_courses > $mark);
 
         return $pages;
-    }
+    }*/
 
     

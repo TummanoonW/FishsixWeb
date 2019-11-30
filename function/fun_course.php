@@ -31,6 +31,13 @@
             return $result;
         }
 
+        public static function getPublishedLite($api){
+            $url = $api->getURL(App::$apiCourse, 'publishedLite', NULL);
+            $result = $api->get($url);
+
+            return $result;
+        }
+
         public static function getFull($api, $id){
             $query = (object)array('id' => $id);
 

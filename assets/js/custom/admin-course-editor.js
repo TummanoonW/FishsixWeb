@@ -35,7 +35,9 @@ var inputs = {
     startDate      : document.querySelector('#cStartDate'),
     endDate        : document.querySelector('#cEndDate'),
     lineGroup      : document.querySelector('#cLineGroup'),
-    editedDate     : document.querySelector('#cEditedDate') 
+    editedDate     : document.querySelector('#cEditedDate'),
+    preview        : document.querySelector('#cPreview'),
+    recommended    : document.querySelector('#cRecommended') 
 };
 
 var data = {
@@ -107,11 +109,13 @@ async function initData(){
     inputs.category.value           = data.course.categoryID;
     inputs.thumb.src                = data.course.thumbnail;
     inputs.thumbnail2.value         = data.course.thumbnail;
+    inputs.preview.value            = data.course.preview;
     inputs.expiration.value         = data.course.expiration;
     inputs.startDate.value          = data.course.startDate;
     inputs.endDate.value            = data.course.endDate;
     inputs.lineGroup.value          = data.course.lineGroup;
     inputs.editedDate.innerHTML     = data.course.editedDate;
+    inputs.recommended.value        = data.course.recommended;
 
     initLessonItems(inputs.lessons,     data.course.lessons);
     initPackageItems(inputs.packages,   data.course.packages);
@@ -126,11 +130,13 @@ async function saveSession(){
     data.course.content         = await inputs.content.value;
     data.course.description     = await inputs.description.innerHTML;
     data.course.thumbnail       = await inputs.thumbnail2.value;
+    data.course.preview         = await inputs.preview.value;
     data.course.expiration      = await inputs.expiration.value;
     data.course.startDate       = await inputs.startDate.value;
     data.course.endDate         = await inputs.endDate.value;
     data.course.lineGroup       = await inputs.lineGroup.value;
     data.course.categoryID      = await inputs.category.value;
+    data.course.recommended     = await inputs.recommended.value;
     await db.setObject(name.course, data.course);
 }
 
@@ -175,6 +181,12 @@ async function onUploadToPicture(input, width, height, input_id){
     await db.setObject(name.course, data.course);
     
     initPictureItems(inputs.pictures, data.course.pictures)
+}
+
+async function onPreviewChange(input, id){
+    iframe = document.querySelector(id);
+    let value = input.value;
+    iframe.src = value;
 }
 
 function initLessonItems(input, lessons){

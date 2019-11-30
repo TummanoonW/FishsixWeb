@@ -1,6 +1,6 @@
 <?php
     class HomeView{
-        public static function initView($dir, $pages, $courses, $categories){
+        public static function initView($dir, $recommended_courses, $all_courses){
             $auth = Session::getAuth();
 ?>
             <body class=" layout-fluid">
@@ -21,46 +21,27 @@
                     <!-- Header Layout Content -->
                     <div class="mdk-header-layout__content">
 
-                        <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout" style="background: #0F0F0F">
+                        <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
                             <div class="mdk-drawer-layout__content page ">
                                 <div class="container-fluid page__container">                                
                                     <section id="row1" class="mt-1">
-                                        <h2 class="sectionTitle text-light">คอร์สแนะนำ</h2>
+                                        <h2 class="sectionTitle">คอร์สแนะนำ</h2>
                                         <div class="examples">
                                            <ul class="img-list">
-                                             <?php self::initCard($dir, $courses, $categories) ?>
+                                             <?php self::initCard($dir, $recommended_courses) ?>
                                            </ul>
                                         </div>
                                     </section>
                                     
                                    <section id="row2" class="mt-4 mb-5">
-                                    <h2 class="sectionTitle text-light">คอร์เรียนทั้งหมด</h2>
+                                    <h2 class="sectionTitle">คอร์เรียนทั้งหมด</h2>
                                     <div class="examples">
                                        <ul class="img-list">
-                                          <li class="image">
-                                             <a href="#">
-                                                <img src="http://placehold.it/280x150" width="280" height="150" />
-                                                <span class="text-content"><span>Title Here...<br><br><i class="fa fa-4x  fa-play-circle-o"></i><br><br><i class="fa fa-chevron-down" aria-hidden="true"></i></span></span>
-                                             </a>
-                                          </li>
-                                          <li class="image">
-                                             <a href="#">
-                                                <img src="http://placehold.it/280x150" width="280" height="150" />
-                                                <span class="text-content"><span>Title Here...<br><br><i class="fa fa-4x  fa-play-circle-o"></i><br><br><i class="fa fa-chevron-down" aria-hidden="true"></i></span></span>
-                                             </a>
-                                          </li>
-                                          <li class="image">
-                                             <a href="#">
-                                                <img src="http://placehold.it/280x150" width="280" height="150" />
-                                                <span class="text-content"><span>Title Here...<br><br><i class="fa fa-4x  fa-play-circle-o"></i><br><br><i class="fa fa-chevron-down" aria-hidden="true"></i></span></span>
-                                             </a>
-                                          </li>
+                                         <?php self::initCard($dir, $all_courses) ?>
                                        </ul>
                                     </div>
                                    </section>
 
-                                    <!-- Pagination -->
-                                    <?php Pagination::initPagination($dir, $pages) ?>
                                 </div>
                             </div>
                             <?php Sidemenu::initSideMenu($dir) ?>
@@ -72,7 +53,7 @@
 
         }
         
-        public static function initCard($dir, $courses, $categories){
+        public static function initCard($dir, $courses){
             foreach ($courses as $key => $c) {
 ?>
                 <li class="image">
