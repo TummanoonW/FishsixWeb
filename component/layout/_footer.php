@@ -18,7 +18,7 @@
 
         <ul class="list-unstyled">
           <li>
-          <a href="<?php Nav::echoURL($dir, App::$pageFeedback) ?>">รายงานข้อผิดพลาด</a>
+          <a class="text-muted" href="<?php Nav::echoURL($dir, App::$pageFeedback) ?>">รายงานข้อผิดพลาด</a>
           </li>
       
         </ul>
@@ -36,7 +36,7 @@
 
         <ul class="list-unstyled">
           <li>
-          <a href="<?php Nav::echoURL($dir, App::$pageAbout) ?>">เกี่ยวกับบริษัท</a>
+          <a class="text-muted" href="<?php Nav::echoURL($dir, App::$pageAbout) ?>">เกี่ยวกับบริษัท</a>
           </li>
    
 
@@ -51,7 +51,7 @@
 
 <ul class="list-unstyled">
   <li>
-  <a href="<?php Nav::echoURL($dir, App::$pageBranch) ?>">สาขาของเรา</a>
+  <a class="text-muted" href="<?php Nav::echoURL($dir, App::$pageBranch) ?>">สาขาของเรา</a>
   </li>
 
 
@@ -67,7 +67,7 @@
 
         <ul class="list-unstyled">
           <li>
-          <a href="<?php Nav::echoURL($dir, App::$pageContact) ?>">ติดต่อเรา</a>
+          <a class="text-muted" href="<?php Nav::echoURL($dir, App::$pageContact) ?>">ติดต่อเรา</a>
           </li>
     
         </ul>
@@ -83,7 +83,7 @@
 
       <ul class="list-unstyled">
        <li>
-       <a href="<?php Nav::echoURL($dir, App::$pagePrivacy) ?>">นโยบายข้อมูลส่วนบุคคล</a>
+       <a class="text-muted" href="<?php Nav::echoURL($dir, App::$pagePrivacy) ?>">นโยบายข้อมูลส่วนบุคคล</a>
       </li>
 
         </ul>
@@ -103,7 +103,7 @@
          
  
           <li>
-          <a href="<?php Nav::echoURL($dir, App::$pageTerm) ?>">ข้อตกลงและเงื่อนไข</a>
+          <a class="text-muted" href="<?php Nav::echoURL($dir, App::$pageTerm) ?>">ข้อตกลงและเงื่อนไข</a>
           </li>
         </ul>
 
