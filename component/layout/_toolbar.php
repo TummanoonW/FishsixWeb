@@ -26,14 +26,14 @@
                             <!-- // END Search -->
                             <div class="flex"></div>
                             <!-- Menu -->
-                            <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
+                            <!--<ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
                                 <li class="nav-item">
                                     <a class="nav-link" href="student-forum.html">บทความ</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="student-help-center.html">ขอความช่วยเหลือ</a>
                                 </li>
-                            </ul>
+                            </ul>-->
                             <!-- Menu -->
                             <?php Menu::initMenu($dir) ?>
                             <!-- // END Menu -->

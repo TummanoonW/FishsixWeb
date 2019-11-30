@@ -4,7 +4,7 @@
             if(Session::checkUserExisted()){
 ?>
                 <!-- Notifications dropdown -->
-                <li class="nav-item dropdown dropdown-notifications dropdown-menu-sm-full">
+                <!--<li class="nav-item dropdown dropdown-notifications dropdown-menu-sm-full">
                     <button class="nav-link btn-flush dropdown-toggle" type="button" data-toggle="dropdown" data-dropdown-disable-document-scroll data-caret="false">
                         <i class="material-icons">notifications</i>
                         <span class="badge badge-notifications badge-danger">2</span>
@@ -95,7 +95,7 @@
                             </div>
                         </div>
                     </div>
-                </li>
+                </li>-->
 <?php
             }
         }

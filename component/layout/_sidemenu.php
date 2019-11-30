@@ -109,6 +109,11 @@
                             <ul class="sidebar-menu">
                                 <li class="sidebar-menu-item">
                                     <a class="sidebar-menu-button" href="student-help-center.html">
+                                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">forum</i> บทความ
+                                    </a>
+                                </li>
+                                <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button" href="student-help-center.html">
                                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">live_help</i> ขอความช่วยเหลือ
                                     </a>
                                 </li>

@@ -25,7 +25,7 @@
                             <div class="mdk-drawer-layout__content page ">
                                 <div class="container-fluid page__container">                                
                                     <section id="row1" class="mt-1">
-                                        <h2 class="sectionTitle text-light">คอร์สเรียนยอดนิยม</h2>
+                                        <h2 class="sectionTitle text-light">คอร์สแนะนำ</h2>
                                         <div class="examples">
                                            <ul class="img-list">
                                              <?php self::initCard($dir, $courses, $categories) ?>
@@ -34,7 +34,7 @@
                                     </section>
                                     
                                    <section id="row2" class="mt-4 mb-5">
-                                    <h2 class="sectionTitle text-light">ฟิสิกข์</h2>
+                                    <h2 class="sectionTitle text-light">คอร์เรียนทั้งหมด</h2>
                                     <div class="examples">
                                        <ul class="img-list">
                                           <li class="image">

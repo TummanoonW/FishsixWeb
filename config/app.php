@@ -64,6 +64,7 @@
         public static $pageAdminManageFeedbacks = "admin/manage-feedbacks.php";
         public static $pageAdminViewFeedback = "admin/view-feedback.php";
         public static $pageAdminManageInfo = "admin/manage-info.php";
+        public static $pageAdminManageHome = "admin/manage-home.php";
 
 
         public static $pageTeacherPanel = "teacher/index.php";

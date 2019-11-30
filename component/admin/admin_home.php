@@ -36,6 +36,14 @@
                                     <h3>Fishsix</h3>
                                     <div class="row">
                                         <div class="col-md-3 col-sm-4 pb-3">
+                                            <a href="<?php Nav::echoURL($dir, App::$pageAdminManageHome) ?>" class="btn btn-primary w-100 h-100">
+                                                <div class="pb-2 pt-2">
+                                                    <i class="fas fa-home"></i>
+                                                    <div class="mt-1">จัดการหน้าหลัก</div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-3 col-sm-4 pb-3">
                                             <a href="<?php Nav::echoURL($dir, App::$pageAdminManageCourses) ?>" class="btn btn-primary w-100 h-100">
                                                 <div class="pb-2 pt-2">
                                                     <i class="fas fa-graduation-cap"></i>

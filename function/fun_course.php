@@ -14,6 +14,13 @@
             return $result;
         }
 
+        public static function getAllLite($api){
+            $url = $api->getURL(App::$apiCourse, 'allLite', NULL);
+            $result = $api->get($url);
+
+            return $result;
+        }
+
         public static function get($api, $id){
             $query = new StdClass();
             $query->id = $id;

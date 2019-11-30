@@ -20,7 +20,7 @@
             new Path(FALSE, 'หน้าหลัก', $dir),
             new Path(FALSE, 'คอร์สของฉัน', $dir . App::$pageMyCourses),
             new Path(FALSE, 'แดชบอร์ด', $dir . App::$pageDashboard),
-            new Path(TRUE, 'viewscore', $dir . App::$pageViewScore)
+            new Path(TRUE, 'ดูคะแนน', '')
         );
         
         $id = $io->id;
@@ -30,7 +30,7 @@
                 $score = $result->response;
                 $course = $score->course;
 
-                Header::initHeader($dir, "viewscore - $course->title"); 
+                Header::initHeader($dir, "ดูคะแนน - $course->title"); 
                 ScoreView::initView($dir, $paths, $score, $course);
                 Footer::initFooter($dir); 
             }else{
