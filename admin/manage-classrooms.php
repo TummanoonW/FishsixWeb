@@ -24,7 +24,7 @@
 
         if(!isset($filter->since)){
             $now = CustomDate::getDateNow();
-            $month_earlier = $now->modify('last day of previous month');
+            $month_earlier = $now->modify('-1 year');
             $filter->since = CustomDate::parseDate($month_earlier);
             $filter->since = explode(' ', $filter->since)[0];
         }

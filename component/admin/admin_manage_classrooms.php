@@ -65,7 +65,7 @@
                                                 </div>
                                                 <div class="col-md-4 mb-2">
                                                     <div class="search-form search-form--light">
-                                                        <input name="date" id="date" type="date" class="form-control" placeholder="YYYY-MM-DD" id="searchSample02" value="<?php echo $filter->startDate ?>">
+                                                        <input name="date" id="date" type="date" class="form-control" placeholder="YYYY-MM-DD" id="searchSample02" value="<?php echo $filter->since ?>">
                                                         <button onclick="searchDate()" class="btn" type="button" role="button"><i class="material-icons">search</i></button>
                                                     </div>
                                                 </div>

@@ -1,7 +1,7 @@
 <?php
     class Asset{
 
-        public static $iconURL = "primary.svg";
+        public static $iconURL = "primary.png";
         public static $iconURL2 = "white.svg";
         public static $icon_user = "user.svg";
 

@@ -7,6 +7,16 @@
             );
 ?>
             <body class=" layout-fluid">
+                <style>
+                    .avatar-xlg{
+                        width: 5.33rem;
+                        height: 5.33rem;
+                    }
+
+                    .min-width{
+                        min-width: 10rem;
+                    }
+                </style>
                 <!-- Pre Loader -->
                 <?php Preloader::initPreloader($dir) ?>
 
@@ -116,11 +126,11 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <div class="d-flex flex-column flex-sm-row">
-                                <a href="<?php Nav::echoURL($dir, App::$pageAdminAddUser . "?id=$id") ?>" class="avatar avatar-lg avatar-4by3 mb-3 w-xs-plus-down-100 mr-sm-3 h-auto">
+                            <div class="d-flex">
+                                <a href="<?php Nav::echoURL($dir, App::$pageAdminAddUser . "?id=$id") ?>" class="avatar-xlg mb-3 w-xs-plus-down-50 mr-3">
                                     <img src="<?php Asset::echoIcon($dir, $auth->profile_pic) ?>" alt="<?php echo $auth->username ?>" class="avatar-img rounded-circle">
                                 </a>
-                                <div class="flex" style="min-width: 200px">
+                                <div class="flex min-width">
                                     <h4 class="card-title mb-1"><a href="<?php Nav::echoURL($dir, App::$pageAdminEditUser . "?id=$id") ?>"><?php echo $auth->username ?></a></h4>
                                     <span>ID: <?php echo $id ?></span><br>
                                     <span>อีเมล: <?php echo $auth->email ?></span><br>

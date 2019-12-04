@@ -26,13 +26,14 @@
                                             <div class="media-body">
                                                 <h1 class="h2">ติดต่อเรา</h1>
                                                 
-                                                <div class="mt-4 row">
+                                                <div class="mt-4 mb-3 row">
                                                     <div class="col-md-4">
                                                         <p>
                                                             <img class="w-100 h-auto" src="<?php Asset::embedThumb($dir, 'about_thumb.jpg') ?>">
                                                         </p>
                                                         <p>
                                                             <a href="https://www.facebook.com/fishsix.easy/"><img width="64" height="64" class="p-2" src="<?php Asset::embedIcon($dir, 'facebook.png') ?>"></a>
+                                                            <a href="https://line.me/R/ti/p/%40fishsix"><img width="64" height="64" class="p-2" src="<?php Asset::embedIcon($dir, 'line.png') ?>"></a>
                                                             <a href="https://www.youtube.com/channel/UCifESdqtfGheuv6fvNdhsUw?view_as=subscriber"><img width="64" height="64" class="p-2" src="<?php Asset::embedIcon($dir, 'youtube.png') ?>"></a>
                                                             <a href="https://www.instagram.com/fishsix_/?hl=th"><img width="64" height="64" class="p-2" src="<?php Asset::embedIcon($dir, 'instagram.png') ?>"></a>
                                                         </p>
