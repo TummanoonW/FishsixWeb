@@ -108,12 +108,12 @@
                             <div class="sidebar-heading">อื่นๆ</div>
                             <ul class="sidebar-menu">
                                 <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="student-help-center.html">
+                                    <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageForums) ?>">
                                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">forum</i> บทความ
                                     </a>
                                 </li>
                                 <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="student-help-center.html">
+                                    <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageHelpCenter) ?>">
                                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">live_help</i> ขอความช่วยเหลือ
                                     </a>
                                 </li>

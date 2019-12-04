@@ -14,19 +14,40 @@
     if(Session::checkUserExisted()){
         Nav::gotoHome($dir);
     }else{
-        //check if form were sent
-        if(isset($io->post->email)){
-            $result = FunAuth::login($api, $io->post); //connect to API requesting login method
-            
-            if($result->success){ //if the API return result
-                $auth = $result->response;
-                Session::logIn($auth); //save login data to session
-                Nav::gotoHome($dir); //redirect to profile page
-            }else{
-                ErrorPage::showError($dir, $result);
-            }
-        }else{
-            Nav::gotoHome($dir); //return to home page
+        switch($io->method){
+            case 'login':
+                //check if form were sent
+                if(isset($io->post->email)){
+                    $result = FunAuth::login($api, $io->post); //connect to API requesting login method
+
+                    if($result->success){ //if the API return result
+                        $auth = $result->response;
+                        Session::logIn($auth); //save login data to session
+                        Nav::gotoHome($dir); //redirect to profile page
+                    }else{
+                        ErrorPage::showError($dir, $result);
+                    }
+                }else{
+                    Nav::gotoHome($dir); //return to home page
+                }
+                break;
+            case 'google':
+                if(isset($io->post->email)){
+                    $result = FunAuth::loginGoogle($api, $io->post); //connect to API requesting login method
+                    
+                    if($result->success){ //if the API return result
+                        $auth = $result->response;
+                        Session::logIn($auth); //save login data to session
+                        Nav::gotoHome($dir); //redirect to profile page
+                    }else{
+                        ErrorPage::showError($dir, $result);
+                    }
+                }else{
+                    Nav::gotoHome($dir); //return to home page
+                }
+                break;
+            default:
+                break;
         }
     }
 

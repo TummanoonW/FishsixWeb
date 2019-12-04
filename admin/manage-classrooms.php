@@ -4,8 +4,8 @@
     include_once $dir . 'includer/includer.php'; 
     Includer::include_proto($dir); 
     Includer::include_admin($dir, 'admin_manage_classrooms.php');
+    Includer::include_fun($dir, 'fun_classroom');
     Includer::include_fun($dir, 'fun_course');
-    
 
     $auth = Session::getAuth(); 
     $apiKey = Session::getAPIKey(); 
@@ -20,33 +20,51 @@
     );
 
     if(Session::checkUserAdmin()){
-        $limit = 40;
+        $filter = $io->query;
 
-        $result = FunClassroom::countFiltered($api);
-        $count = $result->response;
-
-        if($io->page == NULL){
-            $c_page = 0;
-        }else{
-            $c_page = $io->page;
+        if(!isset($filter->since)){
+            $now = CustomDate::getDateNow();
+            $month_earlier = $now->modify('last day of previous month');
+            $filter->since = CustomDate::parseDate($month_earlier);
+            $filter->since = explode(' ', $filter->since)[0];
         }
 
-        $pages = Path::genPages($dir, App::$pageAdminManageOrders, $limit, $c_page, $count);
-        $pages[$c_page]->active = TRUE;
+        if(!isset($filter->courseID)){ 
+            $filter->courseID = "";
+            $branches = [];
+            $classes = [];
+        }else{
+            $result = FunCourse::getBranchesByCourseID($api, $filter->courseID);
+            $branches = $result->response;
 
-        $offset = ($c_page * $limit);        
+            $result = FunCourse::getClassesByCourseID($api, $filter->courseID);
+            $classes = $result->response;
+        }
 
-        $filter = (object)array(
-            'limit' => $limit,
-            'offset' => $offset
-        );
-        $result = FunAdminOrder::getFiltered($api, $filter);
-        $orders = $result->response;
+        if(!isset($filter->courseBranchID)){
+            $filter->courseBranchID = "";
 
-        Console::log('orders', $orders);
+        }
 
-        Header::initHeader($dir, "แอดมิน - จัดการคำสั่งซื้อ"); 
-        AdminManageOrdersView::initView($dir, $paths, $pages, $orders);
+        if(!isset($filter->classID)){
+            $filter->classID = "";
+
+        }
+
+        $result = FunClassroom::getFiltered($api, $filter);
+        $classrooms = $result->response;
+
+        $result = FunCourse::getAllLite($api);
+        $courses = $result->response;
+
+        Console::log('filter', $filter);
+        Console::log('branches', $branches);
+        Console::log('classes', $classes);
+        Console::log('courses', $courses);
+        Console::log('classrooms', $classrooms);
+
+        Header::initHeader($dir, "แอดมิน - จัดการรายชื่อผู้ลงเรียน"); 
+        AdminManageClassroomsView::initView($dir, $paths, $classrooms, $filter, $courses, $branches, $classes);
         Footer::initFooter($dir); 
 
     }else{

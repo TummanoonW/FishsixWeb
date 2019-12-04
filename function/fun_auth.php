@@ -1,6 +1,16 @@
 <?php
     class FunAuth{
 
+        public static function getTeachersFull($api){
+            $url = $api->getURL(App::$apiAuth, 'teachersFull', NULL);
+            $result = $api->get($url);
+            return $result;
+        }
+        public static function getTeachers($api){
+            $url = $api->getURL(App::$apiAuth, 'teachers', NULL);
+            $result = $api->get($url);
+            return $result;
+        }
         public static function getSingleFull($api, $id){
             $query = (object)array('id' => $id);
             $url = $api->getURL(App::$apiAuth, 'singleFull', $query);
@@ -25,6 +35,11 @@
 
         public static function login($api, $form){
             $url = $api->getURL(App::$apiAuth, 'login', NULL);
+            $result = $api->post($url, $form);
+            return $result;
+        }
+        public static function loginGoogle($api, $form){
+            $url = $api->getURL(App::$apiAuth, 'loginGoogle', NULL);
             $result = $api->post($url, $form);
             return $result;
         }

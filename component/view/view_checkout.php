@@ -24,23 +24,22 @@
                                             <div class="card">
                                                 <form action="<?php Nav::echoURL($dir, App::$routeCheckOut . '?m=checkout') ?>" method="POST" enctype="multipart/form-data" class="form-horizontal">
                                                     <div class="card-body">
-
-                                                        <div class="form-group row">
-                                                            <img src="https://cu.lnwfile.com/_/cu/_raw/bc/19/ql.jpg" style="margin-left:auto;margin-right:auto;" alt="">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <img class="w-100 h-auto" src="<?php Asset::embedImage($dir, 'account_1.jpg') ?>">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <img class="w-100 h-auto" src="<?php Asset::embedImage($dir, 'account_2.jpg') ?>">
+                                                            </div>
                                                         </div>
-
-                                                        <div class="card">
-                                                          <div class="card-body">
-                                                            <p class="card-text">
+                                                        <p class="card-text">
                                                             <h4 class="card-title">วิธีการชำระเงิน</h4>
-                                                                <ol>
-                                                                    <li>โอนเงินผ่านช่องทางที่กำหนด</li>
-                                                                    <li>หลังจากโอนเงินเสร็จ ให้ถ่ายรูปสลิปการโอนเงิน</li>
-                                                                    <li>อัพไฟล์รูปสลิปขึ้นเว็บไซต์</li>
-                                                                </ol>
-                                                            </p>
-                                                          </div>
-                                                        </div>
+                                                            <ol>
+                                                                <li>โอนเงินผ่านช่องทางที่กำหนด</li>
+                                                                <li>หลังจากโอนเงินเสร็จ ให้ถ่ายรูปสลิปการโอนเงิน</li>
+                                                                <li>อัพไฟล์รูปสลิปขึ้นเว็บไซต์</li>
+                                                            </ol>
+                                                        </p>
 
                                                         <div class="form-group row">
                                                             <label for="slip" class="col-sm-3 col-form-label form-label">ใบเสร็จของคุณ</label>
@@ -60,6 +59,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+
                                                         <div class="card-footer text-center">
                                                             <button type="submit" class="btn btn-success">ยืนยันการชำระเงิน</button>
                                                         </div>

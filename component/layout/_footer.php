@@ -51,7 +51,7 @@
 
 <ul class="list-unstyled">
   <li>
-  <a href="<?php Nav::echoURL($dir, App::$pageBranch) ?>">สาขาของเรา</a>
+  <a href="<?php Nav::echoURL($dir, App::$pageTeachers) ?>">ผู้สอน</a>
   </li>
 
 
@@ -114,6 +114,22 @@
     <!-- Grid row -->
 
   </div>
+  <div>
+<div class="container">
+<div class="">
+<div class="row d-flex align-items-center">
+    <div class="col-sm-6">
+    </div>
+<div class="col-sm-6">
+<div class="text-right text-muted">
+<p>© 2019 FISHSIX คณิตศาสตร์ ฟิสิกส์ สอนสด. All rights reserved.</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
   <!-- Footer Links -->
 </footer>
                 <!-- Bootstrap -->

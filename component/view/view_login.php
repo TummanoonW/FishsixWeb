@@ -2,6 +2,10 @@
     class LoginView{ //login HTML elements loader
 
         public static function initView($dir){
+            $urls = (object)array(
+                'routeLogin' => $dir . App::$routeLogIn,
+                'pageError' => $dir . App::$pageError
+            );
 ?>
 
             <body class="login">
@@ -21,24 +25,14 @@
                                 <p class="card-subtitle">ด้วยบัญชีของคุณ</p>
                             </div>
                             <div class="card-body">
-
-                                <a href="student-dashboard.html" class="btn btn-light btn-block">
-                                    <span class="fab fa-google mr-2"></span>
-                                    เข้าสู่ระบบด้วย บัญชี Google
-                                </a>
-
-                                <div class="page-separator">
-                                    <div class="page-separator__text">หรือ</div>
-                                </div>
-
-                                <form method="POST" action="<?php Nav::echoURL($dir, App::$routeLogIn) ?>">
+                                <form method="POST" action="<?php Nav::echoURL($dir, App::$routeLogIn . "?m=login") ?>">
                                     <div class="form-group">
                                         <label class="form-label" for="email">อีเมล ของคุณ:</label>
                                         <div class="input-group input-group-merge">
                                             <input name="email" id="email" type="email" required="" class="form-control form-control-prepended" placeholder="อีเมล ของคุณ">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <span class="far fa-envelope"></span>
+                                                    <span class="far fas-envelope"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -49,7 +43,7 @@
                                             <input name="password" id="password" type="password" required="" class="form-control form-control-prepended" placeholder="รหัสผ่าน ของคุณ">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <span class="far fa-key"></span>
+                                                    <span class="far fas-key"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -61,6 +55,15 @@
                                         <a href="<?php Nav::echoURL($dir, App::$pageForgotPassword)?>" class="text-black-70" style="text-decoration: underline">ลืมรหัสผ่าน?</a>
                                     </div>
                                 </form>
+
+                                <div class="page-separator">
+                                    <div class="page-separator__text">หรือ</div>
+                                </div>
+
+                                <button onclick="popupGoogleSignIn()" class="btn btn-light btn-block">
+                                    <span class="fab fa-google mr-2"></span>
+                                    เข้าสู่ระบบด้วย บัญชี Google
+                                </button>
                             </div>
                             <div class="card-footer text-center text-black-50">
                                 ยังไม่ได้เป็นสมาชิก? <a href="<?php Nav::echoURL($dir, App::$pageRegister) ?>">สมัครสมาชิก</a>
@@ -69,6 +72,12 @@
                     </div>
                 </div>
                 <?php Script::initScript($dir) ?>
+                
+                <script id="obj-urls"><?php echo json_encode($urls) ?></script>
+                <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+                <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-auth.js"></script>
+                <?php Script::customScript($dir, 'init-firebase.js') ?>
+                <?php Script::customScript($dir, 'login.js') ?>
 <?php
         }
 

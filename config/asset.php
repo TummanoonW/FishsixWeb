@@ -55,7 +55,7 @@
         }
 
         public static function embedThumb($dir, $file){
-            $path = $dir . self::$thumb_path . $file;
+            $path = $dir . 'assets/images/thumbs/' . $file;
             if(file_exists($path)){
                 echo $path;
             }else{
@@ -64,7 +64,7 @@
         }
 
         public static function embedImage($dir, $file){
-            $path = $dir . self::$image_path . $file;
+            $path = $dir . 'assets/images/' . $file;
             if(file_exists($path)){
                 echo $path;
             }else{

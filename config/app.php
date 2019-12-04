@@ -37,6 +37,12 @@
         public static $pagePrivacy = "privacy-policy.php";
         public static $pageTerm = "terms-and-conditions.php";
         public static $pageBranch = "branches.php";
+        public static $pageTeachers = "teachers.php";
+        public static $pageViewTeacher = "viewteacher.php";
+        public static $pageHelpCenter = "help-center.php";
+        public static $pageForums = "forums.php";
+        public static $pageError = "error.php";
+
 
         public static $pageDashboard = "dashboard.php";
         public static $pageViewScore = "viewscore.php";
@@ -65,7 +71,8 @@
         public static $pageAdminManageFeedbacks = "admin/manage-feedbacks.php";
         public static $pageAdminViewFeedback = "admin/view-feedback.php";
         public static $pageAdminManageInfo = "admin/manage-info.php";
-        public static $pageAdminManageHome = "admin/manage-home.php";
+        public static $pageAdminManageClassrooms = "admin/manage-classrooms.php";
+        public static $pageAdminViewClassroom = "admin/view-classroom.php";
 
 
         public static $pageTeacherPanel = "teacher/index.php";
@@ -109,6 +116,7 @@
         public static $apiSchedule = "schedule.php";
         public static $apiFeedback = "feedback.php";
         public static $apiDashboard = "dashboard.php";
+        public static $apiClassroom = "classroom.php";
 
 
         public static $apiAdminCourse = "admin-course.php";

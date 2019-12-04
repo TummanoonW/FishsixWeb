@@ -30,15 +30,22 @@
                                             <h1 class="h2">คอร์สของฉัน</h1>
                                         </div>
                                         <div class="media-right">
-                                            <div class="btn-group btn-group-sm">
+                                            <a href="<?php Nav::echoURL($dir, App::$pageCourses) ?>" class="btn btn-white"><i class="material-icons" style="width: 22px;">storefront</i>ไปยังร้านค้า</a>
+                                            <!--<div class="btn-group btn-group-sm">
                                                 <a href="<?php Nav::echoURL($dir, App::$pageCourseView) ?>" class="btn btn-white active"><i class="material-icons">list</i></a>
                                                 <a href="<?php Nav::echoURL($dir, App::$pageCourseView) ?>" class="btn btn-white"><i class="material-icons">dashboard</i></a>
-                                            </div>
+                                            </div>-->
                                         </div>
                                     </div>
-                                    <div class="card-columns">
-                                        <?php self::initCards($dir, $ownerships) ?>
-                                    </div>
+
+                                    <?php if(count($ownerships) > 0){ ?>
+                                        <div class="card-columns">
+                                            <?php self::initCards($dir, $ownerships) ?>
+                                        </div>
+                                    <?php }else{
+                                            Alert::initAlert($dir, "ไม่มีรายการคอร์ส ที่ต้องแสดง");
+                                    } ?>
+                                    
 
                                     <!-- Pagination -->
                                     <?php Pagination::initPagination($dir, $pages) ?>

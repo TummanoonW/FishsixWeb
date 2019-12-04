@@ -12,18 +12,18 @@
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img src="<?php echo $auth->profile_pic ?>" alt="Avatar" class="rounded-circle" width="40"></a>
                     <?php } ?>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <?php if(Session::checkUserAdmin()){ ?>
+                        <!--<?php //if(Session::checkUserAdmin()){ ?>
                             <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageAdminPanel) ?>">
                                 <i class="material-icons">apps</i> ระบบจัดการ
                             </a>
-                        <?php } 
-                            if(Session::checkUserTeacher()){ 
+                        <?php //} 
+                            //if(Session::checkUserTeacher()){ 
                         ?>
                             <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageTeacherPanel); ?>">
                                 <i class="material-icons">class</i> ระบบการสอน
                             </a>
                         <?php
-                            }
+                            //}
                         ?>
                         <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageMyCourses) ?>">
                             <i class="material-icons">school</i> คอร์สของฉัน
@@ -33,7 +33,7 @@
                         </a>
                         <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageMySchedule); ?>">
                             <i class="material-icons">schedule</i> ตารางเรียน
-                        </a>
+                        </a> -->
                         <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageProfile) ?>">
                             <i class="material-icons">edit</i> แก้ไขบัญชี
                         </a>

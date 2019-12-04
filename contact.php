@@ -4,6 +4,7 @@
     include_once $dir . 'includer/includer.php'; 
     Includer::include_proto($dir); 
     Includer::include_view($dir, 'view_contact.php');
+    Includer::include_fun($dir, 'fun_branch');
 
     $auth = Session::getAuth(); 
     $apiKey = Session::getAPIKey(); 
@@ -15,8 +16,12 @@
         new Path(FALSE, 'หน้าหลัก', $dir),
         new Path(TRUE, "ติดต่อเรา", '')
     );
-    $error_code = $io->get->err;
+
+
+    $result = FunBranch::get($api);
+    $branches = $result->response;
+
     Header::initHeader($dir, 'ติดต่อเรา'); 
-    ViewContact::initView($dir, $paths);
+    ViewContact::initView($dir, $paths, $branches);
     Footer::initFooter($dir); 
 

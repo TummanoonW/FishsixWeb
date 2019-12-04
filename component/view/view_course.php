@@ -2,6 +2,7 @@
     class CourseView{
         public static function initView($dir, $paths, $course, $teachers, $comments){
             $auth = Session::getAuth();
+            $preview = $course->preview;
             $lessons = $course->lessons;
             $pictures = $course->pictures;
             $classes = $course->classes;
@@ -80,6 +81,17 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <?php if($preview != ''){ ?>
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            <h4 class="card-title"><i class="fas fa-play"></i> &nbsp;วิดีโอตัวอย่าง</h4>
+                                                        </div>
+                                                        <div class="card-body p-0">
+                                                            <iframe class="embed-responsive-item" src="<?php echo $preview ?>" allowfullscreen=""></iframe>
+                                                        </div>
+                                                    </div>
+                                            <?php } ?>
 
                                             <!-- Lessons -->
                                             <div class="card">

@@ -44,10 +44,10 @@
                                                     <?php } ?>
 
                                                     <div class="form-group row">
-                                                            <label for="title" class="col-sm-3 col-form-label form-label">หัวเรื่อง</label>
+                                                            <label for="title" class="col-sm-3 col-form-label form-label">ชื่อสาขา</label>
                                                             <div class="col-sm-8">
                                                                 <div class="input-group">
-                                                                <input name="title" type="text" id="title" class="form-control" placeholder="กรอกหัวเรื่อง" value="<?php if(!$isNew) echo $branch->title ?>">
+                                                                <input name="title" type="text" id="title" class="form-control" placeholder="กรอกชื่อสาขา" value="<?php if(!$isNew) echo $branch->title ?>">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -75,9 +75,31 @@
                                                                 <div class="media-right">
                                                                     <div class="custom-file" style="width: auto;">
                                                                         <!-- <input  type="file" id="picture" class="custom-file-input" accept="image/*" onchange="uploadToPicture(this, 720, 480, '#thumb', '#thumbnail')"> -->
-                                                                        <input name="thumbnail" type="file" id="picture" class="custom-file-input" accept="image/*" onchange="uploadToPicture(this, 720, 480, '#thumb', '#thumbnail2')">>
+                                                                        <input name="thumbnail" type="file" id="picture" class="custom-file-input" accept="image/*" onchange="uploadToPicture(this, 720, 480, '#thumb', '#thumbnail2')">
                                                                         <label for="picture" class="custom-file-label">อัพโหลดไฟล์</label>
                                                                         <small class="text-secondary">ขนาดที่แนะนำ: 720x480 px</small>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- <input name="thumbnail" id="thumbnail" style="visibility: collapse;" value="<?php if(!$isNew) echo $branch->thumbnail ?>"> -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="picture" class="col-sm-3 col-form-label form-label">ภาพแผนที่</label>
+                                                        <div class="col-sm-9">
+                                                            <div class="media align-items-center">
+                                                                <div class="media-left">
+                                                                    <div class="rounded bg-transparent">
+                                                                        <img id="mapPic" class="w-100 h-auto" src="<?php if(!$isNew) Asset::echoThumb($dir, $branch->map) ?>">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="media-right">
+                                                                    <div class="custom-file" style="width: auto;">
+                                                                        <!-- <input  type="file" id="picture" class="custom-file-input" accept="image/*" onchange="uploadToPicture(this, 720, 480, '#thumb', '#thumbnail')"> -->
+                                                                        <input name="map" type="file" id="picture" class="custom-file-input" accept="image/*" onchange="uploadToPicture(this, 1024, 724, '#mapPic', '#map')">>
+                                                                        <label for="picture" class="custom-file-label">อัพโหลดไฟล์</label>
+                                                                        <small class="text-secondary">ขนาดที่แนะนำ: 1024x724 px</small>
                                                                     </div>
                                                                 </div>
                                                                 <!-- <input name="thumbnail" id="thumbnail" style="visibility: collapse;" value="<?php if(!$isNew) echo $branch->thumbnail ?>"> -->

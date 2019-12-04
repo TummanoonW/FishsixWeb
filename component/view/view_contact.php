@@ -1,6 +1,6 @@
 <?php
     class ViewContact{
-        public static function initView($dir, $paths){
+        public static function initView($dir, $paths, $branches){
             ?>
                 <body class="layout-fluid">
                     <link type="text/css" rel="stylesheet" href="<?php Nav::echoURL($dir, 'assets/css/lightgallery.min.css') ?>" /> 
@@ -17,25 +17,40 @@
                         <!-- Header Layout Content -->
                         <div class="mdk-header-layout__content" style="padding-top: 64px">
                       
-                        <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
-                            <div class="mdk-drawer-layout__content page ">
-                                <div class="container-fluid page__container">
+                            <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+                                <div class="mdk-drawer-layout__content page ">
+                                    <div class="container-fluid page__container">
 
-                                        <!-- Navigation Paths -->
-                                        <?php Breadcrumb::initBreadcrumb($dir, $paths) ?>
-                                        <div class="media-body">
-                                            <h1 class="h2">ติดต่อเรา</h1>
-                                            <div id="elementor-tab-content-1742" class="elementor-tab-content elementor-clearfix" data-tab="2" role="tabpanel" aria-labelledby="elementor-tab-title-1742"><p><img class="alignnone wp-image-942" src="https://fishsix.in.th/wp-content/uploads/2019/06/mapsiam-300x212.png" alt="" width="450" height="318" srcset="https://fishsix.in.th/wp-content/uploads/2019/06/mapsiam-300x212.png 300w, https://fishsix.in.th/wp-content/uploads/2019/06/mapsiam-768x543.png 768w, https://fishsix.in.th/wp-content/uploads/2019/06/mapsiam-1024x724.png 1024w, https://fishsix.in.th/wp-content/uploads/2019/06/mapsiam.png 1188w" sizes="(max-width: 450px) 100vw, 450px" /></p><h1>ช่องทางติดต่อ</h1><p>โทรศัพท์: <a href="tel:0989748688">098 974 8688</a></p><p>Facebook: <a href="https://www.facebook.com/fishsix.easy/">FISHSIX </a></p><p>ไลน์: <a href="line://ti/p/@owy6442w">คลิ๊ก</a></p><p>เว็บไซต์ <a href="https://fishsix.in.th/">fishsix.in.th</a></p></div>
+                                            <!-- Navigation Paths -->
+                                            <?php Breadcrumb::initBreadcrumb($dir, $paths) ?>
+                                            <div class="media-body">
+                                                <h1 class="h2">ติดต่อเรา</h1>
+                                                
+                                                <div class="mt-4 row">
+                                                    <div class="col-md-4">
+                                                        <p>
+                                                            <img class="w-100 h-auto" src="<?php Asset::embedThumb($dir, 'about_thumb.jpg') ?>">
+                                                        </p>
+                                                        <p>
+                                                            <a href="https://www.facebook.com/fishsix.easy/"><img width="64" height="64" class="p-2" src="<?php Asset::embedIcon($dir, 'facebook.png') ?>"></a>
+                                                            <a href="https://www.youtube.com/channel/UCifESdqtfGheuv6fvNdhsUw?view_as=subscriber"><img width="64" height="64" class="p-2" src="<?php Asset::embedIcon($dir, 'youtube.png') ?>"></a>
+                                                            <a href="https://www.instagram.com/fishsix_/?hl=th"><img width="64" height="64" class="p-2" src="<?php Asset::embedIcon($dir, 'instagram.png') ?>"></a>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="accordion" id="accordionExample">
+                                                            <?php self::initCards($dir, $branches) ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                         </div>
-                                       
-                                            </div>
-                                        </div>
                                     </div>
+
                                 </div>
-                            
-                                <?php Sidemenu::initSideMenu($dir) ?>
                             </div>
+                        </div>
+                        <?php Sidemenu::initSideMenu($dir) ?>
+                    </div>
                    
                     <?php Script::initScript($dir) ?>
                                                         
@@ -43,5 +58,31 @@
                                                         
                     
             <?php
+        }
+
+        public static function initCards($dir, $branches){
+            foreach ($branches as $key => $item) {
+            ?>
+                <div class="card">
+                    <div class="card-header" id="heading<?php echo $key ?>">
+                      <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<?php echo $key ?>" aria-expanded="true" aria-controls="collapse<?php echo $key ?>">
+                          <?php echo $item->title ?>
+                        </button>
+                      </h2>
+                    </div>
+                    <div id="collapse<?php echo $key ?>" class="collapse" aria-labelledby="heading<?php echo $key ?>" data-parent="#accordionExample">
+                      <div class="card-body">
+                        <p><img class="alignnone wp-image-940" src="<?php echo $item->map ?>" alt="" width="450" height="318"></p>
+                        <h1>ช่องทางติดต่อ</h1>
+                        <p>โทรศัพท์:&nbsp;<a href="tel:0989748688">098 974 8688</a></p>
+                        <p>Facebook:&nbsp;<a href="https://www.facebook.com/fishsix.easy/">FISHSIX&nbsp;</a></p>
+                        <p>ไลน์:&nbsp;<a href="line://ti/p/@owy6442w">คลิ๊ก</a></p>
+                        <p>เว็บไซต์&nbsp;<a href="https://fishsix.in.th/">fishsix.in.th</a></p>
+                      </div>
+                    </div>
+                </div>
+            <?php
+            }
         }
     }
