@@ -100,7 +100,8 @@
 
         public static $routeTeacherScoring = "route/teacher/scoring.php";
 
-        public static $apiURL = "https://www.trialation.com/fishsix-api/"; //base URL to call API
+        public static $apiURL = "https://www.fishsix.online/api/"; //base URL to call API
+        //public static $apiURL = "https://www.trialation.com/fishsix-api/"; //base URL to call API
         //public static $apiURL = "https://192.168.64.3/fishsix-api/"; //base URL to call API
         
         public static $apiAuth = "apiAuth.php";
