@@ -7,8 +7,8 @@
     Includer::include_fun($dir, 'fun_classroom');
     Includer::include_fun($dir, 'fun_course');
 
-    $auth = Session::getAuth(); 
-    $apiKey = Session::getAPIKey(); 
+    $auth = SESSION::getAuth(); 
+    $apiKey = SESSION::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -19,7 +19,7 @@
         new Path(TRUE, 'จัดการรายชื่อผู้ลงเรียน', '')
     );
 
-    if(Session::checkUserAdmin()){
+    if(SESSION::checkUserAdmin()){
         $filter = $io->query;
 
         if(!isset($filter->since)){

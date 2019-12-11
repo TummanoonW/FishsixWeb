@@ -5,13 +5,13 @@
     Includer::include_proto($dir); 
     Includer::include_fun($dir, 'fun_auth.php');
 
-    $apiKey = Session::getAPIKey(); //get secret API Key
+    $apiKey = SESSION::getAPIKey(); //get secret API Key
 
     $api = new API($apiKey); //open API connection
     $io = new IO(); //open Input/Output receiver for certain $_GET and $_POST data 
 
     //check if user exists
-    if(Session::checkUserExisted()){
+    if(SESSION::checkUserExisted()){
         Nav::gotoHome($dir);
     }else{
         switch($io->method){
@@ -22,7 +22,7 @@
 
                     if($result->success){ //if the API return result
                         $auth = $result->response;
-                        Session::logIn($auth); //save login data to session
+                        SESSION::logIn($auth); //save login data to session
                         Nav::gotoHome($dir); //redirect to profile page
                     }else{
                         ErrorPage::showError($dir, $result);
@@ -37,7 +37,7 @@
                     
                     if($result->success){ //if the API return result
                         $auth = $result->response;
-                        Session::logIn($auth); //save login data to session
+                        SESSION::logIn($auth); //save login data to session
                         Nav::gotoHome($dir); //redirect to profile page
                     }else{
                         ErrorPage::showError($dir, $result);

@@ -1,7 +1,7 @@
 <?php
     class Toolbar{ ////common toolbar HTML elements loader
         public static function initToolbar($dir, $search){  
-            $auth = Session::getAuth();
+            $auth = SESSION::getAuth();
 ?>
             <!-- Header -->
             <div id="header" data-fixed class="mdk-header js-mdk-header mb-0">

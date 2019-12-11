@@ -5,8 +5,8 @@
     Includer::include_proto($dir); 
     Includer::include_admin($dir, 'admin_manage_categories_courses.php');
 
-    $auth = Session::getAuth(); 
-    $apiKey = Session::getAPIKey(); 
+    $auth = SESSION::getAuth(); 
+    $apiKey = SESSION::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -24,7 +24,7 @@
         new Path(FALSE, '3', $dir . App::$pageAdminManageCourses . "?page=2")
     );
 
-    if(Session::checkUserAdmin()){
+    if(SESSION::checkUserAdmin()){
         
         if($io->page == NULL){
             $c_page = 0;

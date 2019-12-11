@@ -1,7 +1,7 @@
 <?php
     class HomeView{
         public static function initView($dir, $recommended_courses, $all_courses){
-            $auth = Session::getAuth();
+            $auth = SESSION::getAuth();
 ?>
             <body class=" layout-fluid">
 

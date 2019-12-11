@@ -6,13 +6,13 @@
     Includer::include_admin($dir, 'admin_course_editor_teacher.php');
     Includer::include_fun($dir, 'fun_teacher.php');
 
-    $auth = Session::getAuth(); 
-    $apiKey = Session::getAPIKey(); 
+    $auth = SESSION::getAuth(); 
+    $apiKey = SESSION::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
 
-    if(Session::checkUserAdmin()){
+    if(SESSION::checkUserAdmin()){
         $teacherID = $io->id;
         $isNew = ($teacherID == NULL);
 

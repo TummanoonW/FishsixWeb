@@ -1,7 +1,7 @@
 <?php
     class AdminManageCoursesView{
         public static function initView($dir, $paths, $pages, $courses, $count, $search, $categories){
-            $auth = Session::getAuth();
+            $auth = SESSION::getAuth();
 ?>
             <body class=" layout-fluid">
                 <!-- Pre Loader -->
@@ -98,6 +98,7 @@
                         </div>
                     </div>
                 </div>   
+                <?php Script::customScript($dir, 'common.js') ?>
                 <?php Script::initScript($dir) ?> 
                 
                 

@@ -1,7 +1,7 @@
 <?php
     class MyCoursesView{
         public static function initView($dir, $paths, $pages, $ownerships){
-            $auth = Session::getAuth();
+            $auth = SESSION::getAuth();
 ?>
             <body class=" layout-fluid">
                 <!-- Pre Loader -->

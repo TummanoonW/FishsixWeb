@@ -6,8 +6,8 @@
     Includer::include_view($dir, 'view_myschedule.php');
     Includer::include_fun($dir, 'fun_schedule.php');
 
-    $auth = Session::getAuth(); 
-    $apiKey = Session::getAPIKey(); 
+    $auth = SESSION::getAuth(); 
+    $apiKey = SESSION::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -18,7 +18,7 @@
         new Path(TRUE, 'ตารางเรียน', $dir . App::$pageMySchedule)
     );
 
-   if(Session::checkUserExisted()){
+   if(SESSION::checkUserExisted()){
         $result = FunSchedule::getMySchedule($api, $auth->ID);
         $schedules = $result->response;
 

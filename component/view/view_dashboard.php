@@ -1,7 +1,7 @@
 <?php
     class DashboardView{
         public static function initView($dir, $paths, $ownership, $schedules, $dashboard){
-            $auth = Session::getAuth();
+            $auth = SESSION::getAuth();
             $course = $dashboard->course;
             $lessons = $dashboard->lessons;
             $teachers = $dashboard->teachers;

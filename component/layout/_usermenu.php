@@ -1,9 +1,9 @@
 <?php
     class UserMenu{
         public static function initUserMenu($dir){
-            $auth = Session::getAuth();
+            $auth = SESSION::getAuth();
 
-            if(Session::checkUserExisted()){
+            if(SESSION::checkUserExisted()){
 ?>
                 <li class="nav-item dropdown ml-1 ml-md-3">
                     <?php if($auth->profile_pic == ''){ ?>
@@ -12,12 +12,12 @@
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img src="<?php echo $auth->profile_pic ?>" alt="Avatar" class="rounded-circle" width="40"></a>
                     <?php } ?>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <!--<?php //if(Session::checkUserAdmin()){ ?>
+                        <!--<?php //if(SESSION::checkUserAdmin()){ ?>
                             <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageAdminPanel) ?>">
                                 <i class="material-icons">apps</i> ระบบจัดการ
                             </a>
                         <?php //} 
-                            //if(Session::checkUserTeacher()){ 
+                            //if(SESSION::checkUserTeacher()){ 
                         ?>
                             <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageTeacherPanel); ?>">
                                 <i class="material-icons">class</i> ระบบการสอน

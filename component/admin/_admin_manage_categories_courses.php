@@ -1,7 +1,7 @@
 <?php
     class AdminManageCategoriesCoursesView{
         public static function initView($dir, $paths, $pages){
-            $auth = Session::getAuth();
+            $auth = SESSION::getAuth();
 ?>
             <body class=" layout-fluid">
                 <!-- Pre Loader -->
@@ -137,7 +137,7 @@
                             <?php Sidemenu::initSideMenu($dir) ?>
                         </div>
                     </div>
-                </div>   
+                </div> 
                 <?php Script::initScript($dir) ?> 
 <?php
         }

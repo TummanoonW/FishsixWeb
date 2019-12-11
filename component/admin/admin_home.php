@@ -1,7 +1,7 @@
 <?php
     class AdminHomeView{
         public static function initView($dir, $paths){
-            $auth = Session::getAuth();
+            $auth = SESSION::getAuth();
 ?>
             <body class=" layout-fluid">
                 <style>

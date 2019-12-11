@@ -159,6 +159,7 @@
                             </div>
                         </div>
                     </div>
+                    <?php Script::customScript($dir, 'common.js') ?>
                     <?php Script::initScript($dir) ?>
             <?
         }

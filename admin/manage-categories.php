@@ -7,8 +7,8 @@
     Includer::include_fun($dir, 'fun_category.php');
     Includer::include_fun($dir, 'fun_course.php');
 
-    $auth = Session::getAuth(); 
-    $apiKey = Session::getAPIKey(); 
+    $auth = SESSION::getAuth(); 
+    $apiKey = SESSION::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -19,7 +19,7 @@
         new Path(TRUE, 'จัดการหมวดหมู่', $dir . App::$pageAdminManageCategories)
     );
 
-    if(Session::checkUserAdmin()){
+    if(SESSION::checkUserAdmin()){
         $result = FunCategory::count($api);
         $count = $result->response;
 

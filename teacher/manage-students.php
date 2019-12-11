@@ -9,13 +9,13 @@
     Includer::include_fun($dir, 'fun_teacher_student.php');
 
 
-    $auth = Session::getAuth(); 
-    $apiKey = Session::getAPIKey(); 
+    $auth = SESSION::getAuth(); 
+    $apiKey = SESSION::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
 
-    if(Session::checkUserTeacher()){
+    if(SESSION::checkUserTeacher()){
 
         $id = $io->id;
         if($id == NULL) Nav::gotoHome($dir);

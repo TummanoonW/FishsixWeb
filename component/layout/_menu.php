@@ -2,13 +2,13 @@
     class Menu{
         public static function initMenu($dir){
             $countC = 0;
-            $s_carts = (array)Session::get('mycart');
+            $s_carts = (array)SESSION::get('mycart');
             $countC = $countC + count($s_carts);
 
-            if(Session::checkUserExisted()){
+            if(SESSION::checkUserExisted()){
                 Includer::include_fun($dir, 'fun_mycart.php');
-                $auth = Session::getAuth();
-                $apiKey = Session::getAPIKey(); 
+                $auth = SESSION::getAuth();
+                $apiKey = SESSION::getAPIKey(); 
                 $api = new API($apiKey);
 
                 /*$result = FunMyCart::countByAuthID($api, $auth->ID);

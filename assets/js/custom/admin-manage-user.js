@@ -3,7 +3,7 @@ var urls = JSON.parse(document.querySelector('#urls').innerHTML);
 
 function search() {
     let param = JSON.stringify(q);
-    window.location = urls.pageAdminManager + "?q=" + param;
+    window.location = urls.pageAdminManageUser + "?q=" + param;
 }
 
 function searchType(element) {

@@ -5,8 +5,8 @@
     Includer::include_proto($dir); 
     Includer::include_view($dir, 'view_ordercourses.php');
 
-    $auth = Session::getAuth(); 
-    $apiKey = Session::getAPIKey(); 
+    $auth = SESSION::getAuth(); 
+    $apiKey = SESSION::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -18,7 +18,7 @@
         new Path(TRUE, 'Order Courses', $dir . App::$pageOrderCourses)
     );
 
-    if(Session::checkUserExisted()){
+    if(SESSION::checkUserExisted()){
             
         Header::initHeader($dir,"Order Courses"); 
 

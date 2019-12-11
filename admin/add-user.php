@@ -6,8 +6,8 @@
     Includer::include_admin($dir, 'admin_edit_user.php');
     Includer::include_fun($dir, 'fun_auth');
 
-    $auth = Session::getAuth(); 
-    $apiKey = Session::getAPIKey(); 
+    $auth = SESSION::getAuth(); 
+    $apiKey = SESSION::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -19,7 +19,7 @@
         new Path(TRUE, 'โปรแกรมแก้ไขผู้ใช้', $dir . App::$pageAdminAddUser)
     );
 
-    if(Session::checkUserAdmin()){
+    if(SESSION::checkUserAdmin()){
         $id = $io->id;
         $isNew = ($id == NULL);
         if($isNew){

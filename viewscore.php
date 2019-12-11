@@ -9,13 +9,13 @@
     Includer::include_fun($dir, 'fun_dashboard.php');
     Includer::include_fun($dir, 'fun_schedule.php');
 
-    $auth = Session::getAuth(); 
-    $apiKey = Session::getAPIKey(); 
+    $auth = SESSION::getAuth(); 
+    $apiKey = SESSION::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
 
-   if(Session::checkUserExisted()){
+   if(SESSION::checkUserExisted()){
         $paths = array(
             new Path(FALSE, 'หน้าหลัก', $dir),
             new Path(FALSE, 'คอร์สของฉัน', $dir . App::$pageMyCourses),

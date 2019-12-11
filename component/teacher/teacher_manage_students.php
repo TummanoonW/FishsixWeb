@@ -1,7 +1,7 @@
 <?php
     class TeacherManageStudentView{
         public static function initView($dir, $paths, $id, $courseTeacher, $course, $branches, $classes, $students, $search){
-            $auth = Session::getAuth();
+            $auth = SESSION::getAuth();
             $urls = array(
                 'pageTeacherManageStudent' => Nav::getURL($dir, App::$pageTeacherManageStudent . "?id=" . $id)
             );

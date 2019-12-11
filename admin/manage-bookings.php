@@ -6,8 +6,8 @@
     Includer::include_admin($dir, 'admin_manage_bookings.php');
     Includer::include_fun($dir, 'fun_booking.php');
 
-    $auth = Session::getAuth(); 
-    $apiKey = Session::getAPIKey(); 
+    $auth = SESSION::getAuth(); 
+    $apiKey = SESSION::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -18,7 +18,7 @@
         new Path(TRUE, 'จัดการการจอง', '')
     );
 
-    if(Session::checkUserAdmin()){
+    if(SESSION::checkUserAdmin()){
         $result = FunBooking::count($api);
         $count = $result->response;
 

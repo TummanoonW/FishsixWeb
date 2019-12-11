@@ -5,13 +5,13 @@
     Includer::include_view($dir, 'view_order.php');
     Includer::include_fun($dir, 'fun_order.php');
 
-    $auth = Session::getAuth(); 
-    $apiKey = Session::getAPIKey(); 
+    $auth = SESSION::getAuth(); 
+    $apiKey = SESSION::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
 
-    if(Session::checkUserExisted()){
+    if(SESSION::checkUserExisted()){
         $id = $io->id;
 
         $paths = array(

@@ -7,8 +7,8 @@
     Includer::include_fun($dir, 'fun_category.php');
     Includer::include_fun($dir, 'fun_teacher_course.php');
 
-    $auth = Session::getAuth(); 
-    $apiKey = Session::getAPIKey(); 
+    $auth = SESSION::getAuth(); 
+    $apiKey = SESSION::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -18,7 +18,7 @@
         new Path(TRUE, 'ระบบการสอน', $dir . App::$pageTeacherPanel)
     );
 
-    if(Session::checkUserTeacher()){
+    if(SESSION::checkUserTeacher()){
 
         $result = FunCategory::get($api);
         $categories = $result->response;

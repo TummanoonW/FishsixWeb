@@ -2,7 +2,7 @@
     class AdminCourseEditorTeacherView{
 
         public static function initView($dir, $paths, $teachers, $sTeacher, $isNew){
-            $auth = Session::getAuth();
+            $auth = SESSION::getAuth();
             $urls = array(
                 'back' => Nav::getPrevious()
             );
@@ -83,6 +83,7 @@
                         </div>
                     </div>
                 </div>
+                <?php Script::customScript($dir, 'common.js') ?>
                 <?php Script::initScript($dir) ?>
 
                 <script id="obj-data"><?php echo json_encode($data) ?></script>

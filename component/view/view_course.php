@@ -1,7 +1,7 @@
 <?php
     class CourseView{
         public static function initView($dir, $paths, $course, $teachers, $comments){
-            $auth = Session::getAuth();
+            $auth = SESSION::getAuth();
             $preview = $course->preview;
             $lessons = $course->lessons;
             $pictures = $course->pictures;

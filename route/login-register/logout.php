@@ -11,18 +11,18 @@
     if(isset($io->method)){
         switch($io->method){
             case 'relogin':
-                Session::logOut();
+                SESSION::logOut();
                 Nav::goto($dir, App::$pageLogin);
                 break;
             default:
                 //clear all data in session as log out
-                Session::logOut();
+                SESSION::logOut();
                //return to home page
                 Nav::gotoHome($dir);
                 break;
         }
     }else{
-        Session::logOut();
+        SESSION::logOut();
         Nav::gotoHome($dir);
     }
 

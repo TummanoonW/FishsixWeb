@@ -5,8 +5,8 @@
     Includer::include_proto($dir); 
     Includer::include_view($dir, 'view_browsecourses.php');
 
-    $auth = Session::getAuth(); 
-    $apiKey = Session::getAPIKey(); 
+    $auth = SESSION::getAuth(); 
+    $apiKey = SESSION::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -22,7 +22,7 @@
         new Path(FALSE, '3', $dir . App::$pageBrowseCourses . "?page=2")
     );
 
-    if(Session::checkUserExisted()){
+    if(SESSION::checkUserExisted()){
 
         Header::initHeader($dir," All Courses"); 
 

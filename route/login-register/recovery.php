@@ -4,7 +4,7 @@
     Includer::include_proto($dir); 
     Includer::include_fun($dir, 'fun_auth.php');
 
-    $apiKey = Session::getAPIKey();
+    $apiKey = SESSION::getAPIKey();
     $api = new API($apiKey);
     $io = new IO(); 
 

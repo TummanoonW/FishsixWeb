@@ -1,7 +1,7 @@
 <?php
     class TeacherHomeView{
         public static function initView($dir, $paths, $items, $categories){
-            $auth = Session::getAuth();
+            $auth = SESSION::getAuth();
 ?>
             <body class=" layout-fluid">
                 <!-- Pre Loader -->

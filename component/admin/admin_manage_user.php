@@ -1,7 +1,7 @@
 <?php
     class AdminManageUserView{
         public static function initView($dir, $paths, $pages, $auths, $count, $search){
-            $auth = Session::getAuth();
+            $auth = SESSION::getAuth();
             $urls = (object)array(
                 'pageAdminManageUser' => Nav::getURL($dir, App::$pageAdminManageUser)
             );
@@ -110,6 +110,7 @@
                         </div>
                     </div>
                 </div>   
+                <?php Script::customScript($dir, 'common.js') ?>
                 <?php Script::initScript($dir) ?> 
 
                 <script id="urls"><?php echo json_encode($urls) ?></script>

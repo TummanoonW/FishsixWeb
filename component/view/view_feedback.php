@@ -1,7 +1,7 @@
 <?php
     class FeedbackView{
         public static function initView($dir, $paths, $error_code){
-            $auth = Session::getAuth();
+            $auth = SESSION::getAuth();
 
             if(isset($error_code)){
                 $err = "&err=$error_code";
@@ -44,7 +44,7 @@
                                             <form class="card-body" action="<?php Nav::echoURL($dir, App::$routeFeedback . '?m=submit' . $err) ?>" method="POST">
                                                 <div class="form-group">
                                                 <label for="exampleInputEmail">อีเมล</label>
-                                                    <?php if(Session::checkUserExisted()){ ?>
+                                                    <?php if(SESSION::checkUserExisted()){ ?>
                                                         <input name="email" type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="โปรดระบุอีเมลของท่าน" value="<?php echo $auth->email; ?>" required="" readonly>
                                                     <?php }else{ ?>
                                                         <input name="email" type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="โปรดระบุอีเมลของท่าน" maxlength="50" value="" required>

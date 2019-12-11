@@ -6,8 +6,8 @@
     Includer::include_view($dir, 'view_contact.php');
     Includer::include_fun($dir, 'fun_branch');
 
-    $auth = Session::getAuth(); 
-    $apiKey = Session::getAPIKey(); 
+    $auth = SESSION::getAuth(); 
+    $apiKey = SESSION::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 

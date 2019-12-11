@@ -5,13 +5,13 @@
     Includer::include_proto($dir); 
     Includer::include_fun($dir, 'fun_teacher_scoring.php');
 
-    $apiKey = Session::getAPIKey();
-    $auth = Session::getAuth();
+    $apiKey = SESSION::getAPIKey();
+    $auth = SESSION::getAuth();
 
     $api = new API($apiKey);
     $io = new IO(); 
 
-    if(Session::checkUserTeacher()){
+    if(SESSION::checkUserTeacher()){
         switch($io->method){
             case 'score':
                 $form = $io->post;

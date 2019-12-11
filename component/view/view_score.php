@@ -1,7 +1,7 @@
 <?php
     class ScoreView{
         public static function initView($dir, $paths, $scores, $course){
-            $auth = Session::getAuth();
+            $auth = SESSION::getAuth();
             $booking = $scores->booking;
             $owner = $scores->owner;
             $branch = $scores->courseBranch->branch;

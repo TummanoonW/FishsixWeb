@@ -2,7 +2,7 @@
     class AdminAddBranchView{
 
         public static function initView($dir, $paths, $isNew, $branch){
-            $auth = Session::getAuth();
+            $auth = SESSION::getAuth();
 ?>
             <body class=" layout-fluid">
                
@@ -156,6 +156,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <?php Script::customScript($dir, 'common.js') ?>
                             <?php Sidemenu::initSideMenu($dir) ?>
                             
                             

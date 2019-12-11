@@ -16,6 +16,10 @@
                 <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
                 <meta name="robots" content="noindex">
 
+                <link rel="icon" href="<?php Asset::embedIcon($dir, 'cropped-logo-fishsix-32x32.png') ?>" sizes="32x32">
+                <link rel="icon" href="<?php Asset::embedIcon($dir, 'cropped-logo-fishsix-192x192.png') ?>" sizes="192x192">
+                <link rel="apple-touch-icon-precomposed" href="<?php Asset::embedIcon($dir, 'cropped-logo-fishsix-180x180.png') ?>">
+
                 <!-- Perfect Scrollbar -->
                 <link type="text/css" href="<?php Nav::echoURL($dir, 'assets/vendor/perfect-scrollbar.css') ?>" rel="stylesheet">
 

@@ -6,17 +6,17 @@
     Includer::include_view($dir, 'view_checkout.php');
     Includer::include_fun($dir, 'fun_mycart.php');
 
-    $auth = Session::getAuth(); 
-    $apiKey = Session::getAPIKey(); 
+    $auth = SESSION::getAuth(); 
+    $apiKey = SESSION::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
 
-    if(Session::checkUserExisted()){
+    if(SESSION::checkUserExisted()){
         /*$result = FunMyCart::countByAuthID($api, $auth->ID);
         $count = $result->response;*/
 
-        $s_carts = Session::get('mycart');
+        $s_carts = SESSION::get('mycart');
         if($s_carts == NULL) $s_carts = [];
 
         if(count($s_carts) > 0){

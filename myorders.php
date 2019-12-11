@@ -6,8 +6,8 @@
     Includer::include_view($dir, 'view_myorders.php');
     Includer::include_fun($dir, 'fun_order.php');
 
-    $auth = Session::getAuth(); 
-    $apiKey = Session::getAPIKey(); 
+    $auth = SESSION::getAuth(); 
+    $apiKey = SESSION::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -17,7 +17,7 @@
         new Path(TRUE, 'คำสั่งซื้อของฉัน', '')
     );
 
-    if(Session::checkUserExisted()){
+    if(SESSION::checkUserExisted()){
 
         $result = FunOrder::getByAuthID($api, $auth->ID);
         $orders = $result->response;

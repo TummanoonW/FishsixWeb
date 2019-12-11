@@ -9,7 +9,7 @@
     Includer::include_view($dir, 'view_profile.php');
     Includer::include_fun($dir, 'fun_auth.php');
 
-    $apiKey = Session::getAPIKey(); //get secret API Key
+    $apiKey = SESSION::getAPIKey(); //get secret API Key
 
     $api = new API($apiKey); //open API connection
     $io = new IO(); //open Input/Output receiver for certain $_GET and $_POST data 
@@ -20,8 +20,8 @@
     );
 
     //check if user already logged in
-    if(Session::checkUserExisted()){
-        $auth = Session::getAuth();
+    if(SESSION::checkUserExisted()){
+        $auth = SESSION::getAuth();
         $result = FunAuth::getUserByAuthID($api, $auth->ID);
         $user = $result->response;
 

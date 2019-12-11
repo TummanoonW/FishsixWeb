@@ -6,8 +6,8 @@
     Includer::include_view($dir, 'view_branches.php');
     Includer::include_fun($dir, 'fun_branch.php');
     
-    $auth = Session::getAuth(); 
-    $apiKey = Session::getAPIKey(); 
+    $auth = SESSION::getAuth(); 
+    $apiKey = SESSION::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 

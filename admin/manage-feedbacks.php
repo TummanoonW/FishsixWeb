@@ -7,8 +7,8 @@
     Includer::include_fun($dir, 'fun_feedback.php');
     Includer::include_fun($dir, 'fun_admin_feedback.php');
 
-    $auth = Session::getAuth(); 
-    $apiKey = Session::getAPIKey(); 
+    $auth = SESSION::getAuth(); 
+    $apiKey = SESSION::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -19,7 +19,7 @@
         new Path(TRUE, 'จัดการรายงานข้อผิดพลาด', '')
     );
 
-    if(Session::checkUserAdmin()){
+    if(SESSION::checkUserAdmin()){
         $limit = 40;
 
         $result = FunFeedback::count($api);

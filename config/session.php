@@ -4,7 +4,7 @@
         session_start();
     } 
 
-    class Session{
+    class SESSION{
 
         //check if there's user in session
         public static function checkUserExisted(){

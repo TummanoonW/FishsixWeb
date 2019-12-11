@@ -1,7 +1,7 @@
 <?php
     class AdminCourseEditorView{
         public static function initView($dir, $paths, $isNew, $course, $categories){
-            $auth = Session::getAuth();
+            $auth = SESSION::getAuth();
             $obj = array(
                 'isNew' => $isNew, 
                 'dir' => $dir
@@ -311,6 +311,7 @@
 
                 
                 <!-- Custom -->
+                <?php Script::customScript($dir, 'common.js') ?>
                 <?php Script::customScript($dir, 'admin-course-editor.js') ?>
 
 <?php

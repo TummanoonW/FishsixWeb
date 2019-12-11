@@ -6,8 +6,8 @@
     Includer::include_admin($dir, 'admin_manage_user.php');
     Includer::include_fun($dir, 'fun_auth.php');
 
-    $auth = Session::getAuth(); 
-    $apiKey = Session::getAPIKey(); 
+    $auth = SESSION::getAuth(); 
+    $apiKey = SESSION::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -18,7 +18,7 @@
         new Path(TRUE, 'จัดการผู้ใช้', $dir . App::$pageAdminManageUser)
     );
 
-    if(Session::checkUserAdmin()){
+    if(SESSION::checkUserAdmin()){
 
         if(!isset($io->query->type)) $search = (object)array(
             'type' => '',

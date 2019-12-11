@@ -5,8 +5,8 @@
     Includer::include_proto($dir);
     Includer::include_view($dir, 'view_registererror.php');
 
-    $auth = Session::getAuth();
-    $apiKey = Session::getAPIKey();
+    $auth = SESSION::getAuth();
+    $apiKey = SESSION::getAPIKey();
 
     $api = new API($apiKey); 
     $io = new IO();

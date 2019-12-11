@@ -7,8 +7,8 @@
     Includer::include_fun($dir, 'fun_auth.php');
     Includer::include_fun($dir, 'fun_order.php');
 
-    $auth = Session::getAuth(); 
-    $apiKey = Session::getAPIKey(); 
+    $auth = SESSION::getAuth(); 
+    $apiKey = SESSION::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -20,7 +20,7 @@
         new Path(TRUE, 'ดูคำสั่งซื้อ', '')
     );
 
-    if(Session::checkUserAdmin()){
+    if(SESSION::checkUserAdmin()){
         $id = $io->id;
 
         $result = FunOrder::getSingleFull($api, $id);

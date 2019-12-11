@@ -8,8 +8,8 @@
     Includer::include_fun($dir, 'fun_course.php');
     Includer::include_fun($dir, 'fun_mycart.php');
 
-    $auth = Session::getAuth(); 
-    $apiKey = Session::getAPIKey(); 
+    $auth = SESSION::getAuth(); 
+    $apiKey = SESSION::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -21,13 +21,13 @@
     
     $carts = [];    
 
-    $s_carts = Session::get('mycart');
+    $s_carts = SESSION::get('mycart');
     if($s_carts == NULL) $s_carts = [];
 
-    if(Session::checkUserExisted()){
+    if(SESSION::checkUserExisted()){
         /*$result = FunMyCart::addMultiple($api, $s_carts);
         $s_carts = [];
-        Session::set('mycart', $s_carts);
+        SESSION::set('mycart', $s_carts);
 
         if(isset($io->query->ID)){
             $package = $io->query;
@@ -54,7 +54,7 @@
                 'package' => $package
             );
             array_push($s_carts, $cart);
-            Session::set('mycart', $s_carts);
+            SESSION::set('mycart', $s_carts);
         }
         $isLoggedIn = TRUE;
     }else{
@@ -69,7 +69,7 @@
                 'package' => $package
             );
             array_push($s_carts, $cart);
-            Session::set('mycart', $s_carts);
+            SESSION::set('mycart', $s_carts);
         }
         $isLoggedIn = FALSE;
     }

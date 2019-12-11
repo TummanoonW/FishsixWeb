@@ -2,7 +2,7 @@
     class AdminEditUserView{ ////profile HTML elements loader
 
         public static function initView($dir, $paths){
-            $auth = Session::getAuth();
+            $auth = SESSION::getAuth();
 ?>
             <body class=" layout-fluid">
                 <!-- Flatpickr -->

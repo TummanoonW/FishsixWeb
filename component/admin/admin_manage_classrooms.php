@@ -1,7 +1,7 @@
 <?php
     class AdminManageClassroomsView{
         public static function initView($dir, $paths, $classrooms, $filter, $courses, $branches, $classes){
-            $auth = Session::getAuth();
+            $auth = SESSION::getAuth();
             $urls = array(
                 'pageAdminManageClassrooms' => Nav::getURL($dir, App::$pageAdminManageClassrooms)
             );
@@ -111,6 +111,7 @@
                         </div>
                     </div>
                 </div> 
+                <?php Script::customScript($dir, 'common.js') ?>
                 <?php Script::initScript($dir) ?>
 
                 <script id="urls"><?php echo json_encode($urls) ?></script>

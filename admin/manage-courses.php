@@ -8,8 +8,8 @@
     Includer::include_fun($dir, 'fun_course.php');
     Includer::include_fun($dir, 'fun_category.php');
 
-    $auth = Session::getAuth(); 
-    $apiKey = Session::getAPIKey(); 
+    $auth = SESSION::getAuth(); 
+    $apiKey = SESSION::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -20,7 +20,7 @@
         new Path(TRUE, 'จัดการคอร์ส', $dir . App::$pageAdminManageCourses)
     );
 
-    if(Session::checkUserAdmin()){
+    if(SESSION::checkUserAdmin()){
         
         if(!isset($io->query->query)) $search = (object)array(
             'category' => '',

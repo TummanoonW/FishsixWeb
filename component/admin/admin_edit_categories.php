@@ -80,7 +80,8 @@
                         <?php Sidemenu::initSideMenu($dir) ?>
                     </div>
                 </div>
-            <?php Script::initScript($dir) ?> 
+                <?php Script::customScript($dir, 'common.js') ?>
+                <?php Script::initScript($dir) ?> 
 
             
             

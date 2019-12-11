@@ -5,19 +5,19 @@
      Includer::include_fun($dir, 'fun_mycart.php');
      Includer::include_fun($dir, 'fun_auth.php');
  
-     $apiKey = Session::getAPIKey(); 
-     $auth = Session::getAuth();
+     $apiKey = SESSION::getAPIKey(); 
+     $auth = SESSION::getAuth();
  
      $api = new API($apiKey); 
      $io = new IO(); 
  
-     if(Session::checkUserExisted()){
+     if(SESSION::checkUserExisted()){
         switch($io->method){
             case 'checkout':
                 /*$result = FunMyCart::getByAuthID($api, $auth->ID);
                 $cartItems = $result->response;*/
 
-                $cartItems = Session::get('mycart');
+                $cartItems = SESSION::get('mycart');
                 if($cartItems == NULL) $cartItems = [];
 
                 $result = FunAuth::getUserByAuthID($api, $auth->ID);
@@ -27,7 +27,7 @@
 
                 $result = FunMyCart::checkout($api, $form);
                 if($result->success){
-                    Session::set('mycart', NULL);
+                    SESSION::set('mycart', NULL);
                     $id = $result->response->ID;
                     Nav::goto($dir, App::$pageViewOrder . '?id=' . $id);
                 }else{

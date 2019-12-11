@@ -7,13 +7,13 @@
     Includer::include_fun($dir, 'fun_course.php');
     Includer::include_fun($dir, 'fun_ownership.php');
 
-    $auth = Session::getAuth(); 
-    $apiKey = Session::getAPIKey(); 
+    $auth = SESSION::getAuth(); 
+    $apiKey = SESSION::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
 
-    if(Session::checkUserExisted()){
+    if(SESSION::checkUserExisted()){
         $paths = array(
             new Path(FALSE, 'หน้าหลัก', $dir),
             new Path(TRUE, 'คอร์สของฉัน', $dir . App::$pageMyCourses)

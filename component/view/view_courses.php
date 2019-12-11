@@ -1,7 +1,7 @@
 <?php
     class CoursesView{
         public static function initView($dir, $paths, $pages, $courses, $categories, $count, $query){
-            $auth = Session::getAuth();
+            $auth = SESSION::getAuth();
             $urls = array(
                 'pageCourses' => $dir . App::$pageCourses
             );

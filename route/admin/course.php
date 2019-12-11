@@ -5,13 +5,13 @@
     Includer::include_proto($dir); 
     Includer::include_fun($dir, 'fun_admin_course.php');
 
-    $apiKey = Session::getAPIKey();
-    $auth = Session::getAuth();
+    $apiKey = SESSION::getAPIKey();
+    $auth = SESSION::getAuth();
 
     $api = new API($apiKey);
     $io = new IO(); 
 
-    if(Session::checkUserAdmin()){
+    if(SESSION::checkUserAdmin()){
         $result = new Result();
 
         switch($io->method){

@@ -1,7 +1,7 @@
 <?php
     class MySchedule{
         public static function initView($dir, $paths, $schedules){
-            $auth = Session::getAuth();
+            $auth = SESSION::getAuth();
 
 ?>
             <body class=" layout-fluid">

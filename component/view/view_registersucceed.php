@@ -1,7 +1,7 @@
 <?php
     class RegisterSucceedView{
         public static function initView($dir){
-            $auth = Session::getAuth();
+            $auth = SESSION::getAuth();
 ?>
            <body class="registersucceed">
            <div class="d-flex align-items-center" style="min-height: 100vh">

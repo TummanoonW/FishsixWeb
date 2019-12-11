@@ -1,7 +1,7 @@
 <?php
     class BookingClass{
         public static function initView($dir, $paths, $ownership, $course, $classes, $branches, $schedules){
-            $auth = Session::getAuth();
+            $auth = SESSION::getAuth();
 ?>
             <body class=" layout-fluid">
                 <!-- Vendor CSS -->

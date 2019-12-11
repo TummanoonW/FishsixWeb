@@ -6,13 +6,13 @@
     Includer::include_admin($dir, 'admin_view_classroom.php');
     Includer::include_fun($dir, 'fun_classroom.php');
 
-    $auth = Session::getAuth(); 
-    $apiKey = Session::getAPIKey(); 
+    $auth = SESSION::getAuth(); 
+    $apiKey = SESSION::getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
 
-    if(Session::checkUserAdmin()){
+    if(SESSION::checkUserAdmin()){
         $since = $io->get->date;
         $courseID = $io->get->course;
         $branchID = $io->get->branch;

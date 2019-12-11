@@ -20,17 +20,17 @@
                     <div class="sidebar sidebar-left sidebar-dark bg-dark o-hidden" data-perfect-scrollbar>
                         <div class="sidebar-p-y">
 
-                            <?php if(Session::checkUserExisted()){ ?>
+                            <?php if(SESSION::checkUserExisted()){ ?>
                                 <div class="sidebar-heading">เมนูของฉัน</div>
                                 <ul class="sidebar-menu sm-active-button-bg">
-                                    <?php if(Session::checkUserAdmin()){ ?>
+                                    <?php if(SESSION::checkUserAdmin()){ ?>
                                         <li class="sidebar-menu-item">
                                             <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageAdminPanel); ?>">
                                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">apps</i> ระบบจัดการ
                                             </a>
                                         </li>
                                     <?php } 
-                                        if(Session::checkUserTeacher()){ 
+                                        if(SESSION::checkUserTeacher()){ 
                                     ?>
                                         <li class="sidebar-menu-item">
                                             <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageTeacherPanel); ?>">
@@ -79,7 +79,7 @@
                             <!-- Account menu -->
                             <div class="sidebar-heading">บัญชี</div>
                             <ul class="sidebar-menu">
-                                <?php if(Session::checkUserExisted()){ ?>
+                                <?php if(SESSION::checkUserExisted()){ ?>
                                     <li class="sidebar-menu-item">
                                         <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageProfile); ?>">
                                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">edit</i> แก้ไขบัญชี
