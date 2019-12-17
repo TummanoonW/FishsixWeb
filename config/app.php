@@ -119,6 +119,7 @@
         public static $apiFeedback = "feedback.php";
         public static $apiDashboard = "dashboard.php";
         public static $apiClassroom = "classroom.php";
+        public static $apiForum = "forum.php";
 
 
         public static $apiAdminCourse = "admin-course.php";
