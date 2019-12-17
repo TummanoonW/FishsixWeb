@@ -28,5 +28,5 @@
     HomeView::initView($dir, $recommended_courses, $courses);
     Footer::initFooter($dir); 
 
-
+?>
     
