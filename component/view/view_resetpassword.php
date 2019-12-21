@@ -1,7 +1,7 @@
 <?php
     class ResetPasswordView{ //login HTML elements loader
 
-        public static function initView($dir, $tokenID){
+        public static function initView($dir, $sess, $tokenID){
 ?>
             <body class="login">
                 <div class="d-flex align-items-center" style="min-height: 100vh">

@@ -31,7 +31,6 @@ var inputs = {
     pictures       : document.querySelector('#cPictures'),
     teachers       : document.querySelector('#cTeachers'),
     category       : document.querySelector('#cCategory'),
-    expiration     : document.querySelector('#cExpiration'),
     startDate      : document.querySelector('#cStartDate'),
     endDate        : document.querySelector('#cEndDate'),
     lineGroup      : document.querySelector('#cLineGroup'),
@@ -110,7 +109,6 @@ async function initData(){
     inputs.thumb.src                = data.course.thumbnail;
     inputs.thumbnail2.value         = data.course.thumbnail;
     inputs.preview.value            = data.course.preview;
-    inputs.expiration.value         = data.course.expiration;
     inputs.startDate.value          = data.course.startDate;
     inputs.endDate.value            = data.course.endDate;
     inputs.lineGroup.value          = data.course.lineGroup;
@@ -125,13 +123,12 @@ async function initData(){
     initPictureItems(inputs.pictures,   data.course.pictures);
 }
 
-async function saveSession(){
+async function saveSess(){
     data.course.title           = await inputs.title.value;
     data.course.content         = await inputs.content.value;
     data.course.description     = await inputs.description.innerHTML;
     data.course.thumbnail       = await inputs.thumbnail2.value;
     data.course.preview         = await inputs.preview.value;
-    data.course.expiration      = await inputs.expiration.value;
     data.course.startDate       = await inputs.startDate.value;
     data.course.endDate         = await inputs.endDate.value;
     data.course.lineGroup       = await inputs.lineGroup.value;
@@ -141,27 +138,27 @@ async function saveSession(){
 }
 
 async function onClickLesson(){
-    await saveSession();
+    await saveSess();
     window.location.href = data.urls.pageAdminCourseEditorLesson;
 }
 
 async function onClickPackage(){
-    await saveSession();
+    await saveSess();
     window.location.href = data.urls.pageAdminCourseEditorPackage;
 }
 
 async function onClickBranch(){
-    await saveSession();
+    await saveSess();
     window.location.href = data.urls.pageAdminCourseEditorBranch;
 }
 
 async function onClickClass(){
-    await saveSession();
+    await saveSess();
     window.location.href = data.urls.pageAdminCourseEditorClass;
 }
 
 async function onClickTeacher(){
-    await saveSession();
+    await saveSess();
     window.location.href = data.urls.pageAdminCourseEditorTeacher;
 }
 
@@ -236,8 +233,8 @@ function initPackageItems(input, packages){
                     '<div class="nestable-content">' +
                         '<div class="media align-items-center">' +
                             '<div class="media-left">' +
-                                '<label> ราคา (บ.)' +
-                                    '<input type="text" id="duration" class="form-control" placeholder="Price" value="'+element.price+'" readonly>' +
+                                '<label> ชื่อแพคเกจราคา' +
+                                    '<input type="text" id="duration" class="form-control" placeholder="Price" value="'+element.title+'" readonly>' +
                                 '</label>' +
                             '</div>' +
                             '<div class="media-body">' +
@@ -347,9 +344,10 @@ function initClassItems(input, classes){
                             '</div>' +
                         '</div>' +
                     '</td>' +
-                    '<td><span>'+element.startTime+'</span></td>' +
+                    '<td><span>'+simpleTime(element.startTime)+'</span></td>' +
                     '<td>ถึง</td>' +
-                    '<td><span>'+element.endTime+'</span></td>' +
+                    '<td><span>'+simpleTime(element.endTime)+'</span></td>' +
+                    '<td><span>'+findBranchTitle(element.courseBranchID, data.course.branches)+'</span></td>' +
                     '<td><a onclick="return confirmDeleteClass('+id+');" class="btn btn-white btn-sm"><i class="material-icons">delete_forever</i></a></td>' +
                 '</tr>' ;
                 input.innerHTML = input.innerHTML + item;
@@ -358,6 +356,21 @@ function initClassItems(input, classes){
             console.log('err', e);
         }
     });
+}
+
+function simpleTime(time){
+    let x = time.split(":");
+    return x[0] + ":" + x[1];
+}
+
+function findBranchTitle(id, branches){
+    var title = "";
+    
+    branches.forEach(element => {
+        if(id == element.ID) title = element.branch.title;
+    });
+
+    return title;
 }
 
 function initPictureItems(input, pictures){
@@ -501,7 +514,7 @@ async function save(){
     var course = await Object.assign(data.course, {});
 
     // ---0%
-    await saveSession(); //save basic content
+    await saveSess(); //save basic content
     await updateProgress(progress, 0);
     
     // ---5%

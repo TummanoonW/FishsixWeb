@@ -1,7 +1,7 @@
 <?php
     class AdminManageClassroomsView{
-        public static function initView($dir, $paths, $classrooms, $filter, $courses, $branches, $classes){
-            $auth = SESSION::getAuth();
+        public static function initView($dir, $sess, $paths, $classrooms, $filter, $courses, $branches, $classes){
+            $auth = $sess->getAuth();
             $urls = array(
                 'pageAdminManageClassrooms' => Nav::getURL($dir, App::$pageAdminManageClassrooms)
             );
@@ -17,7 +17,7 @@
                 <div class="mdk-header-layout js-mdk-header-layout">
 
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir, '') ?>
+                    <?php Toolbar::initToolbar($dir, '', $sess) ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
@@ -107,7 +107,7 @@
                                 </div>
 
                             </div>
-                            <?php Sidemenu::initSideMenu($dir) ?>
+                            <?php Sidemenu::initSideMenu($dir, $sess) ?>
                         </div>
                     </div>
                 </div> 

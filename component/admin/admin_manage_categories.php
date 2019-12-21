@@ -1,6 +1,6 @@
 <?php
     class AdminManageCategoriesView{
-        public static function initView($dir, $paths, $pages, $categories, $count, $api){
+        public static function initView($dir, $sess, $paths, $pages, $categories, $count, $api){
 ?>
             <body class=" layout-fluid">
 
@@ -10,7 +10,7 @@
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir, '') ?>
+                    <?php Toolbar::initToolbar($dir, '', $sess) ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
@@ -42,7 +42,7 @@
                                 </div>
                                 <?php Pagination::initPagination($dir, $pages) ?>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir) ?>
+                            <?php Sidemenu::initSideMenu($dir, $sess) ?>
                         </div>
                     </div>
                 </div>

@@ -1,8 +1,8 @@
 <?php
     class AdminCourseEditorBranchView{
 
-        public static function initView($dir, $paths, $branches, $sBranch, $isNew){
-            $auth = SESSION::getAuth();
+        public static function initView($dir, $sess, $paths, $branches, $sBranch, $isNew){
+            $auth = $sess->getAuth();
 
             $urls = array(
                 'back' => Nav::getPrevious()
@@ -22,7 +22,7 @@
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
 
-                    <?php Toolbar::initToolbar($dir, '') ?>
+                    <?php Toolbar::initToolbar($dir, '', $sess) ?>
 
                     <!-- // END Header -->
 
@@ -78,7 +78,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir) ?>
+                            <?php Sidemenu::initSideMenu($dir, $sess) ?>
                         </div>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 <?php
     class FeedbackView{
-        public static function initView($dir, $paths, $error_code){
-            $auth = SESSION::getAuth();
+        public static function initView($dir, $sess, $paths, $error_code){
+            $auth = $sess->getAuth();
 
             if(isset($error_code)){
                 $err = "&err=$error_code";
@@ -17,7 +17,7 @@
                 <div class="mdk-header-layout js-mdk-header-layout">
 
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir, '') ?>
+                    <?php Toolbar::initToolbar($dir, '', $sess) ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
@@ -44,7 +44,7 @@
                                             <form class="card-body" action="<?php Nav::echoURL($dir, App::$routeFeedback . '?m=submit' . $err) ?>" method="POST">
                                                 <div class="form-group">
                                                 <label for="exampleInputEmail">อีเมล</label>
-                                                    <?php if(SESSION::checkUserExisted()){ ?>
+                                                    <?php if($sess->checkUserExisted()){ ?>
                                                         <input name="email" type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="โปรดระบุอีเมลของท่าน" value="<?php echo $auth->email; ?>" required="" readonly>
                                                     <?php }else{ ?>
                                                         <input name="email" type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="โปรดระบุอีเมลของท่าน" maxlength="50" value="" required>
@@ -73,7 +73,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir) ?>
+                            <?php Sidemenu::initSideMenu($dir, $sess) ?>
                         </div>
                     </div>
                 </div>

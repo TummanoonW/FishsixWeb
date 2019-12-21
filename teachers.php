@@ -6,8 +6,8 @@
     Includer::include_view($dir, 'view_teachers.php');
     Includer::include_fun($dir, 'fun_auth.php');
     
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -23,6 +23,6 @@
     Console::log('teachers', $teachers);
 
     Header::initHeader($dir, 'ผู้สอน'); 
-    ViewTeachers::initView($dir, $paths, $teachers);
+    ViewTeachers::initView($dir, $sess, $paths, $teachers);
     Footer::initFooter($dir); 
 

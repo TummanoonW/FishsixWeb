@@ -6,8 +6,8 @@
     Includer::include_admin($dir, 'admin_edit_branch.php');
 
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -19,11 +19,11 @@
         new Path(TRUE, 'Edit Bracnh', $dir . App::$pageAdminEditBranch)
     );
 
-    if(SESSION::checkUserAdmin()){
+    if($sess->checkUserAdmin()){
         
 
         Header::initHeader($dir, "Admin - Edit Branch"); 
-        AdminEditBranchView::initView($dir, $paths);
+        AdminEditBranchView::initView($dir, $sess, $paths);
         Footer::initFooter($dir); 
 
     }else{

@@ -1,7 +1,7 @@
 <?php
     class ErrorPage{
         public static function showError($dir, $result){
-
+            $sess = new Sess();
             Header::initHeader($dir, "Error " . $result->err->code); //initialize HTML header elements with '<<someone name>> 's Profile' as Title
 
 ?>
@@ -9,7 +9,7 @@
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
 
-                    <?php Toolbar::initToolbar($dir, ''); ?>
+                    <?php Toolbar::initToolbar($dir, '', $sess); ?>
 
                     <!-- // END Header -->
 

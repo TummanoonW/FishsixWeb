@@ -8,14 +8,14 @@
     Includer::include_proto($dir); //include Proto Framework Architecture
     Includer::include_view($dir, 'view_login.php');
 
-    $auth = SESSION::getAuth(); //get Logged In user
-    $apiKey = SESSION::getAPIKey(); //get secret API Key
+    $sess = new Sess(); $auth = $sess->getAuth(); //get Logged In user
+    $apiKey = $sess->getAPIKey(); //get secret API Key
 
     $api = new API($apiKey); //open API connection
     $io = new IO(); //open Input/Output receiver for certain $_GET and $_POST data 
 
     //check if user already logged in
-    if(SESSION::checkUserExisted()){
+    if($sess->checkUserExisted()){
         Nav::gotoHome($dir); //go to Profile page
     }else{
         Header::initHeader($dir, "เข้าสู่ระบบ"); //initialize HTML header elements with 'Login' as Title

@@ -134,4 +134,51 @@ function changeBranches(input) {
         }
     });
 
+    changeClasses(courseBranchID, classes);
+
+}
+
+function changeClasses(courseBranchID, classes){
+    var arr = [];
+    classes.forEach(element => {
+        if(element.courseBranchID == courseBranchID) arr.push(element);
+    });
+
+    var cClassID = document.querySelector('#cClassID');
+    cClassID.innerHTML = '<option value="" selected>เลือกรอบเรียน</option>';
+    arr.forEach(element => {
+        var d = "";
+        switch(element.day){
+            case 'mon':
+                d = 'จ.';
+                break;
+            case 'tue':
+                d = 'อ.';
+                break;
+            case 'wed':
+                d = 'พ.';
+                break;
+            case 'thu':
+                d = 'พฤ.';
+                break;
+            case 'fri':
+                d = 'ศ.';
+                break;
+            case 'sat':
+                d = 'ส.';
+                break;
+            case 'sun':
+                d = 'อา.';
+                break;
+            default:
+                break;
+        }
+        let item = '<option value="'+element.ID+'">' + d + ' ' + printTime(element.startTime) + '-' + printTime(element.endTime) + '</option>';
+        cClassID.innerHTML = cClassID.innerHTML + item;
+    });
+}
+
+function printTime(datetime){
+    let x = datetime.split(":");
+    return x[0] + ":" + x[1];
 }

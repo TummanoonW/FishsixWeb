@@ -7,8 +7,8 @@
 
     Includer::include_fun($dir, 'fun_booking.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -24,7 +24,7 @@
         );
 
         Header::initHeader($dir, "การจอง - $booking->ID"); 
-        ViewBooking::initView($dir, $paths, $booking);
+        ViewBooking::initView($dir, $sess, $paths, $booking);
         Footer::initFooter($dir); 
     }else{
         Nav::gotoHome($dir);

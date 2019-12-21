@@ -6,8 +6,8 @@
     Includer::include_admin($dir, 'admin_edit_user.php');
     Includer::include_fun($dir, 'fun_auth');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -19,7 +19,7 @@
         new Path(TRUE, 'โปรแกรมแก้ไขผู้ใช้', $dir . App::$pageAdminAddUser)
     );
 
-    if(SESSION::checkUserAdmin()){
+    if($sess->checkUserAdmin()){
         $id = $io->id;
         $isNew = ($id == NULL);
         if($isNew){
@@ -32,7 +32,7 @@
         }
 
         Header::initHeader($dir, "แอดมิน - โปรแกรมแก้ไขผู้ใช้"); 
-        AdminAddUserView::initView($dir, $paths, $isNew, $auth, $user);
+        AdminAddUserView::initView($dir, $sess, $paths, $isNew, $auth, $user);
         Footer::initFooter($dir); 
 
     }else{

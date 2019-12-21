@@ -1,10 +1,11 @@
 <?php
     class AdminCourseEditorView{
-        public static function initView($dir, $paths, $isNew, $course, $categories){
-            $auth = SESSION::getAuth();
+        public static function initView($dir, $sess, $paths, $isNew, $course, $categories, $branches){
+            $auth = $sess->getAuth();
             $obj = array(
                 'isNew' => $isNew, 
-                'dir' => $dir
+                'dir' => $dir,
+                'branches' => $branches
             ); 
             $urls = array(
                 'def_thumb'                     => $dir . Asset::$thumb_def,
@@ -42,7 +43,7 @@
                 <div class="mdk-header-layout js-mdk-header-layout">
 
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir, '') ?>
+                    <?php Toolbar::initToolbar($dir, '', $sess) ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
@@ -154,6 +155,7 @@
                                                                     <th>เวลาเริ่ม</th>
                                                                     <th></th>
                                                                     <th>เวลาจบ</th>
+                                                                    <th>สาขา</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody id="cClasses" class="list">
@@ -255,10 +257,6 @@
                                                 </div>
                                                 <form class="card-body" action="#">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="cExpiration">Credit หมดอายุภายใน (วัน)</label>
-                                                        <input id="cExpiration" type="number" class="form-control" placeholder="จำนวนวัน" value="60">
-                                                    </div>
-                                                    <div class="form-group">
                                                         <label class="form-label" for="cStartDate">วันที่เริ่มคอร์ส</label>
                                                         <input id="cStartDate" type="date" class="form-control" placeholder="วันที่เริ่มคอร์ส" data-toggle="flatpickr">
                                                     </div>
@@ -283,7 +281,7 @@
                                     </div>
                                 </div>              
                             </div>
-                            <?php Sidemenu::initSideMenu($dir) ?>
+                            <?php Sidemenu::initSideMenu($dir, $sess) ?>
                         </div>
                     </div>
                 </div>

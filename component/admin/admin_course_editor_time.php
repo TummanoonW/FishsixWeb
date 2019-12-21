@@ -1,8 +1,8 @@
 <?php
     class AdminCourseEditorTimeView{
 
-        public static function initView($dir, $paths, $sClass, $isNew){
-            $auth = SESSION::getAuth();
+        public static function initView($dir, $sess, $paths, $sClass, $isNew, $branches){
+            $auth = $sess->getAuth();
             
             $urls = array(
                 'back' => Nav::getPrevious()
@@ -21,7 +21,7 @@
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
 
-                    <?php Toolbar::initToolbar($dir, '') ?>
+                    <?php Toolbar::initToolbar($dir, '', $sess) ?>
 
                     <!-- // END Header -->
 
@@ -106,6 +106,19 @@
                                                     </div>
 
                                                     <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label form-label" for="cEndTime">สาขา</label>
+                                                        <div class="col-sm-8">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <select id="cBranches" class="form-control custom-select" required>
+                                                                        <?php //self::initBranchItems($dir, $branches, $sClass, $isNew) ?>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
                                                         <div class="col-sm-8 offset-sm-3">
                                                             <div class="media align-items-center">
                                                                 <div class="media-left">
@@ -121,7 +134,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir) ?>
+                            <?php Sidemenu::initSideMenu($dir, $sess) ?>
                         </div>
                     </div>
                 </div>
@@ -137,6 +150,14 @@
                 <?php Script::customScript($dir, 'admin-course-editor-class.js') ?>
                     
 <?php
+        }
+
+        private static function initBranchItems($dir, $branches, $sClass, $isNew){
+            ?>
+                <option value="" selected>-</option>
+            <?php foreach ($branches as $key => $b) { ?>
+                <option value="<?php echo $b->ID ?>" <?php if(!$isNew)if($b->ID == $sClass->branchID) echo 'selected' ?>>สาขา <?php echo $b->title ?></option>
+            <?php }
         }
 
         private static function initItems($dir, $sClass, $isNew){

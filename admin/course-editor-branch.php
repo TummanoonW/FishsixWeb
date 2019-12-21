@@ -7,13 +7,13 @@
     Includer::include_fun($dir, 'fun_course.php');
     Includer::include_fun($dir, 'fun_branch.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
 
-    if(SESSION::checkUserAdmin()){
+    if($sess->checkUserAdmin()){
         $id = $io->id;
         $isNew = ($id == NULL);
 
@@ -38,7 +38,7 @@
         );
 
         Header::initHeader($dir, "แอดมิน - $add สาขาคอร์ส"); 
-        AdminCourseEditorBranchView::initView($dir, $paths, $branches, $sBranch, $isNew);
+        AdminCourseEditorBranchView::initView($dir, $sess, $paths, $branches, $sBranch, $isNew);
         Footer::initFooter($dir); 
 
     }else{

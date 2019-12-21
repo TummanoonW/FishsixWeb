@@ -5,8 +5,8 @@
     Includer::include_proto($dir); 
     Includer::include_admin($dir, 'admin_manage_categories_courses.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -24,7 +24,7 @@
         new Path(FALSE, '3', $dir . App::$pageAdminManageCourses . "?page=2")
     );
 
-    if(SESSION::checkUserAdmin()){
+    if($sess->checkUserAdmin()){
         
         if($io->page == NULL){
             $c_page = 0;
@@ -34,7 +34,7 @@
         $pages[$c_page]->active = TRUE;
 
         Header::initHeader($dir, "Admin - View Course"); 
-        AdminManageCategoriesCoursesView::initView($dir, $paths, $pages);
+        AdminManageCategoriesCoursesView::initView($dir, $sess, $paths, $pages);
         Footer::initFooter($dir); 
 
     }else{

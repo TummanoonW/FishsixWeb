@@ -7,8 +7,8 @@
     Includer::include_fun($dir, 'fun_order.php');
     Includer::include_fun($dir, 'fun_admin_order.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -19,7 +19,7 @@
         new Path(TRUE, 'จัดการคำสั่งซื้อ', '')
     );
 
-    if(SESSION::checkUserAdmin()){
+    if($sess->checkUserAdmin()){
         $limit = 40;
 
         $result = FunOrder::count($api);
@@ -46,7 +46,7 @@
         Console::log('orders', $orders);
 
         Header::initHeader($dir, "แอดมิน - จัดการคำสั่งซื้อ"); 
-        AdminManageOrdersView::initView($dir, $paths, $pages, $orders);
+        AdminManageOrdersView::initView($dir, $sess, $paths, $pages, $orders);
         Footer::initFooter($dir); 
 
     }else{

@@ -1,7 +1,7 @@
 <?php
     class CourseView{
-        public static function initView($dir, $paths, $course, $teachers, $comments){
-            $auth = SESSION::getAuth();
+        public static function initView($dir, $sess, $paths, $course, $teachers, $comments, $branches){
+            $auth = $sess->getAuth();
             $preview = $course->preview;
             $lessons = $course->lessons;
             $pictures = $course->pictures;
@@ -20,7 +20,7 @@
                 <div class="mdk-header-layout js-mdk-header-layout">
 
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir, '') ?>
+                    <?php Toolbar::initToolbar($dir, '', $sess) ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
@@ -93,6 +93,27 @@
                                                     </div>
                                             <?php } ?>
 
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title"><i class="far fa-calendar-alt"></i> &nbsp;รอบเรียน</h4>
+                                                </div>
+                                                <div class="card-body p-2">
+                                                <table class="table mb-0">
+                                                    <thead class="text-muted">
+                                                        <tr>
+                                                            <th>วัน</th>
+                                                            <th>ที่นั่ง</th>
+                                                            <th>เวลา</th>
+                                                            <th>สาขา</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="list">
+                                                        <?php self::initClassItems($dir, $classes, $branches) ?>
+                                                    </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
                                             <!-- Lessons -->
                                             <div class="card">
                                                 <div class="card-header">
@@ -134,25 +155,6 @@
                                             </div>
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h4 class="card-title"><i class="far fa-calendar-alt"></i> &nbsp;รอบเรียน</h4>
-                                                </div>
-                                                <div class="card-body p-2">
-                                                <table class="table mb-0">
-                                                    <thead class="text-muted">
-                                                        <tr>
-                                                            <th>วัน</th>
-                                                            <th>ที่นั่ง</th>
-                                                            <th>เวลา</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="list">
-                                                        <?php self::initClassItems($dir, $classes) ?>
-                                                    </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            <div class="card">
-                                                <div class="card-header">
                                                     <h4 class="card-title"><i class="fas fa-chalkboard-teacher"></i> &nbsp;ครูผู้สอน</h4>
                                                 </div>
                                                 <div class="card-body">
@@ -180,7 +182,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir) ?>
+                            <?php Sidemenu::initSideMenu($dir, $sess) ?>
                         </div>
                     </div>
                 </div>
@@ -263,22 +265,30 @@
             }
         }
 
-        public static function initClassItems($dir, $classes){
+        public static function initClassItems($dir, $classes, $branches){
             foreach ($classes as $key => $c) {
                 ?>
                     <tr>
                         <td><?php echo self::properDay($c->day) ?></td>
                         <td><?php echo $c->seats ?></td>
                         <td class="pr-0"><?php echo self::properTime($c->startTime) . ' - ' . self::properTime($c->endTime) ?></td>
+                        <td><?php echo self::getBranch($c->courseBranchID, $branches) ?></td>
                     </tr>
                 <?php
+            }
+        }
+
+        public static function getBranch($id, $branches){
+            foreach ($branches as $key => $value) {
+                if($id == $value->ID) return $value->branch->title;
+                return '';
             }
         }
 
         public static function initPackageItems($dir, $packages){
             foreach ($packages as $key => $p) {
                 ?>
-                    <option value="<?php echo $p->ID ?>" <?php if($key==0)echo 'selected'?>><?php echo $p->credit ?> ชั่วโมง - &#3647;<?php echo $p->price ?></option>
+                    <option value="<?php echo $p->ID ?>" <?php if($key==0)echo 'selected'?>><?php echo $p->title ?> - &#3647;<?php echo $p->price ?></option>
                 <?php
             }
         }

@@ -1,4 +1,4 @@
-//Proto DB with Javascript using SessionStorage
+//Proto DB with Javascript using sessionStorage
 //v2.1
 //Developed by Tummanoon Wacha-em
 

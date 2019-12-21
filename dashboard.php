@@ -9,13 +9,13 @@
     Includer::include_fun($dir, 'fun_dashboard.php');
     Includer::include_fun($dir, 'fun_schedule.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
 
-   if(SESSION::checkUserExisted()){
+   if($sess->checkUserExisted()){
         $paths = array(
             new Path(FALSE, 'หน้าหลัก', $dir),
             new Path(FALSE, 'คอร์สของฉัน', $dir . App::$pageMyCourses),
@@ -40,7 +40,7 @@
                         $course = $dashboard->course;
 
                     Header::initHeader($dir, "แดชบอร์ด - $course->title"); 
-                    DashboardView::initView($dir, $paths, $ownership, $schedules, $dashboard);
+                    DashboardView::initView($dir, $sess, $paths, $ownership, $schedules, $dashboard);
                     Footer::initFooter($dir); 
                 }else{
                     $result->err = Err::$ERR_COURSE_EXPIRED;

@@ -8,10 +8,11 @@
     Includer::include_fun($dir, 'fun_category.php');
     Includer::include_fun($dir, 'fun_course.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); 
+    $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
-    $api = new API($apiKey);
+    $api = new API('');
     $io = new IO(); 
 
     $result = FunCourse::getPublishedLite($api);
@@ -25,7 +26,7 @@
     }
 
     Header::initHeader($dir, App::$name); 
-    HomeView::initView($dir, $recommended_courses, $courses);
+    HomeView::initView($dir, $sess, $recommended_courses, $courses);
     Footer::initFooter($dir); 
 
 ?>

@@ -5,13 +5,13 @@
     Includer::include_view($dir, 'view_order.php');
     Includer::include_fun($dir, 'fun_order.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
 
-    if(SESSION::checkUserExisted()){
+    if($sess->checkUserExisted()){
         $id = $io->id;
 
         $paths = array(
@@ -26,7 +26,7 @@
         if($order != NULL)if($order->ownerID != $auth->ID)$order = null;
 
         Header::initHeader($dir, "คำสั่งซื้อ - $id"); 
-        OrderView::initView($dir, $paths, $order);
+        OrderView::initView($dir, $sess, $paths, $order);
         Footer::initFooter($dir); 
 
     }else{

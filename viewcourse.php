@@ -9,8 +9,8 @@
     Includer::include_fun($dir, 'fun_category.php');
     Includer::include_fun($dir, 'fun_teacher.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -27,6 +27,9 @@
             $result = FunCourse::getComments($api, $id, 5, 0);
             $comments = $result->response;
 
+            $result = FunCourse::getBranchesByCourseID($api, $id);
+            $branches = $result->response;
+
             $paths = array(
                 new Path(FALSE, 'หน้าหลัก', $dir),
                 new Path(FALSE, 'คอร์ส', $dir . App::$pageCourseView),
@@ -34,7 +37,7 @@
             );
 
             Header::initHeader($dir, $course->title); 
-            CourseView::initView($dir, $paths, $course, $teachers, $comments);
+            CourseView::initView($dir, $sess, $paths, $course, $teachers, $comments, $branches);
             Footer::initFooter($dir); 
         }else{
             ErrorPage::showError($dir, $result);

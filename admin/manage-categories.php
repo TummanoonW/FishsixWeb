@@ -7,8 +7,8 @@
     Includer::include_fun($dir, 'fun_category.php');
     Includer::include_fun($dir, 'fun_course.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -19,7 +19,7 @@
         new Path(TRUE, 'จัดการหมวดหมู่', $dir . App::$pageAdminManageCategories)
     );
 
-    if(SESSION::checkUserAdmin()){
+    if($sess->checkUserAdmin()){
         $result = FunCategory::count($api);
         $count = $result->response;
 
@@ -45,7 +45,7 @@
         $categories = $result->response;
 
         Header::initHeader($dir, "แอดมิน - จัดการหมวดหมู่"); 
-        AdminManageCategoriesView::initView($dir, $paths, $pages, $categories, $count, $api);
+        AdminManageCategoriesView::initView($dir, $sess, $paths, $pages, $categories, $count, $api);
         Footer::initFooter($dir); 
     }else{
         Nav::gotoHome($dir);

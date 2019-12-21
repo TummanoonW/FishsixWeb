@@ -6,13 +6,13 @@
     Includer::include_admin($dir, 'admin_view_classroom.php');
     Includer::include_fun($dir, 'fun_classroom.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
 
-    if(SESSION::checkUserAdmin()){
+    if($sess->checkUserAdmin()){
         $since = $io->get->date;
         $courseID = $io->get->course;
         $branchID = $io->get->branch;
@@ -38,7 +38,7 @@
         Console::log('classroom', $classroom);
 
         Header::initHeader($dir, "รายชื่อผู้ลงเรียน"); 
-        AdminViewClassroom::initView($dir, $paths, $classroom);
+        AdminViewClassroom::initView($dir, $sess, $paths, $classroom);
         Footer::initFooter($dir); 
 
     }else{

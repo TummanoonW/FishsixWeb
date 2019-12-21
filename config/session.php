@@ -1,18 +1,13 @@
 <?php
-    //Keep Session Running
-    if (session_status() == PHP_SESSION_NONE) {
-        session_start();
-    } 
+    class Sess{
 
-    class SESSION{
-
-        //check if there's user in session
-        public static function checkUserExisted(){
-            return self::getAuth() != NULL;
+        //check if there's user in Sess
+        public function checkUserExisted(){
+            return $this->getAuth() != NULL;
         }
 
-        public static function checkUserAdmin(){
-            $auth = self::getAuth();
+        public function checkUserAdmin(){
+            $auth = $this->getAuth();
             if($auth != NULL){
                 return ($auth->type == Auth::$TYPE_ADMIN);
             }else{
@@ -21,8 +16,8 @@
         }
 
 
-        public static function checkUserTeacher(){
-            $auth = self::getAuth();
+        public function checkUserTeacher(){
+            $auth = $this->getAuth();
             if($auth != NULL){
                 return ($auth->type == Auth::$TYPE_TEACHER);
             }else{
@@ -30,8 +25,8 @@
             }
         }
 
-        public static function checkUserStudent(){
-            $auth = self::getAuth();
+        public function checkUserStudent(){
+            $auth = $this->getAuth();
             if($auth != NULL){
                 return ($auth->type == Auth::$TYPE_USER);
             }else{
@@ -39,24 +34,24 @@
             }
         }
 
-        //save user and API Key in session
-        public static function logIn($auth){
-            self::setAuth($auth);
-            self::setAPIKey($auth->apiKey);
+        //save user and API Key in Sess
+        public function logIn($auth){
+            $this->setAuth($auth);
+            $this->setAPIKey($auth->apiKey);
         }
 
-        //clear user and API Key in session
-        public static function logOut(){
-            self::setAuth(NULL);
-            self::setAPIKey(NULL);
+        //clear user and API Key in Sess
+        public function logOut(){
+            $this->setAuth(NULL);
+            $this->setAPIKey(NULL);
         }
 
         
-        public static function setAuth($auth){
+        public function setAuth($auth){
             $_SESSION['auth'] = json_encode($auth);
         }
 
-        public static function getAuth(){
+        public function getAuth(){
             if(isset($_SESSION['auth'])){
                 return json_decode($_SESSION['auth']);
             }else{

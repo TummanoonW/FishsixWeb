@@ -5,8 +5,8 @@
     Includer::include_proto($dir); 
     Includer::include_view($dir, 'view_browsecourses.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -22,11 +22,11 @@
         new Path(FALSE, '3', $dir . App::$pageBrowseCourses . "?page=2")
     );
 
-    if(SESSION::checkUserExisted()){
+    if($sess->checkUserExisted()){
 
         Header::initHeader($dir," All Courses"); 
 
-        BrowseCoursesView::initView($dir, $paths, $pages);
+        BrowseCoursesView::initView($dir, $sess, $paths, $pages);
 
         Footer::initFooter($dir); 
 

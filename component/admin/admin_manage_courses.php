@@ -1,7 +1,7 @@
 <?php
     class AdminManageCoursesView{
-        public static function initView($dir, $paths, $pages, $courses, $count, $search, $categories){
-            $auth = SESSION::getAuth();
+        public static function initView($dir, $sess, $paths, $pages, $courses, $count, $search, $categories){
+            $auth = $sess->getAuth();
 ?>
             <body class=" layout-fluid">
                 <!-- Pre Loader -->
@@ -10,7 +10,7 @@
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir, '') ?>
+                    <?php Toolbar::initToolbar($dir, '', $sess) ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
@@ -94,7 +94,7 @@
                                     
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir) ?>
+                            <?php Sidemenu::initSideMenu($dir, $sess) ?>
                         </div>
                     </div>
                 </div>   

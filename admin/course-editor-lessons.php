@@ -6,13 +6,13 @@
     Includer::include_admin($dir, 'admin_course_editor_lessons.php');
     Includer::include_fun($dir, 'fun_course.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
 
-    if(SESSION::checkUserAdmin()){
+    if($sess->checkUserAdmin()){
 
         $id = $io->id;
         $isNew = ($id == NULL);
@@ -35,7 +35,7 @@
         );
 
         Header::initHeader($dir, "แอดมิน - $add บทเรียน"); 
-        AdminCourseEditorLessonView::initView($dir, $paths, $sLesson, $isNew);
+        AdminCourseEditorLessonView::initView($dir, $sess, $paths, $sLesson, $isNew);
         Footer::initFooter($dir); 
 
     }else{

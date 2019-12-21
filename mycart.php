@@ -8,8 +8,8 @@
     Includer::include_fun($dir, 'fun_course.php');
     Includer::include_fun($dir, 'fun_mycart.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -21,13 +21,13 @@
     
     $carts = [];    
 
-    $s_carts = SESSION::get('mycart');
+    $s_carts = $sess->get('mycart');
     if($s_carts == NULL) $s_carts = [];
 
-    if(SESSION::checkUserExisted()){
+    if($sess->checkUserExisted()){
         /*$result = FunMyCart::addMultiple($api, $s_carts);
         $s_carts = [];
-        SESSION::set('mycart', $s_carts);
+        $sess->set('mycart', $s_carts);
 
         if(isset($io->query->ID)){
             $package = $io->query;
@@ -54,7 +54,7 @@
                 'package' => $package
             );
             array_push($s_carts, $cart);
-            SESSION::set('mycart', $s_carts);
+            $sess->set('mycart', $s_carts);
         }
         $isLoggedIn = TRUE;
     }else{
@@ -69,7 +69,7 @@
                 'package' => $package
             );
             array_push($s_carts, $cart);
-            SESSION::set('mycart', $s_carts);
+            $sess->set('mycart', $s_carts);
         }
         $isLoggedIn = FALSE;
     }
@@ -84,5 +84,5 @@
     Console::log('carts', $cartsS);
 
     Header::initHeader($dir, "ตระกร้าสินค้า ของฉัน"); 
-    MyCartView::initView($dir, $paths, $carts, $cartsS, $isLoggedIn);
+    MyCartView::initView($dir, $sess, $paths, $carts, $cartsS, $isLoggedIn);
     Footer::initFooter($dir); 

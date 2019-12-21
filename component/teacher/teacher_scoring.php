@@ -1,6 +1,6 @@
 <?php
     class TeacherScoringView{
-        public static function initView($dir, $paths, $isNew, $student, $booking, $course, $scoring, $class, $courseBranch, $tid){
+        public static function initView($dir, $sess, $paths, $isNew, $student, $booking, $course, $scoring, $class, $courseBranch, $tid){
 ?>
             <body class=" layout-fluid">
                 <!-- Pre Loader -->
@@ -10,7 +10,7 @@
                 <div class="mdk-header-layout js-mdk-header-layout">
 
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir, '') ?>
+                    <?php Toolbar::initToolbar($dir, '', $sess) ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
@@ -102,7 +102,7 @@
                                     </form>                                   
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir) ?>
+                            <?php Sidemenu::initSideMenu($dir, $sess) ?>
                         </div>
                     </div>
                 </div>

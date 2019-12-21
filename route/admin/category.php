@@ -5,13 +5,14 @@
     Includer::include_proto($dir); 
     Includer::include_fun($dir, 'fun_admin_category.php');
 
-    $apiKey = SESSION::getAPIKey();
-    $auth = SESSION::getAuth();
+    $sess = new Sess();
+    $apiKey = $sess->getAPIKey();
+    $auth = $sess->getAuth();
 
     $api = new API($apiKey);
     $io = new IO(); 
 
-    if(SESSION::checkUserAdmin()){
+    if($sess->checkUserAdmin()){
         switch($io->method){
             case 'edit':
                 $form = $io->post;

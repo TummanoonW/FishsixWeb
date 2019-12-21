@@ -1,6 +1,6 @@
 <?php
     class ViewBranches{
-        public static function initView($dir, $paths, $branchs){
+        public static function initView($dir, $sess, $paths, $branchs){
 ?>
          <body class="layout-fluid">
                 <!-- Pre Loader -->
@@ -10,7 +10,7 @@
                 <div class="mdk-header-layout js-mdk-header-layout">
 
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir, '') ?>
+                    <?php Toolbar::initToolbar($dir, '', $sess) ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
@@ -37,7 +37,7 @@
                                      
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir) ?>
+                            <?php Sidemenu::initSideMenu($dir, $sess) ?>
                         </div>
                     </div>
                 </div>

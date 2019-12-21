@@ -6,8 +6,8 @@
     Includer::include_view($dir, 'view_branches.php');
     Includer::include_fun($dir, 'fun_branch.php');
     
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -20,6 +20,6 @@
     $branchs = $result->response;
 
     Header::initHeader($dir, 'สาขาของเรา'); 
-    ViewBranches::initView($dir, $paths, $branchs);
+    ViewBranches::initView($dir, $sess, $paths, $branchs);
     Footer::initFooter($dir); 
 

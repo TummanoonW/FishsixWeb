@@ -5,8 +5,8 @@
     Includer::include_proto($dir); 
     Includer::include_view($dir, 'view_about.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -17,6 +17,6 @@
     );
     $error_code = $io->get->err;
     Header::initHeader($dir, 'เกี่ยวกับบริษัท'); 
-    ViewAbout::initView($dir, $paths);
+    ViewAbout::initView($dir, $sess, $paths);
     Footer::initFooter($dir); 
 

@@ -9,13 +9,13 @@
     Includer::include_fun($dir, 'fun_teacher_student.php');
 
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
 
-    if(SESSION::checkUserTeacher()){
+    if($sess->checkUserTeacher()){
 
         $id = $io->id;
         if($id == NULL) Nav::gotoHome($dir);
@@ -65,7 +65,7 @@
             );
 
             Header::initHeader($dir, 'ประเมินนักเรียน - ' . $course->title); 
-            TeacherManageStudentView::initView($dir, $paths, $id, $courseTeacher, $course, $branches, $classes, $students, $search);
+            TeacherManageStudentView::initView($dir, $sess, $paths, $id, $courseTeacher, $course, $branches, $classes, $students, $search);
             Footer::initFooter($dir); 
         }else{
             Nav::gotoHome($dir);

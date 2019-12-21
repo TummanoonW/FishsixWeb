@@ -7,8 +7,8 @@
     Includer::include_fun($dir, 'fun_auth.php');
     Includer::include_fun($dir, 'fun_order.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -20,7 +20,7 @@
         new Path(TRUE, 'ดูคำสั่งซื้อ', '')
     );
 
-    if(SESSION::checkUserAdmin()){
+    if($sess->checkUserAdmin()){
         $id = $io->id;
 
         $result = FunOrder::getSingleFull($api, $id);
@@ -30,7 +30,7 @@
         $owner = $result->response;
 
         Header::initHeader($dir, "แอดมิน - ดูคำสั่งซื้อ"); 
-        AdminViewOrder::initView($dir, $paths, $order, $owner);
+        AdminViewOrder::initView($dir, $sess, $paths, $order, $owner);
         Footer::initFooter($dir); 
 
     }else{

@@ -6,8 +6,8 @@
     Includer::include_admin($dir, 'admin_edit_categories.php');
     Includer::include_fun($dir, 'fun_category.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -19,7 +19,7 @@
         new Path(TRUE, 'โปรแกรมแก้ไขหมวดหมู่', $dir . App::$pageAdminAddCategories)
     );
 
-    if(SESSION::checkUserAdmin()){
+    if($sess->checkUserAdmin()){
         $id = $io->id;
         $isNew = ($id == NULL);
         if($isNew){
@@ -36,7 +36,7 @@
         $categories = $result->response;
 
         Header::initHeader($dir, "แอดมิน - โปรแกรมแก้ไขหมวดหมู่"); 
-        AdminAddCategoriesView::initView($dir, $paths, $isNew, $category, $categories);
+        AdminAddCategoriesView::initView($dir, $sess, $paths, $isNew, $category, $categories);
         Footer::initFooter($dir); 
     }else{
         Nav::gotoHome($dir);

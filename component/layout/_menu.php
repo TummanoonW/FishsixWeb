@@ -1,14 +1,15 @@
 <?php
     class Menu{
-        public static function initMenu($dir){
+        public static function initMenu($dir, $sess){
+            $sess = new Sess();
             $countC = 0;
-            $s_carts = (array)SESSION::get('mycart');
+            $s_carts = (array)$sess->get('mycart');
             $countC = $countC + count($s_carts);
 
-            if(SESSION::checkUserExisted()){
+            if($sess->checkUserExisted()){
                 Includer::include_fun($dir, 'fun_mycart.php');
-                $auth = SESSION::getAuth();
-                $apiKey = SESSION::getAPIKey(); 
+                $auth = $sess->getAuth();
+                $apiKey = $sess->getAPIKey(); 
                 $api = new API($apiKey);
 
                 /*$result = FunMyCart::countByAuthID($api, $auth->ID);
@@ -27,11 +28,11 @@
                 </li>
 
                 <!-- Notification dropdown -->
-                <?php Notification::initNotification($dir) ?>
+                <?php Notification::initNotification($dir, $sess) ?>
                 <!-- // END Notifications dropdown -->
 
                 <!-- User dropdown -->
-                <?php UserMenu::initUserMenu($dir) ?>
+                <?php UserMenu::initUserMenu($dir, $sess) ?>
                 <!-- // END User dropdown -->
             </ul>
 <?php

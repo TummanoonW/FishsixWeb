@@ -42,16 +42,16 @@
 
         //return data from the given URL 
         public function get($url){
-            $curlSession = curl_init();
-            curl_setopt($curlSession, CURLOPT_URL, $url);
-            curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
-            curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($curlSession, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($curlSession, CURLOPT_SSL_VERIFYHOST, false);
+            $curlSess = curl_init();
+            curl_setopt($curlSess, CURLOPT_URL, $url);
+            curl_setopt($curlSess, CURLOPT_BINARYTRANSFER, true);
+            curl_setopt($curlSess, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curlSess, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($curlSess, CURLOPT_SSL_VERIFYHOST, false);
 
-            $output = utf8_decode(curl_exec($curlSession));
+            $output = utf8_decode(curl_exec($curlSess));
             $response = json_decode($output);
-            curl_close($curlSession);
+            curl_close($curlSess);
 
             return $response;
         }
@@ -59,34 +59,34 @@
         //post data then return data from the given URL
         public function post($url, $objArr){
             $json = json_encode($objArr);
-            $curlSession = curl_init();
-            curl_setopt($curlSession, CURLOPT_URL, $url);
-            curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
-            curl_setopt($curlSession, CURLOPT_POSTFIELDS, $json);
-            curl_setopt($curlSession, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($curlSession, CURLOPT_SSL_VERIFYHOST, false);
+            $curlSess = curl_init();
+            curl_setopt($curlSess, CURLOPT_URL, $url);
+            curl_setopt($curlSess, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curlSess, CURLOPT_BINARYTRANSFER, true);
+            curl_setopt($curlSess, CURLOPT_POSTFIELDS, $json);
+            curl_setopt($curlSess, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($curlSess, CURLOPT_SSL_VERIFYHOST, false);
 
-            $output = utf8_decode(curl_exec($curlSession));
+            $output = utf8_decode(curl_exec($curlSess));
             $response = json_decode($output);
-            curl_close($curlSession);
+            curl_close($curlSess);
 
             return $response;
         }
 
         //delete data then return data from the given URL
         public function delete($url){
-            $curlSession = curl_init();
-            curl_setopt($curlSession, CURLOPT_URL, $url);
-            curl_setopt($curlSession, CURLOPT_CUSTOMREQUEST, "DELETE");
-            curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
-            curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($curlSession, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($curlSession, CURLOPT_SSL_VERIFYHOST, false);
+            $curlSess = curl_init();
+            curl_setopt($curlSess, CURLOPT_URL, $url);
+            curl_setopt($curlSess, CURLOPT_CUSTOMREQUEST, "DELETE");
+            curl_setopt($curlSess, CURLOPT_BINARYTRANSFER, true);
+            curl_setopt($curlSess, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curlSess, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($curlSess, CURLOPT_SSL_VERIFYHOST, false);
 
-            $output = utf8_decode(curl_exec($curlSession));
+            $output = utf8_decode(curl_exec($curlSess));
             $response = json_decode($output);
-            curl_close($curlSession);
+            curl_close($curlSess);
 
             return $response;
         }

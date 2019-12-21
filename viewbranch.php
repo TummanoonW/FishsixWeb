@@ -7,8 +7,8 @@
 
     Includer::include_fun($dir, 'fun_branch.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -24,7 +24,7 @@
         );
 
         Header::initHeader($dir, $branch->title); 
-        ViewBranch::initView($dir, $paths, $branch);
+        ViewBranch::initView($dir, $sess, $paths, $branch);
         Footer::initFooter($dir); 
     }else{
         Nav::gotoHome($dir);

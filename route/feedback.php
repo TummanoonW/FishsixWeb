@@ -7,8 +7,9 @@
     Includer::include_proto($dir); 
     Includer::include_fun($dir, 'fun_feedback.php');
 
-    $apiKey = SESSION::getAPIKey(); //get secret API Key
-    $auth = SESSION::getAuth();
+    $sess = new Sess();
+    $apiKey = $sess->getAPIKey(); //get secret API Key
+    $auth = $sess->getAuth();
     $api = new API($apiKey); //open API connection
     $io = new IO(); //open Input/Output receiver for certain $_GET and $_POST data 
     
@@ -22,7 +23,7 @@
             
                 $form = $io->post;
                 $form->err = $error_code;
-                if(SESSION::checkUserExisted()){
+                if($sess->checkUserExisted()){
                     $form->authID = $auth->ID;
                     $form->isGuest = 0;
                 }else{

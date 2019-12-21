@@ -6,8 +6,8 @@
     Includer::include_admin($dir, 'admin_manage_branch.php');
     Includer::include_fun($dir, 'fun_branch.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -18,7 +18,7 @@
         new Path(TRUE, 'จัดการสาขา', $dir . App::$pageAdminManageBranch)
     );
 
-    if(SESSION::checkUserAdmin()){
+    if($sess->checkUserAdmin()){
         $result = FunBranch::count($api);
         $count = $result->response;
 
@@ -44,7 +44,7 @@
         $branches = $result->response;
 
         Header::initHeader($dir, "แอดมิน - จัดการสาขา"); 
-        AdminManageBranchView::initView($dir, $paths, $pages, $branches, $count);
+        AdminManageBranchView::initView($dir, $sess, $paths, $pages, $branches, $count);
         Footer::initFooter($dir); 
 
     }else{

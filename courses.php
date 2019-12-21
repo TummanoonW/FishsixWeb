@@ -8,8 +8,8 @@
     Includer::include_fun($dir, 'fun_category.php');
     Includer::include_fun($dir, 'fun_course.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -49,7 +49,7 @@
     );
 
     Header::initHeader($dir, App::$name); 
-    CoursesView::initView($dir, $paths, $pages, $courses, $categories, $countTotal, $io->query);
+    CoursesView::initView($dir, $sess, $paths, $pages, $courses, $categories, $countTotal, $io->query);
     Footer::initFooter($dir); 
 
 

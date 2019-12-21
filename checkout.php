@@ -6,17 +6,17 @@
     Includer::include_view($dir, 'view_checkout.php');
     Includer::include_fun($dir, 'fun_mycart.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
 
-    if(SESSION::checkUserExisted()){
+    if($sess->checkUserExisted()){
         /*$result = FunMyCart::countByAuthID($api, $auth->ID);
         $count = $result->response;*/
 
-        $s_carts = SESSION::get('mycart');
+        $s_carts = $sess->get('mycart');
         if($s_carts == NULL) $s_carts = [];
 
         if(count($s_carts) > 0){
@@ -26,7 +26,7 @@
             );
 
             Header::initHeader($dir, "ชำระสินค้า"); 
-            CheckOutView::initView($dir, $paths);
+            CheckOutView::initView($dir, $sess, $paths);
             Footer::initFooter($dir); 
         }else{
             Nav::gotoHome($dir);

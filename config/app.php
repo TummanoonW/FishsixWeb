@@ -1,4 +1,13 @@
 <?php
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+
+    //Keep Sess Running
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    } 
+
     class App{
         public static $name = "FISHSIX";
         public static $framework = "Proto-Framework Plus";
@@ -100,7 +109,7 @@
 
         public static $routeTeacherScoring = "route/teacher/scoring.php";
 
-        public static $apiURL = "https://www.fishsix.online/api/"; //base URL to call API
+        public static $apiURL = "http://64483892-20161210152018.webstarterz.com/fishsix.online/api/"; //base URL to call API
         //public static $apiURL = "https://www.trialation.com/fishsix-api/"; //base URL to call API
         //public static $apiURL = "https://192.168.64.3/fishsix-api/"; //base URL to call API
         
@@ -120,7 +129,7 @@
         public static $apiDashboard = "dashboard.php";
         public static $apiClassroom = "classroom.php";
         public static $apiForum = "forum.php";
-
+        public static $apiQA = "qa.php";
 
         public static $apiAdminCourse = "admin-course.php";
         public static $apiAdminCategory = "admin-category.php";

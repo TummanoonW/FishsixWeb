@@ -6,8 +6,8 @@
     Includer::include_view($dir, 'view_contact.php');
     Includer::include_fun($dir, 'fun_branch');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -22,6 +22,6 @@
     $branches = $result->response;
 
     Header::initHeader($dir, 'ติดต่อเรา'); 
-    ViewContact::initView($dir, $paths, $branches);
+    ViewContact::initView($dir, $sess, $paths, $branches);
     Footer::initFooter($dir); 
 

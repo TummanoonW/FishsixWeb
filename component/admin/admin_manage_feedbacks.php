@@ -1,6 +1,6 @@
 <?php
     class AdminManageFeedbacksView{
-        public static function initView($dir, $paths, $pages, $feedbacks){
+        public static function initView($dir, $sess, $paths, $pages, $feedbacks){
             ?>
                 <body class=" layout-fluid">
                 <!-- Pre Loader -->
@@ -9,7 +9,7 @@
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir, '') ?>
+                    <?php Toolbar::initToolbar($dir, '', $sess) ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
@@ -68,7 +68,7 @@
                                     <?php Pagination::initPagination($dir, $pages) ?>
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir) ?>
+                            <?php Sidemenu::initSideMenu($dir, $sess) ?>
                         </div>
                     </div>
                 </div>  

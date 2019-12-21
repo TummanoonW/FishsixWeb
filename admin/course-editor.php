@@ -8,9 +8,10 @@
     Includer::include_fun($dir, 'fun_category.php');
     Includer::include_fun($dir, 'fun_admin_course.php');
     Includer::include_fun($dir, 'fun_course.php');
+    Includer::include_fun($dir, 'fun_branch.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -22,12 +23,15 @@
         new Path(TRUE,  'โปรแกรมแก้ไขคอร์ส',   $dir . App::$pageAdminCourseEditor)
     );
 
-    if(SESSION::checkUserAdmin()){
+    if($sess->checkUserAdmin()){
         $id = $io->id;
         $isNew = ($id == NULL);
 
         $result = FunCategory::get($api);
         $categories = $result->response;
+
+        $result = FunBranch::getLite($api);
+        $branches = $result->response;
 
         if(!$isNew){ //new course
             $result = FunCourse::getFull($api, $io->id);
@@ -53,7 +57,7 @@
         }
 
         Header::initHeader($dir, "แอดมิน - โปรแกรมแก้ไขคอร์ส"); 
-        AdminCourseEditorView::initView($dir, $paths, $isNew, $course, $categories);
+        AdminCourseEditorView::initView($dir, $sess, $paths, $isNew, $course, $categories, $branches);
         Footer::initFooter($dir);
     }else{
         Nav::gotoHome($dir);

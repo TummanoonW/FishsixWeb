@@ -6,8 +6,8 @@
     Includer::include_admin($dir, 'admin_manage_user.php');
     Includer::include_fun($dir, 'fun_auth.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -18,7 +18,7 @@
         new Path(TRUE, 'จัดการผู้ใช้', $dir . App::$pageAdminManageUser)
     );
 
-    if(SESSION::checkUserAdmin()){
+    if($sess->checkUserAdmin()){
 
         if(!isset($io->query->type)) $search = (object)array(
             'type' => '',
@@ -50,7 +50,7 @@
         $auths = $result->response;
 
         Header::initHeader($dir, "แอดมิน - จัดการผู้ใช้"); 
-        AdminManageUserView::initView($dir, $paths, $pages, $auths, $count, $search);
+        AdminManageUserView::initView($dir, $sess, $paths, $pages, $auths, $count, $search);
         Footer::initFooter($dir); 
 
     }else{

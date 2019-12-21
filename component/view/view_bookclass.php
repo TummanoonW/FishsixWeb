@@ -1,7 +1,7 @@
 <?php
     class BookingClass{
-        public static function initView($dir, $paths, $ownership, $course, $classes, $branches, $schedules){
-            $auth = SESSION::getAuth();
+        public static function initView($dir, $sess, $paths, $ownership, $course, $classes, $branches, $schedules){
+            $auth = $sess->getAuth();
 ?>
             <body class=" layout-fluid">
                 <!-- Vendor CSS -->
@@ -14,7 +14,7 @@
                 <div class="mdk-header-layout js-mdk-header-layout">
 
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir, ''); ?>
+                    <?php Toolbar::initToolbar($dir, '', $sess); ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
@@ -66,7 +66,7 @@
                                                                 <div class="d-flex align-items-center">
                                                                     <select name="cClassID" class="form-control">
                                                                         <option value="" selected>เลือกรอบเรียน</option>
-                                                                        <?php self::initClasses($dir, $classes) ?>
+                                                                        <?php //self::initClasses($dir, $classes) ?>
                                                                     </select>
                                                                 </div>
                                                             </td>
@@ -130,7 +130,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir); ?>
+                            <?php Sidemenu::initSideMenu($dir, $sess); ?>
                         </div>
                     </div>
                 </div>

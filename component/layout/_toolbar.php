@@ -1,7 +1,7 @@
 <?php
     class Toolbar{ ////common toolbar HTML elements loader
-        public static function initToolbar($dir, $search){  
-            $auth = SESSION::getAuth();
+        public static function initToolbar($dir, $search, $sess){  
+            $auth = $sess->getAuth();
 ?>
             <!-- Header -->
             <div id="header" data-fixed class="mdk-header js-mdk-header mb-0">
@@ -35,7 +35,7 @@
                                 </li>
                             </ul>-->
                             <!-- Menu -->
-                            <?php Menu::initMenu($dir) ?>
+                            <?php Menu::initMenu($dir, $sess) ?>
                             <!-- // END Menu -->
                         </div>
                     </nav>

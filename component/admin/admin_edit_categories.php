@@ -1,6 +1,6 @@
 <?php
     class AdminAddCategoriesView{
-        public static function initView($dir, $paths, $isNew, $category, $categories){
+        public static function initView($dir, $sess, $paths, $isNew, $category, $categories){
 ?>
             <body class=" layout-fluid">
 
@@ -10,7 +10,7 @@
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir, '') ?>
+                    <?php Toolbar::initToolbar($dir, '', $sess) ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
@@ -77,7 +77,7 @@
                                 </div>
                             </div>
                         </div>
-                        <?php Sidemenu::initSideMenu($dir) ?>
+                        <?php Sidemenu::initSideMenu($dir, $sess) ?>
                     </div>
                 </div>
                 <?php Script::customScript($dir, 'common.js') ?>

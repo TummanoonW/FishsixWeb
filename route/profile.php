@@ -7,14 +7,15 @@
     Includer::include_proto($dir); 
     Includer::include_fun($dir, 'fun_auth.php');
 
-    $apiKey = SESSION::getAPIKey(); //get secret API Key
-    $auth = SESSION::getAuth();
+    $sess = new Sess();
+    $apiKey = $sess->getAPIKey(); //get secret API Key
+    $auth = $sess->getAuth();
 
     $api = new API($apiKey); //open API connection
     $io = new IO(); //open Input/Output receiver for certain $_GET and $_POST data
 
     //check if user exists
-    if(SESSION::checkUserExisted()){
+    if($sess->checkUserExisted()){
         //check if form were sent
         if(isset($io->post->username)){
             $form = $io->post;
@@ -40,7 +41,7 @@
 
             if($result->success){ //if the API return result
                 $auth = $result->response;
-                SESSION::logIn($auth); //update username
+                $sess->logIn($auth); //update username
                 Nav::goto($dir, App::$pageProfile);
             }else{
                 ErrorPage::showError($dir, $result);

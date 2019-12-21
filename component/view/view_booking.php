@@ -1,6 +1,6 @@
 <?php
     class ViewBooking{
-        public static function initView($dir, $paths, $booking){
+        public static function initView($dir, $sess, $paths, $booking){
             $fname = $booking->owner->user->fname;
             $lname = $booking->owner->user->lname;
             ?>
@@ -13,7 +13,7 @@
                     <div class="mdk-header-layout js-mdk-header-layout">
 
                         <!-- Header -->
-                        <?php Toolbar::initToolbar($dir, '') ?>
+                        <?php Toolbar::initToolbar($dir, '', $sess) ?>
                         <!-- // END Header -->
 
                         <!-- Header Layout Content -->
@@ -57,7 +57,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php Sidemenu::initSideMenu($dir) ?>
+                                <?php Sidemenu::initSideMenu($dir, $sess) ?>
                             </div>
                         </div>
                     </div>

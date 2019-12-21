@@ -5,8 +5,8 @@
     Includer::include_proto($dir); 
     Includer::include_view($dir, 'view_ordercourses.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -18,11 +18,11 @@
         new Path(TRUE, 'Order Courses', $dir . App::$pageOrderCourses)
     );
 
-    if(SESSION::checkUserExisted()){
+    if($sess->checkUserExisted()){
             
         Header::initHeader($dir,"Order Courses"); 
 
-        OrderCoursesView::initView($dir, $paths);
+        OrderCoursesView::initView($dir, $sess, $paths);
 
         Footer::initFooter($dir); 
 

@@ -4,13 +4,14 @@
      Includer::include_proto($dir); 
      Includer::include_fun($dir, 'fun_mycart.php');
  
-     $apiKey = SESSION::getAPIKey(); 
-     $auth = SESSION::getAuth();
+     $sess = new Sess();
+     $apiKey = $sess->getAPIKey(); 
+     $auth = $sess->getAuth();
  
      $api = new API($apiKey); 
      $io = new IO(); 
  
-     if(SESSION::checkUserExisted()){
+     if($sess->checkUserExisted()){
         switch($io->method){
             case 'delete':
                 $id = $io->query->id;
@@ -19,9 +20,9 @@
                 break;
             case 'deleteS':
                 $index = $io->query->index;
-                $s_carts = SESSION::get('mycart');
+                $s_carts = $sess->get('mycart');
                 array_splice($s_carts, $index, 1);
-                SESSION::set('mycart', $s_carts);
+                $sess->set('mycart', $s_carts);
                 echo 'success';
                 break;
             case 'add':

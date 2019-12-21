@@ -3,7 +3,8 @@ var inputs = {
     creditUse   : document.querySelector('#cCredit'),
     day         : document.querySelector('#cDay'),
     startTime   : document.querySelector('#cStartTime'),
-    endTime     : document.querySelector('#cEndTime')
+    endTime     : document.querySelector('#cEndTime'),
+    branch      : document.querySelector('#cBranches')
 };
 
 var data = JSON.parse(document.querySelector('#obj-data').innerHTML);
@@ -18,23 +19,41 @@ let name = {
 $('#loading').toggle(false);
 initData();
 
+var course = null;
+
 async function initData(){
+    course = await db.getObject(name.course);
+
     let sClass = data.sClass;
+    
+    await initBranchItems(course.branches);
 
     if(!data.isNew){
         inputs.seats.value      = sClass.seats;
         inputs.creditUse.value  = sClass.creditUse;
         inputs.day.value        = sClass.day;
-        inputs.startTime        = sClass.startTime;
-        inputs.endTime          = sClass.endTime;
+        inputs.startTime.value  = sClass.startTime;
+        inputs.endTime.value    = sClass.endTime;
+        inputs.branch.value     = sClass.courseBranchID;
     }
+}
+
+function initBranchItems(branches){
+    inputs.branch.innerHTML = '<option value="">-</option>';
+    branches.forEach(element => {
+        try{
+            let item =
+            '<option value="'+element.ID+'">สาขา '+element.branch.title+'</option>';
+            inputs.branch.innerHTML = inputs.branch.innerHTML + item;
+        }catch(e){
+            console.log(e);
+        }
+    });
 }
 
 async function save(){
     $('#loading').toggle(true);
     $('#page').toggle(false);
-
-    let course = await db.getObject(name.course);
 
     if(data.isNew){
         let id = await db.genID();
@@ -45,6 +64,7 @@ async function save(){
             day:        inputs.day.value,
             startTime:  inputs.startTime.value,
             endTime:    inputs.endTime.value,
+            courseBranchID:   inputs.branch.value,
             meta: 'add'
         };
 
@@ -59,6 +79,7 @@ async function save(){
                 element.day         = inputs.day.value,
                 element.startTime   = inputs.startTime.value,
                 element.endTime     = inputs.endTime.value,
+                element.courseBranchID    = inputs.branch.value,
                 element.meta = 'edit';
             }
         });

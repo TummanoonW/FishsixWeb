@@ -1,7 +1,7 @@
 <?php
     class DashboardView{
-        public static function initView($dir, $paths, $ownership, $schedules, $dashboard){
-            $auth = SESSION::getAuth();
+        public static function initView($dir, $sess, $paths, $ownership, $schedules, $dashboard){
+            $auth = $sess->getAuth();
             $course = $dashboard->course;
             $lessons = $dashboard->lessons;
             $teachers = $dashboard->teachers;
@@ -16,7 +16,7 @@
                 <div class="mdk-header-layout js-mdk-header-layout">
 
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir, '') ?>
+                    <?php Toolbar::initToolbar($dir, '', $sess) ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
@@ -66,7 +66,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="card">
+                                            <!--<div class="card">
                                                 <div class="card-header">
                                                     <h4 class="card-title"><i class="fas fa-question-circle"></i> &nbsp;ถามตอบ</h4>
                                                 </div>
@@ -86,7 +86,7 @@
                                                             </form>
                                                         </div>
                                                         <div class="media-right">
-                                                            <!-- ขวา -->
+                                                            
                                                         </div>
                                                     </div>
                                                     <p></p>
@@ -176,7 +176,7 @@
                                                         <p class="text-muted">2 คำถามในคลาสนี้</p>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                         
                                         <div class="col-md-4">
@@ -250,7 +250,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir) ?>
+                            <?php Sidemenu::initSideMenu($dir, $sess) ?>
                         </div>
                     </div>
                 </div>

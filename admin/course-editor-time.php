@@ -5,14 +5,15 @@
     Includer::include_proto($dir); 
     Includer::include_admin($dir, 'admin_course_editor_time.php');
     Includer::include_fun($dir, 'fun_course.php');
+    Includer::include_fun($dir, 'fun_branch.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
-    $api = new API($apiKey);
+    $api = new API('');
     $io = new IO(); 
 
-    if(SESSION::checkUserAdmin()){
+    if($sess->checkUserAdmin()){
         $id = $io->id;
         $isNew = ($id == NULL);
 
@@ -25,6 +26,9 @@
             $result = FunCourse::getClass($api, $id);
             $sClass = $result->response;
         }
+
+        $result = FunCourse::getBranchesByCourseID($api, $id);
+        $branches = $result->response;
         
         $paths = array(
             new Path(FALSE, 'หน้าหลัก',            $dir),
@@ -35,7 +39,7 @@
         );
 
         Header::initHeader($dir, "แอดมิน - $add รอบเรียน"); 
-        AdminCourseEditorTimeView::initView($dir, $paths, $sClass, $isNew);
+        AdminCourseEditorTimeView::initView($dir, $sess, $paths, $sClass, $isNew, $branches);
         Footer::initFooter($dir); 
 
     }else{

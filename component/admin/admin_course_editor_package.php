@@ -1,8 +1,8 @@
 <?php
     class AdminCourseEditorPackageView{
 
-        public static function initView($dir, $paths, $sPackage, $isNew){
-            $auth = SESSION::getAuth();
+        public static function initView($dir, $sess, $paths, $sPackage, $isNew){
+            $auth = $sess->getAuth();
             $urls = array(
                 'back' => Nav::getPrevious()
             );
@@ -20,7 +20,7 @@
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
 
-                    <?php Toolbar::initToolbar($dir, '') ?>
+                    <?php Toolbar::initToolbar($dir, '', $sess) ?>
 
                     <!-- // END Header -->
 
@@ -48,6 +48,15 @@
                                                 <form class="form-horizontal">
 
                                                     <div class="form-group row">
+                                                        <label for="cTitle" class="col-sm-3 col-form-label form-label">ชื่อแพคเกจราคา (ไม่เกิน 100 ตักอักษร)</label>
+                                                        <div class="col-sm-8">
+                                                            <div class="input-group">
+                                                                <input type="text" id="cTitle" class="form-control" placeholder="กรอกชื่อแพคเกจ" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
                                                         <label for="cPrice" class="col-sm-3 col-form-label form-label">ราคา (บาท)</label>
                                                         <div class="col-sm-8">
                                                             <div class="input-group">
@@ -61,6 +70,15 @@
                                                         <div class="col-sm-8">
                                                             <div class="input-group">
                                                                 <input type="number" id="cCredit" class="form-control" placeholder="กรอกจำนวน credit" min="1" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="cExpiration" class="col-sm-3 col-form-label form-label">หมดอายุภายใน (วัน)</label>
+                                                        <div class="col-sm-8">
+                                                            <div class="input-group">
+                                                                <input type="number" id="cExpiration" class="form-control" placeholder="กรอกจำนวน expiration" min="1" required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -81,7 +99,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir) ?>
+                            <?php Sidemenu::initSideMenu($dir, $sess) ?>
                         </div>
                     </div>
                 </div>

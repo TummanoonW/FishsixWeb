@@ -7,8 +7,8 @@
     Includer::include_fun($dir, 'fun_feedback.php');
     Includer::include_fun($dir, 'fun_admin_feedback.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -19,7 +19,7 @@
         new Path(TRUE, 'จัดการรายงานข้อผิดพลาด', '')
     );
 
-    if(SESSION::checkUserAdmin()){
+    if($sess->checkUserAdmin()){
         $limit = 40;
 
         $result = FunFeedback::count($api);
@@ -46,7 +46,7 @@
         Console::log('feedbacks', $feedbacks);
 
         Header::initHeader($dir, "แอดมิน - จัดการคำสั่งซื้อ"); 
-        AdminManageFeedbacksView::initView($dir, $paths, $pages, $feedbacks);
+        AdminManageFeedbacksView::initView($dir, $sess, $paths, $pages, $feedbacks);
         Footer::initFooter($dir); 
 
     }else{

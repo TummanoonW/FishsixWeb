@@ -1,7 +1,7 @@
 <?php
     class ForgotPasswordView{ //login HTML elements loader
 
-        public static function initView($dir, $show){
+        public static function initView($dir, $sess, $show){
 ?>
 
             <body class="login">

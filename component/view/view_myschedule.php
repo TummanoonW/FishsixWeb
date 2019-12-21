@@ -1,7 +1,7 @@
 <?php
     class MySchedule{
-        public static function initView($dir, $paths, $schedules){
-            $auth = SESSION::getAuth();
+        public static function initView($dir, $sess, $paths, $schedules){
+            $auth = $sess->getAuth();
 
 ?>
             <body class=" layout-fluid">
@@ -15,7 +15,7 @@
                 <div class="mdk-header-layout js-mdk-header-layout">
 
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir, ''); ?>
+                    <?php Toolbar::initToolbar($dir, '', $sess); ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
@@ -79,7 +79,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir); ?>
+                            <?php Sidemenu::initSideMenu($dir, $sess); ?>
                         </div>
                     </div>
                 </div>

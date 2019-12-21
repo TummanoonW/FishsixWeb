@@ -7,13 +7,13 @@
     Includer::include_fun($dir, 'fun_course.php');
     Includer::include_fun($dir, 'fun_ownership.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
 
-    if(SESSION::checkUserExisted()){
+    if($sess->checkUserExisted()){
         $paths = array(
             new Path(FALSE, 'หน้าหลัก', $dir),
             new Path(TRUE, 'คอร์สของฉัน', $dir . App::$pageMyCourses)
@@ -35,7 +35,7 @@
         $ownerships = $result->response;
 
         Header::initHeader($dir, $auth->username . " - คอร์สของฉัน"); 
-        MyCoursesView::initView($dir, $paths, $pages, $ownerships);
+        MyCoursesView::initView($dir, $sess, $paths, $pages, $ownerships);
         Footer::initFooter($dir);
     }else{
         Nav::gotoHome($dir);

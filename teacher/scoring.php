@@ -8,13 +8,13 @@
     Includer::include_fun($dir, 'fun_course.php');
     Includer::include_fun($dir, 'fun_booking.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
 
-    if(SESSION::checkUserTeacher()){
+    if($sess->checkUserTeacher()){
         $tid = $io->get->tid;
         $bid = $io->get->bid;
 
@@ -68,7 +68,7 @@
 
 
             Header::initHeader($dir, "ประเมิน - $student->username"); 
-            TeacherScoringView::initView($dir, $paths, $isNew, $student, $booking, $course, $score, $class, $courseBranch, $tid);
+            TeacherScoringView::initView($dir, $sess, $paths, $isNew, $student, $booking, $course, $score, $class, $courseBranch, $tid);
             Footer::initFooter($dir); 
         }else{
             //Nav::gotoHome($dir);

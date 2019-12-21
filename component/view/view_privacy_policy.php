@@ -1,6 +1,6 @@
 <?php
     class ViewPrivacy{
-        public static function initView($dir, $paths){
+        public static function initView($dir, $sess, $paths){
             ?>
                 <body class="layout-fluid">
                     <link type="text/css" rel="stylesheet" href="<?php Nav::echoURL($dir, 'assets/css/lightgallery.min.css') ?>" /> 
@@ -11,7 +11,7 @@
                     <div class="mdk-header-layout js-mdk-header-layout">
 
                         <!-- Header -->
-                        <?php Toolbar::initToolbar($dir, '') ?>
+                        <?php Toolbar::initToolbar($dir, '', $sess) ?>
                         <!-- // END Header -->
 
                         <!-- Header Layout Content -->
@@ -164,7 +164,7 @@
                                     </div>
                                 </div>
                             
-                                <?php Sidemenu::initSideMenu($dir) ?>
+                                <?php Sidemenu::initSideMenu($dir, $sess) ?>
                             </div>
                    
                     <?php Script::initScript($dir) ?>

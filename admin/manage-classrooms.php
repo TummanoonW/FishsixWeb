@@ -7,8 +7,8 @@
     Includer::include_fun($dir, 'fun_classroom');
     Includer::include_fun($dir, 'fun_course');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -19,7 +19,7 @@
         new Path(TRUE, 'จัดการรายชื่อผู้ลงเรียน', '')
     );
 
-    if(SESSION::checkUserAdmin()){
+    if($sess->checkUserAdmin()){
         $filter = $io->query;
 
         if(!isset($filter->since)){
@@ -64,7 +64,7 @@
         Console::log('classrooms', $classrooms);
 
         Header::initHeader($dir, "แอดมิน - จัดการรายชื่อผู้ลงเรียน"); 
-        AdminManageClassroomsView::initView($dir, $paths, $classrooms, $filter, $courses, $branches, $classes);
+        AdminManageClassroomsView::initView($dir, $sess, $paths, $classrooms, $filter, $courses, $branches, $classes);
         Footer::initFooter($dir); 
 
     }else{

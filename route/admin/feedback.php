@@ -5,13 +5,14 @@
     Includer::include_proto($dir); 
     Includer::include_fun($dir, 'fun_admin_feedback.php');
 
-    $apiKey = SESSION::getAPIKey();
-    $auth = SESSION::getAuth();
+    $sess = new Sess();
+    $apiKey = $sess->getAPIKey();
+    $auth = $sess->getAuth();
 
     $api = new API($apiKey);
     $io = new IO(); 
 
-    if(SESSION::checkUserAdmin()){
+    if($sess->checkUserAdmin()){
         switch($io->method){
             case 'read':
                 $id = $io->id;

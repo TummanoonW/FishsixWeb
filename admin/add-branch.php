@@ -6,9 +6,9 @@
     Includer::include_admin($dir, 'admin_edit_branch.php');
     Includer::include_fun($dir, 'fun_branch.php');
 
-
-    $auth = SESSION::getAuth();
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess();
+    $auth = $sess->getAuth();
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -20,7 +20,7 @@
         new Path(TRUE, 'โปรแกรมแก้ไขสาขา', $dir . App::$pageAdminAddBranch)
     );
 
-    if(SESSION::checkUserAdmin()){
+    if($sess->checkUserAdmin()){
         $id = $io->id;
         $isNew = ($id == NULL);
 
@@ -32,7 +32,7 @@
         }
 
         Header::initHeader($dir, "แอดมิน - โปรแกรมแก้ไขสาขา"); 
-        AdminAddBranchView::initView($dir, $paths, $isNew, $branch);
+        AdminAddBranchView::initView($dir, $sess, $paths, $isNew, $branch);
         Footer::initFooter($dir); 
 
     }else{

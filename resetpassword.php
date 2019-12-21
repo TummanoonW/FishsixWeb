@@ -6,8 +6,8 @@
     Includer::include_view($dir, 'view_resetpassword.php');
     Includer::include_fun($dir, 'fun_auth.php');
 
-    $auth = SESSION::getAuth();
-    $apiKey = SESSION::getAPIKey();
+    $auth = $sess->getAuth();
+    $apiKey = $sess->getAPIKey();
 
     $api = new API($apiKey); 
     $io = new IO();
@@ -16,7 +16,7 @@
     if($result->success){
         $record = $result->response;
         Header::initHeader($dir, "Reset Password"); 
-        ResetPasswordView::initView($dir, $io->id);
+        ResetPasswordView::initView($dir, $sess, $io->id);
         Footer::initFooter($dir); 
     }else{
         Nav::gotoHome($dir);

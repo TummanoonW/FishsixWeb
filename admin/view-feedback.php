@@ -6,13 +6,13 @@
     Includer::include_admin($dir, 'admin_view_feedback.php');
     Includer::include_fun($dir, 'fun_feedback.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
 
-    if(SESSION::checkUserAdmin()){
+    if($sess->checkUserAdmin()){
         $id = $io->id;
 
         $paths = array(
@@ -26,7 +26,7 @@
         $feedback = $result->response;
 
         Header::initHeader($dir, "ข้อผิดพลาด - $id"); 
-        AdminViewFeedback::initView($dir, $paths, $feedback);
+        AdminViewFeedback::initView($dir, $sess, $paths, $feedback);
         Footer::initFooter($dir); 
 
     }else{

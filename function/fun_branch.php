@@ -5,6 +5,11 @@
             $result = $api->get($url);
             return $result;
         }
+        public static function getLite($api){
+            $url = $api->getURL(App::$apiBranch, 'allLite', NULL);
+            $result = $api->get($url);
+            return $result;
+        }
         public static function getSingle($api, $id){
             $query = (object)array('id' => $id);
             $url = $api->getURL(App::$apiBranch, 'single', $query);

@@ -6,23 +6,24 @@
     //include Proto Framework Architecture with retracked directory path
     Includer::include_proto($dir);
 
+    $sess = new Sess();
     $io = new IO();
 
     if(isset($io->method)){
         switch($io->method){
             case 'relogin':
-                SESSION::logOut();
+                $sess->logOut();
                 Nav::goto($dir, App::$pageLogin);
                 break;
             default:
-                //clear all data in session as log out
-                SESSION::logOut();
+                //clear all data in Sess as log out
+                $sess->logOut();
                //return to home page
                 Nav::gotoHome($dir);
                 break;
         }
     }else{
-        SESSION::logOut();
+        $sess->logOut();
         Nav::gotoHome($dir);
     }
 

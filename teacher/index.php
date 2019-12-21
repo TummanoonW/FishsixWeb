@@ -7,8 +7,8 @@
     Includer::include_fun($dir, 'fun_category.php');
     Includer::include_fun($dir, 'fun_teacher_course.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -18,7 +18,7 @@
         new Path(TRUE, 'ระบบการสอน', $dir . App::$pageTeacherPanel)
     );
 
-    if(SESSION::checkUserTeacher()){
+    if($sess->checkUserTeacher()){
 
         $result = FunCategory::get($api);
         $categories = $result->response;
@@ -29,7 +29,7 @@
         Console::log('items', $items);
 
         Header::initHeader($dir, App::$name . " - ระบบการสอน"); 
-        TeacherHomeView::initView($dir, $paths, $items, $categories);
+        TeacherHomeView::initView($dir, $sess, $paths, $items, $categories);
         Footer::initFooter($dir); 
     }else{
         Nav::gotoHome($dir);

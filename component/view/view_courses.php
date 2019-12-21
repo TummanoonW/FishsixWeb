@@ -1,7 +1,7 @@
 <?php
     class CoursesView{
-        public static function initView($dir, $paths, $pages, $courses, $categories, $count, $query){
-            $auth = SESSION::getAuth();
+        public static function initView($dir, $sess, $paths, $pages, $courses, $categories, $count, $query){
+            $auth = $sess->getAuth();
             $urls = array(
                 'pageCourses' => $dir . App::$pageCourses
             );
@@ -105,7 +105,7 @@
                                 <hr>
                                 <h3>ขอความช่วยเหลือ</h3> -->
                             </div>
-                            <?php Sidemenu::initSideMenu($dir) ?>
+                            <?php Sidemenu::initSideMenu($dir, $sess) ?>
                         </div>
                     </div>
                 </div>

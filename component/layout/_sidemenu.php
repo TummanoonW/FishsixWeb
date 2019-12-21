@@ -1,7 +1,7 @@
 <?php
     class Sidemenu{ //sidemenu HTML elements loader
 
-        public static function initAppSettingsFAB($dir){
+        public static function initAppSettingsFAB($dir, $sess){
 ?>
             <div id="app-settings">
                 <app-settings layout-active="default" :layout-location="{
@@ -13,24 +13,24 @@
 <?php
         } 
 
-        public static function initSideMenu($dir){
+        public static function initSideMenu($dir, $sess){
 ?>
             <div class="mdk-drawer js-mdk-drawer" id="default-drawer">
                 <div class="mdk-drawer__content ">
                     <div class="sidebar sidebar-left sidebar-dark bg-dark o-hidden" data-perfect-scrollbar>
                         <div class="sidebar-p-y">
 
-                            <?php if(SESSION::checkUserExisted()){ ?>
+                            <?php if($sess->checkUserExisted()){ ?>
                                 <div class="sidebar-heading">เมนูของฉัน</div>
                                 <ul class="sidebar-menu sm-active-button-bg">
-                                    <?php if(SESSION::checkUserAdmin()){ ?>
+                                    <?php if($sess->checkUserAdmin()){ ?>
                                         <li class="sidebar-menu-item">
                                             <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageAdminPanel); ?>">
                                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">apps</i> ระบบจัดการ
                                             </a>
                                         </li>
                                     <?php } 
-                                        if(SESSION::checkUserTeacher()){ 
+                                        if($sess->checkUserTeacher()){ 
                                     ?>
                                         <li class="sidebar-menu-item">
                                             <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageTeacherPanel); ?>">
@@ -79,7 +79,7 @@
                             <!-- Account menu -->
                             <div class="sidebar-heading">บัญชี</div>
                             <ul class="sidebar-menu">
-                                <?php if(SESSION::checkUserExisted()){ ?>
+                                <?php if($sess->checkUserExisted()){ ?>
                                     <li class="sidebar-menu-item">
                                         <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageProfile); ?>">
                                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">edit</i> แก้ไขบัญชี

@@ -1,6 +1,6 @@
 <?php
     class OrderView{
-        public static function initView($dir, $paths, $order){
+        public static function initView($dir, $sess, $paths, $order){
             if($order != NULL)$orderItems = $order->orderItems;
             ?>
                 <body class=" layout-fluid">
@@ -12,7 +12,7 @@
                     <div class="mdk-header-layout js-mdk-header-layout">
 
                         <!-- Header -->
-                        <?php Toolbar::initToolbar($dir, '') ?>
+                        <?php Toolbar::initToolbar($dir, '', $sess) ?>
                         <!-- // END Header -->
 
                         <!-- Header Layout Content -->
@@ -150,7 +150,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php Sidemenu::initSideMenu($dir) ?>
+                                <?php Sidemenu::initSideMenu($dir, $sess) ?>
                             </div>
                         </div>
                     </div>

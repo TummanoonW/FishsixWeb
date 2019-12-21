@@ -1,7 +1,7 @@
 <?php
     class ProfileView{ ////profile HTML elements loader
 
-        public static function initView($dir, $paths, $auth, $user){
+        public static function initView($dir, $sess, $paths, $auth, $user){
 ?>
             <body class=" layout-fluid">
                 <!-- Flatpickr -->
@@ -16,7 +16,7 @@
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
 
-                    <?php Toolbar::initToolbar($dir, '') ?>
+                    <?php Toolbar::initToolbar($dir, '', $sess) ?>
 
                     <!-- // END Header -->
 
@@ -318,7 +318,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir) ?>
+                            <?php Sidemenu::initSideMenu($dir, $sess) ?>
                         </div>
                     </div>
                 </div>

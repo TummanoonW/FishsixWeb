@@ -1,7 +1,7 @@
 <?php
     class TeacherManageStudentView{
-        public static function initView($dir, $paths, $id, $courseTeacher, $course, $branches, $classes, $students, $search){
-            $auth = SESSION::getAuth();
+        public static function initView($dir, $sess, $paths, $id, $courseTeacher, $course, $branches, $classes, $students, $search){
+            $auth = $sess->getAuth();
             $urls = array(
                 'pageTeacherManageStudent' => Nav::getURL($dir, App::$pageTeacherManageStudent . "?id=" . $id)
             );
@@ -14,7 +14,7 @@
                 <div class="mdk-header-layout js-mdk-header-layout">
 
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir, '') ?>
+                    <?php Toolbar::initToolbar($dir, '', $sess) ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
@@ -102,7 +102,7 @@
                                 </div>
 
                             </div>
-                            <?php Sidemenu::initSideMenu($dir) ?>
+                            <?php Sidemenu::initSideMenu($dir, $sess) ?>
                         </div>
                     </div>
                 </div> 

@@ -1,8 +1,8 @@
 <?php
     class AdminAddBranchView{
 
-        public static function initView($dir, $paths, $isNew, $branch){
-            $auth = SESSION::getAuth();
+        public static function initView($dir, $sess, $paths, $isNew, $branch){
+            $auth = $sess->getAuth();
 ?>
             <body class=" layout-fluid">
                
@@ -13,7 +13,7 @@
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
 
-                    <?php Toolbar::initToolbar($dir, '') ?>
+                    <?php Toolbar::initToolbar($dir, '', $sess) ?>
 
                     <!-- // END Header -->
 
@@ -157,7 +157,7 @@
                                 </div>
                             </div>
                             <?php Script::customScript($dir, 'common.js') ?>
-                            <?php Sidemenu::initSideMenu($dir) ?>
+                            <?php Sidemenu::initSideMenu($dir, $sess) ?>
                             
                             
                         </div>

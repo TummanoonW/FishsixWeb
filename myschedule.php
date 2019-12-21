@@ -6,8 +6,8 @@
     Includer::include_view($dir, 'view_myschedule.php');
     Includer::include_fun($dir, 'fun_schedule.php');
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -18,12 +18,12 @@
         new Path(TRUE, 'ตารางเรียน', $dir . App::$pageMySchedule)
     );
 
-   if(SESSION::checkUserExisted()){
+   if($sess->checkUserExisted()){
         $result = FunSchedule::getMySchedule($api, $auth->ID);
         $schedules = $result->response;
 
         Header::initHeader($dir, "ตารางเรียน"); 
-        MySchedule::initView($dir, $paths, $schedules);
+        MySchedule::initView($dir, $sess, $paths, $schedules);
         Footer::initFooter($dir); 
    }else{
         Nav::gotoHome();

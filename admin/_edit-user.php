@@ -6,8 +6,8 @@
     Includer::include_admin($dir, 'admin_edit_user.php');
 
 
-    $auth = SESSION::getAuth(); 
-    $apiKey = SESSION::getAPIKey(); 
+    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -19,11 +19,11 @@
         new Path(TRUE, 'Edit User', $dir . App::$pageAdminEditUser)
     );
 
-    if(SESSION::checkUserAdmin()){
+    if($sess->checkUserAdmin()){
         
 
         Header::initHeader($dir, "Admin - Edit User"); 
-        AdminEditUserView::initView($dir, $paths);
+        AdminEditUserView::initView($dir, $sess, $paths);
         Footer::initFooter($dir); 
 
     }else{

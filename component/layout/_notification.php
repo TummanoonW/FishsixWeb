@@ -1,7 +1,7 @@
 <?php
     class Notification{
-        public static function initNotification($dir){
-            if(SESSION::checkUserExisted()){
+        public static function initNotification($dir, $sess){
+            if($sess->checkUserExisted()){
 ?>
                 <!-- Notifications dropdown -->
                 <!--<li class="nav-item dropdown dropdown-notifications dropdown-menu-sm-full">

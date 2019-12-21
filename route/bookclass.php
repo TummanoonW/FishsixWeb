@@ -6,13 +6,14 @@
      Includer::include_fun($dir, 'fun_ownership.php');
      Includer::include_fun($dir, 'fun_booking.php');
  
-     $apiKey = SESSION::getAPIKey(); 
-     $auth = SESSION::getAuth();
+     $sess = new Sess();
+     $apiKey = $sess->getAPIKey(); 
+     $auth = $sess->getAuth();
  
      $api = new API($apiKey); 
      $io = new IO(); 
  
-     if(SESSION::checkUserExisted()){
+     if($sess->checkUserExisted()){
         switch($io->method){
             case 'book':
                 $courseBranchID = $io->post->cBranchID;
