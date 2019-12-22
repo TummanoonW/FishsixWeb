@@ -20,14 +20,15 @@
 
     if($sess->checkUserAdmin()){
 
-        if(!isset($io->query->type)) $search = (object)array(
+        if(!isset($io->get->type)) $search = (object)array(
             'type' => '',
             'query' => '',
             'desc' => FALSE,
-            'limit' => 20,
-            'offset' => 0
+            'limit' => 24,
+            'offset' => 0,
+            'page' => 0
         );
-        else $search = $io->query;
+        else $search = $io->get;
         
         $limit = $search->limit;
 
@@ -40,8 +41,16 @@
             $c_page = $io->page;
         }
 
+        $params = "&";
+        foreach ($search as $key => $value) {
+            if($key != 'page') $params = $params . $key . '=' . $value . "&";
+        }
+
         $pages = Path::genPages($dir, App::$pageAdminManageUser, $limit, $c_page, $count);
         $pages[$c_page]->active = TRUE;
+        foreach ($pages as $key => $value) {
+            $value->url = $value->url . $params;
+        }
 
         $offset = ($c_page * $limit);        
         $search->offset = $offset;

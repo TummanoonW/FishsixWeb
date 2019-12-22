@@ -2,8 +2,11 @@ var q = JSON.parse(document.querySelector('#q').innerHTML);
 var urls = JSON.parse(document.querySelector('#urls').innerHTML);
 
 function search() {
-    let param = JSON.stringify(q);
-    window.location = urls.pageAdminManageUser + "?q=" + param;
+    var params = "?";
+    Object.keys(q).forEach(key => {
+        params = params + key + "=" + q[key] + "&";
+    });
+    window.location = urls.pageAdminManageUser + params;
 }
 
 function searchType(element) {
