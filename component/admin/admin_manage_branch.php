@@ -55,13 +55,13 @@
             $id = $branch->ID;
 ?>
             <div class="col-12 card">
-              <div class="card-header d-flex align-items-center" >
-                <div class="flex">
+              <div class="card-header row align-items-center" >
+                <div class="col-md-3 col-12">
                   <a href="<?php Nav::echoURL($dir, App::$pageAdminAddBranch . "?id=$id") ?>" >
-                    <img src="<?php Asset::echoThumb($dir, $branch->thumbnail) ?>" alt="สาขา<?php echo $branch->title ?>" class="avatar-img rounded">
+                    <img src="<?php Asset::echoThumb($dir, $branch->thumbnail) ?>" alt="สาขา<?php echo $branch->title ?>" class="rounded w-100">
                   </a>
                 </div>
-                <div class="card-body">
+                <div class="col-md-9 col-12 card-body">
                   <h2 class="card-title mb-1">สาขา <?php echo $branch->title ?></h2>
                   <div class="text-secondary mt-2">
                     <label>ID: <?php echo $id ?></label><br>

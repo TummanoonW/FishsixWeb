@@ -64,7 +64,7 @@
                                                             </td>
                                                             <td class="text-center">
                                                                 <div class="d-flex align-items-center">
-                                                                    <select name="cClassID" class="form-control">
+                                                                    <select id="cClassID" name="cClassID" class="form-control">
                                                                         <option value="" selected>เลือกรอบเรียน</option>
                                                                         <?php //self::initClasses($dir, $classes) ?>
                                                                     </select>

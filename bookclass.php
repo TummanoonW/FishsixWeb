@@ -8,7 +8,8 @@
     Includer::include_fun($dir, 'fun_ownership.php');
     Includer::include_fun($dir, 'fun_schedule.php');
 
-    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $sess = new Sess(); 
+    $auth = $sess->getAuth(); 
     $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
@@ -38,26 +39,26 @@
                         $result = FunCourse::getBranchesByCourseID($api, $course->ID);
                         $branches = $result->response;
 
-                        $result = FunSchedule::getMySchedule($api, $auth->ID);
+                        $after = CustomDate::getDateNow()->format('Y-m-d');
+                        $result = FunSchedule::getAfterByCourseID($api, $after, $course->ID);
                         $schedules = $result->response;
 
-                    Header::initHeader($dir, "จองรอบเรียน - $course->title"); 
-                    BookingClass::initView($dir, $sess, $paths, $ownership, $course, $classes, $branches, $schedules);
-                    Footer::initFooter($dir);
+                        Header::initHeader($dir, "จองรอบเรียน - $course->title"); 
+                        BookingClass::initView($dir, $sess, $paths, $ownership, $course, $classes, $branches, $schedules);
+                        Footer::initFooter($dir);
+                    }else{
+                        $result->err = Err::$ERR_COURSE_EXPIRED;
+                        ErrorPage::showError($dir, $result); 
+                    }
                 }else{
-                    $result->err = Err::$ERR_COURSE_EXPIRED;
-                    ErrorPage::showError($dir, $result); 
+                    $result->err = Err::$ERR_NO_DATA;
+                    ErrorPage::showError($dir, $result);
                 }
             }else{
-                $result->err = Err::$ERR_NO_DATA;
                 ErrorPage::showError($dir, $result);
             }
         }else{
-            ErrorPage::showError($dir, $result);
+            Nav::gotoHome($dir);
         }
-         
-    }else{
-        Nav::gotoHome($dir);
     }
-}
     

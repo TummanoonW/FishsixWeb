@@ -134,7 +134,7 @@ function changeBranches(input) {
         }
     });
 
-    changeClasses(courseBranchID, classes);
+    changeClasses(value, classes);
 
 }
 

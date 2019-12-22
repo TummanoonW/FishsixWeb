@@ -108,7 +108,7 @@
                         </td>
                         <td class="text-center">
                             <div class="d-flex align-items-center">
-                                <small class="text-uppercase"><span class="branch"><?php echo $branch->title ?></span></small>
+                                <small class="text-uppercase"><span class="branch"><?php if(isset($branch->title)) echo $branch->title ?></span></small>
                             </div>
                         </td>
                         <td class="text-right">

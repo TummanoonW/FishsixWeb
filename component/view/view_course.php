@@ -1,12 +1,13 @@
 <?php
     class CourseView{
-        public static function initView($dir, $sess, $paths, $course, $teachers, $comments, $branches){
+        public static function initView($dir, $sess, $paths, $course, $teachers, $comments){
             $auth = $sess->getAuth();
             $preview = $course->preview;
             $lessons = $course->lessons;
             $pictures = $course->pictures;
             $classes = $course->classes;
             $packages = $course->packages;
+            $branches = $course->branches;
             $urls = array(
                 'pageMyCart' => $dir . App::$pageMyCart
             );
@@ -279,10 +280,13 @@
         }
 
         public static function getBranch($id, $branches){
+            $title = "";
             foreach ($branches as $key => $value) {
-                if($id == $value->ID) return $value->branch->title;
-                return '';
+                try{
+                    if($id == $value->ID) $title = $value->branch->title;
+                }catch(\Throwable $th){}
             }
+            return $title;
         }
 
         public static function initPackageItems($dir, $packages){

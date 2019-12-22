@@ -47,13 +47,13 @@
                                                     <select name="course" id="courses" class="form-control custom-select w-auto" onchange="searchCourse(this)">
                                                         <option value="">ทุกคอร์ส</option>
                                                         <?php foreach ($courses as $key => $c) { ?>
-                                                            <option value="<?php echo $c->ID ?>" <?php if($filter->courseID == $c->ID) echo 'selected'; ?>><?php echo $c->title ?></option>
+                                                            <option value="<?php echo $c->ID ?>" <?php if(isset($filter->courseID)) if($filter->courseID == $c->ID) echo 'selected'; ?>><?php echo $c->title ?></option>
                                                         <?php } ?>
                                                     </select>
                                                     <select name="branch" id="branches" class="form-control custom-select w-auto" onchange="searchBranch(this)">
                                                         <option value="">ทุกสาขา</option>
                                                         <?php foreach ($branches as $key => $b) { ?>
-                                                            <option value="<?php echo $b->ID ?>" <?php if($filter->courseBranchID == $b->ID) echo 'selected'; ?>><?php echo $b->branch->title ?></option>
+                                                            <option value="<?php echo $b->ID ?>" <?php if($filter->courseBranchID == $b->ID) echo 'selected'; ?>><?php if($b->branch != NULL) echo $b->branch->title ?></option>
                                                         <?php } ?>
                                                     </select>
                                                     <select name="class" id="classes" class="form-control custom-select ml-2 w-auto" onchange="searchClass(this)">
@@ -73,7 +73,7 @@
                                         </form>
                                     </div>
 
-                                    <?php if(count($classrooms) > 0){ ?>
+                                    <?php if(count((array)$classrooms) > 0){ ?>
                                         <div class="card table-responsive" data-toggle="lists" data-lists-values='["วันที่เริ่ม", "รอบเรียน", "สาขา", "คอร์ส"]'>
                                             <table class="table mb-0">
                                                 <thead class="thead-light">
@@ -124,7 +124,6 @@
         private static function initItems($dir, $classrooms, $courses, $classes, $branches){
             foreach ($classrooms as $key => $item) {
                 $object = $item;
-                $id = $object->ID;
                 $startDate = $object->startDate;
                 $course = $object->course;
                 $branch = $object->branch;
@@ -144,7 +143,7 @@
                         </td>
                         <td>
                             <div class="d-flex align-items-center">
-                                <a href="<?php Nav::echoURL($dir, App::$pageAdminViewClassroom . "?date=$startDate&course=$course->ID&branch=$branch->ID&class=$class->ID") ?>" class="text-body small"><span class="branch"><?php echo $branch->title ?></span></a>
+                                <a href="<?php Nav::echoURL($dir, App::$pageAdminViewClassroom . "?date=$startDate&course=$course->ID&branch=$branch->ID&class=$class->ID") ?>" class="text-body small"><span class="branch"><?php if(isset($branch->title)) echo $branch->title ?></span></a>
                             </div>
                         </td>
                         <td class="text-center">

@@ -27,8 +27,7 @@
             $result = FunCourse::getComments($api, $id, 5, 0);
             $comments = $result->response;
 
-            $result = FunCourse::getBranchesByCourseID($api, $id);
-            $branches = $result->response;
+            Console::log('course', $course);
 
             $paths = array(
                 new Path(FALSE, 'หน้าหลัก', $dir),
@@ -37,7 +36,7 @@
             );
 
             Header::initHeader($dir, $course->title); 
-            CourseView::initView($dir, $sess, $paths, $course, $teachers, $comments, $branches);
+            CourseView::initView($dir, $sess, $paths, $course, $teachers, $comments);
             Footer::initFooter($dir); 
         }else{
             ErrorPage::showError($dir, $result);

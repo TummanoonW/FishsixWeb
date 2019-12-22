@@ -43,12 +43,10 @@
 
         if(!isset($filter->courseBranchID)){
             $filter->courseBranchID = "";
-
         }
 
         if(!isset($filter->classID)){
             $filter->classID = "";
-
         }
 
         $result = FunClassroom::getFiltered($api, $filter);

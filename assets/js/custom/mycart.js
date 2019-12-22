@@ -93,7 +93,7 @@ async function deleteItem(index, isS){
 
 async function checkOut(){
     if(data.isLoggedIn){
-        window.location.href = urls.pageCheckOut;
+        window.location.href = await urls.pageCheckOut;
     }else{
         $('#registerModal').modal();
     }
