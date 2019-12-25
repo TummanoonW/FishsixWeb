@@ -8,7 +8,8 @@
     Includer::include_proto($dir); //include Proto Framework Architecture
     Includer::include_view($dir, 'view_login.php');
 
-    $sess = new Sess(); $auth = $sess->getAuth(); //get Logged In user
+    $sess = new Sess(); 
+    $auth = $sess->getAuth(); //get Logged In user
     $apiKey = $sess->getAPIKey(); //get secret API Key
 
     $api = new API($apiKey); //open API connection

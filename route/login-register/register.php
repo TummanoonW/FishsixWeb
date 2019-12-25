@@ -16,14 +16,20 @@
         Nav::gotoHome($dir);
     }else{
         if($io->post->email != NULL){
-            $result = FunAuth::register($api, $io->post);
-                
-            if($result->success){
-                $auth = $result->response;
-                $sess->logIn($auth); //save login data to Sess
-                Nav::goto($dir, App::$pageRegisterSucceed);
+            $p = $io->post->password;
+            $p2 = $io->post->password2;
+            if($p == $p2){
+                $result = FunAuth::register($api, $io->post);
+
+                if($result->success){
+                    $auth = $result->response;
+                    $sess->logIn($auth); //save login data to Sess
+                    Nav::goto($dir, App::$pageRegisterSucceed);
+                }else{
+                    ErrorPage::showError($dir, $result);
+                }
             }else{
-                ErrorPage::showError($dir, $result);
+                Nav::goto('', Nav::getPrevious() . '#password2?m=p2');
             }
         }
     }

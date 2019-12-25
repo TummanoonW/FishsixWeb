@@ -1,6 +1,6 @@
 <?php
     class RegisterView{
-        public static function initView($dir){
+        public static function initView($dir, $err){
 ?>
             <body class="login">
                     <!-- Flatpickr -->
@@ -50,7 +50,7 @@
                                 <div class="form-group">
                                     <label class="form-label" for="password">รหัสผ่าน:</label>
                                     <div class="input-group input-group-merge">
-                                        <input name="password" id="password" type="password" class="form-control form-control-prepended" placeholder="Choose a password" onchange="checkPass()" minlength="6" required>
+                                        <input name="password" id="password" type="password" class="form-control form-control-prepended" placeholder="Choose a password" onchange="" minlength="6" required>
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
                                                 <span class="fas fa-key"></span>
@@ -61,12 +61,14 @@
                                 <div class="form-group">
                                     <label class="form-label" for="password2">รหัสผ่านอีกครั้ง:</label>
                                     <div class="input-group input-group-merge">
-                                        <input name="password2" id="password2" type="password" class="form-control form-control-prepended" placeholder="Confirm password" onchange="checkPass()" minlength="6" required>
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <span class="fas fa-key"></span>
+                                        <input name="password2" id="password2" type="password" class="form-control form-control-prepended" placeholder="Confirm password" onchange="" minlength="6" required>
+                                        <?php if($err == 'p2'){ ?>
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <span class="fas fa-key"></span>
+                                                </div>
                                             </div>
-                                        </div>
+                                        <?php } ?>
                                     </div>
                                     <small id="err-pass" class="text-danger">รหัสผ่านทั้ง 2 ช่องไม่ตรงกัน!</small>
                                 </div>

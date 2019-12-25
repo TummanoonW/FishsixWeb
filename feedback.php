@@ -5,7 +5,8 @@
     Includer::include_proto($dir); 
     Includer::include_view($dir, 'view_feedback.php');
 
-    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $sess = new Sess(); 
+    $auth = $sess->getAuth(); 
     $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);

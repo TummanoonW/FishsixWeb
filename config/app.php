@@ -130,6 +130,7 @@
         public static $apiClassroom = "classroom.php";
         public static $apiForum = "forum.php";
         public static $apiQA = "qa.php";
+        public static $apiVidLib = "vid-lib.php";
 
         public static $apiAdminCourse = "admin-course.php";
         public static $apiAdminCategory = "admin-category.php";

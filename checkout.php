@@ -6,7 +6,8 @@
     Includer::include_view($dir, 'view_checkout.php');
     Includer::include_fun($dir, 'fun_mycart.php');
 
-    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $sess = new Sess(); 
+    $auth = $sess->getAuth(); 
     $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);

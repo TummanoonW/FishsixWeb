@@ -9,7 +9,8 @@
     Includer::include_fun($dir, 'fun_dashboard.php');
     Includer::include_fun($dir, 'fun_schedule.php');
 
-    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $sess = new Sess(); 
+    $auth = $sess->getAuth(); 
     $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);

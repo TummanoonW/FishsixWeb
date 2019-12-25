@@ -6,7 +6,8 @@
     Includer::include_view($dir, 'view_contact.php');
     Includer::include_fun($dir, 'fun_branch');
 
-    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $sess = new Sess(); 
+    $auth = $sess->getAuth(); 
     $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);

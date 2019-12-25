@@ -38,9 +38,9 @@
                                             <li class="nav-item">
                                                 <a class="nav-link active" href="#first" data-toggle="tab">บัญชีผู้ใช้</a>
                                             </li>
-                                            <li class="nav-item">
+                                            <!--<li class="nav-item">
                                                 <a class="nav-link" href="#second" data-toggle="tab">การเก็บใบเสร็จ</a>
-                                            </li>
+                                            </li>-->
                                         </ul>
                                         <div class="tab-content card-body">
                                             <div class="tab-pane active" id="first">
@@ -237,7 +237,7 @@
                                                 </form>
                                             </div>
 
-                                            <div class="tab-pane" id="second">
+                                            <!--<div class="tab-pane" id="second">
                                                 <form action="#" class="form-horizontal">
                                                     <div class="form-group row">
                                                         <label for="name_on_invoice" class="col-sm-3 col-form-label form-label">Name on Invoice</label>
@@ -313,7 +313,7 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>

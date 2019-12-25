@@ -8,6 +8,7 @@
     Includer::include_proto($dir); //include Proto Framework Architecture
     Includer::include_view($dir, 'view_profile.php');
 
+    $sess = new Sess();
     $apiKey = $sess->getAPIKey(); //get secret API Key
 
     $api = new API($apiKey); //open API connection

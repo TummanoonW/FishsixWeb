@@ -9,6 +9,7 @@
     Includer::include_view($dir, 'view_profile.php');
     Includer::include_fun($dir, 'fun_auth.php');
 
+    $sess = new Sess();
     $apiKey = $sess->getAPIKey(); //get secret API Key
 
     $api = new API($apiKey); //open API connection

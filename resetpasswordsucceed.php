@@ -5,6 +5,7 @@
     Includer::include_proto($dir);
     Includer::include_view($dir, 'view_resetpasswordsucceed.php');
 
+    $sess = new Sess();
     $auth = $sess->getAuth();
     $apiKey = $sess->getAPIKey();
 

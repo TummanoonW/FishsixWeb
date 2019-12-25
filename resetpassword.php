@@ -6,6 +6,7 @@
     Includer::include_view($dir, 'view_resetpassword.php');
     Includer::include_fun($dir, 'fun_auth.php');
 
+    $sess = new Sess();
     $auth = $sess->getAuth();
     $apiKey = $sess->getAPIKey();
 

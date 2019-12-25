@@ -18,8 +18,11 @@
     if($sess->checkUserExisted()){
         Nav::gotoHome($dir);
     }else{
+        if($io->method == 'p2') $err = 'p2';
+        else $err = NULL;
+
         Header::initHeader($dir, "สมัครสมาชิก"); //initialize HTML header elements with 'Login' as Title
-        RegisterView::initView($dir);
+        RegisterView::initView($dir, $err);
         Footer::initFooter($dir); //initialize HTML footer elements
     }
     
