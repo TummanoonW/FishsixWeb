@@ -54,6 +54,7 @@
         public static $pageReview = "review.php";
         public static $pageVideoLibray = "video-library.php";
         public static $pageVideoPlaylist = "video-playlist.php";
+        public static $pageWriteForum = "write-forum.php";
 
         public static $pageDashboard = "dashboard.php";
         public static $pageViewScore = "viewscore.php";
@@ -100,6 +101,7 @@
         public static $routeCheckOut = "route/checkout.php";
         public static $routeBookClass = "route/bookclass.php";
         public static $routeFeedback = "route/feedback.php";
+        public static $routeForum = "route/forum.php";
 
         public static $routeAdminCategory = "route/admin/category.php";
         public static $routeAdminBranch = "route/admin/branch.php";
