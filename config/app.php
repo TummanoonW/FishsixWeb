@@ -52,7 +52,7 @@
         public static $pageForums = "forums.php";
         public static $pageError = "error.php";
         public static $pageReview = "review.php";
-
+        public static $pageWriteForum = "write-forum.php";
 
         public static $pageDashboard = "dashboard.php";
         public static $pageViewScore = "viewscore.php";
@@ -98,6 +98,7 @@
         public static $routeCheckOut = "route/checkout.php";
         public static $routeBookClass = "route/bookclass.php";
         public static $routeFeedback = "route/feedback.php";
+        public static $routeForum = "route/forum.php";
 
         public static $routeAdminCategory = "route/admin/category.php";
         public static $routeAdminBranch = "route/admin/branch.php";
