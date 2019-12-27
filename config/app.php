@@ -52,7 +52,8 @@
         public static $pageForums = "forums.php";
         public static $pageError = "error.php";
         public static $pageReview = "review.php";
-
+        public static $pageVideoLibray = "video-library.php";
+        public static $pageVideoPlaylist = "video-playlist.php";
 
         public static $pageDashboard = "dashboard.php";
         public static $pageViewScore = "viewscore.php";
@@ -83,7 +84,8 @@
         public static $pageAdminManageInfo = "admin/manage-info.php";
         public static $pageAdminManageClassrooms = "admin/manage-classrooms.php";
         public static $pageAdminViewClassroom = "admin/view-classroom.php";
-
+        public static $pageAdminManageVideos = "admin/manage-videos.php";
+        public static $pageAdminEditVideo = "admin/edit-video.php";
 
         public static $pageTeacherPanel = "teacher/index.php";
         public static $pageTeacherManageStudent = "teacher/manage-students.php";
@@ -105,6 +107,7 @@
         public static $routeAdminCourse = "route/admin/course.php";
         public static $routeAdminOrder = "route/admin/order.php";
         public static $routeAdminFeedback = "route/admin/feedback.php";
+        public static $routeAdminVideoLib = "route/admin/video-lib.php";
 
 
         public static $routeTeacherScoring = "route/teacher/scoring.php";

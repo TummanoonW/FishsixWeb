@@ -7,11 +7,12 @@
     include_once $dir . 'includer/includer.php'; //include Includer file to operate
     Includer::include_proto($dir); //include Proto Framework Architecture
     Includer::include_view($dir, 'view_profile.php');
+    Includer::include_fun($dir, 'fun_forum.php');
 
     $sess = new Sess();
     $apiKey = $sess->getAPIKey(); //get secret API Key
 
-    $api = new API($apiKey); //open API connection
+    $api = new API('null'); //open API connection
     $io = new IO(); //open Input/Output receiver for certain $_GET and $_POST data 
 
     switch($io->method){
@@ -31,6 +32,10 @@
                 $result = $file->upload('fileToUpload', $option);
                 print_r($_FILES);
             }
+            break;
+        case 'getTop':
+            $result = FunForum::getTop($api, 5);
+            Console::log('lol', $result);
             break;
         default:
             break;

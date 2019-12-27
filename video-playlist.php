@@ -2,10 +2,10 @@
     $dir = "./";
     include_once $dir . 'includer/includer.php'; 
     Includer::include_proto($dir); 
-    Includer::include_view($dir, 'view_video_library.php');
+    Includer::include_view($dir, 'view_video_playlist.php');
     Includer::include_fun($dir, 'fun_ownership.php');
     Includer::include_fun($dir, 'fun_video_lib.php');
-    Includer::include_category($dir, 'fun_category.php');
+    Includer::include_fun($dir, 'fun_category.php');
 
     $sess = new Sess(); 
     $auth = $sess->getAuth(); 
@@ -15,10 +15,7 @@
     $io = new IO(); 
 
     if($sess->checkUserExisted()){
-        $paths = array(
-            new Path(FALSE, 'หน้าหลัก', $dir),
-            new Path(TRUE, "คลังวิดีโอ - " . App::$name, '')
-        );
+        $id = $io->id;
 
         if($sess->checkUserAdmin() || $sess->checkUserTeacher()){ 
             $isAllowed = TRUE;
@@ -29,27 +26,27 @@
         }
 
         if($isAllowed){
-            $result = FunCategory::get($api);
-            $categories = $result->response;
+            $result = FunCategory::getSingle($api, $id);
+            $category = $result->response;
 
-            foreach ($categories as $key => $value) {
-                $result = FunVideoLib::getByCategoryIDLimit($api, $value->ID, 3);
-                $videos = $result->response;
-                if(count($videos) > 0) $value->videos = $videos;
-            }
+            $paths = array(
+                new Path(FALSE, 'หน้าหลัก', $dir),
+                new Path(FALSE, "คลังวิดีโอ - " . App::$name, Nav::getURL($dir, App::$pageVideoLibrary)),
+                new Path(TRUE, "เพลยลิสต์ - " . $category->title)
+            );
 
-            $result = FunVideoLib::getLatestLimit($api, 3);
-            $latest = $result->response; 
+            $result = FunVideoLib::getByCategoryID($api);
+            $videos = $result->response; 
         }else{
-            $categories = array();
-            $latest = array();
+            $category = NULL;
+            $videos = array();
         }
 
-        Console::log('categories', $categories);
-        Console::log('latest', $latest);
+        Console::log('category', $category);
+        Console::log('videos', $videos);
 
-        Header::initHeader($dir, "คลังวิดีโอ - " . App::$name); 
-        VideoLibraryView::initView($dir, $sess, $paths, $latest, $categories, $isAllowed);
+        Header::initHeader($dir, "เพลย์เลิสต์ - " . $category->title); 
+        VideoPlaylistView::initView($dir, $sess, $paths, $category, $videos, $isAllowed);
         Footer::initFooter($dir); 
     }else{
         Nav::gotoHome($dir);

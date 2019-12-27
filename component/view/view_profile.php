@@ -96,7 +96,7 @@
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <input name="fname" id="fname" type="text" class="form-control" placeholder="กรอกชื่อจริง ของคุณ" value="<?php echo $user->fname ?>">
+                                                                    <input name="fname" id="fname" type="text" class="form-control" placeholder="กรอกชื่อจริง ของคุณ" value="<?php if(isset($user->fname))echo $user->fname ?>">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -107,7 +107,7 @@
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <input name="lname" id="lname" type="text" class="form-control" placeholder="กรอกนามสกุล ของคุณ" value="<?php echo $user->lname ?>">
+                                                                    <input name="lname" id="lname" type="text" class="form-control" placeholder="กรอกนามสกุล ของคุณ" value="<?php if(isset($user->lname))echo $user->lname ?>">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -119,7 +119,7 @@
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <input name="bdate" id="bdate" type="hidden" class="form-control flatpickr-input" data-toggle="flatpickr" value="<?php echo $user->bdate ?>">
+                                                                    <input name="bdate" id="bdate" type="hidden" class="form-control flatpickr-input" data-toggle="flatpickr" value="<?php if(isset($user->bdate))echo $user->bdate ?>">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -167,7 +167,7 @@
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <input name="address" id="address"  type="text" required="" class="form-control" placeholder="Your address" value="<?php echo $user->address ?>">
+                                                                    <input name="address" id="address"  type="text" required="" class="form-control" placeholder="Your address" value="<?php if(isset($user->address))echo $user->address ?>">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -179,7 +179,7 @@
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                <input name="phone" id="phone" type="text" class="form-control" placeholder="123-456-7890" data-mask="000-000-0000" autocomplete="off" maxlength="12" value="<?php echo $user->phone ?>">
+                                                                <input name="phone" id="phone" type="text" class="form-control" placeholder="123-456-7890" data-mask="000-000-0000" autocomplete="off" maxlength="12" value="<?php if(isset($user->phone))echo $user->phone ?>">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -190,7 +190,7 @@
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <input name="facebookURL" id="facebook" type="url" class="form-control" placeholder="กรอกชื่อ หรือ URL Facebook ของคุณ" value="<?php echo $user->facebookURL ?>">
+                                                                    <input name="facebookURL" id="facebook" type="url" class="form-control" placeholder="กรอกชื่อ หรือ URL Facebook ของคุณ" value="<?php if(isset($user->facebookURL))echo $user->facebookURL ?>">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -201,7 +201,7 @@
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <input name="lineID" id="lineid" type="text" class="form-control" placeholder="กรอก id ไลน์ ของคุณ" value="<?php echo $user->lineID ?>">
+                                                                    <input name="lineID" id="lineid" type="text" class="form-control" placeholder="กรอก id ไลน์ ของคุณ" value="<?php if(isset($user->lineID))echo $user->lineID ?>">
                                                                 </div>
                                                             </div>
                                                         </div>

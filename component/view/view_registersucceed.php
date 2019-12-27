@@ -1,6 +1,6 @@
 <?php
     class RegisterSucceedView{
-        public static function initView($dir){
+        public static function initView($dir, $sess){
             $auth = $sess->getAuth();
 ?>
            <body class="registersucceed">

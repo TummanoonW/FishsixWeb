@@ -13,11 +13,11 @@
                     <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px">
                         <div class="text-center mt-5 mb-1">
                             <div class="avatar avatar-lg">
-                                <img src="<?php Asset::embedIcon($dir, Asset::$iconURL) ?>" class="avatar-img rounded-circle" alt="Fishsix" />
+                                <a href="<?php Nav::echoHome($dir) ?>"><img src="<?php Asset::embedIcon($dir, Asset::$iconURL) ?>" class="avatar-img rounded-circle" alt="Fishsix" /></a>
                             </div>
                         </div>
                         <div class="d-flex justify-content-center mb-5 navbar-light">
-                            <a href="student-dashboard.html" class="navbar-brand m-0"><?php echo App::$name ?></a>
+                            <a href="<?php Nav::echoHome($dir) ?>" class="navbar-brand m-0"><?php echo App::$name ?></a>
                         </div>
                         <div class="card navbar-shadow">
                             <div class="card-header text-center">

@@ -14,7 +14,7 @@
 
 
     Header::initHeader($dir, "สมัครสมาชิกสำเร็จ"); 
-    RegisterSucceedView::initView($dir);
+    RegisterSucceedView::initView($dir, $sess);
     Footer::initFooter($dir); 
     
 

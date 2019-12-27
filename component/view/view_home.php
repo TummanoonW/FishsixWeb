@@ -1,7 +1,6 @@
 <?php
     class HomeView{
         public static function initView($dir, $sess, $recommended_courses, $all_courses){
-            $sess = new Sess();
             $auth = $sess->getAuth();
 ?>
             <body class=" layout-fluid">
