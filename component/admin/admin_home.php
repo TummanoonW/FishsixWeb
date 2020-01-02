@@ -67,6 +67,14 @@
                                                 </div>
                                             </a>
                                         </div>
+                                        <div class="col-md-3 col-sm-4 pb-3">
+                                            <a href="<?php Nav::echoURL($dir, App::$pageAdminManageVideos) ?>" class="btn btn-primary w-100 h-100">
+                                                <div class="pb-2 pt-2">
+                                                    <i class="fab fa-youtube"></i>
+                                                    <div class="mt-1">จัดการคลังวิดีโอ</div>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
                                     <hr>
                                     <h3>การค้าขาย</h3>

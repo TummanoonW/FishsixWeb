@@ -20,9 +20,7 @@
         if($sess->checkUserAdmin() || $sess->checkUserTeacher()){ 
             $isAllowed = TRUE;
         }else{
-            $result = FunOwnership::countByOwnerID($api, $auth->ID);
-            if($result->response > 0) $isAllowed = FALSE;
-            else $isAllowed = TRUE;
+            $isAllowed = ($auth->unlockVidLib == TRUE);
         }
 
         if($isAllowed){
@@ -32,10 +30,10 @@
             $paths = array(
                 new Path(FALSE, 'หน้าหลัก', $dir),
                 new Path(FALSE, "คลังวิดีโอ - " . App::$name, Nav::getURL($dir, App::$pageVideoLibrary)),
-                new Path(TRUE, "เพลยลิสต์ - " . $category->title)
+                new Path(TRUE, "เพลยลิสต์ - " . $category->title, '')
             );
 
-            $result = FunVideoLib::getByCategoryID($api);
+            $result = FunVideoLib::getByCategoryID($api, $id);
             $videos = $result->response; 
         }else{
             $category = NULL;

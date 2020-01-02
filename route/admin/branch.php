@@ -31,7 +31,6 @@
 
                     $result = $file->upload('thumbnail', $option);
                     if($result->success) $form->thumbnail = $result->response->downloadURL;
-                    else $form->thumbnail = '';
                 }
                 if($form->thumbnail == '') unset($form->thumbnail);
 
@@ -49,7 +48,6 @@
 
                     $result = $file->upload('map', $option);
                     if($result->success) $form->map = $result->response->downloadURL;
-                    else $form->map = '';
                 }
                 if($form->map == '') unset($form->map);
 

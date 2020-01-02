@@ -16,7 +16,7 @@
                 <div class="mdk-header-layout js-mdk-header-layout">
 
                     <!-- Header -->
-                    <?php Toolbar::initToolbar($dir, $query->search) ?>
+                    <?php Toolbar::initToolbar($dir, $query->search, $sess) ?>
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->

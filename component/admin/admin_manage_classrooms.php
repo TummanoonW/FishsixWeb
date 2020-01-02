@@ -53,13 +53,13 @@
                                                     <select name="branch" id="branches" class="form-control custom-select w-auto" onchange="searchBranch(this)">
                                                         <option value="">ทุกสาขา</option>
                                                         <?php foreach ($branches as $key => $b) { ?>
-                                                            <option value="<?php echo $b->ID ?>" <?php if($filter->courseBranchID == $b->ID) echo 'selected'; ?>><?php if($b->branch != NULL) echo $b->branch->title ?></option>
+                                                            <option value="<?php echo $b->ID ?>" <?php if(isset($filter->courseBranchID)) if($filter->courseBranchID == $b->ID) echo 'selected'; ?>><?php if($b->branch != NULL) if(isset($b->branch)) echo $b->branch->title ?></option>
                                                         <?php } ?>
                                                     </select>
                                                     <select name="class" id="classes" class="form-control custom-select ml-2 w-auto" onchange="searchClass(this)">
                                                         <option value="">ทุกรอบเรียน</option>
                                                         <?php foreach ($classes as $key => $c) { ?>
-                                                            <option value="<?php echo $c->ID ?>" <?php if($filter->classID == $c->ID) echo 'selected'; ?>><?php self::echoTimeRange($c) ?></option>
+                                                            <option value="<?php echo $c->ID ?>" <?php if(isset($filter->classID)) if($filter->classID == $c->ID) echo 'selected'; ?>><?php self::echoTimeRange($c) ?></option>
                                                         <?php } ?>
                                                     </select>
                                                 </div>

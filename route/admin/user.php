@@ -30,7 +30,6 @@
                     );
                     $result = $file->upload('profile_pic', $option);
                     if($result->success) $form->profile_pic = $result->response->downloadURL;
-                    else $form->profile_pic = '';
                 }
 
                 if(isset($form->ID)){

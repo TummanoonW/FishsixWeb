@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <div class="card-footer text-center">
-                    <a href="<?php Nav::echoURL($dir, App::$pageAdminManageCategoriesCourses) ?>" class="btn btn-white btn-sm float-left"><i class="material-icons btn__icon--left">playlist_add_check</i> ดูคอร์สที่เกี่ยวข้อง <span class="badge badge-dark ml-2"><?php echo '0'; ?></span></a>
+                    <!--<a href="<?php Nav::echoURL($dir, App::$pageAdminManageCategoriesCourses) ?>" class="btn btn-white btn-sm float-left"><i class="material-icons btn__icon--left">playlist_add_check</i> ดูคอร์สที่เกี่ยวข้อง <span class="badge badge-dark ml-2"><?php echo '0'; ?></span></a>-->
                     <a class="btn btn-primary btn-sm float-right" href="<?php Nav::echoURL($dir, App::$pageAdminAddCategories . "?id=$id") ?>"><i class="material-icons btn__icon--left">edit</i>Edit</a>
                     <button onclick="confirmDelete('<?php Nav::echoURL($dir, App::$routeAdminCategory . '?m=delete&id=' . $id) ?>');" class="btn btn-default btn-sm float-right" style="margin-right: 8px"><i class="material-icons btn__icon--left">delete_forever</i> ลบ </button>
                     <div class="clearfix"></div>

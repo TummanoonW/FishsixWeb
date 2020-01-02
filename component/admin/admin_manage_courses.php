@@ -205,7 +205,7 @@
                             </div>
                             <div class="text-center">
                                 <a href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditor . "?id=$id") ?>" class="btn btn-primary btn-sm float-right"><i class="material-icons btn__icon--left">edit</i>แก้ไข</a>
-                                <button onclick="return confirmDelete('<?php echo App::$routeAdminCourse . '?m=delete&id=' . $id ?>');" class="btn btn-default btn-sm float-right" style="margin-right:8px;" ><i class="material-icons btn__icon--left">delete_forever</i>ลบ</button>
+                                <button onclick="return confirmDelete('<?php Nav::echoURL($dir, App::$routeAdminCourse . '?m=delete&id=' . $id) ?>');" class="btn btn-default btn-sm float-right" style="margin-right:8px;" ><i class="material-icons btn__icon--left">delete_forever</i>ลบ</button>
                             </div>
                         </div>
                         <div class="card__options dropdown right-0 pr-2">
@@ -216,7 +216,7 @@
                                 <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageAdminCourseEditor . "?id=$id") ?>">แก้ไขคอร์ส</a>
                                 <a class="dropdown-item" href="#">ดูคอร์ส</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item text-danger" href="#" onclick="return confirmDelete('<?php echo App::$routeAdminCourse . '?m=delete&id=' . $id ?>');">ลบคอร์ส</a>
+                                <a class="dropdown-item text-danger" href="#" onclick="return confirmDelete('<?php Nav::echoURL($dir, App::$routeAdminCourse . '?m=delete&id=' . $id) ?>');">ลบคอร์ส</a>
                             </div>
                         </div>
                     </div>

@@ -174,9 +174,9 @@
                                                 <div class="card-body">
                                                     <label class="mb-2"><h5 class="card-title">ภาพตัวอย่าง</h5></label> 
                                                     <div class="custom-file" style="width: auto;">
-                                                        <input type="file" id="cThumbnail" class="custom-file-input" accept="image/*" onchange="uploadToPicture(this, 720, 480, '#cThumb', '#cThumbnail2')">
+                                                        <input type="file" id="cThumbnail" class="custom-file-input" accept="image/*" onchange="uploadToPicture(this, 768, 432, '#cThumb', '#cThumbnail2')">
                                                         <label for="cThumbnail" class="custom-file-label">อัพโหลดไฟล์</label>
-                                                        <small class="text-secondary">ขนาดที่แนะนำ: 720x480 px</small>
+                                                        <small class="text-secondary">ขนาดที่แนะนำ: 768x432 px</small>
                                                     </div>
                                                 </div>
                                                 <input name="thumbnail" id="cThumbnail2" style="visibility: collapse; height: 1px;" value="">

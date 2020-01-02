@@ -1,7 +1,7 @@
 <?php
     class FunForum{
         public static function getFiltered($api, $filter){
-            $url = $api->getURL(App::$apiForum, 'getFiltered', $filter);
+            $url = $api->getURL(App::$apiForum, 'filtered', $filter);
             $result = $api->get($url);
 
             return $result;

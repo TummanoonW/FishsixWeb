@@ -58,7 +58,7 @@
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <textarea name="content" id="content" rows="4" type="text" class="form-control" placeholder="กรอกคำอธิบาย" value="<?php if(!$isNew) echo $video->content ?>"></textarea>
+                                                                    <textarea name="content" id="content" rows="4" type="text" class="form-control" placeholder="กรอกคำอธิบาย"><?php if(!$isNew) echo $video->content ?></textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -102,7 +102,7 @@
                                                             <div class="media align-items-center">
                                                                 <div class="media-left">
                                                                     <button type="submit" class="btn btn-success">บันทึก</button>
-                                                                    <a onclick="confirmCancel('<?php Nav::echoURL($dir, App::$pageAdminManageVideo) ?>')" class="btn btn-danger text-light ml-2">ยกเลิก</a>
+                                                                    <a onclick="confirmCancel('<?php Nav::echoURL($dir, App::$pageAdminManageVideos) ?>')" class="btn btn-danger text-light ml-2">ยกเลิก</a>
                                                                 </div>
                                                             </div>
                                                         </div>

@@ -10,7 +10,7 @@
     $sess = new Sess(); $auth = $sess->getAuth(); 
     $apiKey = $sess->getAPIKey(); 
 
-    $api = new API($apiKey);
+    $api = new API('any');
     $io = new IO(); 
 
     $paths = array(
@@ -21,7 +21,7 @@
 
     if($sess->checkUserAdmin()){
 
-        if(!isset($io->get->type)) $search = (object)array(
+        if(!isset($io->get->category)) $search = (object)array(
             'category' => '',
             'query' => '',
             'desc' => FALSE,
@@ -61,6 +61,9 @@
 
         $result = FunCategory::get($api);
         $categories = $result->response;
+
+        Console::log('videos', $videos);
+        Console::log('categories', $categories);
 
         Header::initHeader($dir, "แอดมิน - จัดการคลังวิดีโอ"); 
         AdminManageVideosView::initView($dir, $sess, $paths, $pages, $videos, $categories, $count, $search);

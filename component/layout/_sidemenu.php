@@ -14,23 +14,24 @@
         } 
 
         public static function initSideMenu($dir, $sess){
+            $auth = $sess->getAuth();
 ?>
             <div class="mdk-drawer js-mdk-drawer" id="default-drawer">
                 <div class="mdk-drawer__content ">
                     <div class="sidebar sidebar-left sidebar-dark bg-dark o-hidden" data-perfect-scrollbar>
                         <div class="sidebar-p-y">
 
-                            <?php if($sess->checkUserExisted()){ ?>
+                            <?php if($auth != NULL){ ?>
                                 <div class="sidebar-heading">เมนูของฉัน</div>
                                 <ul class="sidebar-menu sm-active-button-bg">
-                                    <?php if($sess->checkUserAdmin()){ ?>
+                                    <?php if($auth->type == 'admin'){ ?>
                                         <li class="sidebar-menu-item">
                                             <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageAdminPanel); ?>">
                                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">apps</i> ระบบจัดการ
                                             </a>
                                         </li>
                                     <?php } 
-                                        if($sess->checkUserTeacher()){ 
+                                        if($auth->type == 'teacher'){ 
                                     ?>
                                         <li class="sidebar-menu-item">
                                             <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageTeacherPanel); ?>">
@@ -58,6 +59,14 @@
                                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">schedule</i> ตารางเรียน
                                         </a>
                                     </li> 
+
+                                    <?php if($auth->type == 'admin' || $auth->type == 'teacher' || $auth->unlockVidLib){ ?>
+                                        <li class="sidebar-menu-item">
+                                            <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageVideoLibrary); ?>">
+                                                <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">playlist_play</i> คลังวิดีโอ
+                                            </a>
+                                        </li> 
+                                    <?php } ?>
                                 </ul>
                             <?php } ?>
 
@@ -79,7 +88,7 @@
                             <!-- Account menu -->
                             <div class="sidebar-heading">บัญชี</div>
                             <ul class="sidebar-menu">
-                                <?php if($sess->checkUserExisted()){ ?>
+                                <?php if($auth != NULL){ ?>
                                     <li class="sidebar-menu-item">
                                         <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageProfile); ?>">
                                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">edit</i> แก้ไขบัญชี

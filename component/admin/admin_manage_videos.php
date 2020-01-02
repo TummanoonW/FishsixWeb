@@ -46,10 +46,10 @@
                                     <div class="card card-body border-left-3 border-left-primary navbar-shadow mb-4">
                                         <form action="#">
                                             <div class="d-flex flex-wrap2 align-items-center mb-headings">
-                                                <select name="type" id="custom-select" class="form-control custom-select" style="width: 120px" onchange="searchCategory(this)">
+                                                <select name="category" id="custom-select" class="form-control custom-select" style="width: 120px" onchange="searchCategory(this)">
                                                     <option value="">ทุกหมวดหมู่</option>
                                                     <?php
-                                                        foreach ($categories as $keyauth) {
+                                                        foreach ($categories as $key => $value) {
                                                             ?>
                                                                 <option value="<?php $value->ID ?>" <?php if($search->category == $value->ID) echo 'selected' ?>><?php echo $value->title ?></option>
                                                             <?php
@@ -82,7 +82,7 @@
                                     <?php if(count($videos) == 0)Alert::initAlert($dir, "ขออภัย! คุณไม่มีรายการวิดีโอให้แสดง") ?>
                                     <!-- User Card -->
                                     <div class="row">
-                                        <?php self::initCards($dir, $videos) ?>
+                                        <?php self::initCards($dir, $videos, $categories) ?>
                                     </div>
                                     <!-- Pagination -->
                                     <?php Pagination::initPagination($dir, $pages) ?>
@@ -103,7 +103,7 @@
 <?php
         }
 
-        private static function initCards($dir, $videos){
+        private static function initCards($dir, $videos, $categories){
             foreach ($videos as $key => $value) {
                 $id = $value->ID;
 ?>
@@ -111,12 +111,12 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column flex-sm-row">
-                                <a href="<?php Nav::echoURL($dir, App::$pageAdminVideoEditor . "?id=$id") ?>" class="avatar avatar-lg avatar-4by3 mb-3 w-xs-plus-down-100 mr-sm-3">
+                                <a href="<?php Nav::echoURL($dir, App::$pageAdminEditVideo . "?id=$id") ?>" class="avatar avatar-lg avatar-4by3 mb-3 w-xs-plus-down-100 mr-sm-3">
                                     <img src="https://i1.ytimg.com/vi/<?php echo $value->youtube_id ?>/mqdefault.jpg" alt="<?php $value->title ?>" class="avatar-img rounded">
                                 </a>
                                 <div class="flex" style="min-width: 200px;">
-                                    <!-- <h5 class="card-title text-base m-0"><a href="<?php Nav::echoURL($dir, App::$pageAdminVideoEditor . "?id=$id") ?>"><strong>Learn Vue.js</strong></a></h5> -->
-                                    <h4 class="card-title mb-1"><a href="<?php Nav::echoURL($dir, App::$pageAdminVideoEditor . "?id=$id") ?>"><?php echo $value->title ?></a></h4>
+                                    <!-- <h5 class="card-title text-base m-0"><a href="<?php Nav::echoURL($dir, App::$pageAdminEditVideo . "?id=$id") ?>"><strong>Learn Vue.js</strong></a></h5> -->
+                                    <h4 class="card-title mb-1"><a href="<?php Nav::echoURL($dir, App::$pageAdminEditVideo . "?id=$id") ?>"><?php echo $value->title ?></a></h4>
                                     <p class="text-black-70"><?php echo $value->content ?></p>
                                 </div>
                             </div>
@@ -128,9 +128,9 @@
                                         <strong>
                                         <?php 
                                             $category = "None";
-                                            foreach ($categories as $key => $value) {
-                                                if($value->categoryID == $value->ID){
-                                                    $category = $value->title;
+                                            foreach ($categories as $key => $value2) {
+                                                if($value->categoryID == $value2->ID){
+                                                    $category = $value2->title;
                                                 }
                                             }
                                             echo $category;
@@ -140,7 +140,7 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <a href="<?php Nav::echoURL($dir, App::$pageAdminVideoEditor . "?id=$id") ?>" class="btn btn-primary btn-sm float-right"><i class="material-icons btn__icon--left">edit</i>แก้ไข</a>
+                                <a href="<?php Nav::echoURL($dir, App::$pageAdminEditVideo . "?id=$id") ?>" class="btn btn-primary btn-sm float-right"><i class="material-icons btn__icon--left">edit</i>แก้ไข</a>
                                 <button onclick="return confirmDelete('<?php echo App::$routeAdminVideoLib . '?m=delete&id=' . $id ?>');" class="btn btn-default btn-sm float-right" style="margin-right:8px;" ><i class="material-icons btn__icon--left">delete_forever</i>ลบ</button>
                             </div>
                         </div>

@@ -3,12 +3,14 @@
         public static function add($api, $form){
             $url = $api->getURL(App::$apiVidLib, 'add', NULL);
             $result = $api->post($url, $form);
+            return $result;
         }
 
         public static function edit($api, $id, $form){
             $query = array('id' => $id);
             $url = $api->getURL(App::$apiVidLib, 'edit', $query);
             $result = $api->post($url, $form);
+            return $result;
         }
 
         public static function getSingle($api, $id){
@@ -42,16 +44,19 @@
         public static function countFiltered($api, $filter){
             $url = $api->getURL(App::$apiVidLib, 'countFiltered', $filter);
             $result = $api->get($url);
+            return $result;
         }
 
         public static function getFiltered($api, $filter){
             $url = $api->getURL(App::$apiVidLib, 'filtered', $filter);
             $result = $api->get($url);
+            return $result;
         }
 
         public static function delete($api, $id){
             $query = array('id' => $id);
             $url = $api->getURL(App::$apiVidLib, 'delete', NULL);
             $result = $api->post($url, $query);
+            return $result;
         }
     }

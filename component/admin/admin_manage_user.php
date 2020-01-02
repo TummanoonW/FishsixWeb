@@ -132,7 +132,7 @@
                                     <img src="<?php Asset::echoIcon($dir, $auth->profile_pic) ?>" alt="<?php echo $auth->username ?>" class="avatar-img rounded-circle">
                                 </a>
                                 <div class="flex min-width">
-                                    <h4 class="card-title mb-1"><a href="<?php Nav::echoURL($dir, App::$pageAdminEditUser . "?id=$id") ?>"><?php echo $auth->username ?></a></h4>
+                                    <h4 class="card-title mb-1"><a href="<?php Nav::echoURL($dir, App::$pageAdminAddUser . "?id=$id") ?>"><?php echo $auth->username ?></a></h4>
                                     <span>ID: <?php echo $id ?></span><br>
                                     <span>อีเมล: <?php echo $auth->email ?></span><br>
                                     <span>ประเภท: <?php echo $auth->type ?></span>
