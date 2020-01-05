@@ -15,9 +15,24 @@
     
     switch($io->method){
         case 'submit':
-     
-            
                 $form = $io->post;
+
+                if($_FILES['thumbnail']['error'] == 0){
+                    $file = new File($dir, 'uploads/forums/thumbnails/');
+                    $option = new FileOption();
+                    $option->set(
+                        TRUE,
+                        TRUE,
+                        TRUE,
+                        'thumb',
+                        1 * 1000 * 1000,
+                        ['jpg', 'jpeg', 'png', 'gif']
+                    );
+
+                    $result = $file->upload('thumbnail', $option);
+                    if($result->success) $form->thumbnail = $result->response->downloadURL;
+                }
+                if($form->thumbnail == '') unset($form->thumbnail);
               
                 if($sess->checkUserExisted()){
                     $form->authorID = $auth->ID;                

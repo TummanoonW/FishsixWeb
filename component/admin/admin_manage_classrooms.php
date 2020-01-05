@@ -190,9 +190,14 @@
         }
 
         private static function echoTimeRange($class){
-            $day = $class->day;
-            $start = $class->startTime;
-            $end = $class->endTime;
+            if(isset($class->day)) $day = $class->day;
+            else $day = "-";
+            
+            if(isset($class->startTime))$start = $class->startTime;
+            else $start = "-:-";
+
+            if(isset($class->endTime))$end = $class->endTime;
+            else $end = "-:-";
 
             $x = explode(':', $start);
             $y = explode(':', $end);

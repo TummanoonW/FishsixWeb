@@ -141,7 +141,7 @@
                             </div>
                             <div class="text-center">
                                 <a href="<?php Nav::echoURL($dir, App::$pageAdminEditVideo . "?id=$id") ?>" class="btn btn-primary btn-sm float-right"><i class="material-icons btn__icon--left">edit</i>แก้ไข</a>
-                                <button onclick="return confirmDelete('<?php echo App::$routeAdminVideoLib . '?m=delete&id=' . $id ?>');" class="btn btn-default btn-sm float-right" style="margin-right:8px;" ><i class="material-icons btn__icon--left">delete_forever</i>ลบ</button>
+                                <button onclick="return confirmDelete('<?php Nav::echoURL($dir, App::$routeAdminVideoLib . '?m=delete&id=' . $id) ?>');" class="btn btn-default btn-sm float-right" style="margin-right:8px;" ><i class="material-icons btn__icon--left">delete_forever</i>ลบ</button>
                             </div>
                         </div>
                     </div>

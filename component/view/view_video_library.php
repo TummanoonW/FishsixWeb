@@ -80,9 +80,9 @@
                        <a href="https://www.youtube.com/watch?v=<?php echo $value->youtube_id ?>">
                             <img id="box1" src="https://i1.ytimg.com/vi/<?php echo $value->youtube_id ?>/mqdefault.jpg" width="280" height="150" />
                             <span class="text-content">
-                                <h2 class="text-light">
+                                <h4 class="text-light">
                                   <?php echo $value->title?>
-                                </h2>
+                                </h4>
                                 <i class="far fa-play-circle" style="font-size: 48px"></i>
                                 <br><br>
                                 <i class="fas fa-chevron-down" onclick="openNav()" aria-hidden="true"></i>

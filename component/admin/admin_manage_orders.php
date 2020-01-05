@@ -1,6 +1,14 @@
 <?php
     class AdminManageOrdersView{
-        public static function initView($dir, $sess, $paths, $pages, $orders){
+        public static function initView($dir, $sess, $paths, $pages, $orders, $status, $since, $desc){
+            $search = array(
+                'status' => $status,
+                'since' => $since,
+                'desc' => $desc
+            );
+            $urls = array(
+                'pageAdminManageOrders' => Nav::getURL($dir, App::$pageAdminManageOrders)
+            );
             ?>
                 <body class=" layout-fluid">
                 <!-- Pre Loader -->
@@ -31,6 +39,41 @@
                                     </div>
 
                                     <?php if(count($orders) > 0){ ?>
+                                        <div class="card card-body border-left-3 border-left-primary navbar-shadow mb-4">
+                                            <form action="#">
+                                                <div class="form-inline pl-3 pb-3">
+                                                    <div class="form-group mr-2">
+                                                        <select id="published01" class="form-control custom-select" style="width: 180px" onchange="searchStatus(this)">
+                                                            <option value="">ทุกสถานะ</option>
+                                                            <option value="pending" <?php if($status == 'confirm') echo 'selected' ?>>ยืนยัน</option>
+                                                            <option value="confirmed" <?php if($status == 'pending') echo 'selected' ?>>รอการตรวจสอบ</option>
+                                                            <option value="rejected" <?php if($status == 'rejected') echo 'selected' ?>>ปฏิเสธ</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="search-form search-form--light">
+                                                        <input name="date" id="date" type="date" class="form-control" placeholder="YYYY-MM-DD" id="searchSample02" value="<?php echo $since ?>">
+                                                        <button onclick="searchDate()" class="btn" type="button" role="button"><i class="material-icons">search</i></button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="d-flex flex-column flex-sm-row align-items-sm-center" style="white-space: nowrap">
+                                                    <small class="flex text-muted text-uppercase mr-3 mb-2 mb-sm-0">แสดงผลลัพธ์ <?php echo count($orders) ?> จาก <?php echo count($orders) ?> รายการ</small>
+                                                    <div class="w-auto ml-sm-auto table d-flex align-items-center mb-0">
+                                                        <small class="text-muted text-uppercase mr-3 d-none d-sm-block">จัดเรียงโดย</small>
+                                                        <?php 
+                                                              if($desc){ 
+                                                        ?>
+                                                                <a href="#" onclick="searchDesc(false)" class="sort small text-uppercase ml-2">ล่าสุด - เก่าสุด</a>
+                                                        <?php }else{ 
+                                                        ?>
+                                                                <a href="#" onclick="searchDesc(true)" class="sort small text-uppercase ml-2">เก่าสุด - ล่าสุด</a>
+                                                        <?php } ?>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+
                                         <div class="card table-responsive" data-toggle="lists" data-lists-values='["ID", "owner", "amount", "status", "date"]'>
                                             <table class="table mb-0">
                                                 <thead class="thead-light">
@@ -73,17 +116,14 @@
                         </div>
                     </div>
                 </div> 
-                <?php Script::customScript($dir, 'common.js') ?>  
-                <?php Script::initScript($dir) ?> 
 
-                <script src="<?php Nav::echoURL($dir, 'assets/js/lightgallery.min.js')?>"></script>
-                <script type="text/javascript">
-                    lightGallery(
-                        document.getElementById('lightgallery'),
-                        {
-                            thumbnail:true
-                        }); 
-                </script>
+                <script id="search"><?php echo json_encode($search) ?></script>
+                <script id="urls"><?php echo json_encode($urls) ?></script>
+
+                <?php Script::customScript($dir, 'common.js') ?>  
+                <?php Script::customScript($dir, 'admin-manage-orders.js') ?>
+                <?php Script::initScript($dir) ?> 
+                
 
 <?php
         }
@@ -109,7 +149,7 @@
                         </td>
                         <td>
                             <div class="d-flex align-items-center">
-                                <a href="#" class="text-body small"><span class="owner"><? echo $fname . " " . $lname ?></span></a>
+                                <a href="<?php Nav::echoURL($dir, App::$pageAdminViewOrder . "?id=$id") ?>" class="text-body small"><span class="owner"><? echo $fname . " " . $lname ?></span></a>
                             </div>
                         </td>
                         <td class="text-center">

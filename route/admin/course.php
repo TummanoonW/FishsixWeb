@@ -173,8 +173,8 @@
         $result = new Result();
 
         $file = $path . CustomDate::timeStamp() . '.png';
-        $uri = '/' . explode('/', $_SERVER['REQUEST_URI'])[1] . '/';
-        $url = "http" . (($_SERVER['SERVER_PORT'] == 443) ? "s" : "") . "://" . $_SERVER['HTTP_HOST'] . $uri;
+        //$uri = '/' . explode('/', $_SERVER['REQUEST_URI'])[1] . '/';
+        $url = "http" . (($_SERVER['SERVER_PORT'] == 443) ? "s" : "") . "://" . $_SERVER['HTTP_HOST'] . "/";
         $downloadURL = $url . $file;
 
 
