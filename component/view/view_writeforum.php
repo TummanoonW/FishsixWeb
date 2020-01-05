@@ -60,6 +60,14 @@
                                                 <label for="exampleInputTitle">แท็ก (ความยาวไม่เกิน 200 ตัวอักษร)</label>
                                                 <input value="" type="text" name="tags" class="form-control" id="exampleInputTitle" placeholder="ใส่แท็กให้กับบทความ" maxlength="200" >
                                                 </div>
+                                                <div class="custom-file">
+                                         
+                                                        <input type="file" class="custom-file-input" id="customFile" name="thumbnail">
+                                                        <label class="custom-file-label" for="customFile">อัพโหลดไฟล์รูปภาพปก</label>
+                                                </div>
+                                                <div class="pt-3">
+
+                                                </div>
                                                 <button type="submit" class="btn btn-success">โพสต์บทความ</button>
                                             </form>
                                         </div>

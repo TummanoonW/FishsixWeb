@@ -55,6 +55,17 @@
                                 <ul class="list-group list-group-fit">
                                    
                                     <?php if($top != null) foreach($top as $key => $topic){?>
+                                        <?php 
+                                            $result = FunAuth::getSingleFull($api, $topic->authorID); 
+                                            $topicUser = $result->response; 
+                                            Console::log("Auth", $topicUser);
+                                            $name = null;
+                                            $pic = null;
+                                            if($topicUser != null){
+                                            $name = $topicUser->auth->username;
+                                            $pic = $topicUser->auth->profile_pic;       
+                                            }
+                                        ?>
                                     <li class="list-group-item forum-thread">
                                         <div class="media align-items-center">
                                             <div class="media-left">
@@ -63,25 +74,19 @@
                                                         <i class="material-icons">description</i>
                                                     </a>
                                                     <a href="fixed-student-profile.html" class="forum-thread-user">
-                                                        <img src="assets/images/people/50/guy-1.jpg" alt="" width="20" class="rounded-circle">
+                                                        <img src="<?php Asset::echoIcon($dir, $pic)  ?>" alt="" width="20" class="rounded-circle">
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="media-body">
                                                 <div class="d-flex align-items-center">
-                                                     <?php 
-                                                     $result = FunAuth::getUserByAuthID($api, $topic->authorID); 
-                                                     $topicUser = $result->response; 
-                                                     if($topicUser != null){
-                                                     $name = $topicUser->fname;
-                                                    }
-                                                     ?>
-                                                    <a href="fixed-student-profile.html" class="text-body"><strong> <?php echo $name; ?></strong></a>
+                                                 
+                                                    <a href="fixed-student-profile.html" class="text-body"><strong> <?php if($name != null) echo $name; ?></strong></a>
                                                     <medium class="ml-auto text-muted"><?php echo $topic->date; ?></medium>
                                                     <i class="material-icons pl-3 text-muted">arrow_drop_up</i></a>
-                                                    <div class="media-right text-muted"> 500 </div>
-                                                    <i class="material-icons pl-3 text-muted">arrow_drop_down0</i></a>
-                                                    <div class="media-right text-muted"> 500 </div>
+                                                    <div class="media-right text-muted"><?php echo $topic->upvote; ?></div>
+                                                    <i class="material-icons pl-3 text-muted">arrow_drop_down</i></a>
+                                                    <div class="media-right text-muted"><?php echo $topic->downvote; ?></div>
                                                 </div>
                                                 <a class="text-black-70" href="fixed-student-forum-thread.html"><?php echo $topic->title; ?></a>
                                             </div>
@@ -110,6 +115,17 @@
                                 <ul class="list-group list-group-fit">
 
                                 <?php foreach($forumAll as $key => $forum) {?>
+                                    <?php 
+
+                                     $result = FunAuth::getSingleFull($api, $forum->authorID); 
+                                     $topicUser = $result->response; 
+                                     $name = null;
+                                     $pic = null;
+                                     if($topicUser != null){
+                                     $name = $topicUser->auth->username;
+                                     $pic = $topicUser->auth->profile_pic;      
+                                    }    
+                                    ?>
                                     <li class="list-group-item forum-thread">
                                         <div class="media align-items-center">
                                             <div class="media-left">
@@ -118,20 +134,20 @@
                                                         <i class="material-icons">description</i>
                                                     </a>
                                                     <a href="fixed-student-profile.html" class="forum-thread-user">
-                                                        <img src="assets/images/256_rsz_nicolas-horn-689011-unsplash.jpg" alt="" width="20" class="rounded-circle">
+                                                        <img src=" <?php Asset::echoIcon($dir, $pic)  ?>" alt="" width="20" class="rounded-circle">
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="media-body">
                                                 <div class="d-flex align-items-center">
-                                                    <a href="fixed-student-profile.html" class="text-body"><strong>สุรัฐ สุวรรณสิทธิ์</strong></a>
-                                                    <medium class="ml-auto text-muted">24/12/2562</medium>
+                                                    <a href="fixed-student-profile.html" class="text-body"><strong><?php if($name != null) echo $name; ?></strong></a>
+                                                    <medium class="ml-auto text-muted"><?php echo $forum->date; ?></medium>
                                                     <i class="material-icons pl-3 text-muted">arrow_drop_up</i></a>
-                                                    <div class="media-right text-muted"> 500 </div>
+                                                    <div class="media-right text-muted"><?php echo $topic->upvote; ?></div>
                                                     <i class="material-icons pl-3 text-muted">arrow_drop_down</i></a>
-                                                    <div class="media-right text-muted"> 500 </div>
+                                                    <div class="media-right text-muted"><?php echo $topic->downvote; ?></div>
                                                 </div>
-                                                <a class="text-black-70" href="fixed-student-forum-thread.html">เทสเทสเทส</a>
+                                                <a class="text-black-70" href="fixed-student-forum-thread.html"><?php echo $forum->title; ?></a>
                                             </div>
                                         </div>
                                     </li>
@@ -152,7 +168,7 @@
                                             <span>Prev</span>
                                         </a>
                                     </li>
-
+                                    
                                     <li class="page-item active">
                                         <a class="page-link" href="#" aria-label="1">
                                             <span>1</span>
