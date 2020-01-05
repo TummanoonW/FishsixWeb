@@ -5,6 +5,13 @@
 ?>
             <body class=" layout-fluid">
 
+            <style>
+                .thumb{
+                    background: black; 
+                    object-fit: cover;
+                }
+            </style>
+
                 <link rel="stylesheet" href="<?php Nav::echoURL($dir, 'assets/css/theme.css') ?>" type="text/css" />
                 <script type="text/javascript" src="<?php Nav::echoURL($dir, 'assets/js/frontpage.js') ?>"></script>
 
@@ -81,9 +88,9 @@
                         <div class="card-header" style="padding: 0; height: 16vh;">
                             <a href="#" class="mb-3 w-xs-plus-down-100 mr-sm-3">
                                 <?php if($value->thumbnail == ''){ ?>
-                                        <img src="<?php Asset::echoThumb($dir, $value->thumbnail) ?>" alt="<?php echo $value->title ?>" class="w-100 h-100" style="background: black;">
+                                        <img src="<?php Asset::echoThumb($dir, $value->thumbnail) ?>" alt="<?php echo $value->title ?>" class="w-100 h-100 thumb">
                                 <?php }else{ ?>
-                                        <img src="<?php echo $value->thumbnail ?>" alt="<?php echo $value->title ?>" class="w-100 h-100" style="background: black;">
+                                        <img src="<?php echo $value->thumbnail ?>" alt="<?php echo $value->title ?>" class="w-100 h-100 thumb">
                                 <?php } ?>
                             </a>
                         </div>

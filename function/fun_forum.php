@@ -19,7 +19,7 @@
         public static function getTop($api, $limit){
             $query = array('limit' => $limit);
             $url = $api->getURL(App::$apiForum, 'getTop', $query);
-            echo $url;
+           
             $result = $api->get($url);
             return $result;
         }
