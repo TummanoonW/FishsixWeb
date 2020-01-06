@@ -5,7 +5,7 @@
     Includer::include_proto($dir); 
     Includer::include_view($dir, 'view_forumsingle.php');
     Includer::include_fun($dir, 'fun_forum.php');
-  
+    Includer::include_fun($dir, 'fun_auth.php');
 
  
    
@@ -21,9 +21,14 @@
     );
 
     if($sess->checkUserExisted()){
+       $id= $io->id;
         
+
+        $result = FunForum::getSingle($api, $id);
+        $forumSingle = $result->response;
+       Console::log("asd",$forumSingle);
         Header::initHeader($dir,"รายละเอียดบทความ"); 
-        ForumSingleView::initView($dir, $sess, $paths, $api );
+        ForumSingleView::initView($dir, $sess, $paths, $api, $forumSingle);
         Footer::initFooter($dir); 
 
     }else{

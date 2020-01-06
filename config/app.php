@@ -50,6 +50,7 @@
         public static $pageViewTeacher = "viewteacher.php";
         public static $pageHelpCenter = "help-center.php";
         public static $pageForums = "forums.php";
+        public static $pageForumSingle = "forumsingle.php";
         public static $pageError = "error.php";
         public static $pageReview = "review.php";
         public static $pageVideoLibrary = "video-library.php";

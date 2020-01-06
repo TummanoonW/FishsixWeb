@@ -6,7 +6,7 @@
     Includer::include_view($dir, 'view_forum.php');
     Includer::include_fun($dir, 'fun_forum.php');
     Includer::include_fun($dir, 'fun_auth.php');
-
+    Includer::include_view($dir, 'view_forumsingle.php');
  
    
     $sess = new Sess(); 
