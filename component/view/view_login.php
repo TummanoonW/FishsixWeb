@@ -74,8 +74,8 @@
                 <?php Script::initScript($dir) ?>
                 
                 <script id="obj-urls"><?php echo json_encode($urls) ?></script>
-                <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
-                <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-auth.js"></script>
+                <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+                <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
                 <?php Script::customScript($dir, 'init-firebase.js') ?>
                 <?php Script::customScript($dir, 'login.js') ?>
 <?php

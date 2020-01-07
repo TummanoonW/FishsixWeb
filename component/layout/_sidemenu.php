@@ -122,7 +122,7 @@
                                     </a>
                                 </li>
                                 <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageHelpCenter) ?>">
+                                    <a class="sidebar-menu-button" href="#<?php //Nav::echoURL($dir, App::$pageHelpCenter) ?>">
                                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">live_help</i> ขอความช่วยเหลือ
                                     </a>
                                 </li>

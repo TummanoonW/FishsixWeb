@@ -156,7 +156,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php Script::customScript($dir, 'common.js') ?>
                             <?php Sidemenu::initSideMenu($dir, $sess) ?>
                             
                             
@@ -164,6 +163,7 @@
                     </div>
                 </div>
                 <?php Script::initScript($dir) ?>
+                <?php Script::customScript($dir, 'common.js') ?>
                     
 <?php
         }

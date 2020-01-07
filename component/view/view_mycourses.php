@@ -103,7 +103,7 @@
                             <div class="media-body">
                             </div>
                             <div class="media-right">
-                                <a href="<?php Nav::echoURL($dir, App::$pageDashboard . "?id=$id") ?>" class="btn btn-light btn-sm <?php if($item->isExpired) echo "text-muted" ?>">ชม.ที่เหลือ <span class="badge <?php if($item->isExpired) echo 'badge-dark'; else echo 'badge-success'; ?> ml-2"><?php echo $item->credit ?></span></a>
+                                <a href="<?php if($item->isExpired) echo '#'; else Nav::echoURL($dir, App::$pageDashboard . "?id=$id"); ?>" class="btn btn-light btn-sm <?php if($item->isExpired) echo "text-muted" ?>">ชม.ที่เหลือ <span class="badge <?php if($item->isExpired) echo 'badge-dark'; else echo 'badge-success'; ?> ml-2"><?php echo $item->credit ?></span></a>
                             </div>    
                         </div>
                         </div>

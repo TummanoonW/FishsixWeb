@@ -56,14 +56,14 @@
                                    
                                     <?php if($top != null) foreach($top as $key => $topic){?>
                                         <?php 
-                                            $result = FunAuth::getSingleFull($api, $topic->authorID); 
-                                            $topicUser = $result->response; 
+                                            //$result = FunAuth::getSingleFull($api, $topic->authorID); 
+                                            $topicUser = $topic->author; 
                                             Console::log("Auth", $topicUser);
                                             $name = null;
                                             $pic = null;
                                             if($topicUser != null){
-                                            $name = $topicUser->auth->username;
-                                            $pic = $topicUser->auth->profile_pic;       
+                                            $name = $topicUser->username;
+                                            $pic = $topicUser->profile_pic;       
                                             }
                                         ?>
                                     <li class="list-group-item forum-thread">
@@ -116,14 +116,13 @@
 
                                 <?php foreach($forumAll as $key => $forum) {?>
                                     <?php 
-
-                                     $result = FunAuth::getSingleFull($api, $forum->authorID); 
-                                     $topicUser = $result->response; 
+                                     //$result = FunAuth::getSingleFull($api, $forum->authorID); 
+                                     $topicUser = $forum->author; 
                                      $name = null;
                                      $pic = null;
                                      if($topicUser != null){
-                                     $name = $topicUser->auth->username;
-                                     $pic = $topicUser->auth->profile_pic;      
+                                     $name = $topicUser->username;
+                                     $pic = $topicUser->profile_pic;      
                                     }    
                                     ?>
                                     <li class="list-group-item forum-thread">

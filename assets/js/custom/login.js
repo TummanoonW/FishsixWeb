@@ -3,6 +3,7 @@ let urls = JSON.parse(document.querySelector('#obj-urls').innerHTML);
 var provider = new firebase.auth.GoogleAuthProvider();
 
 function popupGoogleSignIn(){
+    console.log('popup');
     firebase.auth().signInWithPopup(provider).then(async function(result) {
         // This gives you a Google Access Token. You can use it to access the Google API.
         var token = result.credential.accessToken;
@@ -31,12 +32,12 @@ function popupGoogleSignIn(){
             }
         };
 
-        window.location.href = urls.pageError + "?result=" + JSON.parse(result);
+        window.location.href = urls.pageError + "?result=" + JSON.stringify(result);
       });
 }
 
 function post(path, params, method='post') {
-
+    console.log('post');
     // The rest of this code assumes you are not using a library.
     // It can be made less wordy if you use one.
     const form = document.createElement('form');

@@ -20,14 +20,13 @@
         new Path(TRUE, 'เขียนบทความ', '')
     );
 
-    if($sess->checkUserExisted()){
+    if($sess->checkUserAdmin() || $sess->checkUserTeacher()){
         $result = FunCategory::get($api);
         $catagory = $result->response;
         Console::log("dasd",$catagory);
         Header::initHeader($dir,"เขียนบทความ"); 
         WriteForumView::initView($dir, $sess, $paths, $api, $catagory);
         Footer::initFooter($dir); 
-
     }else{
         Nav::gotoHome($dir);
     }

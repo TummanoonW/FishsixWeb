@@ -320,9 +320,9 @@
             foreach ($bookings as $key => $c) {
                 ?>
                     <tr>
-                        <td><?php echo self::properDay($c->class->day) ?></td>
-                        <td><?php echo $c->courseBranch->branch->title ?></td>
-                        <td class="pr-0"><?php echo self::properTime($c->class->startTime) . ' - ' . self::properTime($c->class->endTime) ?></td>
+                        <td><?php if(isset($c->class->day))echo self::properDay($c->class->day); else echo '-' ?></td>
+                        <td><?php if(isset($c->courseBranch->branch->title))echo $c->courseBranch->branch->title; else  echo '-' ?></td>
+                        <td class="pr-0"><?php if(isset($c->class->startTime))echo self::properTime($c->class->startTime) . ' - ' . self::properTime($c->class->endTime); else echo '-'; ?></td>
                     </tr>
                 <?php
             }
@@ -332,9 +332,9 @@
             foreach ($classes as $key => $c) {
                 ?>
                     <tr>
-                        <td><?php echo self::properDay($c->day) ?></td>
-                        <td><?php echo $c->seats ?></td>
-                        <td class="pr-0"><?php echo self::properTime($c->startTime) . ' - ' . self::properTime($c->endTime) ?></td>
+                        <td><?php if(isset($c->day))echo self::properDay($c->day) ?></td>
+                        <td><?php if(isset($c->seats))echo $c->seats ?></td>
+                        <td class="pr-0"><?php if(isset($c->startTime))echo self::properTime($c->startTime) . ' - ' . self::properTime($c->endTime) ?></td>
                     </tr>
                 <?php
             }

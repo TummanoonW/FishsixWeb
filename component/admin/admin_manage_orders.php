@@ -55,6 +55,10 @@
                                                         <input name="date" id="date" type="date" class="form-control" placeholder="YYYY-MM-DD" id="searchSample02" value="<?php echo $since ?>">
                                                         <button onclick="searchDate()" class="btn" type="button" role="button"><i class="material-icons">search</i></button>
                                                     </div>
+
+                                                    <div class="flex text-right">
+                                                        <button onclick="exportExcel()" class="btn btn-secondary"><i class="fas fa-download mr-2"></i>ดาวน์โหลดเป็น Excel</button>
+                                                    </div>
                                                 </div>
 
                                                 <div class="d-flex flex-column flex-sm-row align-items-sm-center" style="white-space: nowrap">
@@ -119,6 +123,7 @@
 
                 <script id="search"><?php echo json_encode($search) ?></script>
                 <script id="urls"><?php echo json_encode($urls) ?></script>
+                <script id="orders"><?php echo json_encode($orders) ?></script>
 
                 <?php Script::customScript($dir, 'common.js') ?>  
                 <?php Script::customScript($dir, 'admin-manage-orders.js') ?>
