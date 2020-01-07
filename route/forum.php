@@ -47,6 +47,17 @@
                 }
             
             break;
+        case 'submitComment':
+            $form = $io->post;
+            $result = FunForum::postComment($api, $form);
+            if($result->success){
+                InfoPage::initPage($dir, 'คอมเม้นสำเร็จ');
+                Console::log('Result', $result);
+            }else{
+                //ErrorPage::initPage($dir, $result);
+                Console::log('Result', $result);
+            }
+        break;
         default:
             Nav::gotoHome($dir); //return to home page
             break;

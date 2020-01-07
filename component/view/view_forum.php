@@ -73,7 +73,7 @@
                                                     <a href="fixed-student-forum-thread.html" class="forum-thread-icon">
                                                         <i class="material-icons">description</i>
                                                     </a>
-                                                    <a href="fixed-student-profile.html" class="forum-thread-user">
+                                                    <a   class="forum-thread-user">
                                                         <img src="<?php Asset::echoIcon($dir, $pic)  ?>" alt="" width="20" class="rounded-circle">
                                                     </a>
                                                 </div>
@@ -81,14 +81,14 @@
                                             <div class="media-body">
                                                 <div class="d-flex align-items-center">
                                                  
-                                                    <a href="fixed-student-profile.html" class="text-body"><strong> <?php if($name != null) echo $name; ?></strong></a>
+                                                    <a  class="text-body"><strong> <?php if($name != null) echo $name; ?></strong></a>
                                                     <medium class="ml-auto text-muted"><?php echo $topic->date; ?></medium>
                                                     <i class="material-icons pl-3 text-muted">arrow_drop_up</i></a>
                                                     <div class="media-right text-muted"><?php echo $topic->upvote; ?></div>
                                                     <i class="material-icons pl-3 text-muted">arrow_drop_down</i></a>
                                                     <div class="media-right text-muted"><?php echo $topic->downvote; ?></div>
                                                 </div>
-                                                <a class="text-black-70" href="fixed-student-forum-thread.html"><?php echo $topic->title; ?></a>
+                                                <a class="text-black-70" href="<?php Nav::echoURL($dir, App::$pageForumSingle . "?id=" . $topic->ID ) ?> "><?php echo $topic->title; ?></a>
                                             </div>
                                         </div>
                                     </li>
@@ -132,14 +132,14 @@
                                                     <a href="fixed-student-forum-thread.html" class="forum-thread-icon">
                                                         <i class="material-icons">description</i>
                                                     </a>
-                                                    <a href="fixed-student-profile.html" class="forum-thread-user">
+                                                    <a   class="forum-thread-user">
                                                         <img src=" <?php Asset::echoIcon($dir, $pic)  ?>" alt="" width="20" class="rounded-circle">
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="media-body">
                                                 <div class="d-flex align-items-center">
-                                                    <a href="fixed-student-profile.html" class="text-body"><strong><?php if($name != null) echo $name; ?></strong></a>
+                                                    <a   class="text-body"><strong><?php if($name != null) echo $name; ?></strong></a>
                                                     <medium class="ml-auto text-muted"><?php echo $forum->date; ?></medium>
                                                     <i class="material-icons pl-3 text-muted">arrow_drop_up</i></a>
                                                     <div class="media-right text-muted"><?php echo $topic->upvote; ?></div>
