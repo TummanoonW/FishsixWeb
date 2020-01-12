@@ -106,7 +106,7 @@
             return $result;
         }
 
-        public static function getCommentSinglFull($api, $id){
+        public static function getCommentSingleFull($api, $id){
             $query = (object)array('id' => $id);
 
             $url = $api->getURL(App::$apiForum, 'getCommentSinglFull', $query);

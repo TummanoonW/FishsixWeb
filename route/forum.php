@@ -6,7 +6,8 @@
     //include Proto Framework Architecture with retracked directory path
     Includer::include_proto($dir); 
     Includer::include_fun($dir, 'fun_forum.php');
-
+    Includer::include_fun($dir, 'fun_auth.php');
+  
     $sess = new Sess();
     $apiKey = $sess->getAPIKey(); //get secret API Key
     $auth = $sess->getAuth();
@@ -49,10 +50,26 @@
             break;
         case 'submitComment':
             $form = $io->post;
+            
             $result = FunForum::postComment($api, $form);
             if($result->success){
                 InfoPage::initPage($dir, 'คอมเม้นสำเร็จ');
                 Console::log('Result', $result);
+            }else{
+                //ErrorPage::initPage($dir, $result);
+                Console::log('Result', $result);
+            }
+        break;
+        case 'addVote':
+            $vote = new stdClass();
+            $vote->authorID = $io->get->authorID;           
+            $vote->forumID = $io->get->forumID;  
+                    
+            $vote->isUpVote = $io->get->isUpVote;      
+            $id = $vote->forumID;   
+            $result = FunForum::addVote($api, $vote);
+            if($result->success){
+              Nav::goto($dir, App::$pageForumSingle . "?id=" . $id );
             }else{
                 //ErrorPage::initPage($dir, $result);
                 Console::log('Result', $result);
