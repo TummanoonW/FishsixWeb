@@ -50,6 +50,7 @@
             break;
         case 'submitComment':
             $form = $io->post;
+            $form->authorID = $auth->ID;
             
             $result = FunForum::postComment($api, $form);
             if($result->success){
