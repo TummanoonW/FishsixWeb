@@ -57,6 +57,7 @@
         public static $pageVideoPlaylist = "video-playlist.php";
         public static $pageVideoView = "video-view.php";
         public static $pageWriteForum = "write-forum.php";
+        public static $pageEditForum = "edit-forum.php";
 
         public static $pageDashboard = "dashboard.php";
         public static $pageViewScore = "viewscore.php";
