@@ -55,6 +55,7 @@
         public static $pageReview = "review.php";
         public static $pageVideoLibrary = "video-library.php";
         public static $pageVideoPlaylist = "video-playlist.php";
+        public static $pageVideoView = "video-view.php";
         public static $pageWriteForum = "write-forum.php";
 
         public static $pageDashboard = "dashboard.php";

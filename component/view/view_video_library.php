@@ -3,7 +3,7 @@
         public static function initView($dir, $sess, $paths, $latest, $categories, $isAllowed){
             $auth = $sess->getAuth();
             ?>
-            <body class=" layout-fluid">
+            <body class="layout-fluid" style="background: black;">
                 <link rel="stylesheet" href="<?php Nav::echoURL($dir, 'assets/css/theme.css') ?>" type="text/css" />
                 <script type="text/javascript" src="<?php Nav::echoURL($dir, 'assets/js/frontpage.js') ?>"></script>
 
@@ -32,7 +32,7 @@
                                             </div> -->
                                         </div>                    
                                         <section id="row" class="mt-3">
-                                            <h2 class="sectionTitle">อัพโหลดล่าสุด</h2>
+                                            <h2 class="sectionTitle text-secondary">อัพโหลดล่าสุด</h2>
                                             <div class="examples">
                                                <ul class="img-list">
                                                  <?php self::initCard($dir, $latest) ?>
@@ -60,7 +60,7 @@
             ?>
                 <section id="row" class="mt-4 mb-5">
                     <div class="media">
-                        <div class="media-body"><h2 class="sectionTitle"><?php echo $value->title ?></h2></div>
+                        <div class="media-body"><h2 class="sectionTitle text-secondary"><?php echo $value->title ?></h2></div>
                         <div class="media-right text-right"><a href="<?php Nav::echoURL($dir, App::$pageVideoPlaylist . "?id=$value->ID") ?>">ดูทั้งหมด</a></div>
                     </div>
                     <div class="examples">

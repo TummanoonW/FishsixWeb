@@ -64,6 +64,26 @@
           </footer>
           <!-- Bootstrap -->
           <script src="<?php Nav::echoURL($dir, 'assets/theme/bootstrap/js/bootstrap.min.js'); ?>"></script>
+
+          <!-- The core Firebase JS SDK is always required and must be listed first -->
+          <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+
+          <!-- TODO: Add SDKs for Firebase products that you want to use
+               https://firebase.google.com/docs/web/setup#available-libraries -->
+          <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-analytics.js"></script>
+
+          <? Script::customScript($dir, 'firebase-init.js') ?>
+
+          <!-- Google Analytics -->
+          <script async src="https://www.googletagmanager.com/gtag/js"></script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            analytics.logEvent('notification_received');
+          </script>
+
         </body>
       </html>
 <?php

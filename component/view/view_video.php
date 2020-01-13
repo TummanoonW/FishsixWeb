@@ -1,6 +1,6 @@
 <?php
-    class VideoPlaylistView{
-        public static function initView($dir, $sess, $paths, $category, $videos, $isAllowed){
+    class VideoView{
+        public static function initView($dir, $sess, $paths, $category, $video, $isAllowed){
             ?>
             <body class="layout-fluid" style="background: black;">
                 <link rel="stylesheet" href="<?php Nav::echoURL($dir, 'assets/css/theme.css') ?>" type="text/css" />
@@ -24,14 +24,11 @@
                             <div class="mdk-drawer-layout__content page ">
                                 <div class="container-fluid page__container"> 
                                     <?php if($isAllowed){ ?>                               
-                                        <section id="row1" class="mt-1">
-                                            <h2 class="sectionTitle text-secondary">เพลย์ลิสต์ของ - <?php echo $category->title ?></h2>
-                                            <div class="examples">
-                                               <ul class="img-list">
-                                                 <?php self::initCard($dir, $videos) ?>
-                                               </ul>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <iframe src="https://www.youtube.com/embed/<?php echo $video->video_id ?>" width="100%" height="400" frameborder="0">
                                             </div>
-                                        </section>
+                                        </div>
                                     <?php }else{
                                         Alert::initAlert($dir, "คุณต้องซื้อคอร์สใดคอร์สหนึ่งของเราก่อนจะใช้งานฟีเจอร์นี้ได้");
                                     } ?>
@@ -45,25 +42,7 @@
             <?php
         }
 
-        private static function initCard($dir, $videos){
-            foreach ($videos as $key => $value) {
-                ?>
-                    <li class="image">
-                       <a href="https://www.youtube.com/watch?v=<?php echo $value->youtube_id ?>">
-                            <img id="box1" src="https://i1.ytimg.com/vi/<?php echo $value->youtube_id ?>/mqdefault.jpg" width="280" height="150" />
-                            <span class="text-content">
-                                <h4 class="text-light">
-                                  <?php echo $value->title?>
-                                </h4>
-                                <i class="far fa-play-circle" style="font-size: 48px"></i>
-                                <br><br>
-                                <i class="fas fa-chevron-down" onclick="openNav()" aria-hidden="true"></i>
-                            </span>
-                       </a>
-                    </li>
-                <?php
-            }
-        }
+        
     }
 
 ?>
