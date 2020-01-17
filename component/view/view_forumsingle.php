@@ -34,7 +34,7 @@
                                   <a href="<?php Nav::echoURL($dir, App::$pageForums) ?>" class="mr-3">กลับไปหน้าบทความทั้งหมด</a> 
                                  <!--<a href="#" class="mr-2 text-black-50">Mute</a>
                                  <a href="#" class="mr-2 text-black-50">Report</a> -->
-                                <a href="<?php Nav::echoURL($dir, App::$pageEditForum ) ?>" class="text-black-50" style="text-decoration: underline;">แก้ไข</a>
+                                <a href="<?php Nav::echoURL($dir, App::$pageEditForum .'?id=' . $forumSingle->ID) ?>" class="text-black-50" style="text-decoration: underline;">แก้ไข</a>
                             </p>
 
                             <div class="card card-body">
@@ -53,7 +53,7 @@
                                         <?php  $result = FunForum::getMyVote($api, $forumSingle->ID, $auth->ID);   
                                                $myVote = $result->response;
                                                Console::log("myVote",$myVote); 
-                                               if($myVote == null){      
+                                               if($myVote != null){      
                                         ?>
                                             <a href="<?php Nav::echoURL($dir, App::$routeForum. '?m=addVote' . "&authorID=" . $auth->ID ."&forumID=" . $forumSingle->ID ."&isUpVote=". 1  ) ?> " class="text-black-50 d-flex align-items-center text-decoration-0"><i class="material-icons mr-1"  >arrow_drop_up</i> <?php echo $forumSingle->upvote; ?></a>
                                             <a href="<?php Nav::echoURL($dir, App::$routeForum. '?m=addVote' . "&authorID=" . $auth->ID ."&forumID=" . $forumSingle->ID ."&isUpVote=". 0  ) ?>" class="text-black-50 d-flex align-items-center text-decoration-0 ml-3"><i class="material-icons mr-1" >arrow_drop_down</i><?php echo $forumSingle->downvote; ?></a>
@@ -92,8 +92,8 @@
                                     $result = FunForum::getCommentSingleFull($api, $comment->authorID); 
                                     $commentUser= $result->response; 
                                     Console::log("c",$comment);;
-                                   // $name = $commentUser->auth->username;
-                                  //  $pic = $commentUser->auth->profile_pic;
+                                    $name = $comment->auth->username;
+                                    $pic = $comment->auth->profile_pic;
                                 ?>
                                 <div class="d-flex mb-3">
                                     <a   class="avatar avatar-xs mr-3">

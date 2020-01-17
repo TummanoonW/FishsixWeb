@@ -1,6 +1,6 @@
 <?php
     class EditForumView{
-        public static function initView($dir, $sess, $paths, $api, $catagory){
+        public static function initView($dir, $sess, $paths, $api, $form){
             $auth = $sess->getAuth();
            
 ?>  
@@ -36,15 +36,15 @@
                                     <div class="row">
                                     <div class="container mt-5">
                                         <div class="card">
-                                            <form class="card-body" action="<?php Nav::echoURL($dir, App::$routeForum . '?m=submit') ?>" method="POST">
+                                            <form class="card-body" action="<?php Nav::echoURL($dir, App::$routeForum . '?m=editForum'.'&id='.$form->id ) ?>" method="POST">
                              
                                                 <div class="form-group">
                                                 <label for="exampleInputTitle">หัวเรื่อง (ความยาวไม่เกิน 100 ตัวอักษร)</label>
-                                                <input value="" type="text" name="title" class="form-control" id="exampleInputTitle" placeholder="โปรดระบุหัวเรื่อง" maxlength="100" required>
+                                                <input value="<?php echo $form->title;?>" type="text" name="title" class="form-control" id="exampleInputTitle" placeholder="โปรดระบุหัวเรื่อง" maxlength="100" required>
                                                 </div>
                                                 <div class="form-group">
                                                 <label for="exampleInputDescription">เนื้อหา (ความยาวไม่เกิน 1000 ตัวอักษร)</label>
-                                                <textarea name="content" class="form-control" id="exampleInputDescription" placeholder="ใส่เนื้อหาของบทความ" rows="6" maxlength="1000"></textarea>
+                                                <textarea value=" <?php echo $form->content;?>" name="content" class="form-control" id="exampleInputDescription" placeholder="ใส่เนื้อหาของบทความ" rows="6" maxlength="1000"></textarea>
                                                 </div>
                                                 <select class="form-control" name="categoryID">
                                                 <option>เลือกหมวดหมู่</option>
@@ -58,7 +58,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                 <label for="exampleInputTitle">แท็ก (ความยาวไม่เกิน 200 ตัวอักษร)</label>
-                                                <input value="" type="text" name="tags" class="form-control" id="exampleInputTitle" placeholder="ใส่แท็กให้กับบทความ" maxlength="200" >
+                                                <input value="<?php echo $form->tags;?>" type="text" name="tags" class="form-control" id="exampleInputTitle" placeholder="ใส่แท็กให้กับบทความ" maxlength="200" >
                                                 </div>
                                                 <div class="custom-file">
                                          

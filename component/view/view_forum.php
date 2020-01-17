@@ -87,6 +87,7 @@
                                                     <div class="media-right text-muted"><?php echo $topic->upvote; ?></div>
                                                     <i class="material-icons pl-3 text-muted">arrow_drop_down</i></a>
                                                     <div class="media-right text-muted"><?php echo $topic->downvote; ?></div>
+                                                    <?php Console::log("opic",$topic); ?>
                                                 </div>
                                                 <a class="text-black-70" href="<?php Nav::echoURL($dir, App::$pageForumSingle . "?id=" . $topic->ID ) ?> "><?php echo $topic->title; ?></a>
                                             </div>
@@ -142,9 +143,9 @@
                                                     <a   class="text-body"><strong><?php if($name != null) echo $name; ?></strong></a>
                                                     <medium class="ml-auto text-muted"><?php echo $forum->date; ?></medium>
                                                     <i class="material-icons pl-3 text-muted">arrow_drop_up</i></a>
-                                                    <div class="media-right text-muted"><?php echo $topic->upvote; ?></div>
+                                                    <div class="media-right text-muted"><?php echo $forum->upvote; ?></div>
                                                     <i class="material-icons pl-3 text-muted">arrow_drop_down</i></a>
-                                                    <div class="media-right text-muted"><?php echo $topic->downvote; ?></div>
+                                                    <div class="media-right text-muted"><?php echo $forum->downvote; ?></div>
                                                 </div>
                                                 <a class="text-black-70" href="fixed-student-forum-thread.html"><?php echo $forum->title; ?></a>
                                             </div>

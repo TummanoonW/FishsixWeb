@@ -23,9 +23,21 @@
     if($sess->checkUserAdmin() || $sess->checkUserTeacher()){
         $result = FunCategory::get($api);
         $catagory = $result->response;
-        
+        $id= $io->id;
+        $result = FunForum::getSingle($api, $id);
+        $form->ID = $result->response->ID;
+        $form->authorID = $result->response->authorID;
+        $form->categoryID = $result->response->categoryID;
+        $form->tags = $result->response->tags ;
+        $form->thumbnail  = $result->response->thumbnail;
+        $form->title = "Test";
+        $form->content = $result->response->content;
+        $form->views = $result->response->views;
+        $form->isSpam = $result->response->isSpam;
+        $form->date = $result->response->date;
+        $form->comment = $result->response->comment;
         Header::initHeader($dir,"แก้ไขบทความ"); 
-        EditForumView::initView($dir, $sess, $paths, $api, $catagory);
+        EditForumView::initView($dir, $sess, $paths, $api, $form);
         Footer::initFooter($dir); 
     }else{
         Nav::gotoHome($dir);
