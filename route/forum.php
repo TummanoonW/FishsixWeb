@@ -66,6 +66,64 @@
             $vote->authorID = $io->get->authorID;           
             $vote->forumID = $io->get->forumID;  
                     
+             
+            $id = $vote->forumID; 
+            $result = FunForum::getSingle($api, $id);
+            $isVoteUp = $result->response->upvote;
+            $isVoteDown = $result->response->downvote;
+            $form->ID = $result->response->ID;
+            $form->authorID = $result->response->authorID;
+            $form->categoryID = $result->response->categoryID;
+            $form->tags = $result->response->tags ;
+            $form->thumbnail  = $result->response->thumbnail;
+            $form->title = "Test";
+            $form->content = $result->response->content;
+            $form->views = $result->response->views;
+            $form->isSpam = $result->response->isSpam;
+            $form->date = $result->response->date;
+            $form->comment = $result->response->comment;
+            
+          
+            if($io->get->isUpVote == 0 ){
+                $result = FunForum::addVote($api, $vote);
+                $form->upvote = 0;
+                $form->downvote = 0;
+                $result = FunForum::edit($api, $id, $form);
+                 
+            }else {
+                $result = FunForum::addVote($api, $vote);
+                $form->upvote = 0;
+                $form->downvote = 0;
+                $result = FunForum::edit($api, $id, $form);
+                
+            }
+            if($result->success){
+              Nav::goto($dir, App::$pageForumSingle . "?id=" . $id );
+            }else{
+                //ErrorPage::initPage($dir, $result);
+                Console::log('Result', $result);
+            }
+        break;
+        case 'upDateVote':
+            $vote = new stdClass();
+            $vote->authorID = $io->get->authorID;           
+            $vote->forumID = $io->get->forumID;  
+                    
+            $vote->isUpVote = $io->get->isUpVote;      
+            $id = $vote->forumID;   
+            $result = FunForum::addVote($api, $vote);
+            if($result->success){
+              Nav::goto($dir, App::$pageForumSingle . "?id=" . $id );
+            }else{
+                //ErrorPage::initPage($dir, $result);
+                Console::log('Result', $result);
+            }
+        break;
+        case 'upDateVote':
+            $vote = new stdClass();
+            $vote->authorID = $io->get->authorID;           
+            $vote->forumID = $io->get->forumID;  
+                    
             $vote->isUpVote = $io->get->isUpVote;      
             $id = $vote->forumID;   
             $result = FunForum::addVote($api, $vote);
