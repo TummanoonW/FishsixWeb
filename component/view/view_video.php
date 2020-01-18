@@ -26,7 +26,7 @@
                                     <?php if($isAllowed){ ?>                               
                                         <div class="row">
                                             <div class="col-12">
-                                                <iframe src="https://www.youtube.com/embed/<?php echo $video->video_id ?>" width="100%" height="400" frameborder="0">
+                                                <iframe src="https://www.youtube.com/embed/<?php echo $video->youtube_id ?>" width="100%" height="400" frameborder="0">
                                             </div>
                                         </div>
                                     <?php }else{

@@ -76,3 +76,10 @@ function uploadToPictureRaw(input, img_id) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+function youtube(id, title){
+    let db = Connect();
+    db.addToDB('vid_his', {id: id, title: title});
+    let url = 'https://www.youtube.com/watch?v=' + id;
+    window.open(url, '_blank');
+}

@@ -39,6 +39,9 @@
                                                </ul>
                                             </div>
                                         </section>
+                                        <section id="history" class="mt-3">
+                                            
+                                        </section>
                                         <div>
                                             <?php self::initSection($dir, $categories) ?>
                                         </div>
@@ -52,6 +55,8 @@
                     </div>
                 </div>
                 <?php Script::initScript($dir) ?>
+                <?php Script::customScript($dir, 'common.js') ?>
+                <?php Script::customScript($dir, 'video-library.js') ?>
             <?php
         }
 
@@ -77,7 +82,7 @@
             foreach ($videos as $key => $value) {
                 ?>
                     <li class="image">
-                       <a href="https://www.youtube.com/watch?v=<?php echo $value->youtube_id ?>">
+                       <a href="#" onclick="youtube('<?php echo $value->youtube_id ?>', '<?php echo $value->title?>')">
                             <img id="box1" src="https://i1.ytimg.com/vi/<?php echo $value->youtube_id ?>/mqdefault.jpg" width="280" height="150" />
                             <span class="text-content">
                                 <h4 class="text-light">

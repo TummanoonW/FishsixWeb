@@ -30,6 +30,11 @@
                                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">apps</i> ระบบจัดการ
                                             </a>
                                         </li>
+                                        <li class="sidebar-menu-item">
+                                            <a class="sidebar-menu-button" href="<?php Nav::echoURL($dir, App::$pageAnalytics); ?>">
+                                                <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">bar_chart</i> Analytics
+                                            </a>
+                                        </li>
                                     <?php } 
                                         if($auth->type == 'teacher'){ 
                                     ?>

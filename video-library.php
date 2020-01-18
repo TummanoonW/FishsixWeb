@@ -5,6 +5,7 @@
     Includer::include_view($dir, 'view_video_library.php');
     Includer::include_fun($dir, 'fun_ownership.php');
     Includer::include_fun($dir, 'fun_video_lib.php');
+    Includer::include_fun($dir, 'fun_video_his.php');
     Includer::include_fun($dir, 'fun_category.php');
 
     $sess = new Sess(); 

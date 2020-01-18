@@ -4,6 +4,7 @@
     Includer::include_proto($dir); 
     Includer::include_view($dir, 'view_video.php');
     Includer::include_fun($dir, 'fun_video_lib.php');
+    Includer::include_fun($dir, 'fun_video_his.php');
     Includer::include_fun($dir, 'fun_category.php');
 
     $sess = new Sess(); 
@@ -26,15 +27,19 @@
             $result = FunVideoLib::getSingle($api, $id);
             $video = $result->response;
             
-            $result = FunCategory::getSingle($api, $id);
+            $result = FunCategory::getSingle($api, $video->categoryID);
             $category = $result->response;
+            if($category != null) $catTitle = $category->title;
+            else $catTitle = "";
 
             $paths = array(
                 new Path(FALSE, 'หน้าหลัก', $dir),
                 new Path(FALSE, "คลังวิดีโอ - " . App::$name, Nav::getURL($dir, App::$pageVideoLibrary)),
-                new Path(FALSE, "เพลยลิสต์ - " . $category->title, Nav::getURL($dir, App::$pageVideoPlaylist . "?id=$video->categoryID")),
+                new Path(FALSE, "เพลยลิสต์ - " . $catTitle, Nav::getURL($dir, App::$pageVideoPlaylist . "?id=$video->categoryID")),
                 new Path(TRUE, $video->title, '')
             );
+
+            $result = FunVideoHis::add($api, $id, $auth->ID);
 
         }else{
             $video = NULL;

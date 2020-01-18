@@ -91,6 +91,8 @@
         public static $pageAdminManageVideos = "admin/manage-videos.php";
         public static $pageAdminEditVideo = "admin/edit-video.php";
 
+        public static $pageAnalytics = "analytics/";
+
         public static $pageTeacherPanel = "teacher/index.php";
         public static $pageTeacherManageStudent = "teacher/manage-students.php";
         public static $pageTeacherScoring = "teacher/scoring.php";
@@ -139,6 +141,7 @@
         public static $apiForum = "forum.php";
         public static $apiQA = "qa.php";
         public static $apiVidLib = "vid-lib.php";
+        public static $apiVidHis = "vid-his.php";
 
         public static $apiAdminCourse = "admin-course.php";
         public static $apiAdminCategory = "admin-category.php";

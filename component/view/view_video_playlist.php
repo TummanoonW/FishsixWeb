@@ -42,6 +42,7 @@
                     </div>
                 </div>
                 <?php Script::initScript($dir) ?>
+                <?php Script::customScript($dir, 'common.js') ?>
             <?php
         }
 
@@ -49,7 +50,7 @@
             foreach ($videos as $key => $value) {
                 ?>
                     <li class="image">
-                       <a href="https://www.youtube.com/watch?v=<?php echo $value->youtube_id ?>">
+                        <a href="#" onclick="youtube('https://www.youtube.com/watch?v=<?php echo $value->youtube_id ?>)'">
                             <img id="box1" src="https://i1.ytimg.com/vi/<?php echo $value->youtube_id ?>/mqdefault.jpg" width="280" height="150" />
                             <span class="text-content">
                                 <h4 class="text-light">

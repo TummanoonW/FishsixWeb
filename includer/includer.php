@@ -61,6 +61,18 @@
             include_once $dir . 'component/admin/' . $file;
         }
 
+        public static function include_analytics($dir, $file){
+            if(!isset($dir)){
+                $dir = "./";
+            }
+
+            $arr = explode(".", $file);
+            $lenght = count($arr);
+            if($lenght == 1) $file = $file . ".php";
+
+            include_once $dir . 'component/analytics/' . $file;
+        }
+
         public static function include_teacher($dir, $file){
             if(!isset($dir)){
                 $dir = "./";
