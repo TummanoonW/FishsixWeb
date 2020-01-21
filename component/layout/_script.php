@@ -30,6 +30,15 @@
             <!-- List.js -->
             <script src="<?php Nav::echoURL($dir, 'assets/vendor/list.min.js') ?>"></script>
             <script src="<?php Nav::echoURL($dir, 'assets/js/list.js') ?>"></script>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+          <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+          <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+          <!-- TODO: Add SDKs for Firebase products that you want to use
+               https://firebase.google.com/docs/web/setup#available-libraries -->
+          <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+
+          <? self::customScript($dir, 'firebase-init.js') ?>
 <?php
         }
 

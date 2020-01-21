@@ -26,7 +26,6 @@
 
                     <!-- Header Layout Content -->
                     <div class="mdk-header-layout__content">
-
                         <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
                             <div class="mdk-drawer-layout__content page ">
 

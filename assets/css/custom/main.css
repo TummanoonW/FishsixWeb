@@ -13,3 +13,10 @@ body{
 .h4-5{
     font-size: 1.3rem;
 }
+
+.feet{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+

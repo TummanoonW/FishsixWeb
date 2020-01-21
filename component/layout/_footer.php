@@ -2,6 +2,7 @@
     class Footer{ //footer elements loader
 
         public static function initFooter($dir){
+          $sess = new Sess();
 ?>
           <footer class="page-footer font-medium indigo bg-dark">
             <div class="container text-center  p-4">
@@ -62,28 +63,20 @@
               </div>
             </div>
           </footer>
+
+          <div class="feet bg-light">
+            <div style="
+                width: 100%;
+                height: 1px;
+                background: lightgray;
+            "></div>
+              <?php LayoutMenu::initLayoutMenu($dir, $sess) ?>
+          </div>
           <!-- Bootstrap -->
           <script src="<?php Nav::echoURL($dir, 'assets/theme/bootstrap/js/bootstrap.min.js'); ?>"></script>
 
-          <!-- The core Firebase JS SDK is always required and must be listed first -->
-          <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
-
-          <!-- TODO: Add SDKs for Firebase products that you want to use
-               https://firebase.google.com/docs/web/setup#available-libraries -->
-          <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-analytics.js"></script>
-
-          <? Script::customScript($dir, 'firebase-init.js') ?>
-
           <!-- Google Analytics -->
           <script async src="https://www.googletagmanager.com/gtag/js"></script>
-          <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            analytics.logEvent('notification_received');
-          </script>
-
         </body>
       </html>
 <?php

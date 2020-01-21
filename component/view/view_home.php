@@ -3,7 +3,7 @@
         public static function initView($dir, $sess, $recommended_courses, $all_courses, $forums){
             $auth = $sess->getAuth();
 ?>
-            <body class=" layout-fluid">
+            <body class="layout-fluid">
 
             <style>
                 .thumb{
@@ -27,7 +27,7 @@
 
                     <!-- Header Layout Content -->
                     <div class="mdk-header-layout__content">
-
+                        
                         <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
                             <div class="mdk-drawer-layout__content page ">
                                 <div class="container-fluid page__container">                                
@@ -70,7 +70,7 @@
                                    </section>
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir, $sess) ?>
+                            <?php //Sidemenu::initSideMenu($dir, $sess) ?>
                         </div>
                     </div>
                 </div>

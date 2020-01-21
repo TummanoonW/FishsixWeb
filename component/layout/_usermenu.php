@@ -48,15 +48,22 @@
 <?php
             }else{
 ?>
+                <li class="nav-item dropdown ml-1 ml-md-3">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img src="<?php Asset::echoIcon($dir, '') ?>" alt="Avatar" class="rounded-circle" width="40"></a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageRegister) ?>" class="nav-link">
+                            สมัครสมาชิก
+                        </a>
+                        <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageLogin) ?>" class="nav-link">
+                            เข้าสู่ระบบ
+                        </a>
+                    </div>
+                </li>
                 <li class="nav-item d-none d-md-flex">
-                    <a href="<?php Nav::echoURL($dir, App::$pageRegister) ?>" class="nav-link">
-                        สมัครสมาชิก
-                    </a>
+                    
                 </li>
                 <li class="nav-item d-none d-md-flex ml-md-3">
-                    <a href="<?php Nav::echoURL($dir, App::$pageLogin) ?>" class="nav-link">
-                        เข้าสู่ระบบ
-                    </a>
+                    
                 </li>
 <?php
             }

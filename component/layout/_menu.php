@@ -5,17 +5,6 @@
             $countC = 0;
             $s_carts = (array)$sess->get('mycart');
             $countC = $countC + count($s_carts);
-
-            if($sess->checkUserExisted()){
-                Includer::include_fun($dir, 'fun_mycart.php');
-                $auth = $sess->getAuth();
-                $apiKey = $sess->getAPIKey(); 
-                $api = new API($apiKey);
-
-                /*$result = FunMyCart::countByAuthID($api, $auth->ID);
-                $carts = (int)$result->response;
-                $countC = $countC + $carts;*/
-            }
 ?>
             <ul class="nav navbar-nav flex-nowrap">
                 <li class="nav-item d-none d-md-flex dropdown-notifications dropdown-menu-sm-full">
