@@ -48,7 +48,14 @@
                                             </a>
 
                                         <?php } 
-                                            if($auth->type == 'teacher'){ 
+                                            else if($auth->type == 'editor'){
+                                        ?>
+                                            <a class="dropdown-item py-2" href="<?php Nav::echoURL($dir, App::$pageAdminPanel); ?>">
+                                                <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">apps</i> ระบบจัดการ
+                                            </a>
+                                        <?php
+                                            }
+                                            else if($auth->type == 'teacher'){ 
                                         ?>
                                         
                                             <a class="dropdown-item py-2" href="<?php Nav::echoURL($dir, App::$pageTeacherPanel); ?>">
@@ -72,7 +79,7 @@
                                             </a>
                                     </div>
                         </div>
-                        <?php if($auth->type == 'admin' || $auth->type == 'teacher' || $auth->unlockVidLib){ ?>
+                        <?php if($auth->type == 'admin' || $auth->type == 'editor' || $auth->type == 'teacher' || $auth->unlockVidLib){ ?>
                             <div class="col-3 text-center">
                                 <a href="<?php Nav::echoURL($dir, App::$pageVideoLibrary); ?>"><i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">playlist_play</i></a>
                             </div>

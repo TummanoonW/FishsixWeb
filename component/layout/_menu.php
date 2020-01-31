@@ -7,14 +7,14 @@
             $countC = $countC + count($s_carts);
 ?>
             <ul class="nav navbar-nav flex-nowrap">
-                <li class="nav-item d-none d-md-flex dropdown-notifications dropdown-menu-sm-full">
+                <!--<li class="nav-item d-none d-md-flex dropdown-notifications dropdown-menu-sm-full">
                     <a href="<?php Nav::echoURL($dir, App::$pageMyCart) ?>" class="nav-link">
                         <i class="material-icons">shopping_cart</i>
                         <?php if($countC > 0){ ?>
                             <span class="badge badge-notifications badge-danger"><?php echo $countC  ?></span>
                         <?php } ?>
                     </a>
-                </li>
+                </li>-->
 
                 <!-- Notification dropdown -->
                 <?php Notification::initNotification($dir, $sess) ?>

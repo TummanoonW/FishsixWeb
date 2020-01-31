@@ -1,14 +1,12 @@
 <?php
 
-    $dir = "./";
+    $dir = "../";
     include_once $dir . 'includer/includer.php'; 
     Includer::include_proto($dir); 
-    Includer::include_view($dir, 'view_writeforum.php');
+    Includer::include_forum($dir, 'view_write.php');
     Includer::include_fun($dir, 'fun_forum.php');
     Includer::include_fun($dir, 'fun_category.php');
 
- 
-   
     $sess = new Sess(); 
     $auth = $sess->getAuth(); 
     $apiKey = $sess->getAPIKey(); 

@@ -8,11 +8,12 @@
 
     $sess = new Sess(); $auth = $sess->getAuth(); 
     $apiKey = $sess->getAPIKey(); 
+    $auth = $sess->getAuth();
 
     $api = new API($apiKey);
     $io = new IO(); 
 
-    if($sess->checkUserAdmin()){
+    if($auth->type == 'admin' || $auth->type == 'editor'){
         $since = $io->get->date;
         $courseID = $io->get->course;
         $branchID = $io->get->branch;
@@ -29,7 +30,7 @@
             'since' => $since,
             'courseID' => $courseID,
             'courseBranchID' => $branchID,
-            'classID' => $classID 
+            'classID' => $classID
         );
 
         $result = FunClassroom::getSingle($api, $filter);

@@ -129,7 +129,7 @@
                                     </div>
                                 </div>
                             
-                                <?php Sidemenu::initSideMenu($dir, $sess) ?>
+                                <?php //Sidemenu::initSideMenu($dir, $sess) ?>
                             </div>
                    
                     <?php Script::initScript($dir) ?>

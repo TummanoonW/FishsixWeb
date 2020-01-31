@@ -85,6 +85,18 @@
             include_once $dir . 'component/teacher/' . $file;
         }
 
+        public static function include_forum($dir, $file){
+            if(!isset($dir)){
+                $dir = "./";
+            }
+
+            $arr = explode(".", $file);
+            $lenght = count($arr);
+            if($lenght == 1) $file = $file . ".php";
+
+            include_once $dir . 'component/forum/' . $file;
+        }
+
         public static function include_fun($dir, $file){
             if(!isset($dir)){
                 $dir = "./";

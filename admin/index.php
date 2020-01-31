@@ -6,7 +6,8 @@
     Includer::include_admin($dir, 'admin_home.php');
 
     $sess = new Sess(); $auth = $sess->getAuth(); 
-    $apiKey = $sess->getAPIKey(); 
+    $apiKey = $sess->getAPIKey();
+    $auth =  $sess->getAuth();
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -16,7 +17,7 @@
         new Path(TRUE, 'ระบบจัดการ', $dir . App::$pageAdminPanel)
     );
 
-    if($sess->checkUserAdmin()){
+    if($auth->type == 'admin' || $auth->type == 'editor'){
         Header::initHeader($dir, App::$name . " - ระบบจัดการ"); 
         AdminHomeView::initView($dir, $sess, $paths);
         Footer::initFooter($dir); 

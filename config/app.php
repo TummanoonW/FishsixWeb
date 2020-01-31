@@ -49,15 +49,16 @@
         public static $pageTeachers = "teachers.php";
         public static $pageViewTeacher = "viewteacher.php";
         public static $pageHelpCenter = "help-center.php";
-        public static $pageForums = "forums.php";
-        public static $pageForumSingle = "forumsingle.php";
         public static $pageError = "error.php";
         public static $pageReview = "review.php";
         public static $pageVideoLibrary = "video-library.php";
         public static $pageVideoPlaylist = "video-playlist.php";
         public static $pageVideoView = "video-view.php";
-        public static $pageWriteForum = "write-forum.php";
-        public static $pageEditForum = "edit-forum.php";
+        public static $pageWriteForum = "forum/write.php";
+        public static $pageEditForum = "forum/edit.php";
+        public static $pageForums = "forum/index.php";
+        public static $pageForumSingle = "forum/view.php";
+        public static $pageMyForums = "forum/myforums.php";
 
         public static $pageDashboard = "dashboard.php";
         public static $pageViewScore = "viewscore.php";
@@ -87,9 +88,11 @@
         public static $pageAdminViewFeedback = "admin/view-feedback.php";
         public static $pageAdminManageInfo = "admin/manage-info.php";
         public static $pageAdminManageClassrooms = "admin/manage-classrooms.php";
+        public static $pageAdminManageOwnerships = "admin/manage-ownerships.php";
         public static $pageAdminViewClassroom = "admin/view-classroom.php";
         public static $pageAdminManageVideos = "admin/manage-videos.php";
         public static $pageAdminEditVideo = "admin/edit-video.php";
+        public static $pageAdminEditOwnership = "admin/edit-ownership.php";
 
         public static $pageAnalytics = "analytics/";
 
@@ -115,6 +118,7 @@
         public static $routeAdminOrder = "route/admin/order.php";
         public static $routeAdminFeedback = "route/admin/feedback.php";
         public static $routeAdminVideoLib = "route/admin/video-lib.php";
+        public static $routeAdminOwnership = "route/admin/ownership.php";
 
 
         public static $routeTeacherScoring = "route/teacher/scoring.php";

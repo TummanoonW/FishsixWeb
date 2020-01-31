@@ -102,7 +102,7 @@
                                     </form>                                   
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir, $sess) ?>
+                            <?php //Sidemenu::initSideMenu($dir, $sess) ?>
                         </div>
                     </div>
                 </div>

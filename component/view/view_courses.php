@@ -105,7 +105,7 @@
                                 <hr>
                                 <h3>ขอความช่วยเหลือ</h3> -->
                             </div>
-                            <?php Sidemenu::initSideMenu($dir, $sess) ?>
+                            <?php //Sidemenu::initSideMenu($dir, $sess) ?>
                         </div>
                     </div>
                 </div>

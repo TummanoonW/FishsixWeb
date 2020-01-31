@@ -5,6 +5,7 @@
         public static $TYPE_USER = "user";
         public static $TYPE_ADMIN = "admin";
         public static $TYPE_TEACHER = "teacher";
+        public static $TYPE_EDITOR = "editor";
         public static $TYPE_ROOT = "root";
 
         public $email;

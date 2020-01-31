@@ -69,6 +69,7 @@
                                                                                         $u = 'selected';
                                                                                         $t = '';
                                                                                         $a = '';
+                                                                                        $e = '';
                                                                                         switch($auth->type){
                                                                                             case 'admin':
                                                                                                 $u = '';
@@ -78,6 +79,10 @@
                                                                                                 $u = '';
                                                                                                 $t = 'selected';
                                                                                                 break;
+                                                                                            case 'editor':
+                                                                                                $u = '';
+                                                                                                $e = 'selected';
+                                                                                                break;
                                                                                             default:
                                                                                                 $u = 'selected';
                                                                                                 break;
@@ -85,7 +90,8 @@
                                                                                     ?>
                                                                                      <option value="user" <?php echo $u ?>>ผู้ใช้ทั่วไป</option>
                                                                                      <option value="teacher" <?php echo $t ?>>ครู</option>
-                                                                                     <option value="admin" <?php echo $a ?>>แอดมิน</option>
+                                                                                     <option value="editor" <?php echo $a ?>>แอดมิน</option>
+                                                                                     <option value="admin" <?php echo $a ?>>ซุเปอร์แอดมิน</option>
                                                                                  </select>
 <?php
                                                                             }
@@ -94,7 +100,8 @@
                                                                                 <select name="type" id="type" class="form-control custom-select">
                                                                                      <option value="user" selected>ผู้ใช้ทั่วไป</option>
                                                                                      <option value="teacher">ครู</option>
-                                                                                     <option value="admin">แอดมิน</option>
+                                                                                     <option value="editor">แอดมิน</option>
+                                                                                     <option value="admin">ซุเปอร์แอดมิน</option>
                                                                                  </select>
 <?php
                                                                         } 
@@ -291,7 +298,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir, $sess) ?>
+                            <?php //Sidemenu::initSideMenu($dir, $sess) ?>
                             
                             
                         </div>

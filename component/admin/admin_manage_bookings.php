@@ -71,7 +71,7 @@
                                     <?php Pagination::initPagination($dir, $pages) ?>
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir, $sess) ?>
+                            <?php //Sidemenu::initSideMenu($dir, $sess) ?>
                         </div>
                     </div>
                 </div>   
@@ -86,7 +86,8 @@
             foreach ($bookings as $key => $item) {
                 $id = $item->ID;
                 $owner = $item->owner;
-                $branch = $item->courseBranch->branch;
+                if(isset($item->courseBranch->branch))$branch = $item->courseBranch->branch;
+                else $branch = (object)array('title' => "");
                 $course = $item->course;
                 $startDate = explode(" ", $item->startDate)[0];
                 ?>

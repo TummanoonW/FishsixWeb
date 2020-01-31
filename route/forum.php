@@ -15,7 +15,7 @@
     $io = new IO(); //open Input/Output receiver for certain $_GET and $_POST data 
     
     switch($io->method){
-        case 'submit':
+        case 'update':
                 $form = $io->post;
 
                 if($_FILES['thumbnail']['error'] == 0){
@@ -35,16 +35,26 @@
                 }
                 if($form->thumbnail == '') unset($form->thumbnail);
               
-                if($sess->checkUserExisted()){
-                    $form->authorID = $auth->ID;                
-                } 
-                $result = FunForum::post($api, $form);
-                if($result->success){
-                    InfoPage::initPage($dir, 'เขียนบทความสำเร็จ');
-                    Console::log('Result', $result);
+                if($sess->checkUserExisted()) $form->authorID = $auth->ID;                
+                
+                if(isset($form->ID)){
+                    $result = FunForum::post($api, $form);
+                    if($result->success){
+                        Nav::goto($dir, App::$pageMyForums);
+                        Console::log('Result', $result);
+                    }else{
+                        ErrorPage::initPage($dir, $result);
+                        Console::log('Result', $result);
+                    }
                 }else{
-                    //ErrorPage::initPage($dir, $result);
-                    Console::log('Result', $result);
+                    $result = FunForum::edit($api, $form);
+                    if($result->success){
+                        Nav::goto($dir, App::$pageMyForums);
+                        Console::log('Result', $result);
+                    }else{
+                        ErrorPage::initPage($dir, $result);
+                        Console::log('Result', $result);
+                    }
                 }
             
             break;

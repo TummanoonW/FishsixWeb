@@ -15,6 +15,15 @@
             }
         }
 
+        public function checkUserEditor(){
+            $auth = $this->getAuth();
+            if($auth != NULL){
+                return ($auth->type == Auth::$TYPE_EDITOR);
+            }else{
+                return FALSE;
+            }
+        }
+
 
         public function checkUserTeacher(){
             $auth = $this->getAuth();

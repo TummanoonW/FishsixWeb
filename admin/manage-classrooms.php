@@ -9,6 +9,7 @@
 
     $sess = new Sess(); $auth = $sess->getAuth(); 
     $apiKey = $sess->getAPIKey(); 
+    $auth =  $sess->getAuth();
 
     $api = new API($apiKey);
     $io = new IO(); 
@@ -19,7 +20,7 @@
         new Path(TRUE, 'จัดการรายชื่อผู้ลงเรียน', '')
     );
 
-    if($sess->checkUserAdmin()){
+    if($auth->type == 'admin' || $auth->type == 'editor'){
         $filter = $io->query;
 
         if(!isset($filter->since)){

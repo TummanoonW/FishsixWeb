@@ -206,6 +206,21 @@
                                                             </div>
                                                         </div>
                                                     </div>
+
+                                                    <hr>
+                                                    
+                                                    <h4>ขั้นสูง</h4>
+                                                    <div class="form-group row">
+                                                        <label for="newpassword" class="col-sm-3 col-form-label form-label">ตั้งรหัสผ่านใหม่ (ไม่ต่ำกว่า 6 ตัวอักษร)</label>
+                                                        <div class="col-sm-8">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <input name="newpassword" id="newpassword" type="password" class="form-control" placeholder="กรอกรหัสผ่านใหม่ของคุณ" minlenght="6" maxlenght="12">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                     <input name="authID" id="authID" type="text" class="form-control" value="<?php echo $user->authID ?>" style="visibility: collapse; height: 0px;">
 
                                                     <div class="form-group row">
@@ -214,15 +229,10 @@
                                                                 <div class="media-left">
                                                                     <button type="submit" class="btn btn-success">บันทึก การเปลี่ยนแปลง</button>
                                                                 </div>
-                                                                <div class="media-body pl-1">
-                                                                    <div class="custom-control custom-checkbox">
-                                                                        <input id="subscribe" type="checkbox" class="custom-control-input" checked>
-                                                                        <label for="subscribe" class="custom-control-label">Subscribe to Newsletter</label>
-                                                                    </div>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
+
                                                 </form>
                                                 <form action="<?php Nav::echoURL($dir, App::$routeLogOut); ?>" method="POST" class="form-horizontal">
                                                     <div class="form-group row">
@@ -318,7 +328,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir, $sess) ?>
+                            <?php //Sidemenu::initSideMenu($dir, $sess) ?>
                         </div>
                     </div>
                 </div>

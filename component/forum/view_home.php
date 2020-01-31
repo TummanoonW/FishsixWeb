@@ -1,8 +1,7 @@
 <?php
     class ForumsView{
-        public static function initView($dir, $sess, $paths, $pages, $forumTop, $forums){
+        public static function initView($dir, $sess, $paths, $pages, $forumTop, $forums, $count){
             $auth = $sess->getAuth();
-           
 ?>  
             <body class="layout-fluid">
                 <!-- Pre Loader -->
@@ -31,7 +30,11 @@
                                     </div>
                                     <div class="media-right">
                                         <div class="d-flex align-items-center mb-4">
-                                            <a href="<?php Nav::echoURL($dir, App::$pageWriteForum); ?>" class="btn btn-success">เขียนบทความ</a>
+                                            <?php if($sess->checkUserExisted()){ ?>
+                                                <a href="<?php Nav::echoURL($dir, App::$pageMyForums); ?>" class="btn btn-primary">
+                                                    <i class="material-icons mr-2">forum</i> บทความฉัน
+                                                </a>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>
@@ -60,15 +63,14 @@
                                         </div>
 
                                         <ul class="list-group list-group-fit">
-                                            <?php self::initItems($forums) ?>
+                                            <?php self::initItems($dir, $forums) ?>
                                         </ul>
                                     </div>
-
-                                    <!-- Pagination -->
-                                    <?php Pagination::initPagination($dir, $pages) ?>
                                 </div>
+                                <!-- Pagination -->
+                                <?php Pagination::initPagination($dir, $pages) ?>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir, $sess) ?>
+                            <?php //Sidemenu::initSideMenu($dir, $sess) ?>
                         </div>
                     </div>
                 </div>
@@ -79,33 +81,31 @@
 
         public static function initItems($dir, $forums){
             foreach($forums as $key => $value){
-                $topicUser = $topic->author; 
-                $name = $topicUser->username;
-                $pic = $topicUser->profile_pic;       
+                if(isset($value->author)) $author = $value->author;  
+                else $author = (object)array('username'=>'', 'profile_pic'=>'');   
 ?>
                 <li class="list-group-item forum-thread">
                     <div class="media align-items-center">
                         <div class="media-left">
                             <div class="forum-icon-wrapper">
-                                <a href="<?php Nav::echoURL($dir, App::$pageForumSingle . "?id=" . $topic->ID ) ?>" class="forum-thread-icon">
+                                <a href="<?php Nav::echoURL($dir, App::$pageForumSingle . "?id=" . $value->ID ) ?>" class="forum-thread-icon">
                                     <i class="material-icons">description</i>
                                 </a>
                                 <a   class="forum-thread-user">
-                                    <img src="<?php Asset::echoIcon($dir, $pic)  ?>" alt="" width="20" class="rounded-circle">
+                                    <img src="<?php Asset::echoIcon($dir, $author->profile_pic)  ?>" alt="" width="20" class="rounded-circle">
                                 </a>
                             </div>
                         </div>
                         <div class="media-body">
                             <div class="d-flex align-items-center">
-                                <a  class="text-body"><strong> <?php if($name != null) echo $name; ?></strong></a>
-                                <medium class="ml-auto text-muted"><?php echo $topic->date; ?></medium>
+                                <a  class="text-body" href="<?php Nav::echoURL($dir, App::$pageForumSingle . "?id=" . $value->ID ) ?>"><strong> <?php echo $value->title; ?></strong></a>
+                                <medium class="ml-auto text-muted"><?php echo $value->date; ?></medium>
                                 <i class="material-icons pl-3 text-muted">arrow_drop_up</i></a>
-                                <div class="media-right text-muted"><?php echo $topic->upvote; ?></div>
+                                <div class="media-right text-muted"><?php echo $value->upvote; ?></div>
                                 <i class="material-icons pl-3 text-muted">arrow_drop_down</i></a>
-                                <div class="media-right text-muted"><?php echo $topic->downvote; ?></div>
-                                <?php Console::log("opic",$topic); ?>
+                                <div class="media-right text-muted"><?php echo $value->downvote; ?></div>
                             </div>
-                            <a class="text-black-70" href="<?php Nav::echoURL($dir, App::$pageForumSingle . "?id=" . $topic->ID ) ?> "><?php echo $topic->title; ?></a>
+                            <a class="text-black-70"><?php echo $author->username; ?></a>
                         </div>
                     </div>
                 </li>
