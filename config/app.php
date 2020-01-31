@@ -59,6 +59,7 @@
         public static $pageForums = "forum/index.php";
         public static $pageForumSingle = "forum/view.php";
         public static $pageMyForums = "forum/myforums.php";
+        public static $pageTutor = "tutor.php";
 
         public static $pageDashboard = "dashboard.php";
         public static $pageViewScore = "viewscore.php";

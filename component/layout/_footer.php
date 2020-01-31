@@ -5,17 +5,17 @@
           $sess = new Sess();
 ?>
           <footer class="page-footer font-medium indigo bg-dark">
-            <div class="container text-center  p-4">
+            <div class="text-center  p-4">
               <div class="row">
                 <div class="col-md-2 mx-auto">
                   <ul class="list-unstyled">
-                    <li><a class="text-muted" href="https://fishsix.in.th/review/<?php //Nav::echoURL($dir, App::$pageReview) ?>">ตัวอย่างการสอน และรีวิว</a></li>
+                    <li><a class="text-muted" href="<?php Nav::echoURL($dir, App::$pageReview) ?>">ตัวอย่างการสอน และรีวิว</a></li>
                   </ul>
                 </div>
                 <hr class="clearfix w-100 d-md-none">
                 <div class="col-md-2 mx-auto">
                   <ul class="list-unstyled">
-                    <li><a class="text-muted" href="https://fishsix.in.th/tutor/<?php //Nav::echoURL($dir, App::$pageTeachers) ?>">ผู้สอน</a></li>
+                    <li><a class="text-muted" href="<?php Nav::echoURL($dir, App::$pageTutor) ?>">ผู้สอน</a></li>
                   </ul>
                 </div>
                 <hr class="clearfix w-100 d-md-none">
@@ -49,8 +49,8 @@
               </div>
             </div>
             <div>
-              <div class="container">
-                <div class="">
+              <div class="">
+                <div class="pr-5">
                   <div class="row d-flex align-items-center">
                     <div class="col-sm-6"></div>
                     <div class="col-sm-6">
