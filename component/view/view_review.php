@@ -32,7 +32,7 @@
                                     <?php Breadcrumb::initBreadcrumb($dir, $paths) ?>
 
                                     <h1 class="h2">ตัวอย่างการสอน และรีวิว</h1>
-                                    <iframe class="mt-3 w-100 h-100" src="https://fishsix.in.th/review/"></iframe>
+                                    <iframe class="mt-3 w-100" style="height: 100vh" frameBorder="0" src="https://fishsix.in.th/review/"></iframe>
                                 </div>
                             </div>
                             <?php //Sidemenu::initSideMenu($dir, $sess) ?>

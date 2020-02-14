@@ -41,6 +41,9 @@
 
             $result = FunVideoHis::add($api, $id, $auth->ID);
 
+            Console::log('cat', $category);
+            Console::log('his', $result);
+
         }else{
             $video = NULL;
         }

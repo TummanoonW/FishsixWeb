@@ -1,13 +1,15 @@
 var c = {
-    selectDay : document.querySelector('#selectDay'),
-    selectMonth : document.querySelector('#selectMonth'),
-    title : document.querySelector('#title'),
-    totalRev : document.querySelector('#totalRev'),
-    totalCus : document.querySelector('#totalCus'),
-    transList : document.querySelector('#transList'),
-    courseList : document.querySelector('#courseList'),
-    totalCourse : document.querySelector('#totalCourse'),
-    totalPackage : document.querySelector('#totalPackage'),
+    selectDay       : document.querySelector('#selectDay'),
+    selectMonth     : document.querySelector('#selectMonth'),
+    title           : document.querySelector('#title'),
+    totalRev        : document.querySelector('#totalRev'),
+    totalCus        : document.querySelector('#totalCus'),
+    transList       : document.querySelector('#transList'),
+    courseList      : document.querySelector('#courseList'),
+    totalCourse     : document.querySelector('#totalCourse'),
+    totalPackage    : document.querySelector('#totalPackage'),
+    studentBranches : document.querySelector('#studentBranches'),
+    classList       : document.querySelector('#classList'),
 };
 
 function DoPlotByTime(dayStr){
@@ -159,6 +161,36 @@ function ConvertDataAs365(data){
     for (var k in months){
         months2.push(Number((months[k]/1000).toFixed(2)));
     }
+
+    var branches = [];
+    var classes = [];
+    data.bookings.forEach(element => {
+        let key = element.courseBranchID;
+        let key2 = element.classID;
+        if(branches[key] == null || branches[key] == undefined){
+            branches[key] = {
+                bookings: 1, 
+                students: []
+            };
+            branches[key].students[element.ownerID] = 1;
+        }else{
+            branches[key].bookings += 1;
+            if(branches[key].students[element.ownerID] == null || branches[key].students[element.ownerID] == undefined){
+                branches[key].students[element.ownerID] = 1;
+            }else{
+                branches[key].students[element.ownerID] += 1;
+            }
+        }
+        if(classes[key2] == null || classes[key2] == undefined){
+            classes[key2] = 1;
+        }else{
+            classes[key2] += 1;
+        }
+    });
+
+    RenderBranches(branches);
+    RenderClasses(classes);
+
     var plot = {
         labels: labels,
         datasets: [{
@@ -167,6 +199,69 @@ function ConvertDataAs365(data){
         }]
       };
     return plot;
+}
+
+function RenderBranches(branches){
+    c.studentBranches.innerHTML = "";
+    for (var k in branches){
+        var data = branches[k];
+        var count = 0;
+        for(var k2 in data.students){ count += 1; }
+        data.students = count;
+
+        getBranch(k).then(result => {
+            try {
+                data.courseBranch = result.response;
+                let b = data.courseBranch;
+                console.log(result.response);
+    
+                let item =
+                '<div class="card bg-light mb-3" style="max-width: 18rem;">' +
+                    '<div class="card-header">' + b.branch.title + '</div>' +
+                    '<div class="card-body">' +
+                        '<small class="text-muted">ยอดการจอง</small>' +
+                        '<h5 class="card-title">' + b.bookings + '</h5>' +
+                        '<small class="text-muted">จำนวนนักเรียน</small>' +
+                        '<h5 class="card-title">' + b.students + '</h5>' +
+                    '</div>' +
+                '</div>';
+    
+                c.studentBranches.innerHTML += item;   
+            } catch (error) {
+                
+            }
+        });
+    }
+}
+
+function RenderClasses(classes){
+    c.classList.innerHTML = "";
+    for(var k in classes){
+        let data = classes[k];
+        getClass(k).then(result => {
+            try {
+                let cl = result.response;
+                console.log(cl);
+                let item = 
+                '<tr>' +
+                    '<td class="class">' + displayClass(cl) + '</td>' +
+                    '<td class="total">' + data + '</td>' +
+                    '<td class="branch">' + cl.courseBranch.branch.title + '</td>' +
+                '</tr>';
+    
+                c.classList.innerHTML += item;   
+            } catch (error) {
+                
+            }
+        });
+    }
+}
+
+function displayClass(cl){
+    let s = cl.startTime.split(":")[0];
+    let e = cl.endTime.split(":")[0];
+    let t = s + "น. - " + e + "น.";
+    return cl.day + " " + t;
 }
 
 function ConvertDataAs28(response){

@@ -37,7 +37,7 @@
                 $value->videos = $videos;
             }
 
-            $result = FunVideoLib::getLatestLimit($api, 3);
+            $result = FunVideoLib::getLatestLimit($api, 5);
             $latest = $result->response; 
         }else{
             $categories = array();

@@ -1,5 +1,5 @@
 <?php
-    class ViewReview{ ////profile HTML elements loader
+    class ViewTutor{ ////profile HTML elements loader
 
         public static function initView($dir, $sess, $paths){
 ?>
@@ -32,7 +32,7 @@
                                     <?php Breadcrumb::initBreadcrumb($dir, $paths) ?>
 
                                     <h1 class="h2">ผู้สอน</h1>
-                                    <iframe class="mt-3 w-100 h-100" src="https://fishsix.in.th/tutor/"></iframe>
+                                    <iframe class="mt-3 w-100" style="height: 100vh" frameBorder="0" src="https://fishsix.in.th/tutor/"></iframe>
                                 </div>
                             </div>
                             <?php //Sidemenu::initSideMenu($dir, $sess) ?>

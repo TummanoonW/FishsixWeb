@@ -30,13 +30,23 @@
                                             <!--<div class="flex mb-2 mb-sm-0">
                                                 <h1 class="h2">คลังวิดีโอ</h1>
                                             </div> -->
-                                        </div>                    
+                                        </div>        
                                         <section id="row" class="mt-3">
-                                            <h2 class="sectionTitle text-secondary">อัพโหลดล่าสุด</h2>
-                                            <div class="examples">
-                                               <ul class="img-list">
-                                                 <?php self::initCard($dir, $latest) ?>
-                                               </ul>
+                                            <h4 class="text-secondary">อัพโหลดล่าสุด</h4>
+                                            <div class="row">
+                                                <?php $first = $latest[0]; array_shift($latest); ?>
+                                                <div class="col-12">            
+                                                    <div class="card bg-dark text-white" style="border: 1px solid black;">
+                                                      <a href="<?php Nav::echoURL($dir, App::$pageVideoView . "?id=" . $first->ID) ?>">
+                                                        <img src="https://i1.ytimg.com/vi/<?php echo $first->youtube_id ?>/mqdefault.jpg" class="card-img" alt="...">
+                                                      </a>
+                                                      <div class="card-body">
+                                                        <h5 class="card-title text-muted"><?php echo $first->title ?></h5>
+                                                        <a href="<?php Nav::echoURL($dir, App::$pageVideoView . "?id=" . $first->ID) ?>" class="btn btn-primary"><i class="fas fa-play mr-2"></i>ดูวิดีโอ</a>
+                                                      </div>
+                                                    </div>
+                                                </div>
+                                                <?php self::initCard($dir, $latest) ?>
                                             </div>
                                         </section>
                                         <section id="history" class="mt-3">
@@ -63,17 +73,15 @@
         private static function initSection($dir, $categories){
             foreach ($categories as $key => $value) {
             ?>
-                <section id="row" class="mt-4 mb-5">
+                <div id="row" class="col-12 mt-4 mb-5">
                     <div class="media">
-                        <div class="media-body"><h2 class="sectionTitle text-secondary"><?php echo $value->title ?></h2></div>
-                        <div class="media-right text-right"><a href="<?php Nav::echoURL($dir, App::$pageVideoPlaylist . "?id=$value->ID") ?>">ดูทั้งหมด</a></div>
+                        <div class="media-body"><h4 class="text-secondary"><?php echo $value->title ?></h4></div>
+                        <div class="media-right text-right"><a href="<?php Nav::echoURL($dir, App::$pageVideoPlaylist . "?id=$value->ID") ?>" class="text-primary">ดูทั้งหมด</a></div>
                     </div>
-                    <div class="examples">
-                        <ul class="img-list">
-                            <?php self::initCard($dir, $value->videos) ?>
-                        </ul>
+                    <div class="row">
+                        <?php self::initCard($dir, $value->videos) ?>
                     </div>
-                </section>
+                </div>
             <?php
             }
         }
@@ -81,19 +89,19 @@
         private static function initCard($dir, $videos){
             foreach ($videos as $key => $value) {
                 ?>
-                    <li class="image">
-                       <a href="#" onclick="youtube('<?php echo $value->youtube_id ?>', '<?php echo $value->title?>')">
-                            <img id="box1" src="https://i1.ytimg.com/vi/<?php echo $value->youtube_id ?>/mqdefault.jpg" width="280" height="150" />
-                            <span class="text-content">
-                                <h4 class="text-light">
-                                  <?php echo $value->title?>
-                                </h4>
-                                <i class="far fa-play-circle" style="font-size: 48px"></i>
-                                <br><br>
-                                <i class="fas fa-chevron-down" onclick="openNav()" aria-hidden="true"></i>
-                            </span>
-                       </a>
-                    </li>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                        <div class="card bg-dark text-white" style="border: 1px solid black;">
+                            <a href="<?php Nav::echoURL($dir, App::$pageVideoView . "?id=" . $value->ID) ?>">
+                                <img src="https://i1.ytimg.com/vi/<?php echo $value->youtube_id ?>/mqdefault.jpg" class="card-img" alt="...">
+                            </a>
+                          <div class="card-body">
+                            <h5 class="card-title text-muted"><?php echo $value->title ?></h5>
+                            <a href="<?php Nav::echoURL($dir, App::$pageVideoView . "?id=" . $value->ID) ?>" class="btn btn-primary"><i class="fas fa-play mr-2"></i>ดูวิดีโอ</a>
+
+                            <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
+                          </div>
+                        </div>
+                    </div>
                 <?php
             }
         }

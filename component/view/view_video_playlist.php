@@ -18,18 +18,16 @@
 
                     <!-- Header Layout Content -->
                     <div class="mdk-header-layout__content">
-                        <!-- Navigation Paths -->
-                        <?php Breadcrumb::initBreadcrumb($dir, $paths) ?>
                         <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
                             <div class="mdk-drawer-layout__content page ">
                                 <div class="container-fluid page__container"> 
+                                                        <!-- Navigation Paths -->
+                                    <?php Breadcrumb::initBreadcrumb($dir, $paths) ?>
                                     <?php if($isAllowed){ ?>                               
                                         <section id="row1" class="mt-1">
                                             <h2 class="sectionTitle text-secondary">เพลย์ลิสต์ของ - <?php echo $category->title ?></h2>
-                                            <div class="examples">
-                                               <ul class="img-list">
-                                                 <?php self::initCard($dir, $videos) ?>
-                                               </ul>
+                                            <div class="row">
+                                                <?php self::initCard($dir, $videos) ?>
                                             </div>
                                         </section>
                                     <?php }else{
@@ -49,19 +47,19 @@
         private static function initCard($dir, $videos){
             foreach ($videos as $key => $value) {
                 ?>
-                    <li class="image">
-                        <a href="#" onclick="youtube('https://www.youtube.com/watch?v=<?php echo $value->youtube_id ?>)'">
-                            <img id="box1" src="https://i1.ytimg.com/vi/<?php echo $value->youtube_id ?>/mqdefault.jpg" width="280" height="150" />
-                            <span class="text-content">
-                                <h4 class="text-light">
-                                  <?php echo $value->title?>
-                                </h4>
-                                <i class="far fa-play-circle" style="font-size: 48px"></i>
-                                <br><br>
-                                <i class="fas fa-chevron-down" onclick="openNav()" aria-hidden="true"></i>
-                            </span>
-                       </a>
-                    </li>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                        <div class="card bg-dark text-white" style="border: 1px solid black;">
+                            <a href="<?php Nav::echoURL($dir, App::$pageVideoView . "?id=" . $value->ID) ?>">
+                                <img src="https://i1.ytimg.com/vi/<?php echo $value->youtube_id ?>/mqdefault.jpg" class="card-img" alt="...">
+                            </a>
+                          <div class="card-body">
+                            <h5 class="card-title text-muted"><?php echo $value->title ?></h5>
+                            <a href="<?php Nav::echoURL($dir, App::$pageVideoView . "?id=" . $value->ID) ?>" class="btn btn-primary"><i class="fas fa-play mr-2"></i>ดูวิดีโอ</a>
+
+                            <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
+                          </div>
+                        </div>
+                    </div>
                 <?php
             }
         }

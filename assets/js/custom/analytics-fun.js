@@ -46,3 +46,27 @@ function getPackage(id){
         });
     });
 }
+
+function getClass(id){
+    let urls = JSON.parse(document.querySelector('#urls').innerHTML);
+    let api = urls.dir + "api/apiCourse.php";
+    return new Promise((resolve, reject) => {
+        $.get(api + '?m=classFull&id=' + id, (data) => {
+            resolve(data);
+        }).fail(() => {
+            reject(false);
+        });
+    });
+}
+
+function getBranch(id){
+    let urls = JSON.parse(document.querySelector('#urls').innerHTML);
+    let api = urls.dir + "api/apiCourse.php";
+    return new Promise((resolve, reject) => {
+        $.get(api + '?m=branchFull&id=' + id, (data) => {
+            resolve(data);
+        }).fail(() => {
+            reject(false);
+        });
+    });
+}

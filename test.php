@@ -1,64 +1,21 @@
 <?php
-    //Proto Framework for PHP-HTML5
-    //v3
-    //Developed by Tummanoon Wacha-em
 
     $dir = "./";
-    include_once $dir . 'includer/includer.php'; //include Includer file to operate
-    Includer::include_proto($dir); //include Proto Framework Architecture
-    Includer::include_view($dir, 'view_profile.php');
-    Includer::include_fun($dir, 'fun_forum.php');
-
-    $sess = new Sess();
-    $apiKey = $sess->getAPIKey(); //get secret API Key
-
-    $api = new API('null'); //open API connection
-    $io = new IO(); //open Input/Output receiver for certain $_GET and $_POST data 
-
-    switch($io->method){
-        case 'upload':
-            if(isset($io->post->submit)){
-                $file = new File($dir, 'uploads/');
-                $option = new FileOption();
-                $option->set(
-                    FALSE,
-                    TRUE,
-                    TRUE,
-                    NULL,
-                    2 * 100 * 1000,
-                    ['jpg', 'jpeg', 'png', 'gif']
-                );
-
-                $result = $file->upload('fileToUpload', $option);
-                print_r($_FILES);
-            }
-            break;
-        case 'getTop':
-            $result = FunForum::getTop($api, 5);
-            Console::log('lol', $result);
-            break;
-        default:
-            break;
-    }
-?>
-
-<!DOCTYPE html>
-<html>
-<body>
-
-<form action="test.php?m=upload" id="fff" method="post" enctype="multipart/form-data">
-    Select image to upload:
-    <input type="text" name="inputText" value="Deutschland Deutschland Über Alles">
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
-</form>
-
-<script>
-        var f = document.querySelector('#fff');
-        var d = new FormData(f);
-
-        console.log(d);
-    </script>
-</body>
-</html>
+    include_once $dir . 'includer/includer.php'; 
+    Includer::include_proto($dir); 
+    Includer::include_view($dir, 'view_test.php');
     
+    $sess = new Sess(); 
+    $auth = $sess->getAuth(); 
+    $apiKey = $sess->getAPIKey(); 
+
+    $api = new API($apiKey);
+    $io = new IO(); 
+  
+    $paths = array(
+        new Path(FALSE, 'หน้าหลัก', $dir),
+        new Path(TRUE, "ผู้สอน", '')
+    );
+
+    ViewTest::initView($dir, $sess, $paths);
+

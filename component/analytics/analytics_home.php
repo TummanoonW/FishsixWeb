@@ -37,6 +37,7 @@
                                         <form action="#">
                                             <div class="form-inline pl-3 pb-3">
                                                 <div class="form-group mr-2">
+                                                    <label class="mr-2">คัดกรองข้อมูล</label>
                                                     <select id="selectDay" class="form-control custom-select" style="width: 180px" onchange="DoPlotByTime(this.value)">
                                                             <option value="28">28 วันที่ผ่านมา</option>
                                                             <option value="14">14 วันที่ผ่านมา</option>
@@ -45,7 +46,7 @@
                                                             <option value="0">ทุกช่วงเวลา</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group mr-2">
+                                                <!--<div class="form-group mr-2">
                                                     <select id="selectMonth" class="form-control custom-select" style="width: 180px" onchange="DoPlotByMonth(this.value)">
                                                         <option value="01">มกราคม</option>
                                                         <option value="02">กุมภาพันธ์</option>
@@ -60,7 +61,7 @@
                                                         <option value="11">พฤศจิกายน</option>
                                                         <option value="12">ธันวาคม</option>
                                                     </select>
-                                                </div>
+                                                </div>-->
                                             </div>
                                         </form>
                                     </div>
@@ -108,6 +109,36 @@
                                             <br>
                                             <h4 class="text-muted">แพคเกจยอดนิยม</h4>
                                             <h2 id="totalPackage" class="text-primary"></h2>
+                                        </div>
+                                        <div class="mt-4 col-12 text-center">
+                                            <h4 class="text-muted">จำนวนนักเรียนในสาขา</h4>
+                                            <div id="studentByBranches" class="card-deck">
+
+                                            </div>
+                                        </div>
+                                        <div class="mt-4 col-12 text-center">
+                                            <h4 class="text-muted">จำนวนนักเรียนแต่ละรอบเรียน</h4>
+                                            <div id="studentBranches" class="card-deck"></div>
+                                            <!-- Wrapper -->
+                                            <div class="table-responsive" data-toggle="lists" data-lists-values='["class", "total", "branch"]'>        
+                                                <!-- Search -->
+                                                <div class="search-form search-form--light mb-3">
+                                                  <input type="text" class="form-control search" placeholder="ค้นหา">
+                                                  <button class="btn" type="button" role="button"><i class="material-icons">search</i></button>
+                                                </div>
+                                                <!-- Table -->
+                                                <table class="table">
+                                                  <thead>
+                                                    <tr>
+                                                      <th>รอบเรียน</th>
+                                                      <th>จำนวนนักเรียน</th>
+                                                      <th>สาขา</th>
+                                                    </tr>
+                                                  </thead>
+                                                  <tbody id="classList" class="list">
+                                                  </tbody>
+                                                </table>
+                                            </div>                                            
                                         </div>
                                     </div>
                                 </div>

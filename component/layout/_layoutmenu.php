@@ -30,7 +30,7 @@
                             box-shadow: 0 5px 11px 0 rgba(56,59,61,.07);
                         }    
                     </style>
-                    <div class="navbar w-100 row bg-light">
+                    <div class="navbar w-100 row">
                         <div class="col-3 text-center">
                             <a href="<?php Nav::echoHome($dir); ?>"><i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">home</i></a>
                         </div>

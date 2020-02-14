@@ -24,7 +24,7 @@
         if(!isset($io->get->category)) $search = (object)array(
             'category' => '',
             'query' => '',
-            'desc' => FALSE,
+            'desc' => TRUE,
             'limit' => 24,
             'offset' => 0,
             'page' => 0
