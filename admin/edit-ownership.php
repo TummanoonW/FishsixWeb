@@ -6,6 +6,7 @@
     Includer::include_admin($dir, 'admin_edit_ownership.php');
     Includer::include_fun($dir, 'fun_course.php');
     Includer::include_fun($dir, 'fun_ownership.php');
+    Includer::include_fun($dir, 'fun_auth.php');
 
     $sess = new Sess();
     $auth = $sess->getAuth();
@@ -37,8 +38,11 @@
         $result = FunCourse::getPublishedLite($api);
         $courses = $result->response;
 
+        $result = FunAuth::get($api);
+        $users = $result->response;
+
         Header::initHeader($dir, "แอดมิน - โปรแกรม" . $label . "ความเป็นเจ้าของ"); 
-        AdminOwnershipEditorView::initView($dir, $sess, $paths, $isNew, $label, $ownership, $courses);
+        AdminOwnershipEditorView::initView($dir, $sess, $paths, $isNew, $label, $ownership, $courses, $users);
         Footer::initFooter($dir); 
 
     }else{

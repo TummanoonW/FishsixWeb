@@ -1,7 +1,7 @@
 <?php
     class AdminOwnershipEditorView{
 
-        public static function initView($dir, $sess, $paths, $isNew, $label, $ownership, $courses){
+        public static function initView($dir, $sess, $paths, $isNew, $label, $ownership, $courses, $users){
 ?>
             <body class=" layout-fluid">
                
@@ -43,10 +43,17 @@
                                                     <?php } ?>
 
                                                     <div class="form-group row">
-                                                            <label for="ownerID" class="col-sm-3 col-form-label form-label">ownerID</label>
-                                                            <div class="col-sm-8">
-                                                                <div class="input-group">
-                                                                <input name="ownerID" type="text" id="ownerID" class="form-control" placeholder="กรอก ID ผู้ใช้" value="<?php if(!$isNew) echo $ownership->ownerID ?>">
+                                                    <label class="col-sm-3 col-form-label form-label" for="owner">ผู้ใช้</label>
+                                                        <div class="col-sm-8">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <select name="owner" id="owner" class="form-control custom-select">
+                                                                        <option value="">เลือกผู้ใช้</option>
+                                                                        <?php foreach ($users as $key => $value) { ?>
+                                                                            <option value="<?php echo $value->ID ?>" <?php if(!$isNew)if($ownership->ownerID == $value->ID) echo 'selected' ?>><?php echo $value->username ?> - ID:<?php echo $value->ID ?></option>
+                                                                        <?php } ?>
+                                                                    </select>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -71,7 +78,7 @@
                                                             <label for="credit" class="col-sm-3 col-form-label form-label">จำนวนเครดิต (ชม.)</label>
                                                             <div class="col-sm-8">
                                                                 <div class="input-group">
-                                                                <input name="credit" type="number" id="credit" class="form-control" value="<?php if(!$isNew) echo $ownership->ownership ?>">
+                                                                <input name="credit" type="number" id="credit" class="form-control" value="<?php if(!$isNew) echo $ownership->credit ?>">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -80,7 +87,7 @@
                                                             <label for="expiration" class="col-sm-3 col-form-label form-label">ตั้งเวลาหมดอายุคอร์ส</label>
                                                             <div class="col-sm-8">
                                                                 <div class="input-group">
-                                                                <input name="expiration" type="number" id="expiration" class="form-control" value="0">
+                                                                <input name="expiration" type="date" id="expiration" class="form-control" value="<?php if(!$isNew) echo self::printEx($ownership->expiration) ?>">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -90,7 +97,7 @@
                                                             <div class="media align-items-center">
                                                                 <div class="media-left">
                                                                     <button type="submit" class="btn btn-success">บันทึก</button>
-                                                                    <a onclick="confirmCancel('<?php Nav::echoURL($dir, App::$pageAdminManageVideos) ?>')" class="btn btn-danger text-light ml-2">ยกเลิก</a>
+                                                                    <a onclick="confirmCancel('<?php Nav::echoURL($dir, App::$pageAdminManageOwnerships) ?>')" class="btn btn-danger text-light ml-2">ยกเลิก</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -110,6 +117,10 @@
                 <?php Script::customScript($dir, 'admin-edit-video.js') ?>
                     
 <?php
+        }
+
+        private static function printEx($date){
+            return explode(" ", $date)[0];
         }
 
     }
