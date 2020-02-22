@@ -91,4 +91,10 @@
             $result = $api->post($url, $form);
             return $result;
         }
+
+        public static function get($api){
+            $url = $api->getURL(App::$apiAuth, 'all', NULL);
+            $result = $api->get($url);
+            return $result;
+        }
     }

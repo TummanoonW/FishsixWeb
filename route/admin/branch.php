@@ -31,8 +31,9 @@
 
                     $result = $file->upload('thumbnail', $option);
                     if($result->success) $form->thumbnail = $result->response->downloadURL;
+                }else{
+                    $form->thumbnail = $form->thumbnail2;
                 }
-                if($form->thumbnail == '') unset($form->thumbnail);
 
                 if($_FILES['map']['error'] == 0){
                     $file = new File($dir, 'uploads/maps/');
@@ -48,8 +49,9 @@
 
                     $result = $file->upload('map', $option);
                     if($result->success) $form->map = $result->response->downloadURL;
+                }else{
+                    $form->map = $form->map2;
                 }
-                if($form->map == '') unset($form->map);
 
 
                 if(isset($form->ID)){

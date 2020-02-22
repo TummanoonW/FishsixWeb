@@ -19,6 +19,7 @@
                 $courseBranchID = $io->post->cBranchID;
                 $classID = $io->post->cClassID;
                 $ownershipID = $io->post->ownershipID;
+                $startDate = $io->post->cDate;
 
                 $result = FunCourse::getClassSingle($api, $classID);
                 if($result->response != NULL){
@@ -29,10 +30,10 @@
                         'courseBranchID' => $courseBranchID,
                         'classID' => $classID,
                         'courseID' => $class->courseID,
-                        'creditUsed' => $class->creditUse
+                        'creditUsed' => $class->creditUse,
+                        'startDate' => $startDate,
+                        'ownershipID' => $ownershipID
                     );
-
-                    echo json_encode($form);
                     
                     $result = FunBooking::book($api, $form);
                     if($result->success){

@@ -80,7 +80,7 @@
                                                                         <small class="text-secondary">ขนาดที่แนะนำ: 720x480 px</small>
                                                                     </div>
                                                                 </div>
-                                                                <!-- <input name="thumbnail" id="thumbnail" style="visibility: collapse;" value="<?php if(!$isNew) echo $branch->thumbnail ?>"> -->
+                                                                <input name="thumbnail2" id="thumbnail2" style="visibility: collapse;" value="<?php if(!$isNew) echo $branch->thumbnail ?>">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -102,7 +102,7 @@
                                                                         <small class="text-secondary">ขนาดที่แนะนำ: 1024x724 px</small>
                                                                     </div>
                                                                 </div>
-                                                                <!-- <input name="thumbnail" id="thumbnail" style="visibility: collapse;" value="<?php if(!$isNew) echo $branch->thumbnail ?>"> -->
+                                                                <input name="map2" id="map2" style="visibility: collapse;" value="<?php if(!$isNew) echo $branch->map ?>">
                                                             </div>
                                                         </div>
                                                     </div>

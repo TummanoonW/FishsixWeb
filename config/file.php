@@ -62,8 +62,8 @@
             if($uploadOk){
                 if (move_uploaded_file($_FILES[$fileInput]["tmp_name"], $target_file)) {
                     $uri = '/' . explode('/', $_SERVER['REQUEST_URI'])[1] . '/';
-                    $url = "http" . (($_SERVER['SERVER_PORT'] == 443) ? "s" : "") . "://" . $_SERVER['HTTP_HOST'] . $uri;
-                    $downloadURL = $url . $this->dirName . $fileName;
+                    $url = "http" . (($_SERVER['SERVER_PORT'] == 443) ? "s" : "") . "://" . $_SERVER['HTTP_HOST'];
+                    $downloadURL = $url . '/' . $this->dirName . $fileName;
                     $result->setResult(TRUE, (object)array('downloadURL' => $downloadURL), NULL);
                 } else {
                     $result->setResult(FALSE, NULL, Err::$ERR_FILE_FAILED);

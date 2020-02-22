@@ -37,6 +37,20 @@
                                             <form action="<?php Nav::echoURL($dir, App::$routeBookClass . "?m=book"); ?>" method="POST">
                                                 <table class="table table-nowrap mb-0 table--elevated">
                                                     <tbody>
+                                                        <tr id="hidden-thing">
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="media-body">
+                                                                        <strong>OWNERSHIPID</strong>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <div class="d-flex align-items-center">
+                                                                    <input id="ownershipID" name="ownershipID" value="<?php echo $ownership->ID ?>">
+                                                                </div>
+                                                            </td>
+                                                        </tr>
                                                         <tr>
                                                             <td>
                                                                 <div class="d-flex align-items-center">
@@ -58,15 +72,28 @@
                                                             <td>
                                                                 <div class="d-flex align-items-center">
                                                                     <div class="media-body">
-                                                                        <strong>รอบเรียน</strong>
+                                                                        <strong>วันที่จอง</strong>
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                             <td class="text-center">
                                                                 <div class="d-flex align-items-center">
+                                                                    <input id="cDate" name="cDate" type="date" class="form-control" onchange="reRender(this)">
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="media-body">
+                                                                        <strong>รอบเรียน</strong>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-center" id='cClass'>
+                                                                <div class="d-flex align-items-center">
                                                                     <select id="cClassID" name="cClassID" class="form-control">
                                                                         <option value="" selected>เลือกรอบเรียน</option>
-                                                                        <?php //self::initClasses($dir, $classes) ?>
                                                                     </select>
                                                                 </div>
                                                             </td>

@@ -1,8 +1,46 @@
 var classes = JSON.parse(document.getElementById("obj-classes").innerHTML);
 var schedules = JSON.parse(document.getElementById("obj-schedules").innerHTML);
+
+console.log(classes);
+console.log(schedules);
+
 var table = document.getElementById('Table');
+var cClassID = document.getElementById('cClassID');
+var cDate = document.getElementById('cDate');
+
+var s_classes = [];
+
+$('#cClass').toggle(false);
+$('#hidden-thing').toggle(false);
 
 //initCalendar();
+
+async function reRender(input){
+    let date = new Date(input.value + 'T00:00');
+    let a_days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+    let day = a_days[date.getDay()];
+
+    var s_classes2 = [];
+    s_classes.forEach(element => {
+        if(day == element.day){
+            s_classes2.push(element);
+        }
+    });
+
+    cClassID.innerHTML = '<option value="" selected>เลือกรอบเรียน</option>';
+    cClassID.value = "";
+
+    if(s_classes2.length > 0){
+        $('#cClass').toggle(true);
+
+        s_classes2.forEach(element => {
+            let item = '<option value="'+element.ID+'">' + printTime(element.startTime) + '-' + printTime(element.endTime) + '</option>';
+            cClassID.innerHTML = cClassID.innerHTML + item;
+        });
+    }else{
+        $('#cClass').toggle(false);
+    }
+}
 
 async function initCalendar() {
     let data = await genEvents(schedules);
@@ -135,47 +173,17 @@ function changeBranches(input) {
     });
 
     changeClasses(value, classes);
-
 }
 
 function changeClasses(courseBranchID, classes){
-    var arr = [];
+    s_classes = [];
     classes.forEach(element => {
-        if(element.courseBranchID == courseBranchID) arr.push(element);
+        if(element.courseBranchID == courseBranchID) s_classes.push(element);
     });
 
-    var cClassID = document.querySelector('#cClassID');
-    cClassID.innerHTML = '<option value="" selected>เลือกรอบเรียน</option>';
-    arr.forEach(element => {
-        var d = "";
-        switch(element.day){
-            case 'mon':
-                d = 'จ.';
-                break;
-            case 'tue':
-                d = 'อ.';
-                break;
-            case 'wed':
-                d = 'พ.';
-                break;
-            case 'thu':
-                d = 'พฤ.';
-                break;
-            case 'fri':
-                d = 'ศ.';
-                break;
-            case 'sat':
-                d = 'ส.';
-                break;
-            case 'sun':
-                d = 'อา.';
-                break;
-            default:
-                break;
-        }
-        let item = '<option value="'+element.ID+'">' + d + ' ' + printTime(element.startTime) + '-' + printTime(element.endTime) + '</option>';
-        cClassID.innerHTML = cClassID.innerHTML + item;
-    });
+
+    reRender(cDate);
+    
 }
 
 function printTime(datetime){
