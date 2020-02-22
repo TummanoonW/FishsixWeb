@@ -31,8 +31,11 @@
                         }    
                     </style>
                     <div class="navbar w-100 row">
-                        <div class="col-3 text-center">
+                        <!--<div class="col-3 text-center">
                             <a href="<?php Nav::echoHome($dir); ?>"><i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">home</i></a>
+                        </div>-->
+                        <div class="col-3 text-center">
+                            <a href="<?php Nav::echoURL($dir, App::$pageMyCourses); ?>"><i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i></a>
                         </div>
                         <div class="col-3 text-center">
                             <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">apps</i></a>
