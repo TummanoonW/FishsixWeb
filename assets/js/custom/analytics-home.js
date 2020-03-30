@@ -1,6 +1,6 @@
 var c = {
     selectDay       : document.querySelector('#selectDay'),
-    selectMonth     : document.querySelector('#selectMonth'),
+    selectBranch    : document.querySelector('#selectBranch'),
     title           : document.querySelector('#title'),
     totalRev        : document.querySelector('#totalRev'),
     totalCus        : document.querySelector('#totalCus'),
@@ -9,12 +9,15 @@ var c = {
     totalCourse     : document.querySelector('#totalCourse'),
     totalPackage    : document.querySelector('#totalPackage'),
     studentBranches : document.querySelector('#studentBranches'),
+    studentClasses : document.querySelector('#studentClasses'),
     classList       : document.querySelector('#classList'),
 };
 
-function DoPlotByTime(dayStr){
-    if(dayStr == '0') title.innerHTML = "สถิติในช่วงเวลาทั้งหมด";
-    else title.innerHTML = "สถิติเมื่อ " + dayStr + " วันที่ผ่านมา";
+function DoPlotByTime(){
+    let dayStr = c.selectDay.value;
+
+    if(dayStr == '0') c.title.innerHTML = "สถิติในช่วงเวลาทั้งหมด";
+    else c.title.innerHTML = "สถิติเมื่อ " + dayStr + " วันที่ผ่านมา";
 
     PlotByTime(dayStr).then(data => {
         let d = JSON.parse(data);
@@ -162,15 +165,29 @@ function ConvertDataAs365(data){
         months2.push(Number((months[k]/1000).toFixed(2)));
     }
 
-    var branches = [];
-    var classes = [];
+    calculateAndRenders(data);
+
+    var plot = {
+        labels: labels,
+        datasets: [{
+          label: "Performance",
+          data: months2
+        }]
+      };
+    return plot;
+}
+
+function calculateAndRenders(data){
+    var branches = {};
+    var classes = {};
+    console.log("data.bookings", data.bookings);
     data.bookings.forEach(element => {
         let key = element.courseBranchID;
         let key2 = element.classID;
         if(branches[key] == null || branches[key] == undefined){
             branches[key] = {
                 bookings: 1, 
-                students: []
+                students: {}
             };
             branches[key].students[element.ownerID] = 1;
         }else{
@@ -190,45 +207,35 @@ function ConvertDataAs365(data){
 
     RenderBranches(branches);
     RenderClasses(classes);
-
-    var plot = {
-        labels: labels,
-        datasets: [{
-          label: "Performance",
-          data: months2
-        }]
-      };
-    return plot;
 }
 
 function RenderBranches(branches){
     c.studentBranches.innerHTML = "";
-    for (var k in branches){
-        var data = branches[k];
-        var count = 0;
-        for(var k2 in data.students){ count += 1; }
-        data.students = count;
 
-        getBranch(k).then(result => {
+    console.log("branches", branches);
+    for (var k in branches){
+        let data = branches[k];
+
+        var students = 0;
+        for (var k2 in data.students){ 
+            students = students + 1;
+        }
+
+        getBranch(k).then(async result => {
             try {
-                data.courseBranch = result.response;
-                let b = data.courseBranch;
-                console.log(result.response);
+                result = await JSON.parse(result);
+                let branch = await result.response.branch;
     
-                let item =
-                '<div class="card bg-light mb-3" style="max-width: 18rem;">' +
-                    '<div class="card-header">' + b.branch.title + '</div>' +
-                    '<div class="card-body">' +
-                        '<small class="text-muted">ยอดการจอง</small>' +
-                        '<h5 class="card-title">' + b.bookings + '</h5>' +
-                        '<small class="text-muted">จำนวนนักเรียน</small>' +
-                        '<h5 class="card-title">' + b.students + '</h5>' +
-                    '</div>' +
-                '</div>';
+                let item = await
+                '<tr>' +
+                    '<td class="branch">' + branch.title + '</td>' +
+                    '<td class="booking">' + data.bookings + '</td>' +
+                    '<td class="number">' + students + '</td>' +
+                '</tr>';
     
-                c.studentBranches.innerHTML += item;   
+                c.studentBranches.innerHTML += await item;   
             } catch (error) {
-                
+                console.log("err", error);
             }
         });
     }
@@ -236,17 +243,19 @@ function RenderBranches(branches){
 
 function RenderClasses(classes){
     c.classList.innerHTML = "";
+    console.log("classes", classes);
     for(var k in classes){
         let data = classes[k];
-        getClass(k).then(result => {
+        getClass(k).then(async result => {
             try {
-                let cl = result.response;
-                console.log(cl);
+                result = await JSON.parse(result);
+                let cl = await result.response;
+                await console.log(cl);
                 let item = 
                 '<tr>' +
                     '<td class="class">' + displayClass(cl) + '</td>' +
-                    '<td class="total">' + data + '</td>' +
                     '<td class="branch">' + cl.courseBranch.branch.title + '</td>' +
+                    '<td class="total">' + data + '</td>' +
                 '</tr>';
     
                 c.classList.innerHTML += item;   
@@ -280,6 +289,9 @@ function ConvertDataAs28(response){
     for (var k in days){
         days2.push(Number((days[k]/1000).toFixed(2)));
     }
+
+    calculateAndRenders(response);
+
     var plot = {
         labels: labels,
         datasets: [{
@@ -352,18 +364,27 @@ function initTotal(response){
         count += 1;
     });
 
+    console.log("courses", courses);
+    console.log("packages", packages);
+
     let cID = mode(courses);
     getCourse(cID).then(data => {
-        let d = JSON.parse(data);
-        console.log(d);
-        c.totalCourse.innerHTML = d.response.title;
+        try{
+            let d = JSON.parse(data);
+            c.totalCourse.innerHTML = d.response.title;
+        }catch(error){
+            c.totalCourse.innerHTML = "ไม่มีข้อมูล";
+        }
     });
 
     let pID = mode(packages);
     getPackage(pID).then(data => {
-        let d = JSON.parse(data);
-        console.log(d);
-        c.totalPackage.innerHTML = d.response.title;
+        try {
+            let d = JSON.parse(data);
+            c.totalPackage.innerHTML = d.response.title;   
+        } catch (error) {
+            c.totalPackage.innerHTML = "ไม่มีข้อมูล";
+        }
     });
     
     let t = (rev/1000).toFixed(2);

@@ -183,7 +183,7 @@ async function onUploadToPicture(input, width, height, input_id){
 async function onPreviewChange(input, id){
     iframe = document.querySelector(id);
     let value = input.value;
-    iframe.src = value;
+    iframe.src = "https://www.youtube.com/embed/" + value;
 }
 
 function initLessonItems(input, lessons){
@@ -222,7 +222,8 @@ function initLessonItems(input, lessons){
 
 function initPackageItems(input, packages){
     input.innerHTML = "";
-    packages.forEach(element => {
+    console.log(packages);
+    packages.forEach((element, index) => {
         try{
             let id = element.ID;
             if(element.meta == 'delete'){
@@ -243,6 +244,7 @@ function initPackageItems(input, packages){
                                 '</label>' +
                             '</div>' +
                             '<div class="media-right">' +
+                                '<a onclick="return editPackage('+index+');" class="btn btn-white btn-sm"><i class="material-icons">create</i></a>' +
                                 '<a onclick="return confirmDeletePackage('+id+');" class="btn btn-white btn-sm"><i class="material-icons">delete_forever</i></a>' +
                             '</div>' +
                         '</div>' +
@@ -336,20 +338,26 @@ function initClassItems(input, classes){
             if(element.meta == 'delete'){
             }else{
                 let item = 
-                '<tr>' +
-                    '<td>' +
+                '<li class="nestable-item nestable-item-handle" data-id="'+id+'">' +
+                    '<div class="nestable-handle"><i class="material-icons">menu</i></div>' +
+                    '<div class="nestable-content">' +
                         '<div class="media align-items-center">' +
-                            '<div class="media-body">' +
+                            '<div class="media-left">' +
                                 '<span class="js-lists-values-employee-name">'+element.day+'</span>' +
                             '</div>' +
+                            '<div class="media-body">' +
+                                '<h5 class="card-title h6 mb-0">' +
+                                    simpleTime(element.startTime) + " ถึง " + simpleTime(element.endTime) +
+                                '</h5>' +
+                                '<small class="text-muted">'+findBranchTitle(element.courseBranchID, data.course.branches)+'</small>' +
+                            '</div>' +
+                            '<div class="media-right">' +
+                                '<a onclick="return confirmDeleteClass('+id+');" class="btn btn-white btn-sm"><i class="material-icons">delete_forever</i></a>' +
+                            '</div>' +
                         '</div>' +
-                    '</td>' +
-                    '<td><span>'+simpleTime(element.startTime)+'</span></td>' +
-                    '<td>ถึง</td>' +
-                    '<td><span>'+simpleTime(element.endTime)+'</span></td>' +
-                    '<td><span>'+findBranchTitle(element.courseBranchID, data.course.branches)+'</span></td>' +
-                    '<td><a onclick="return confirmDeleteClass('+id+');" class="btn btn-white btn-sm"><i class="material-icons">delete_forever</i></a></td>' +
-                '</tr>' ;
+                    '</div>' +
+                '</li>';
+
                 input.innerHTML = input.innerHTML + item;
             }
         }catch(e){
@@ -416,6 +424,11 @@ async function confirmDeleteLesson(id){
 
         initLessonItems(inputs.lessons, data.course.lessons);
     }
+}
+
+async function editPackage(index){
+    await saveSess();
+    window.location.href = data.urls.pageAdminCourseEditorPackage + "?index=" + index;
 }
 
 async function confirmDeletePackage(id){

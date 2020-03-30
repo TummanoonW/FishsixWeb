@@ -89,7 +89,7 @@
                                                             <h4 class="card-title"><i class="fas fa-play"></i> &nbsp;วิดีโอตัวอย่าง</h4>
                                                         </div>
                                                         <div class="card-body p-0">
-                                                            <iframe class="embed-responsive-item" src="<?php echo $preview ?>" allowfullscreen=""></iframe>
+                                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?php echo $preview ?>" allowfullscreen="true"></iframe>
                                                         </div>
                                                     </div>
                                             <?php } ?>
@@ -218,16 +218,18 @@
 
         public static function initTeacherItems($dir, $teachers){
             foreach ($teachers as $key => $t) {
+                if(isset($t->ID)){
                 ?>
                     <div class="media align-items-center mb-3">
                         <div class="media-left">
-                            <img src="<?php Asset::echoIcon($dir, $t->profile_pic) ?> " alt="<?php echo $t->username ?>" width="48" class="rounded-circle">
+                            <img src="<?php Asset::echoIcon($dir, $t->profile_pic) ?> " alt="<?php if(isset($t->username)) echo $t->username ?>" width="48" class="rounded-circle">
                         </div>
                         <div class="media-body">
-                            <h4 class="card-title"><a href="#"><?php echo $t->username ?></a></h4>
+                            <h4 class="card-title"><a href="#"><?php if(isset($t->username)) echo $t->username ?></a></h4>
                         </div>
                     </div>
                 <?php
+                }
             }
         }
 
@@ -304,8 +306,8 @@
                     <li class="list-group-item">
                         <div class="d-flex w-100 justify-content-between">
                             <a href="#" class="h5 mb-1 card-title">
-                                <img src="<?php Asset::echoIcon($dir, $a->profile_pic) ?> " alt="<?php echo $a->username ?>" width="32" class="rounded-circle">
-                                <span class="ml-1"><?php echo $a->username ?></span>
+                                <img src="<?php Asset::echoIcon($dir, $a->profile_pic) ?> " alt="<?php if(isset($a->username))echo $a->username ?>" width="32" class="rounded-circle">
+                                <span class="ml-1"><?php if(isset($a->username))echo $a->username ?></span>
                             </a>
                         </div>
                         <div><?php self::initRating($dir, $c->score, 1) ?></div>

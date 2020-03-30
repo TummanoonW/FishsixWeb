@@ -5,6 +5,9 @@
             $urls = (object)array(
                 'pageAdminManageUser' => Nav::getURL($dir, App::$pageAdminManageUser)
             );
+            $data = (object)array(
+                'auths' => $auths
+            );
 ?>
             <body class=" layout-fluid">
                 <style>
@@ -37,11 +40,14 @@
                                     <!-- Navigation Paths -->
                                     <?php Breadcrumb::initBreadcrumb($dir, $paths) ?>
 
-                                    <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
-                                        <div class="flex mb-2 mb-sm-0">
+                                    <div class="media mb-headings align-items-center">
+                                        <div class="media-body">
                                             <h1 class="h2">จัดการผู้ใช้</h1>
-                                        </div> 
-                                        <a href="<?php Nav::echoURL($dir, App::$pageAdminAddUser) ?>" class="btn btn-success">+ เพิ่มผู้ใช้</a>
+                                        </div>
+                                        <div class="media-right">
+                                            <button onclick="exportExcel()" class="btn btn-info mr-2">ดาวน์โหลดเป็น Excel</button>
+                                            <a href="<?php Nav::echoURL($dir, App::$pageAdminAddUser) ?>" class="btn btn-success">+ เพิ่มผู้ใช้</a>
+                                        </div>
                                     </div>
 
                                     <div class="card card-body border-left-3 border-left-primary navbar-shadow mb-4">
@@ -74,7 +80,7 @@
                                                     <option value="admin" <?php echo $a ?>>แอดมิน</option>
                                                 </select>
                                                 <div class="flex search-form ml-3 search-form--light">
-                                                    <input name="query" id="query" type="text" class="form-control" placeholder="ค้นหา" id="searchSample02" value="<?php echo $search->query ?>">
+                                                    <input name="query" id="query" type="text" class="form-control" placeholder="ค้นหาด้วยอีเมล" id="searchSample02" value="<?php echo $search->query ?>">
                                                     <button onclick="searchQuery()" class="btn" type="button" role="button"><i class="material-icons">search</i></button>
                                                 </div>
                                             </div>
@@ -84,12 +90,12 @@
                                                 <div class="w-auto ml-sm-auto table d-flex align-items-center mb-0">
                                                     <small class="text-muted text-uppercase mr-3 d-none d-sm-block">จัดลำดับโดย</small>
                                                     <?php 
-                                                          if($search->desc){ 
+                                                          if($search->desc == 0 || $search->desc == "0"){ 
                                                     ?>
-                                                            <a href="#" onclick="searchDesc(false)" class="sort small text-uppercase ml-2">Z - A</a>
+                                                            <a href="#" onclick="searchDesc(1)" class="sort small text-uppercase ml-2">Z - A</a>
                                                     <?php }else{ 
                                                     ?>
-                                                            <a href="#" onclick="searchDesc(true)" class="sort small text-uppercase ml-2">A - Z</a>
+                                                            <a href="#" onclick="searchDesc(0)" class="sort small text-uppercase ml-2">A - Z</a>
                                                     <?php } ?>
                                                 </div>
                                             </div>
@@ -115,6 +121,7 @@
 
                 <script id="urls"><?php echo json_encode($urls) ?></script>
                 <script id="q"><?php echo json_encode($search) ?></script>
+                <script id="data"><?php echo json_encode($data) ?></script>
                 <?php Script::customScript($dir, 'admin-manage-user.js') ?>
 
 <?php

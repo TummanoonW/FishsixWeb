@@ -91,7 +91,7 @@
                                                             <a href="javascript:void(0)" class="sort" data-sort="course">คอร์ส</a>
                                                         </td>
                                                         <td>
-                                                            <a href="javascript:void(0)" class="sort" data-sort="date">วันที่เรียน</a>
+                                                            <a href="javascript:void(0)" class="sort" data-sort="date">รายละเอียด</a>
                                                         </td>
                                                         <td></td>
                                                     </tr>
@@ -133,22 +133,22 @@
                     <tr>
                         <td class="text-center">
                             <div class="d-flex align-items-center">
-                                <a href="<?php Nav::echoURL($dir, App::$pageAdminViewClassroom . "?date=$startDate&course=$course->ID&branch=$branch->ID&class=$class->ID") ?>" class="text-body small"><span class="date"><?php echo $startDate ?></span></a>
+                                <a href="<?php if(isset($course->ID) && isset($branch->ID) && isset($class->ID))Nav::echoURL($dir, App::$pageAdminViewClassroom . "?date=$startDate&course=$course->ID&branch=$branch->ID&class=$class->ID"); else echo '#' ?>" class="text-body small"><span class="date"><?php echo $startDate ?></span></a>
                             </div>
                         </td>
                         <td class="text-center">
                             <div class="d-flex align-items-center">
-                                <a href="<?php Nav::echoURL($dir, App::$pageAdminViewClassroom . "?date=$startDate&course=$course->ID&branch=$branch->ID&class=$class->ID") ?>" class="text-body small"><span class="class"><?php self::echoTimeRange($class) ?></span></a>
+                                <a href="<?php if(isset($course->ID) && isset($branch->ID) && isset($class->ID))Nav::echoURL($dir, App::$pageAdminViewClassroom . "?date=$startDate&course=$course->ID&branch=$branch->ID&class=$class->ID"); else echo '#' ?>" class="text-body small"><span class="class"><?php self::echoTimeRange($class) ?></span></a>
                             </div>
                         </td>
                         <td>
                             <div class="d-flex align-items-center">
-                                <a href="<?php Nav::echoURL($dir, App::$pageAdminViewClassroom . "?date=$startDate&course=$course->ID&branch=$branch->ID&class=$class->ID") ?>" class="text-body small"><span class="branch"><?php if(isset($branch->title)) echo $branch->title ?></span></a>
+                                <a href="<?php if(isset($course->ID) && isset($branch->ID) && isset($class->ID))Nav::echoURL($dir, App::$pageAdminViewClassroom . "?date=$startDate&course=$course->ID&branch=$branch->ID&class=$class->ID"); else echo '#' ?>" class="text-body small"><span class="branch"><?php if(isset($branch->title)) echo $branch->title ?></span></a>
                             </div>
                         </td>
                         <td class="text-center">
                             <div class="d-flex align-items-center">
-                                <a href="<?php Nav::echoURL($dir, App::$pageAdminViewClassroom . "?date=$startDate&course=$course->ID&branch=$branch->ID&class=$class->ID") ?>" class="text-body small"><span class="course"><?php echo $course->title ?></span></a>
+                                <a href="<?php if(isset($course->ID) && isset($branch->ID) && isset($class->ID))Nav::echoURL($dir, App::$pageAdminViewClassroom . "?date=$startDate&course=$course->ID&branch=$branch->ID&class=$class->ID"); else echo '#' ?>" class="text-body small"><span class="course"><?php echo $course->title ?></span></a>
                             </div>
                         </td>
                         <td>
@@ -157,11 +157,13 @@
                               <div class="dropdown-menu">
                                 <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$routeAdminOrder . "?m=confirm&id=$id") ?>">ประเมิน</a>
                                 <div role="separator" class="dropdown-divider"></div>
-                                <a class="dropdown-item text-danger" href="<?php Nav::echoURL($dir, App::$pageAdminViewClassroom . "?date=$startDate&course=$course->ID&branch=$branch->ID&class=$class->ID") ?>">ยกเลิก</a>
+                                <a class="dropdown-item text-danger" href="<?php if(isset($course->ID) && isset($branch->ID) && isset($class->ID))Nav::echoURL($dir, App::$pageAdminViewClassroom . "?date=$startDate&course=$course->ID&branch=$branch->ID&class=$class->ID"); else echo '#' ?>">ยกเลิก</a>
                               </div>-->
-                              <a href="<?php Nav::echoURL($dir, App::$pageAdminViewClassroom . "?date=$startDate&course=$course->ID&branch=$branch->ID&class=$class->ID") ?>" class="btn btn-success">
-                                <i class="material-icons">remove_red_eye</i>
-                              </a>
+                                <?php if(isset($course->ID) && isset($branch->ID) && isset($class->ID)){ ?>
+                                    <a href="<?php Nav::echoURL($dir, App::$pageAdminViewClassroom . "?date=$startDate&course=$course->ID&branch=$branch->ID&class=$class->ID") ?>" class="btn btn-success">
+                                      <i class="material-icons">remove_red_eye</i>
+                                    </a>
+                                <?php } ?>
                             </div>
                         </td>
                     </tr>

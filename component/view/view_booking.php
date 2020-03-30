@@ -36,6 +36,7 @@
                                             <h4 class="mt-4">ผู้จอง: คุณ <?php echo $fname . " " . $lname ?></h4>
                                             <h4 class="mt-4">คอร์ส: <?php echo $booking->course->title ?></h4>
                                             <h4 class="mt-4">เรียนที่สาขา: <?php echo $booking->courseBranch->branch->title ?></h4>
+                                            <h4 class="mt-4">เรื่องที่เรียน: <?php echo $booking->lesson ?></h4>
                                             <div class="media align-items-center">
                                                 <div class="media-left">
                                                     <span class="col-12 col-md-6 text-muted">
@@ -53,6 +54,9 @@
                                                 <div class="media-right">
                                                 
                                                 </div>
+                                            </div>
+                                            <div class="mt-4">
+
                                             </div>
                                         </div>
                                     </div>

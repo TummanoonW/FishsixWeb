@@ -41,7 +41,15 @@
                                     </section>-->
                                     
                                    <section id="row2" class="mt-4 mb-5">
-                                        <h2 class="sectionTitle">คอร์สเรียนทั้งหมด</h2>
+                                        <div class="media">
+                                            <div class="media-body">
+                                                <h1 class="h2 sectionTitle">คอร์สเรียน</h1>
+                                            </div>
+                                            <div class="media-right">
+                                                <a href="<?php Nav::echoURL($dir, App::$pageCourses) ?>" class="btn btn-primary"><i class="material-icons" style="width: 22px;">storefront</i>ร้านค้า</a>
+                                            </div>
+                                        </div>
+                                        
                                         <div class="row">
                                             <?php self::initCourses($dir, $all_courses) ?>
                                         </div>

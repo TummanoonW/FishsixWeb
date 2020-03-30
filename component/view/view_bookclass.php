@@ -61,7 +61,7 @@
                                                             </td>
                                                             <td class="text-center">
                                                                 <div class="d-flex align-items-center">
-                                                                    <select id="branch-select" name="cBranchID" class="form-control" onchange="changeBranches(this)">
+                                                                    <select id="cBranchID" name="cBranchID" class="form-control" onchange="changeBranches(this)">
                                                                         <option value="" selected>เลือกสาขา</option>
                                                                         <?php self::initBranches($dir, $branches); ?>
                                                                     </select>
@@ -92,9 +92,23 @@
                                                             </td>
                                                             <td class="text-center" id='cClass'>
                                                                 <div class="d-flex align-items-center">
-                                                                    <select id="cClassID" name="cClassID" class="form-control">
+                                                                    <select id="cClassID" name="cClassID" class="form-control" onchange="enableSubmitButton()">
                                                                         <option value="" selected>เลือกรอบเรียน</option>
                                                                     </select>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="media-body">
+                                                                        <strong>เรื่องที่เรียน</strong>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-center" id='cLesson'>
+                                                                <div class="d-flex align-items-center">
+                                                                    <input name="cLesson" class="form-control" placeholder="กรอกเรื่องที่จะเรียน">
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -109,7 +123,7 @@
                                                     </tbody>
                                                 </table>
                                                 <div style="margin-top:20px; margin-bottom:15px; text-align:center">
-                                                    <button type="submit" onclick="return confirm('คุณต้องการจองรอบเรียนนี้ใช่ไหม?');" class="btn btn-success btn-block ml-auto">จองรอบเรียน</button>
+                                                    <button id="submitBtn" type="submit" onclick="return confirm('คุณต้องการจองรอบเรียนนี้ใช่ไหม?');" class="btn btn-success btn-block ml-auto">จองรอบเรียน</button>
                                                 </div>
                                             </form>
                                             <div class="card mb-4 box-shadow">
@@ -157,7 +171,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir, $sess); ?>
+
                         </div>
                     </div>
                 </div>
@@ -185,9 +199,11 @@
 
         private static function initBranches($dir, $branches){
             foreach ($branches as $key => $b) {
+                if(isset($b->branch->title)){
                 ?>
                     <option value="<?php echo $b->ID ?>">สาขา <?php echo $b->branch->title ?></option>
                 <?php
+                }
             }
         }
 

@@ -99,7 +99,7 @@
                         </td>
                         <td>
                             <div class="d-flex align-items-center">
-                                <a href="#" class="text-body small"><span class="owner"><? echo $owner->user->fname . " " . $owner->user->lname ?></span></a>
+                                <a href="#" class="text-body small"><span class="owner"><? if(isset($owner->user->fname)) echo $owner->user->fname . " " . $owner->user->lname ?></span></a>
                             </div>
                         </td>
                         <td class="text-center">
@@ -114,12 +114,12 @@
                         </td>
                         <td class="text-right">
                             <div class="d-flex align-items-center text-right">
-                                <small class="text-uppercase course"><? echo $course->title ?></small>
+                                <small class="text-uppercase course"><? if(isset($course->title)) echo $course->title ?></small>
                             </div>
                         </td>
                         <td>
                             <div class="d-flex align-items-center text-right">
-                                <small class="text-uppercase credit"><? echo $item->creditUsed ?></small>
+                                <small class="text-uppercase credit"><? if(isset($item->creditUsed)) echo $item->creditUsed ?></small>
                             </div>
                         </td>
                         <td>

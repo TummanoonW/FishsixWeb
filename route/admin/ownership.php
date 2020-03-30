@@ -2,7 +2,7 @@
     $dir = "../../";
 
     include_once $dir . 'includer/includer.php'; 
-    Includer::include_proto($dir); 
+    Includer::include_proto($dir);
     Includer::include_fun($dir, 'fun_admin_ownership.php');
 
     $sess = new Sess();
@@ -31,7 +31,7 @@
             case 'update':
                 $form = $io->post;
                 $result = FunAdminOwnership::update($api, $form);
-                if($result->success) Nav::goBack();
+                if($result->success) Nav::goto($dir, App::$pageAdminManageOwnerships);
                 else ErrorPage::showError($dir, $result);
                 break;
 

@@ -22,6 +22,11 @@
             $result = $api->get($url);
             return $result;
         }
+        public static function getFilteredFull($api, $filter){
+            $url = $api->getURL(App::$apiAuth, 'filterFull', $filter);
+            $result = $api->get($url);
+            return $result;
+        }
         public static function countFiltered($api, $filter){
             $url = $api->getURL(App::$apiAuth, 'countFiltered', $filter);
             $result = $api->get($url);

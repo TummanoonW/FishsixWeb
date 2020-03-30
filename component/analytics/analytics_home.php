@@ -1,7 +1,7 @@
 
 <?php
     class AnalyticsHomeView{
-        public static function initView($dir, $sess, $paths){
+        public static function initView($dir, $sess, $paths, $branches, $courses){
             $auth = $sess->getAuth();
             $urls = array(
                 'dir' => $dir
@@ -28,7 +28,7 @@
 
                                     <div class="media align-items-center mb-headings">
                                         <div class="media-body">
-                                            <h1 class="h2">Analytics</h1>
+                                            <h1 class="h2">Analytics</span></h1>
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
@@ -38,30 +38,18 @@
                                             <div class="form-inline pl-3 pb-3">
                                                 <div class="form-group mr-2">
                                                     <label class="mr-2">คัดกรองข้อมูล</label>
-                                                    <select id="selectDay" class="form-control custom-select" style="width: 180px" onchange="DoPlotByTime(this.value)">
+                                                    <select id="selectDay" class="form-control custom-select mr-2" style="width: 180px" onchange="DoPlotByTime()">
                                                             <option value="28">28 วันที่ผ่านมา</option>
                                                             <option value="14">14 วันที่ผ่านมา</option>
                                                             <option value="7">7 วันที่ผ่านมา</option>
                                                             <option value="365" selected>1 ปีที่ผ่านมา</option>
                                                             <option value="0">ทุกช่วงเวลา</option>
                                                     </select>
-                                                </div>
-                                                <!--<div class="form-group mr-2">
-                                                    <select id="selectMonth" class="form-control custom-select" style="width: 180px" onchange="DoPlotByMonth(this.value)">
-                                                        <option value="01">มกราคม</option>
-                                                        <option value="02">กุมภาพันธ์</option>
-                                                        <option value="03">มีนาคม</option>
-                                                        <option value="04">เมษายน</option>
-                                                        <option value="05">พฤษภาคม</option>
-                                                        <option value="06">มิถุนายน</option>
-                                                        <option value="07">กรกฎาคม</option>
-                                                        <option value="08">สิงหาคม</option>
-                                                        <option value="09">กันยายน</option>
-                                                        <option value="10">ตุลาคม</option>
-                                                        <option value="11">พฤศจิกายน</option>
-                                                        <option value="12">ธันวาคม</option>
+                                                    <select id="selectCourse" class="form-control custom-select mr-2" style="width: 180px" onchange="DoPlotByTime()">
+                                                            <option value="" selected>ทุกคอร์ส</option>
+                                                            <?php self::initCourses($dir, $courses) ?>
                                                     </select>
-                                                </div>-->
+                                                </div>
                                             </div>
                                         </form>
                                     </div>
@@ -110,15 +98,45 @@
                                             <h4 class="text-muted">แพคเกจยอดนิยม</h4>
                                             <h2 id="totalPackage" class="text-primary"></h2>
                                         </div>
-                                        <div class="mt-4 col-12 text-center">
-                                            <h4 class="text-muted">จำนวนนักเรียนในสาขา</h4>
-                                            <div id="studentByBranches" class="card-deck">
-
+                                        <div class="mt-4 col-12">
+                                            <div class="card card-body border-left-3 border-left-danger navbar-shadow mb-4">
+                                                <form action="#">
+                                                    <div class="form-inline pl-3 pb-3">
+                                                        <div class="form-group mr-2">
+                                                            <label class="mr-2">ดูเฉพาะสาขา</label>
+                                                            <select id="selectBranch" class="form-control custom-select" style="width: 180px" onchange="DoPlotByTime()">
+                                                                    <option value="" selected>ทุกสาขา</option>
+                                                                    <?php self::initBranches($dir, $branches) ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
-                                        <div class="mt-4 col-12 text-center">
-                                            <h4 class="text-muted">จำนวนนักเรียนแต่ละรอบเรียน</h4>
-                                            <div id="studentBranches" class="card-deck"></div>
+                                        <div class="mt-4 col-md-6 col-12 text-center">
+                                            <h4 class="text-muted">จำนวนนักเรียนในสาขา</h4>
+                                            <div class="table-responsive" data-toggle="lists" data-lists-values='["ิbranch", "booking", "number"]'>        
+                                                <!-- Search -->
+                                                <div class="search-form search-form--light mb-3">
+                                                  <input type="text" class="form-control search" placeholder="ค้นหา">
+                                                  <button class="btn" type="button" role="button"><i class="material-icons">search</i></button>
+                                                </div>
+                                                <!-- Table -->
+                                                <table class="table">
+                                                  <thead>
+                                                    <tr>
+                                                      <th>สาขา</th>
+                                                      <th>ยอดการจอง</th>
+                                                      <th>จำนวนนักเรียน</th>
+                                                    </tr>
+                                                  </thead>
+                                                  <tbody id="studentBranches" class="list">
+                                                  </tbody>
+                                                </table>
+                                            </div> 
+                                        </div>
+                                        <div class="mt-4 col-md-6 col-12 text-center">
+                                            <h4 class="text-muted">จำนวนการลงเรียนแต่ละรอบเรียน</h4>
                                             <!-- Wrapper -->
                                             <div class="table-responsive" data-toggle="lists" data-lists-values='["class", "total", "branch"]'>        
                                                 <!-- Search -->
@@ -131,8 +149,8 @@
                                                   <thead>
                                                     <tr>
                                                       <th>รอบเรียน</th>
-                                                      <th>จำนวนนักเรียน</th>
                                                       <th>สาขา</th>
+                                                      <th>จำนวนการลงเรียน</th>
                                                     </tr>
                                                   </thead>
                                                   <tbody id="classList" class="list">
@@ -171,6 +189,22 @@
                 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>-->
 
 <?php
+        }
+
+        private static function initBranches($dir, $branches){
+            foreach ($branches as $key => $value) {
+                ?>
+                    <option value="<?php echo $value->ID ?>"><?php echo $value->title ?></option>
+                <?php
+            }
+        }
+
+        private static function initCourses($dir, $courses){
+            foreach ($courses as $key => $value) {
+                ?>
+                    <option value="<?php echo $value->ID ?>"><?php echo $value->title ?></option>
+                <?php
+            }
         }
     }
 

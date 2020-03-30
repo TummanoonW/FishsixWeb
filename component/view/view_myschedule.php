@@ -79,7 +79,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php Sidemenu::initSideMenu($dir, $sess); ?>
                         </div>
                     </div>
                 </div>
@@ -242,8 +241,8 @@
                 ?>
                     <tr> 
                         <td><span><?php echo $day ?></span> </td>
-                        <td><?php echo $course->title ?></td>
-                        <td><a href="<?php Nav::echoURL($dir, App::$pageViewBranch . "?id=$branch->ID") ?>"><?php echo $branch->title ?></a></td>
+                        <td><?php if(isset($course->title)) echo $course->title ?></td>
+                        <td><a href="<?php if(isset($branch->ID)) Nav::echoURL($dir, App::$pageViewBranch . "?id=$branch->ID"); else echo "#" ?>"><?php if(isset($branch->title)) echo $branch->title ?></a></td>
                         <td><span><?php echo $sTime[0] . ":" . $sTime[1] ?></span></td> 
                         <td><span><?php echo $eTime[0] . ":" . $eTime[1] ?></span></td> 
                     </tr>

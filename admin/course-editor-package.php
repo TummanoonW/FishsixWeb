@@ -6,23 +6,24 @@
     Includer::include_admin($dir, 'admin_course_editor_package.php');
     Includer::include_fun($dir, 'fun_course.php');
 
-    $sess = new Sess(); $auth = $sess->getAuth(); 
+    $sess = new Sess(); 
+    $auth = $sess->getAuth(); 
     $apiKey = $sess->getAPIKey(); 
 
     $api = new API($apiKey);
     $io = new IO(); 
 
     if($sess->checkUserAdmin()){
-        $id = $io->id;
-        $isNew = ($id == NULL);
+        $index = $io->get->index;
+        $isNew = ($index == NULL);
 
         if($isNew){
             $add = "เพิ่ม";
             $sPackage = NULL;
+            $index = NULL;
         }else{
             $add = "แก้ไข";
-            $result = FunCourse::getPackage($api, $id);
-            $sPackage = $result->response;
+            $sPackage = NULL;
         }
 
         $paths = array(
@@ -34,7 +35,7 @@
         );
 
         Header::initHeader($dir, "แอดมิน - $add ชุดราคา"); 
-        AdminCourseEditorPackageView::initView($dir, $sess, $paths, $sPackage, $isNew);
+        AdminCourseEditorPackageView::initView($dir, $sess, $paths, $sPackage, $isNew, $index);
         Footer::initFooter($dir); 
 
     }else{

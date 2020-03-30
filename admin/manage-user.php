@@ -19,18 +19,27 @@
     );
 
     if($sess->checkUserAdmin()){
-
-        if(!isset($io->get->type)) $search = (object)array(
+        $search = (object)array(
             'type' => '',
             'query' => '',
-            'desc' => FALSE,
+            'desc' => 0,
             'limit' => 24,
             'offset' => 0,
             'page' => 0
         );
-        else $search = $io->get;
+
+        if(isset($io->get->type)) $search->type = $io->get->type;
+        if(isset($io->get->query)) $search->query = $io->get->query;
+        if(isset($io->get->desc)) $search->desc = $io->get->desc;
+        if(isset($io->get->limit)) $search->limit = $io->get->limit;
+        if(isset($io->get->offset)) $search->offset = $io->get->offset;
+        if(isset($io->get->page)) $search->page = $io->get->page;
         
         $limit = $search->limit;
+
+        $search2 = clone $search;
+        if($search2->desc == 0) $search2->desc = FALSE;
+        else $search2->desc = TRUE;
 
         $result = FunAuth::countFiltered($api, $search);
         $count = $result->response;
@@ -43,20 +52,21 @@
 
         $params = "&";
         foreach ($search as $key => $value) {
-            if($key != 'page') $params = $params . $key . '=' . $value . "&";
+            if($value != 'page') $params = $params . $key . '=' . $value . "&";
         }
 
         $pages = Path::genPages($dir, App::$pageAdminManageUser, $limit, $c_page, $count);
         $pages[$c_page]->active = TRUE;
         foreach ($pages as $key => $value) {
-            $value->url = $value->url . $params;
+            if($value != "") $value->url = $value->url . $params;
         }
 
         $offset = ($c_page * $limit);        
         $search->offset = $offset;
 
-        $result = FunAuth::getFiltered($api, $search);
+        $result = FunAuth::getFilteredFull($api, $search);
         $auths = $result->response;
+
 
         Header::initHeader($dir, "แอดมิน - จัดการผู้ใช้"); 
         AdminManageUserView::initView($dir, $sess, $paths, $pages, $auths, $count, $search);

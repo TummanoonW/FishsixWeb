@@ -24,10 +24,11 @@
         $filter = $io->query;
 
         if(!isset($filter->since)){
-            $now = CustomDate::getDateNow();
+            /*$now = CustomDate::getDateNow();
             $month_earlier = $now->modify('-1 year');
             $filter->since = CustomDate::parseDate($month_earlier);
-            $filter->since = explode(' ', $filter->since)[0];
+            $filter->since = explode(' ', $filter->since)[0];*/
+            //$filter->since = "";
         }
 
         if(!isset($filter->courseID)){ 
@@ -44,6 +45,14 @@
 
         if(!isset($filter->courseBranchID)){
             $filter->courseBranchID = "";
+        }else{
+            $n_classes = array();
+            foreach ($classes as $key => $value) {
+                if($filter->courseBranchID == $value->courseBranchID){
+                    array_push($n_classes, $value);
+                }
+            }
+            $classes = $n_classes;
         }
 
         if(!isset($filter->classID)){

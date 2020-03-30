@@ -1,13 +1,14 @@
 <?php
     class AdminCourseEditorPackageView{
 
-        public static function initView($dir, $sess, $paths, $sPackage, $isNew){
+        public static function initView($dir, $sess, $paths, $sPackage, $isNew, $index){
             $auth = $sess->getAuth();
             $urls = array(
                 'back' => Nav::getPrevious()
             );
             $data = array(
                 'sPackage'   => $sPackage,
+                'index' => $index,
                 'isNew' => $isNew
             );
 ?>
@@ -37,7 +38,7 @@
 
                                 <div id="page" class="container-fluid page__container">
 
-                                    <h1 class="h2">
+                                    <h1 class="h2" id="pageTitle">
                                         <a onclick="window.history.back()"><i class="fas fa-arrow-left mr-2"></i></a>
                                         <?php if($isNew) echo 'เพิ่มชุดราคา'; else echo 'แก้ไขชุดราคา' ?>
                                     </h1>

@@ -148,7 +148,10 @@
                                                 <div class="card-body">
                                                     <p><a id="btn-add-class" class="btn btn-primary text-light">เพิ่มรอบเรียน<i class="material-icons">add</i></a></p>
                                                     <div class="nestable" id="nestable-handles-primary">
-                                                        <table class="table mb-0">
+                                                        <ul id="cClasses" class="nestable-list">
+                                                            <!-- CLASS ITEMS -->
+                                                        </ul>
+                                                        <!--<table class="table mb-0">
                                                             <thead>
                                                                 <tr>
                                                                     <th>วัน</th>
@@ -159,9 +162,9 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody id="cClasses" class="list">
-                                                                <!-- CLASS ITEMS -->
+                                                                
                                                             </tbody>
-                                                        </table>
+                                                        </table> -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -187,8 +190,8 @@
                                                     <iframe id="cYoutube" class="embed-responsive-item" src="" allowfullscreen=""></iframe>
                                                 </div>
                                                 <div class="card-body">
-                                                    <label class="mb-2"><h5 class="card-title">วิดีโอตัวอย่าง (Youtube URL)</h5></label> 
-                                                    <input id="cPreview" type="text" class="form-control" value="" onchange="onPreviewChange(this, '#cYoutube')"/>
+                                                    <label class="mb-2"><h5 class="card-title">วิดีโอตัวอย่าง (id วิดีโอ Youtube)</h5></label> 
+                                                    <input id="cPreview" type="text" class="form-control" value="" onpaste="onPreviewChange(this, '#cYoutube')" onchange="onPreviewChange(this, '#cYoutube')"/>
                                                 </div>
                                             </div>
 

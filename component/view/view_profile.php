@@ -207,6 +207,39 @@
                                                         </div>
                                                     </div>
 
+                                                    <div class="form-group row">
+                                                        <label for="guardian" class="col-sm-3 col-form-label form-label">ชื่อผู้ปกครอง</label>
+                                                        <div class="col-sm-8">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <input name="guardian" id="guardian" type="text" class="form-control" placeholder="กรอกชื่อผู้ปกครองของคุณ" value="<?php if(isset($user->guardian))echo $user->guardian ?>">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="guardianPhone" class="col-sm-3 col-form-label form-label">เบอร์โทรผู้ปกครอง</label>
+                                                        <div class="col-sm-8">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <input name="guardianPhone" id="guardianPhone" type="tel" class="form-control" placeholder="กรอกเบอร์โทรผู้ปกครอง" value="<?php if(isset($user->guardianPhone))echo $user->guardianPhone ?>">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="school" class="col-sm-3 col-form-label form-label">โรงเรียนที่เรียน</label>
+                                                        <div class="col-sm-8">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <input name="school" id="school" type="text" class="form-control" placeholder="กรอกโรงเรียนที่คุณเรียน" value="<?php if(isset($user->school))echo $user->school ?>">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                     <hr>
                                                     
                                                     <h4>ขั้นสูง</h4>

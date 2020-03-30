@@ -9,6 +9,7 @@ var inputs = {
 };
 
 var db = Connect();
+var course = {};
 
 let name = {
     course      : 'course'
@@ -18,13 +19,18 @@ $('#loading').toggle(false);
 initData();
 
 async function initData(){
-    let sPackage = data.sPackage;
-
     if(!data.isNew){
-        inputs.title.value   = sPackage.title;
-        inputs.price.value   = sPackage.price;
-        inputs.credit.value   = sPackage.credit;
-        inputs.expiration.value   = sPackage.expiration;
+        course = await db.getObject(name.course);
+        await course.packages.forEach((element, index) => {
+            if(index == data.index){
+                data.sPackage = element;
+            }
+        });
+
+        inputs.title.value   = await data.sPackage.title;
+        inputs.price.value   = await data.sPackage.price;
+        inputs.credit.value   = await data.sPackage.credit;
+        inputs.expiration.value   = await data.sPackage.expiration;
     }
 }
 
@@ -32,7 +38,6 @@ async function save(){
     $('#loading').toggle(true);
     $('#page').toggle(false);
 
-    var course = await db.getObject(name.course);
     let isNew = data.isNew;
 
     let title = inputs.title.value;
@@ -54,13 +59,13 @@ async function save(){
             course.packages.push(p);
         }else{
             let sPackage = data.sPackage;
-            course.packages.forEach(element => {
-                if(element.ID == sPackage.ID){
+            course.packages.forEach((element, index) => {
+                if(index == data.index){
                     element.title = title;
                     element.price = price;
                     element.credit = credit;
                     element.expiration = expiration;
-                    element.meta = 'edit';
+                    if(element.ID != null)element.meta = 'edit';
                 }
             });
         }

@@ -33,9 +33,8 @@
                                         <a href="<?php Nav::echoURL($dir, App::$pageAdminEditOwnership) ?>" class="btn btn-success">+ เพิ่มความเป็นเจ้าของ</a>
                                     </div>
 
-                                    <?php if(count($ownerships) > 0){ ?>
-                                        <div class="card card-body border-left-3 border-left-primary navbar-shadow mb-4">
-                                            <form action="#">
+                                    <div class="card card-body border-left-3 border-left-primary navbar-shadow mb-4">
+                                            <div>
                                                 <div class="form-inline pl-3 pb-3">
                                                     <div class="form-group mr-2">
                                                         <select id="published01" class="form-control custom-select" style="width: 180px" onchange="searchIsExpired(this)">
@@ -72,8 +71,10 @@
                                                         <?php } ?>
                                                     </div>
                                                 </div>
-                                            </form>
+                                            </div>
                                         </div>
+
+                                    <?php if(count($ownerships) > 0){ ?>
 
                                         <div class="card table-responsive" data-toggle="lists" data-lists-values='["ID", "owner", "course", "credit", "isExpired", "expiration"]'>
                                             <table class="table mb-0">
@@ -141,6 +142,7 @@
         private static function initItems($dir, $ownerships, $courses){
             foreach ($ownerships as $key => $item) {
                 $id = $item->ID;
+                $ownerID = $item->ownerID;
                 if(isset($item->auth->username))$username = $item->auth->username;
                 else $username = "";
                 foreach ($courses as $key2 => $value) {
@@ -155,7 +157,7 @@
                         </td>
                         <td>
                             <div class="d-flex align-items-center">
-                                <a href="<?php Nav::echoURL($dir, App::$pageAdminEditOwnership . "?id=$id") ?>" class="text-body small"><span class="owner"><? echo $username ?></span></a>
+                                <a href="<?php Nav::echoURL($dir, App::$pageAdminEditOwnership . "?id=$id") ?>" class="text-body small"><span class="owner"><? echo $username . " ($ownerID)" ?></span></a>
                             </div>
                         </td>
                         <td class="text-center">

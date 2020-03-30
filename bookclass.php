@@ -60,5 +60,7 @@
         }else{
             Nav::gotoHome($dir);
         }
+    }else{
+        Nav::gotoHome($dir);
     }
     

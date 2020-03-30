@@ -42,7 +42,7 @@
             if($result->success){ //if the API return result
                 $auth = $result->response;
                 $sess->logIn($auth); //update username
-                Nav::goto($dir, App::$pageProfile);
+                Nav::gotoHome($dir);
             }else{
                 ErrorPage::showError($dir, $result);
             }

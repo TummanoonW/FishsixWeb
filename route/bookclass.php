@@ -20,6 +20,7 @@
                 $classID = $io->post->cClassID;
                 $ownershipID = $io->post->ownershipID;
                 $startDate = $io->post->cDate;
+                $lesson = $io->post->cLesson;
 
                 $result = FunCourse::getClassSingle($api, $classID);
                 if($result->response != NULL){
@@ -32,7 +33,8 @@
                         'courseID' => $class->courseID,
                         'creditUsed' => $class->creditUse,
                         'startDate' => $startDate,
-                        'ownershipID' => $ownershipID
+                        'ownershipID' => $ownershipID,
+                        'lesson' => $lesson
                     );
                     
                     $result = FunBooking::book($api, $form);

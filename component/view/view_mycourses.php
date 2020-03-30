@@ -73,6 +73,7 @@
 
                 $x = $credit % $duration;
                 $progress = (int)((1 - ($x / $duration)) * 100);
+
                 ?>
                     <div class="card">
                         <div class="card-header">
@@ -94,7 +95,7 @@
                         <div class="card-footer bg-white">
                             <div class="media">
                                 <div class="media-left">
-                                <?php if($item->isExpired){ ?>
+                                <?php if($item->isExpired || $credit <= 0){ ?>
 
                                 <?php }else{ ?>
                                     <a href="<?php Nav::echoURL($dir, App::$pageBookClass . "?id=$id") ?>" class="btn btn-primary btn-sm">จองรอบเรียน<i class="material-icons btn__icon--right">play_circle_outline</i></a>
@@ -103,7 +104,7 @@
                             <div class="media-body">
                             </div>
                             <div class="media-right">
-                                <a href="<?php if($item->isExpired) echo '#'; else Nav::echoURL($dir, App::$pageDashboard . "?id=$id"); ?>" class="btn btn-light btn-sm <?php if($item->isExpired) echo "text-muted" ?>">ชม.ที่เหลือ <span class="badge <?php if($item->isExpired) echo 'badge-dark'; else echo 'badge-success'; ?> ml-2"><?php echo $item->credit ?></span></a>
+                                <a href="<?php if($item->isExpired || $credit <= 0) echo '#'; else Nav::echoURL($dir, App::$pageDashboard . "?id=$id"); ?>" class="btn btn-light btn-sm <?php if($item->isExpired || $credit <= 0) echo "text-muted" ?>">ชม.ที่เหลือ <span class="badge <?php if($item->isExpired || $credit <= 0) echo 'badge-dark'; else echo 'badge-success'; ?> ml-2"><?php echo $item->credit ?></span></a>
                             </div>    
                         </div>
                         </div>

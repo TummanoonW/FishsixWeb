@@ -7,39 +7,83 @@ console.log(schedules);
 var table = document.getElementById('Table');
 var cClassID = document.getElementById('cClassID');
 var cDate = document.getElementById('cDate');
+var cBranchID = document.getElementById('cBranchID');
+var submitBtn = document.getElementById('submitBtn');
 
 var s_classes = [];
 
 $('#cClass').toggle(false);
+$('#cLesson').toggle(false);
 $('#hidden-thing').toggle(false);
+
+$('#submitBtn').prop('disabled', true);
+$('#submitBtn').removeClass("btn-success");
+$('#submitBtn').addClass("btn-muted");
+
 
 //initCalendar();
 
-async function reRender(input){
-    let date = new Date(input.value + 'T00:00');
-    let a_days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
-    let day = a_days[date.getDay()];
+async function enableSubmitButton(){
+    var cClassID = document.getElementById('cClassID');
+    var cDate = document.getElementById('cDate');
+    var cBranchID = document.getElementById('cBranchID');
 
-    var s_classes2 = [];
-    s_classes.forEach(element => {
-        if(day == element.day){
-            s_classes2.push(element);
-        }
-    });
-
-    cClassID.innerHTML = '<option value="" selected>เลือกรอบเรียน</option>';
-    cClassID.value = "";
-
-    if(s_classes2.length > 0){
-        $('#cClass').toggle(true);
-
-        s_classes2.forEach(element => {
-            let item = '<option value="'+element.ID+'">' + printTime(element.startTime) + '-' + printTime(element.endTime) + '</option>';
-            cClassID.innerHTML = cClassID.innerHTML + item;
-        });
+    if(cClassID.value != "" && cDate.value != "" && cBranchID.value != ""){
+        $('#submitBtn').prop('disabled', false);
+        $('#submitBtn').addClass("btn-success");
+        $('#submitBtn').removeClass("btn-muted");
     }else{
-        $('#cClass').toggle(false);
+        $('#submitBtn').prop('disabled', true);
+        $('#submitBtn').removeClass("btn-success");
+        $('#submitBtn').addClass("btn-muted");
     }
+}
+
+async function reRender(input){
+    let date = new Date(Date.parse(input.value));
+    let now = new Date();
+    var one_day = 1000 * 60 * 60 * 24;
+    var result = Math.round(date.getTime() - now.getTime()) / (one_day);
+
+    if(result > 1){
+        let a_days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+        let day = a_days[date.getDay()];
+    
+        var s_classes2 = [];
+        s_classes.forEach(element => {
+            if(day == element.day){
+                s_classes2.push(element);
+            }
+        });
+    
+        cClassID.innerHTML = '<option value="" selected>เลือกรอบเรียน</option>';
+        cClassID.value = "";
+    
+        if(s_classes2.length > 0){
+            $('#cClass').toggle(true);
+            $('#cLesson').toggle(true);
+    
+            s_classes2.forEach(element => {
+                let item = '<option value="'+element.ID+'">' + printTime(element.startTime) + '-' + printTime(element.endTime) + '</option>';
+                cClassID.innerHTML = cClassID.innerHTML + item;
+            });
+        }else{
+            $('#cClass').toggle(false);
+            $('#cLesson').toggle(false);
+        }
+    }else{
+        /*var defdate = new Date();
+        let days = 3;
+        defdate.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        var m = defdate.getMonth();
+        if(m < 10) m = "0" + m;
+        var d = defdate.getDate();
+        if(d < 10) d = "0" + d;
+        input.value = defdate.getFullYear() + "-" + m + "-" + d;*/
+        //reRender(input);
+    }
+
+    enableSubmitButton();
 }
 
 async function initCalendar() {
@@ -173,6 +217,8 @@ function changeBranches(input) {
     });
 
     changeClasses(value, classes);
+
+    enableSubmitButton()
 }
 
 function changeClasses(courseBranchID, classes){
@@ -183,7 +229,6 @@ function changeClasses(courseBranchID, classes){
 
 
     reRender(cDate);
-    
 }
 
 function printTime(datetime){

@@ -5,7 +5,7 @@ var ownerships = JSON.parse(document.querySelector('#ownerships').innerHTML)
 function search() {
     var params = "?";
     Object.keys(q).forEach(key => {
-        params = params + key + "=" + q[key] + "&";
+        if(q[key] != "") params = params + key + "=" + q[key] + "&";
     });
     window.location = urls.pageAdminManageOwnerships + params;
 }

@@ -51,6 +51,7 @@
                                                                               <th>ชื่อผู้ใช้</th>
                                                                               <th>ชื่อจริง</th> 
                                                                               <th>นามสกุล</th>
+                                                                              <th>เรื่องที่เรียน</th>
                                                                               <th>เบอร์โทร</th>
                                                                               <th>รหัสการจอง</th>
                                                                               <th></th>
@@ -87,6 +88,7 @@
             foreach ($students as $key => $item) {
                 $index = $key;
                 $ID = $item->ID;
+                $lesson = $item->lesson;
                 $username = $item->student->username;
                 $fname = $item->student->fname;
                 $lname = $item->student->lname;
@@ -98,6 +100,7 @@
                         <td><?php echo $username ?></td>
                         <td><?php echo $fname ?></td>
                         <td><?php echo $lname ?></td>
+                        <td><?php if($lesson != NULL) echo $lesson; else echo 'ไม่ระบุ' ?></td>
                         <td><?php echo $phone ?></td>
                         <td>#<?php echo $ID ?></td>
                         <td><i class="material-icons">check_box_outline_blank</i></td>
