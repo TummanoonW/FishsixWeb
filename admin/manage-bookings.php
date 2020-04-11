@@ -19,8 +19,8 @@
     );
 
     if($sess->checkUserAdmin()){
-        $result = FunBooking::count($api);
-        $count = $result->response;
+        if(isset($io->get->query)) $query = $io->get->query;
+        else $query = "";
 
         if(isset($io->query->limit)) $limit = $io->query->limit;
         else $limit = 20;
@@ -31,20 +31,27 @@
             $c_page = $io->page;
         }
 
-        $pages = Path::genPages($dir, App::$pageAdminManageBookings, $limit, $c_page, $count);
-        $pages[$c_page]->active = TRUE;
-
         $offset = ($c_page * $limit);        
         $filter = (object)array(
+            'query' => $query,
             'limit' => $limit,
             'offset' => $offset
         );
 
-        $result = FunBooking::getFilteredFull($api, $filter);
+        $result = FunBooking::countFiltered2($api, $filter);
+        $count = $result->response;
+
+        $result = FunBooking::getFilteredFull2($api, $filter);
         $bookings = $result->response;
 
+        $pages = Path::genPages($dir, App::$pageAdminManageBookings, $limit, $c_page, $count);
+        $pages[$c_page]->active = TRUE;
+        foreach ($pages as $key => $value) {
+            if($value != "") $value->url = $value->url . "&query=$query";
+        }
+
         Header::initHeader($dir, "แอดมิน - จัดการการจอง"); 
-        AdminManageBookingsView::initView($dir, $sess, $paths, $pages, $bookings, $count);
+        AdminManageBookingsView::initView($dir, $sess, $paths, $pages, $bookings, $count, $query);
         Footer::initFooter($dir); 
 
     }else{

@@ -1,6 +1,7 @@
 <?php
     class AdminManageBookingsView{
-        public static function initView($dir, $sess, $paths, $pages, $bookings, $count){
+        public static function initView($dir, $sess, $paths, $pages, $bookings, $count, $query){
+            $auth = $sess->getAuth();
             ?>
                 <body class=" layout-fluid">
                 <!-- Pre Loader -->
@@ -29,6 +30,17 @@
                                         </div> 
                                         <!--<a href="<?php Nav::echoURL($dir, App::$pageAdminAddUser) ?>" class="btn btn-success">+ เพิ่มผู้ใช้</a>-->
                                     </div>
+
+                                    <div class="card card-body border-left-3 border-left-primary navbar-shadow mb-4">
+                                            <form action="" method="GET">
+                                                <div class="form-inline pl-3 pb-3">
+                                                    <div class="search-form search-form--light">
+                                                        <input name="query" id="query" type="text" class="form-control" placeholder="ค้นหาด้วยชื่อ" id="searchSample02" value="<?php echo $query ?>">
+                                                        <button class="btn" type="button" role="button"><i class="material-icons">search</i></button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
 
                                     <?php if(count($bookings) > 0){ ?>
                                         <div class="card table-responsive" data-toggle="lists" data-lists-values='["ID", "owner", "startDate", "branch", "course", "credit"]'>
@@ -59,7 +71,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody class="list">
-                                                    <? self::initItems($dir, $bookings) ?>
+                                                    <? self::initItems($dir, $bookings, $auth) ?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -82,7 +94,7 @@
 <?php
         }
 
-        private static function initItems($dir, $bookings){
+        private static function initItems($dir, $bookings, $auth){
             foreach ($bookings as $key => $item) {
                 $id = $item->ID;
                 $owner = $item->owner;
@@ -123,9 +135,16 @@
                             </div>
                         </td>
                         <td>
-                           <a class="btn btn-primary btn-sm" href="<?php Nav::echoURL($dir, App::$pageAdminViewBooking . "?id=$item->ID") ?>">
-                                <i class="far fa-eye"></i>
-                           </a>
+                        <div class="input-group-append">
+                              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">จัดการ</button>
+                              <div class="dropdown-menu">
+                                <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageAdminViewBooking . "?id=$id") ?>">ดูรายละเอียด</a>
+                                <div role="separator" class="dropdown-divider"></div>
+                                <?php if($auth->isRoot){ ?>
+                                    <a class="dropdown-item text-danger" href="<?php Nav::echoURL($dir, App::$routeAdminBooking . "?m=delete&id=$id") ?>">ลบและคืนเครดิต</a>
+                                <?php } ?>
+                              </div>
+                            </div>
                         </td>
                     </tr>
                 <?php

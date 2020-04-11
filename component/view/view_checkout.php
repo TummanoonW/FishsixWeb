@@ -107,11 +107,11 @@
                 <tr>
                     <td>
                         <div class="d-flex align-items-center">
-                            <a href="<?php Nav::echoURL($dir, App::$pageCourseView . '?q={"id":'.$value->course->ID.'}') ?>" target="_blank" class="avatar avatar-4by3 avatar-sm mr-3">
+                            <a href="<?php Nav::echoURL($dir, App::$pageCourseView . '?id=' . $value->course->ID) ?>" target="_blank" class="avatar avatar-4by3 avatar-sm mr-3">
                                 <img src="<?php Asset::echoThumb($dir, $value->course->thumbnail) ?>'" alt="<?php echo $value->course->title ?>" class="avatar-img rounded">
                             </a>
                             <div class="media-body">
-                                <a href="<?php Nav::echoURL($dir, App::$pageCourseView . '?q={"id":'.$value->course->ID.'}') ?>" target="_blank" class="text-body"><strong><?php echo $value->course->title ?></strong></a>
+                                <a href="<?php Nav::echoURL($dir, App::$pageCourseView . '?id=' . $value->course->ID) ?>" target="_blank" class="text-body"><strong><?php echo $value->course->title ?></strong></a>
                             </div>
                         </div>
                     </td>

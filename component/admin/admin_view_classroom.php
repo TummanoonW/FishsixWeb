@@ -96,7 +96,7 @@
                 $email = $item->student->email;
                 ?>
                     <tr class="text-center">
-                        <td><?php echo $index ?></td>
+                        <td><?php echo ($index + 1) ?></td>
                         <td><?php echo $username ?></td>
                         <td><?php echo $fname ?></td>
                         <td><?php echo $lname ?></td>

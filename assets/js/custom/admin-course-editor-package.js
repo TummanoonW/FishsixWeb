@@ -19,8 +19,8 @@ $('#loading').toggle(false);
 initData();
 
 async function initData(){
+    course = await db.getObject(name.course);
     if(!data.isNew){
-        course = await db.getObject(name.course);
         await course.packages.forEach((element, index) => {
             if(index == data.index){
                 data.sPackage = element;
@@ -54,6 +54,7 @@ async function save(){
                 price: price,
                 credit: credit,
                 expiration, expiration,
+                i: 99,
                 meta: 'add'
             };
             course.packages.push(p);

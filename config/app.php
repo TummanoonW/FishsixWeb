@@ -113,6 +113,7 @@
         public static $routeForum = "route/forum.php";
 
         public static $routeAdminCategory = "route/admin/category.php";
+        public static $routeAdminBooking = "route/admin/booking.php";
         public static $routeAdminBranch = "route/admin/branch.php";
         public static $routeAdminUser = "route/admin/user.php";
         public static $routeAdminCourse = "route/admin/course.php";

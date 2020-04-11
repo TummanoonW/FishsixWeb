@@ -35,6 +35,14 @@
                 else ErrorPage::showError($dir, $result);
                 break;
 
+            case 'updateNote':
+                $id = $io->id;
+                $note = $io->post->note;
+                $result = FunAdminOrder::updateNote($api, $id, $note);
+                if($result->success) Nav::goto($dir, App::$pageAdminViewOrder . "?id=$id&isUpdate=1");
+                else ErrorPage::showError($dir, $result);
+                break;
+
             default:
                 Nav::gotoHome($dir);
                 break;

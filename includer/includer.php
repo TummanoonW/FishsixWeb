@@ -1,5 +1,6 @@
 <?php
     //automatically encode UTF8 when Includer is loaded
+    header('Access-Control-Allow-Origin: *');
     header('Content-Type: text/html; charset=utf-8');
 
     class Includer{

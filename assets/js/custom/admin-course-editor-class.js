@@ -23,18 +23,20 @@ var course = null;
 
 async function initData(){
     course = await db.getObject(name.course);
-
-    let sClass = data.sClass;
-    
     await initBranchItems(course.branches);
-
     if(!data.isNew){
-        inputs.seats.value      = sClass.seats;
-        inputs.creditUse.value  = sClass.creditUse;
-        inputs.day.value        = sClass.day;
-        inputs.startTime.value  = sClass.startTime;
-        inputs.endTime.value    = sClass.endTime;
-        inputs.branch.value     = sClass.courseBranchID;
+        await course.classes.forEach((element, index) => {
+            if(index == data.index){
+                data.sClass = element;
+            }
+        });
+
+        inputs.seats.value      = await data.sClass.seats;
+        inputs.creditUse.value  = await data.sClass.creditUse;
+        inputs.day.value        = await data.sClass.day;
+        inputs.startTime.value  = await data.sClass.startTime;
+        inputs.endTime.value    = await data.sClass.endTime;
+        inputs.branch.value     = await data.sClass.courseBranchID;
     }
 }
 
@@ -65,6 +67,7 @@ async function save(){
             startTime:  inputs.startTime.value,
             endTime:    inputs.endTime.value,
             courseBranchID:   inputs.branch.value,
+            i: 99,
             meta: 'add'
         };
 

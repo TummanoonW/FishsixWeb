@@ -39,7 +39,7 @@
                                 <div class="form-group">
                                     <label class="form-label" for="email">อีเมล:</label>
                                     <div class="input-group input-group-merge">
-                                        <input name="email" id="email" type="email" class="form-control form-control-prepended" placeholder="Your email address" required>
+                                        <input name="email" id="email" type="email" class="form-control form-control-prepended" placeholder="Email ของคุณ" required>
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
                                                 <span class="fas fa-envelope"></span>
@@ -50,7 +50,7 @@
                                 <div class="form-group">
                                     <label class="form-label" for="password">รหัสผ่าน:</label>
                                     <div class="input-group input-group-merge">
-                                        <input name="password" id="password" type="password" class="form-control form-control-prepended" placeholder="Choose a password" onchange="" minlength="6" required>
+                                        <input name="password" id="password" type="password" class="form-control form-control-prepended" placeholder="ตั้งรหัสผ่าน" onchange="" minlength="6" required>
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
                                                 <span class="fas fa-key"></span>
@@ -61,7 +61,7 @@
                                 <div class="form-group">
                                     <label class="form-label" for="password2">รหัสผ่านอีกครั้ง:</label>
                                     <div class="input-group input-group-merge">
-                                        <input name="password2" id="password2" type="password" class="form-control form-control-prepended" placeholder="Confirm password" onchange="" minlength="6" required>
+                                        <input name="password2" id="password2" type="password" class="form-control form-control-prepended" placeholder="ยืนยันรหัสผ่านอีกครั้ง" onchange="" minlength="6" required>
                                         <?php if($err == 'p2'){ ?>
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
@@ -75,7 +75,7 @@
                                 <div class="form-group">
                                     <label class="form-label" for="username">ชื่อผู้ใช้งาน:</label>
                                     <div class="input-group input-group-merge">
-                                        <input name="username" id="username" type="text" class="form-control form-control-prepended" placeholder="Your User name" required>
+                                        <input name="username" id="username" type="text" class="form-control form-control-prepended" placeholder="ชื่อผเล่นหรือชื่อผู้ใช้ (โปรดระบุเป็นภาษาไทย)" required>
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
                                                 <span class="fas fa-user"></span>
@@ -89,7 +89,7 @@
                                 <div class="form-group">
                                     <label class="form-label" for="fname">ชื่อจริง:</label>
                                     <div class="input-group input-group-merge">
-                                        <input name="fname" id="fname" type="text" class="form-control form-control-prepended" placeholder="Your first name" required>
+                                        <input name="fname" id="fname" type="text" class="form-control form-control-prepended" placeholder="ชื่อจริง (โปรดระบุเป็นภาษาไทย)" required>
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
                                                 <span class="fas fa-user"></span>
@@ -100,7 +100,7 @@
                                 <div class="form-group">
                                     <label class="form-label" for="lname">นามสกุล:</label>
                                     <div class="input-group input-group-merge">
-                                        <input name="lname" id="lname" type="text" class="form-control form-control-prepended" placeholder="Your last name" required>
+                                        <input name="lname" id="lname" type="text" class="form-control form-control-prepended" placeholder="นามสกุล (โปรดระบุเป็นภาษาไทย)" required>
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
                                                 <span class="fas fa-user"></span>
@@ -125,7 +125,7 @@
                                 <div class="form-group">
                                     <label class="form-label" for="address">ที่อยู่ปัจจุบัน:</label>
                                     <div class="input-group input-group-merge">
-                                        <input name="address" id="address"  type="text" class="form-control form-control-prepended" placeholder="Your address">
+                                        <input name="address" id="address"  type="text" class="form-control form-control-prepended" placeholder="ที่อยู่ปัจจุบันของคุณ">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
                                                 <span class="fas fa-thumbtack"></span>

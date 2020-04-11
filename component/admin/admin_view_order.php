@@ -1,7 +1,8 @@
 <?php
     class AdminViewOrder{
-        public static function initView($dir, $sess, $paths, $order, $owner){
+        public static function initView($dir, $sess, $paths, $order, $owner, $isUpdate){
             if($order != NULL)$orderItems = $order->orderItems;
+            $id = $order->ID;
             ?>
                 <body class=" layout-fluid">
 
@@ -151,6 +152,16 @@
                                                     <p><i class="fas fa-envelope text-primary text-primary mr-2"></i><? echo $owner->auth->email ?></p>
                                                     <p><i class="fas fa-phone text-primary text-primary mr-2"></i><? echo $owner->user->phone ?></p>
                                                 </div>
+                                                <div class="mt-4">
+                                                    <h3>หมายเหตุ</h3>
+                                                    <form action="<?php Nav::echoURL($dir, App::$routeAdminOrder . "?m=updateNote&id=$id") ?>" method="POST" class="form-group">
+                                                        <textarea name="note" rows="3" class="form-control"><?php echo $order->note ?></textarea>
+                                                        <?php if($isUpdate){ ?>
+                                                            <div><small class="text-success">หมายเหตุได้รับการบันทึกแล้ว!</small></div>
+                                                        <? } ?>
+                                                        <button type="submit" class="btn btn-success mt-2">บันทึก</button>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -160,6 +171,7 @@
                         </div>
                     </div>
                     <?php Script::customScript($dir, 'common.js') ?>
+                    <?php Script::customScript($dir, 'admin-view-order.js') ?>
                     <?php Script::initScript($dir) ?>
             <?
         }

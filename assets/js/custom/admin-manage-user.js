@@ -96,14 +96,14 @@ var objectToCSVRow = function(array) {
 
 var exportToCSV = function(array) {
 
-    var csvContent = "data:text/csv;charset=utf-8,";
+    var csvContent = "\uFEFF";;
 
     // headers
     csvContent += objectToCSVRow(array);
 
-    var encodedUri = encodeURI(csvContent);
+    var encodedUri = encodeURIComponent(csvContent);
     var link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
+    link.setAttribute("href", 'data:text/csv; charset=utf-8,' + encodedUri);
     link.setAttribute("download", "users.csv");
     document.body.appendChild(link); // Required for FF
     link.click();

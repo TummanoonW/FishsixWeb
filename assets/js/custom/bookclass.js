@@ -42,10 +42,20 @@ async function enableSubmitButton(){
 async function reRender(input){
     let date = new Date(Date.parse(input.value));
     let now = new Date();
+    if(now.getHours() <= 15){ //before 16.00
+        now.setHours(0);
+        now.setMinutes(0);
+        now.setSeconds(0);
+        now.setMilliseconds(1);
+    }else{ //after 16.00
+        now.setHours(16);
+        now.setMinutes(0);
+        now.setSeconds(0);
+    }
     var one_day = 1000 * 60 * 60 * 24;
     var result = Math.round(date.getTime() - now.getTime()) / (one_day);
 
-    if(result > 1){
+    if(result >= 1){
         let a_days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
         let day = a_days[date.getDay()];
     
@@ -72,6 +82,8 @@ async function reRender(input){
             $('#cLesson').toggle(false);
         }
     }else{
+        $('#cClass').toggle(false);
+        $('#cLesson').toggle(false);
         /*var defdate = new Date();
         let days = 3;
         defdate.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -106,19 +118,18 @@ async function changeEventsWithBranches(schedules, classes, input) {
     let seats;
     let obj;
     var data = { events: [] };
-    schedules.forEach(async element => {
+    await schedules.forEach(async element => {
         if (value == element.courseBranchID) {
             date = await element.startDate.split(" ")[0];
             time = element.class.startTime.slice(0, element.class.startTime.length - 3);
             seats = element.class.seats;
         }
-        else
-            return data;
+        else return data;
 
         obj = {
             eventID: element.class.ID + "@" + date,
             title: time,
-            used: "",
+            used: 1,
             full: seats,
             start: date,
             startTime: element.class.startTime,
@@ -126,32 +137,50 @@ async function changeEventsWithBranches(schedules, classes, input) {
         };
         await data.events.push(obj);
     });
+
     await $('#calendar').fullCalendar(data)
 
-    var postID;
-    var seatLeft;
     if (data.events.length > 0) {
         var obj1 = {};
         for (var i = 0, len = data.events.length; i < len; i++) {
-            if (postID == null) {
+            /*await schedules.forEach(async element => {
+                date = await element.startDate.split(" ")[0];
+                let eventID = element.class.ID + "@" + date;
+                if(data.events[i].eventID == eventID){
+                    data.events[i].used += 1;
+                    data.events[i].title + " " + data.events[i].used + "/" + data.events[i].full;
+                }
+            });*/
+
+            obj1[data.events[i]['eventID']] = data.events[i];
+            
+            /*if (postID == null) {
                 postID = data.events[i].eventID;
                 seatLeft = data.events[i].used;
-            }
-            else if (postID != data.events[i].eventID) {
-                seatLeft = data.events[i].used;
-            }
-
-            if (postID = data.events[i].eventID) {
-                seatLeft++;
+            }else{
+                if (postID == data.events[i].eventID) {
+                    obj1[data.events[i]['eventID']] = data.events[i];
+                }else{
+                    seatLeft = data.events[i].used;
+                }
             }
 
             data.events[i].title = data.events[i].title + " " + seatLeft + "/" + data.events[i].full
             data.events[i].used = seatLeft;
-            obj1[data.events[i]['eventID']] = data.events[i];
+            obj1[data.events[i]['eventID']] = data.events[i];*/
         }
+
+        await schedules.forEach(async element => {
+            date = await element.startDate.split(" ")[0];
+            let eventID = element.class.ID + "@" + date;
+            if(obj1[eventID] != null){
+                obj1[eventID].used += 1;
+                obj1[eventID].title = obj1[eventID].startTime.replace(':00:00', '') + "-" + obj1[eventID].endTime.replace(':00:00', '') + " " + obj1[eventID].used + "/" + obj1[eventID].full;
+            }
+        });
+
         data.events = new Array();
-        for (var key in obj1)
-            data.events.push(obj1[key]);
+        for (var key in obj1) data.events.push(obj1[key]);
     }
     table.innerHTML = "";
     data.events.forEach(async element => {
@@ -189,10 +218,10 @@ var thumbnail = document.querySelector('#thumbnail');
 
 let branches = JSON.parse(document.querySelector('#obj-branches').innerHTML);
 
-changeBranches(document.querySelector('#branch-select'));
+changeBranches(document.querySelector('#cBranchID'));
 
 function changeBranches(input) {
-    changeEventsWithBranches(schedules, classes, document.querySelector('#branch-select'));
+    changeEventsWithBranches(schedules, classes, document.querySelector('#cBranchID'));
 
     let value = input.value;
 

@@ -1,10 +1,11 @@
 <?php
     class AdminManageOrdersView{
-        public static function initView($dir, $sess, $paths, $pages, $orders, $status, $since, $desc){
+        public static function initView($dir, $sess, $paths, $pages, $orders, $status, $since, $desc, $query){
             $search = array(
                 'status' => $status,
                 'since' => $since,
-                'desc' => $desc
+                'desc' => $desc,
+                'query' => $query
             );
             $urls = array(
                 'pageAdminManageOrders' => Nav::getURL($dir, App::$pageAdminManageOrders)
@@ -35,12 +36,14 @@
                                         <div class="flex mb-2 mb-sm-0">
                                             <h1 class="h2">จัดการคำสั่งซื้อ</h1>
                                         </div> 
+
+                                        <button onclick="exportExcel()" class="btn btn-secondary"><i class="fas fa-download mr-2"></i>ดาวน์โหลดเป็น Excel</button>
                                         <!--<a href="<?php Nav::echoURL($dir, App::$pageAdminAddUser) ?>" class="btn btn-success">+ เพิ่มผู้ใช้</a>-->
                                     </div>
 
-                                    <?php if(count($orders) > 0){ ?>
+                                    
                                         <div class="card card-body border-left-3 border-left-primary navbar-shadow mb-4">
-                                            <form action="#">
+                                            <div>
                                                 <div class="form-inline pl-3 pb-3">
                                                     <div class="form-group mr-2">
                                                         <select id="published01" class="form-control custom-select" style="width: 180px" onchange="searchStatus(this)">
@@ -56,9 +59,11 @@
                                                         <button onclick="searchDate()" class="btn" type="button" role="button"><i class="material-icons">search</i></button>
                                                     </div>
 
-                                                    <div class="flex text-right">
-                                                        <button onclick="exportExcel()" class="btn btn-secondary"><i class="fas fa-download mr-2"></i>ดาวน์โหลดเป็น Excel</button>
+                                                    <div class="search-form ml-3 search-form--light">
+                                                        <input name="query" id="query" type="text" class="form-control" placeholder="ค้นหาด้วยชื่อ" id="searchSample02" value="<?php echo $query ?>">
+                                                        <button onclick="searchQuery()" class="btn" type="button" role="button"><i class="material-icons">search</i></button>
                                                     </div>
+
                                                 </div>
 
                                                 <div class="d-flex flex-column flex-sm-row align-items-sm-center" style="white-space: nowrap">
@@ -75,9 +80,9 @@
                                                         <?php } ?>
                                                     </div>
                                                 </div>
-                                            </form>
+                                            </div>
                                         </div>
-
+                                        <?php if(count($orders) > 0){ ?>
                                         <div class="card table-responsive" data-toggle="lists" data-lists-values='["ID", "owner", "amount", "status", "date"]'>
                                             <table class="table mb-0">
                                                 <thead class="thead-light">
@@ -90,6 +95,9 @@
                                                         </td>
                                                         <td>
                                                             <a href="javascript:void(0)" class="sort" data-sort="owner">ผู้สั่งซืื้อ</a>
+                                                        </td>
+                                                        <td>
+                                                            <a href="javascript:void(0)" class="sort" data-sort="note">หมายเหตุ</a>
                                                         </td>
                                                         <td>
                                                             <a href="javascript:void(0)" class="sort" data-sort="amount">ยอดชำระ</a>
@@ -155,6 +163,11 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 <a href="<?php Nav::echoURL($dir, App::$pageAdminViewOrder . "?id=$id") ?>" class="text-body small"><span class="owner"><? echo $fname . " " . $lname ?></span></a>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <div class="d-flex align-items-center">
+                                <small class="text-uppercase" style="width: 80px;"><span class="note"><?php echo $item->note ?></span></small>
                             </div>
                         </td>
                         <td class="text-center">

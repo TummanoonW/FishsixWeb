@@ -52,7 +52,7 @@
 
         $params = "&";
         foreach ($search as $key => $value) {
-            if($value != 'page') $params = $params . $key . '=' . $value . "&";
+            if($key != 'page') $params = $params . $key . '=' . $value . "&";
         }
 
         $pages = Path::genPages($dir, App::$pageAdminManageUser, $limit, $c_page, $count);

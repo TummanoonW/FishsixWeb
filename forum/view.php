@@ -21,6 +21,10 @@
     $result = FunForum::getCommentsByForumID($api, $id);
     $comments = $result->response;
 
+    $result = FunForum::getMyVote($api, $forum->ID, $auth->ID);
+    $myvote = $result->response;
+
+    Console::log('myvote', $myvote);
     Console::log("forum", $forum);
     Console::log("comments", $comments);
 
@@ -31,5 +35,5 @@
     );
 
     Header::initHeader($dir, "บทความ - " . $forum->title); 
-    ForumSingleView::initView($dir, $sess, $paths, $api, $forum, $comments);
+    ForumSingleView::initView($dir, $sess, $paths, $api, $forum, $comments, $myvote);
     Footer::initFooter($dir); 

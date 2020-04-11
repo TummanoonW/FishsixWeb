@@ -48,6 +48,12 @@ function searchStatus(element) {
     search();
 }
 
+function searchQuery(){
+    let element = document.querySelector('#query');
+    q.query = element.value;
+    search();
+}
+
 function searchDate() {
     let element = document.querySelector('#date');
     q.since = element.value;

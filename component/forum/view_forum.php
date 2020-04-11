@@ -1,11 +1,12 @@
 <?php
     class ForumSingleView{
-        public static function initView($dir, $sess, $paths, $api, $forum, $comments){
+        public static function initView($dir, $sess, $paths, $api, $forum, $comments, $myVote){
             $auth = $sess->getAuth();
             $id = $forum->ID;
             $data = (object)array(
                 'auth' => $auth,
-                'forum' => $forum
+                'forum' => $forum,
+                'myVote' => $myVote
             );
 ?>  
             <body class="layout-fluid">
@@ -35,11 +36,11 @@
                                             <h1 class="h2 mb-2"><?php echo $forum->title ?></h1>
                                             <p class="text-muted d-flex align-items-center mb-4">
                                                 <a href="<?php Nav::echoURL($dir, App::$pageForums) ?>" class="mr-3">กลับไปหน้าบทความ</a>
-                                                <?php if($sess->checkUserAdmin()){ ?>
-                                                    <a href="#" class="text-black-50" style="text-decoration: underline;">ลบ</a>
+                                                <?php if($sess->checkUserAdmin() || $auth->ID == $forum->authorID){ ?>
+                                                    <a href="#" onclick="confirmDelete('<?php Nav::echoURL($dir, App::$routeForum . '?m=delete&id=' . $id) ?>')" class="text-black-50" style="text-decoration: underline;">ลบ</a>
                                                 <?php } ?>
                                                 <?php if(isset($auth->ID))if($auth->ID == $forum->authorID){ ?>
-                                                    <a href="<?php Nav::echoURL($dir, App::$pageEditForum . "?id=$id") ?>" class="text-black-50" style="text-decoration: underline;">แก้ไข</a>
+                                                    <a href="<?php Nav::echoURL($dir, App::$pageEditForum . "?id=$id") ?>" class="text-black-50 ml-3" style="text-decoration: underline;">แก้ไข</a>
                                                 <?php } ?>
                                             </p>
 
@@ -55,8 +56,8 @@
                                                         </p>
                                                         <p><?php echo $forum->content ?></p>
                                                         <div class="d-flex align-items-center">
-                                                            <a href="#" onclick="upvoteForum()" class="text-black-50 d-flex align-items-center text-decoration-0"><i class="material-icons mr-1" style="font-size: inherit;">thumb_up</i> <?php echo $forum->upvote ?></a>
-                                                            <a href="#" onclick="downvoteForum()" class="text-black-50 d-flex align-items-center text-decoration-0 ml-3"><i class="material-icons mr-1" style="font-size: inherit;">thumb_down</i> <?php echo $forum->downvote ?></a>
+                                                            <a href="#" onclick="upvoteForum()" class="text-black-50 d-flex align-items-center text-decoration-0"><i id="upvote-icon" class="material-icons mr-1" style="font-size: inherit;">thumb_up</i> <span id="upvote"><?php echo $forum->upvote ?></span></a>
+                                                            <a href="#" onclick="downvoteForum()" class="text-black-50 d-flex align-items-center text-decoration-0 ml-3"><i id="downvote-icon" class="material-icons mr-1" style="font-size: inherit;">thumb_down</i> <span id="downvote"><?php echo $forum->downvote ?></span></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -76,9 +77,9 @@
                                                 </div>
                                             <?php } ?>
                                             <div class="pt-3">
-                                                <h4><?php echo count($comments) ?> ความคิดเห็น</h4>
+                                                <h4 id="comment"><?php echo count($comments) ?> ความคิดเห็น</h4>
                                                 <div id="comments-sec">
-                                                    <?php self::initComments($dir, $comments) ?>
+                                                    <?php self::initComments($dir, $comments, $sess) ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -147,22 +148,35 @@
                 
                 <script id="data"><?php echo json_encode($data) ?></script>
 
-                <?php Script::customScript($dir, 'comment.js') ?>
+                <?php Script::customScript($dir, 'common.js') ?>
                 <?php Script::customScript($dir, 'viewforum.js') ?>
                 
 <?php
         }
 
-        private static function initComments($dir, $comments){
+        private static function initComments($dir, $comments, $sess){
             foreach ($comments as $key => $value) {
-                $author = $value->author;
+                if(isset($value->author)) $author = $value->author;
+                else $author = (object)array(
+                    'profile_pic' => '',
+                    'username' => 'ผู้ใช้ที่ไม่รู้จัก'
+                );
 ?>
                 <div class="d-flex ml-1 mt-3 border rounded p-3 bg-light mb-3">
                     <a href="#" class="avatar avatar-xs mr-3">
                         <img src="<?php Asset::echoIcon($dir, $author->profile_pic) ?>" alt="<?php echo $author->username ?>" class="avatar-img rounded-circle">
                     </a>
                     <div class="flex">
-                        <a href="#" class="text-body"><strong><?php echo $author->username ?></strong></a><br>
+                        <div class="media">
+                            <div class="media-body">
+                                <a href="#" class="text-body"><strong><?php echo $author->username ?></strong></a>
+                            </div>
+                            <div class="media-right text-right">
+                                <?php if($value->authorID == $auth->ID || $sess->checkUserAdmin()){ ?>
+                                    <a href="#" onclick="confirmDelete('<?php Nav::echoURL($dir, App::$routeForum . '?m=deleteComment&id=' . $id) ?>')" class="text-black-50" style="text-decoration: underline;">ลบ</a>
+                                <?php } ?>
+                            </div>
+                        <div>
                         <span class="text-black-70"><?php echo $value->content ?></span><br>
                         <div class="d-flex align-items-center">
                             <small class="text-black-50 mr-2"><?php echo $value->date ?></small>

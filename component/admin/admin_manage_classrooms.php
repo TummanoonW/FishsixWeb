@@ -74,7 +74,7 @@
                                     </div>
 
                                     <?php if(count((array)$classrooms) > 0){ ?>
-                                        <div class="card table-responsive" data-toggle="lists" data-lists-values='["วันที่เริ่ม", "รอบเรียน", "สาขา", "คอร์ส"]'>
+                                        <div class="card table-responsive" data-toggle="lists" data-lists-values='["startDate", "class", "branch", "course", ""]'>
                                             <table class="table mb-0">
                                                 <thead class="thead-light">
                                                     <tr>
@@ -91,7 +91,7 @@
                                                             <a href="javascript:void(0)" class="sort" data-sort="course">คอร์ส</a>
                                                         </td>
                                                         <td>
-                                                            <a href="javascript:void(0)" class="sort" data-sort="date">รายละเอียด</a>
+                                                            <a href="javascript:void(0)" class="sort" data-sort="">รายละเอียด</a>
                                                         </td>
                                                         <td></td>
                                                     </tr>
@@ -133,7 +133,7 @@
                     <tr>
                         <td class="text-center">
                             <div class="d-flex align-items-center">
-                                <a href="<?php if(isset($course->ID) && isset($branch->ID) && isset($class->ID))Nav::echoURL($dir, App::$pageAdminViewClassroom . "?date=$startDate&course=$course->ID&branch=$branch->ID&class=$class->ID"); else echo '#' ?>" class="text-body small"><span class="date"><?php echo $startDate ?></span></a>
+                                <a href="<?php if(isset($course->ID) && isset($branch->ID) && isset($class->ID))Nav::echoURL($dir, App::$pageAdminViewClassroom . "?date=$startDate&course=$course->ID&branch=$branch->ID&class=$class->ID"); else echo '#' ?>" class="text-body small"><span class="startDate"><?php echo $startDate ?></span></a>
                             </div>
                         </td>
                         <td class="text-center">
@@ -148,7 +148,7 @@
                         </td>
                         <td class="text-center">
                             <div class="d-flex align-items-center">
-                                <a href="<?php if(isset($course->ID) && isset($branch->ID) && isset($class->ID))Nav::echoURL($dir, App::$pageAdminViewClassroom . "?date=$startDate&course=$course->ID&branch=$branch->ID&class=$class->ID"); else echo '#' ?>" class="text-body small"><span class="course"><?php echo $course->title ?></span></a>
+                                <a href="<?php if(isset($course->ID) && isset($branch->ID) && isset($class->ID))Nav::echoURL($dir, App::$pageAdminViewClassroom . "?date=$startDate&course=$course->ID&branch=$branch->ID&class=$class->ID"); else echo '#' ?>" class="text-body small"><span class="course"><?php if(isset($course->title)) echo $course->title ?></span></a>
                             </div>
                         </td>
                         <td>

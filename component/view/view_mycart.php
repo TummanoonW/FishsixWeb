@@ -60,7 +60,7 @@
                                             </tfoot>
                                         </table>
                                         <div class="card-footer d-flex align-items-center">
-                                            <a href="<?php Nav::echoHome($dir) ?> " class="btn btn-white">กลับไปหน้าร้าน</a>
+                                            <a href="<?php Nav::echoPrevious() ?> " class="btn btn-white">กลับไปหน้าร้าน</a>
                                             <button onclick="checkOut()" class="btn btn-success ml-auto">
                                                 ชำระเงิน <i class="material-icons btn__icon--right">credit_card</i>
                                             </button>

@@ -22,8 +22,14 @@
     if($sess->checkUserAdmin()){
         $limit = 50;
 
-        $result = FunOrder::count($api);
-        $count = $result->response;
+        if(isset($io->get->status)) $status = $io->get->status;
+        else $status = "";
+        if(isset($io->get->since)) $since = $io->get->since;
+        else $since = "";
+        if(isset($io->get->desc)) $desc = $io->get->desc;
+        else $desc = TRUE;
+        if(isset($io->get->query)) $query = $io->get->query;
+        else $query = "";
 
         if($io->page == NULL){
             $c_page = 0;
@@ -31,19 +37,6 @@
             $c_page = $io->page;
         }
 
-        $pages = Path::genPages($dir, App::$pageAdminManageOrders, $limit, $c_page, $count);
-        $pages[$c_page]->active = TRUE;
-
-        if(isset($io->get->status)) $status = $io->get->status;
-        else $status = "";
-        if(isset($io->get->since)) $since = $io->get->since;
-        else $since = "";
-        if(isset($io->get->desc)) $desc = $io->get->desc;
-        else $desc = TRUE;
-
-        foreach ($pages as $key => $value) {
-            $value->url = $value->url . "&status=" . $status; 
-        }
 
         $offset = ($c_page * $limit);        
 
@@ -52,17 +45,26 @@
             'offset' => $offset,
             'status' => $status,
             'since' => $since,
-            'desc' => $desc
+            'desc' => $desc,
+            'query' => $query
         );
-        $result = FunAdminOrder::getFiltered($api, $filter);
+
+        $result = FunAdminOrder::countFiltered2($api, $filter);
+        $count = $result->response;
+
+        $pages = Path::genPages($dir, App::$pageAdminManageOrders, $limit, $c_page, $count);
+        $pages[$c_page]->active = TRUE;
+        foreach ($pages as $key => $value) {
+            $value->url = $value->url . "&status=$status&since=$since&desc=$desc&query=$query"; 
+        }
+
+        $result = FunAdminOrder::getFiltered2($api, $filter);
         $orders = $result->response;
-
-
 
         Console::log('orders', $orders);
 
         Header::initHeader($dir, "แอดมิน - จัดการคำสั่งซื้อ"); 
-        AdminManageOrdersView::initView($dir, $sess, $paths, $pages, $orders, $status, $since, $desc);
+        AdminManageOrdersView::initView($dir, $sess, $paths, $pages, $orders, $status, $since, $desc, $query);
         Footer::initFooter($dir); 
 
     }else{

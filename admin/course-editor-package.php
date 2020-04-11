@@ -14,7 +14,8 @@
     $io = new IO(); 
 
     if($sess->checkUserAdmin()){
-        $index = $io->get->index;
+        if(isset($io->get->index)) $index = $io->get->index;
+        else $index = NULL;
         $isNew = ($index == NULL);
 
         if($isNew){

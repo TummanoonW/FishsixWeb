@@ -15,16 +15,18 @@
 
     if($sess->checkUserAdmin()){
         $id = $io->id;
-        $isNew = ($id == NULL);
 
-        if($isNew) $add = "เพิ่ม";
-        else $add = "แก้ไข";
+        if(isset($io->get->index)) $index = $io->get->index;
+        else $index = NULL;
+        $isNew = ($index == NULL);
 
         if($isNew){
+            $add = "เพิ่ม";
             $sClass = NULL;
+            $index = NULL;
         }else{
-            $result = FunCourse::getClass($api, $id);
-            $sClass = $result->response;
+            $add = "แก้ไข";
+            $sClass = NULL;
         }
 
         $result = FunCourse::getBranchesByCourseID($api, $id);
@@ -39,7 +41,7 @@
         );
 
         Header::initHeader($dir, "แอดมิน - $add รอบเรียน"); 
-        AdminCourseEditorTimeView::initView($dir, $sess, $paths, $sClass, $isNew, $branches);
+        AdminCourseEditorTimeView::initView($dir, $sess, $paths, $sClass, $isNew, $branches, $index);
         Footer::initFooter($dir); 
 
     }else{

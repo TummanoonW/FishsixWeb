@@ -1,6 +1,10 @@
 <?php
     class FunAuth{
-
+        public static function getFull($api){
+            $url = $api->getURL(App::$apiAuth, 'full', NULL);
+            $result = $api->get($url);
+            return $result;
+        }
         public static function getTeachersFull($api){
             $url = $api->getURL(App::$apiAuth, 'teachersFull', NULL);
             $result = $api->get($url);

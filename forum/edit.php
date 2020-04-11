@@ -25,6 +25,7 @@
 
         $result = FunCategory::get($api);
         $catagories = $result->response;
+        Console::log('cat', $catagories);
 
         if(isset($io->id)){
             $isNew = FALSE;

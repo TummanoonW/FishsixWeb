@@ -15,6 +15,37 @@
     $io = new IO(); //open Input/Output receiver for certain $_GET and $_POST data 
     
     switch($io->method){
+        case 'deleteComment':
+            $id = $io->id;
+            $result = FunForum::deleteComment($api, $id);
+            if($result->success){
+                Nav::goBack();
+            }else{
+                ErrorPage::initPage($dir, $result);
+            }
+            break;
+        case 'postComment':
+            $form = $io->post;
+            $result = FunForum::postComment($api, $form);
+            break;
+        case 'upvotedownvote':
+            $form = $io->post;
+            if($io->get->voteID == "null"){
+                $result = FunForum::addVote($api, $form);
+            }else{
+                $voteID = $io->get->voteID;
+                $result = FunForum::updateVote($api, $voteID, $form);
+            }
+            break;
+        case 'delete':
+            $id = $io->id;
+            $result = FunForum::delete($api, $id);
+            if($result->success){
+                Nav::goto($dir, App::$pageMyForums);
+            }else{
+                ErrorPage::initPage($dir, $result);
+            }
+            break;
         case 'update':
                 $form = $io->post;
 
@@ -37,7 +68,7 @@
               
                 if($sess->checkUserExisted()) $form->authorID = $auth->ID;                
                 
-                if(isset($form->ID)){
+                if(!isset($form->ID)){
                     $result = FunForum::post($api, $form);
                     if($result->success){
                         Nav::goto($dir, App::$pageMyForums);
@@ -47,7 +78,7 @@
                         Console::log('Result', $result);
                     }
                 }else{
-                    $result = FunForum::edit($api, $form);
+                    $result = FunForum::edit($api, $form->ID, $form);
                     if($result->success){
                         Nav::goto($dir, App::$pageMyForums);
                         Console::log('Result', $result);

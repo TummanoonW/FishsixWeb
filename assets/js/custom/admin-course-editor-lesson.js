@@ -42,6 +42,7 @@ async function save(){
                 ID: id,
                 title: title,
                 content: content,
+                i: 99,
                 meta: 'add'
             };
             course.lessons.push(l);

@@ -34,10 +34,10 @@
                         <!--<div class="col-3 text-center">
                             <a href="<?php Nav::echoHome($dir); ?>"><i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">home</i></a>
                         </div>-->
-                        <div class="col-3 text-center">
+                        <div class="col-auto text-center">
                             <a href="<?php Nav::echoURL($dir, App::$pageMyCourses); ?>"><i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i></a>
                         </div>
-                        <div class="col-3 text-center">
+                        <div class="col-auto text-center">
                             <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">apps</i></a>
                                     <div class="dropdown-menu dropdown-menu2">
                                         <?php if($auth->type == 'admin'){ ?>
@@ -80,14 +80,20 @@
                                             <a class="dropdown-item py-2" href="<?php Nav::echoURL($dir, App::$pageMySchedule); ?>">
                                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">schedule</i> ตารางเรียน
                                             </a>
+                                            <a class="dropdown-item py-2" href="<?php Nav::echoURL($dir, App::$pageForums) ?>">
+                                                <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">forum</i> ฟอรั่ม
+                                            </a>
                                     </div>
                         </div>
                         <?php if($auth->type == 'admin' || $auth->type == 'editor' || $auth->type == 'teacher' || $auth->unlockVidLib){ ?>
-                            <div class="col-3 text-center">
+                            <div class="col-auto text-center">
                                 <a href="<?php Nav::echoURL($dir, App::$pageVideoLibrary); ?>"><i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">playlist_play</i></a>
                             </div>
                         <?php } ?>
-                        <div class="col-3 text-center">
+                        <div class="col-auto text-center">
+                            <a href="https://anyflip.com/bookcase/stdor" target="_blank"><i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">book</i></a>
+                        </div>
+                        <div class="col-auto text-center">
                             <a href="<?php Nav::echoURL($dir, App::$pageMyCart) ?>">
                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">shopping_cart</i>
                                 <?php if($countC > 0){ ?>

@@ -3,7 +3,7 @@
     $dir = "../";
     include_once $dir . 'includer/includer.php'; 
     Includer::include_proto($dir); 
-    Includer::include_forum($dir, 'view_home.php');
+    Includer::include_forum($dir, 'view_myforums.php');
     Includer::include_fun($dir, 'fun_forum.php');
     Includer::include_fun($dir, 'fun_auth.php');
  
@@ -24,7 +24,6 @@
         $result = FunForum::getMy($api, $auth->ID);
         $forums = $result->response;
 
-        Console::log('count', $count);
         Console::log('all', $forums);
 
         Header::initHeader($dir, "บทความของฉัน"); 

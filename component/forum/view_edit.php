@@ -34,13 +34,13 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                    <div class="container mt-5">
+                                    <div class="container mt-3">
                                         <div class="card">
                                             <form class="card-body" action="<?php Nav::echoURL($dir, App::$routeForum . '?m=update' ) ?>" method="POST" enctype="multipart/form-data">
                                                 <?php if(!$isNew){ ?>
                                                     <div class="form-group">
                                                         <label for="ID">ID</label>
-                                                        <input value="<?php echo $forum->ID;?>" type="text" name="ID" class="form-control" id="ID" placeholder="ID" required>
+                                                        <input value="<?php echo $forum->ID;?>" type="text" name="ID" class="form-control" id="ID" placeholder="ID" readonly>
                                                     </div>
                                                 <?php } ?>
                                                 <div class="form-group">
@@ -55,7 +55,7 @@
                                                     <label for="exampleInputDescription">หมวดหมู่</label>
                                                     <select class="form-control" name="categoryID">
                                                         <option>เลือกหมวดหมู่</option>
-                                                        <?php foreach($catagories as $key => $cat){?>
+                                                        <?php foreach($categories as $key => $cat){ ?>
                                                             <option value= "<?php echo $cat->ID; ?>" <?php if(!$isNew)if($forum->categoryID == $cat->ID) echo 'selected' ?>><?php echo $cat->title; ?></option>
                                                         <?php } ?>
                                                     </select>
@@ -80,6 +80,7 @@
                         </div>
                     </div>
                 </div>
+                <?php Script::customScript($dir, 'common.js') ?>
                 <?php Script::initScript($dir) ?>
                 
 <?php

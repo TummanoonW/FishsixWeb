@@ -29,8 +29,14 @@
         $result = FunAuth::getSingleFull($api, $order->ownerID);
         $owner = $result->response;
 
+        if(isset($io->get->isUpdate)){
+            $isUpdate = TRUE;
+        }else{
+            $isUpdate = FALSE;
+        }
+
         Header::initHeader($dir, "แอดมิน - ดูคำสั่งซื้อ"); 
-        AdminViewOrder::initView($dir, $sess, $paths, $order, $owner);
+        AdminViewOrder::initView($dir, $sess, $paths, $order, $owner, $isUpdate);
         Footer::initFooter($dir); 
 
     }else{

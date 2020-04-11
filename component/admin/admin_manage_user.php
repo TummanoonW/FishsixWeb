@@ -45,7 +45,7 @@
                                             <h1 class="h2">จัดการผู้ใช้</h1>
                                         </div>
                                         <div class="media-right">
-                                            <button onclick="exportExcel()" class="btn btn-info mr-2">ดาวน์โหลดเป็น Excel</button>
+                                            <a href="<?php Nav::echoURL($dir, App::$routeAdminUser . "?m=export") ?>" target="_blank" class="btn btn-info mr-2">ดาวน์โหลดเป็น Excel</a>
                                             <a href="<?php Nav::echoURL($dir, App::$pageAdminAddUser) ?>" class="btn btn-success">+ เพิ่มผู้ใช้</a>
                                         </div>
                                     </div>

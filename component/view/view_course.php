@@ -43,6 +43,48 @@
                                         </div>
                                     </div>
                                     <div class="row">
+                                        <div class="col-md-4">
+                                            <!-- Pricing Card -->
+                                            <div class="card">
+                                                <div class="card-body text-center">
+                                                    <p>
+                                                        <select id="custom-select" class="flex form-control custom-select" onchange="changeCost(this)">
+                                                            <?php self::initPackageItems($dir, $packages) ?>
+                                                        </select>
+                                                    </p>
+                                                    <button onclick="buy()" class="btn btn-success btn-block flex-column">
+                                                        <strong style="font-size:18px">ซื้อคอร์ส</strong>
+                                                        <strong>ในราคา &#3647;<span id="price"></span></strong>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title"><i class="fas fa-chalkboard-teacher"></i> &nbsp;ครูผู้สอน</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <?php self::initTeacherItems($dir, $teachers) ?>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title"><i class="far fa-comment"></i> &nbsp;ความคิดเห็น (<?php echo $course->ratingCount ?>)</h4>
+                                                </div>
+                                                <div class="card-body pb-0">
+                                                    <div class="rating">
+                                                        เรตติ้ง <?php self::initRating($dir, $course->ratingScore, $course->ratingCount) ?>
+                                                        &nbsp; <small class="text-muted">ผู้ริวิว <?php echo $course->ratingCount ?> ราย</small>
+                                                    </div>
+                                                    <ul class="list-group mt-3">
+                                                      <?php self::initCommentItems($dir, $comments) ?>
+                                                    </ul>
+                                                </div>
+                                                <div class="card-footer p-0">
+                                                    <a class="btn btn-block text-primary" href="#">ดูเพิ่มเติม</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class="col-md-8">
                                             <div class="card">
                                                 <!--<div class="embed-responsive embed-responsive-16by9">
@@ -138,48 +180,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
-                                        <div class="col-md-4">
-                                            <!-- Pricing Card -->
-                                            <div class="card">
-                                                <div class="card-body text-center">
-                                                    <p>
-                                                        <select id="custom-select" class="flex form-control custom-select" onchange="changeCost(this)">
-                                                            <?php self::initPackageItems($dir, $packages) ?>
-                                                        </select>
-                                                    </p>
-                                                    <button onclick="buy()" class="btn btn-success btn-block flex-column">
-                                                        <strong style="font-size:18px">ซื้อคอร์ส</strong>
-                                                        <strong>ในราคา &#3647;<span id="price"></span></strong>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="card">
-                                                <div class="card-header">
-                                                    <h4 class="card-title"><i class="fas fa-chalkboard-teacher"></i> &nbsp;ครูผู้สอน</h4>
-                                                </div>
-                                                <div class="card-body">
-                                                    <?php self::initTeacherItems($dir, $teachers) ?>
-                                                </div>
-                                            </div>
-                                            <div class="card">
-                                                <div class="card-header">
-                                                    <h4 class="card-title"><i class="far fa-comment"></i> &nbsp;ความคิดเห็น (<?php echo $course->ratingCount ?>)</h4>
-                                                </div>
-                                                <div class="card-body pb-0">
-                                                    <div class="rating">
-                                                        เรตติ้ง <?php self::initRating($dir, $course->ratingScore, $course->ratingCount) ?>
-                                                        &nbsp; <small class="text-muted">ผู้ริวิว <?php echo $course->ratingCount ?> ราย</small>
-                                                    </div>
-                                                    <ul class="list-group mt-3">
-                                                      <?php self::initCommentItems($dir, $comments) ?>
-                                                    </ul>
-                                                </div>
-                                                <div class="card-footer p-0">
-                                                    <a class="btn btn-block text-primary" href="#">ดูเพิ่มเติม</a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    
                                     </div>
                                 </div>
                             </div>

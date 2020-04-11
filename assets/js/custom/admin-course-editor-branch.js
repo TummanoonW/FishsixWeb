@@ -43,6 +43,7 @@ async function save(){
                 ID: id,
                 branchID: branchID,
                 branch: branch,
+                i: 99,
                 meta: 'add'
             };
             course.branches.push(newBranch);

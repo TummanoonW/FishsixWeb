@@ -58,6 +58,56 @@
             </head>
 <?php
         }
+
+        public static function initHeaderSKRN($dir, $title){
+?>
+            <!DOCTYPE html>
+            <html lang="en" dir="ltr">
+
+            <head>
+                <meta charset="utf-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                <title><?php echo $title ?></title>
+
+                <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
+                <meta name="robots" content="noindex">
+
+                <link rel="icon" href="<?php Asset::embedIcon($dir, 'cropped-logo-fishsix-32x32.png') ?>" sizes="32x32">
+                <link rel="icon" href="<?php Asset::embedIcon($dir, 'cropped-logo-fishsix-192x192.png') ?>" sizes="192x192">
+                <link rel="apple-touch-icon-precomposed" href="<?php Asset::embedIcon($dir, 'cropped-logo-fishsix-180x180.png') ?>">
+
+                <!-- Material Design Icons -->
+                <link type="text/css" href="<?php Nav::echoURL($dir, 'assets/css/material-icons.css') ?>" rel="stylesheet">
+                <link type="text/css" href="<?php Nav::echoURL($dir, 'assets/css/material-icons.rtl.css') ?>" rel="stylesheet">
+
+                <!-- Kanit Font -->
+                <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
+
+                <link type="text/css" href="<?php Nav::echoURL($dir, 'assets/css/custom/main.css') ?>" rel="stylesheet">
+
+                <link rel="stylesheet" href="<?php Nav::echoURL($dir, 'assets/css/skrn/bootstrap.min.css') ?>">
+		        <link rel="stylesheet" href="<?php Nav::echoURL($dir, 'assets/css/skrn/style.css') ?>">
+		        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMontserrat:300,400,600,700">
+		
+		        <link rel="stylesheet" href="<?php Nav::echoURL($dir, 'assets/images/icons/skrn/fontawesome/css/fontawesome-all.min.css') ?>"><!-- FontAwesome Icons -->
+		        <link rel="stylesheet" href="<?php Nav::echoURL($dir, 'assets/images/icons/skrn/Iconsmind__Ultimate_Pack/Line%20icons/styles.min.css') ?>"><!-- iconsmind.com Icons -->
+
+                <script>var json = null;</script>
+
+                <script type="text/javascript">
+                $(document).ready(function() { 
+                    var docHeight = $(window).height();
+                    var footerHeight = $('#footer').height();
+                    var footerTop = $('#footer').position().top + footerHeight;  
+                    if (footerTop < docHeight) {
+                        $('#footer').css('margin-top', 10 + (docHeight - footerTop) + 'px');
+                    }
+                });
+                </script>
+            </head>
+<?php
+        }
     }
 ?>
     

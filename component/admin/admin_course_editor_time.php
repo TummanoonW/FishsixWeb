@@ -1,7 +1,7 @@
 <?php
     class AdminCourseEditorTimeView{
 
-        public static function initView($dir, $sess, $paths, $sClass, $isNew, $branches){
+        public static function initView($dir, $sess, $paths, $sClass, $isNew, $branches, $index){
             $auth = $sess->getAuth();
             
             $urls = array(
@@ -9,7 +9,8 @@
             );
             $data = array(
                 'sClass' => $sClass,
-                'isNew' => $isNew
+                'isNew' => $isNew,
+                'index' => $index
             );
 ?>
             <body class=" layout-fluid">
