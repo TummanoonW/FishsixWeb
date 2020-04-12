@@ -62,7 +62,7 @@
         public static function initHeaderSKRN($dir, $title){
 ?>
             <!DOCTYPE html>
-            <html lang="en" dir="ltr">
+            <html lang="en">
 
             <head>
                 <meta charset="utf-8">
@@ -96,14 +96,14 @@
                 <script>var json = null;</script>
 
                 <script type="text/javascript">
-                $(document).ready(function() { 
+                /*$(document).ready(function() { 
                     var docHeight = $(window).height();
                     var footerHeight = $('#footer').height();
                     var footerTop = $('#footer').position().top + footerHeight;  
                     if (footerTop < docHeight) {
                         $('#footer').css('margin-top', 10 + (docHeight - footerTop) + 'px');
                     }
-                });
+                });*/
                 </script>
             </head>
 <?php

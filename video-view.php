@@ -29,8 +29,17 @@
             
             $result = FunCategory::getSingle($api, $video->categoryID);
             $category = $result->response;
-            if($category != null) $catTitle = $category->title;
-            else $catTitle = "";
+            if($category != null){
+                $catTitle = $category->title;
+
+                $result = FunVideoLib::getByCategoryID($api, $category->ID);
+                $videos = $result->response; 
+            }else{
+                $catTitle = "";
+                $videos = array();
+            }
+
+
 
             $paths = array(
                 new Path(FALSE, 'หน้าหลัก', $dir),
@@ -51,9 +60,9 @@
         Console::log('category', $category);
         Console::log('video', $video);
 
-        Header::initHeader($dir, $video->title); 
-        VideoView::initView($dir, $sess, $paths, $category, $video, $isAllowed);
-        Footer::initFooter($dir); 
+        Header::initHeaderSKRN($dir, $video->title); 
+        VideoView::initView($dir, $sess, $paths, $category, $video, $isAllowed, $videos);
+        Footer::initFooterSKRN($dir); 
     }else{
         Nav::gotoHome($dir);
     }

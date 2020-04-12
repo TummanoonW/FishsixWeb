@@ -43,9 +43,9 @@
         Console::log('category', $category);
         Console::log('videos', $videos);
 
-        Header::initHeader($dir, "เพลย์เลิสต์ - " . $category->title); 
+        Header::initHeaderSKRN($dir, "เพลย์เลิสต์ - " . $category->title); 
         VideoPlaylistView::initView($dir, $sess, $paths, $category, $videos, $isAllowed);
-        Footer::initFooter($dir); 
+        Footer::initFooterSKRN($dir); 
     }else{
         Nav::gotoHome($dir);
     }

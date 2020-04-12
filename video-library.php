@@ -47,9 +47,9 @@
         Console::log('categories', $categories);
         Console::log('latest', $latest);
 
-        Header::initHeader($dir, "คลังวิดีโอ - " . App::$name); 
+        Header::initHeaderSKRN($dir, "คลังวิดีโอ - " . App::$name); 
         VideoLibraryView::initView($dir, $sess, $paths, $latest, $categories, $isAllowed);
-        Footer::initFooter($dir); 
+        Footer::initFooterSKRN($dir); 
     }else{
         Nav::gotoHome($dir);
     }

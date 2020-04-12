@@ -85,7 +85,7 @@
         public static function initFooterSKRN($dir){
           $sess = new Sess();
 ?>
-          <footer class="page-footer font-medium indigo bg-dark">
+          <!--<footer class="page-footer font-medium indigo bg-dark">
             <div class="text-center  p-4">
               <div class="row">
                 <div class="col-md-2 mx-auto">
@@ -143,16 +143,16 @@
                 </div>
               </div>
             </div>
-          </footer>
+          </footer>-->
 
-          <div class="feet bg-light">
+         <!-- <div class="feet bg-light">
             <div style="
                 width: 100%;
                 height: 1px;
                 background: lightgray;
             "></div>
-              <?php LayoutMenu::initLayoutMenu($dir, $sess) ?>
-          </div>
+              <?php //LayoutMenu::initLayoutMenu($dir, $sess) ?>
+          </div>-->
          
 		      <!-- Required Framework JavaScript -->
 		      <script src="<?php Nav::echoURL($dir, 'assets/js/skrn/libs/jquery-3.3.1.min.js') ?>"></script><!-- jQuery -->

@@ -1,51 +1,174 @@
 <?php
     class VideoView{
-        public static function initView($dir, $sess, $paths, $category, $video, $isAllowed){
+        public static function initView($dir, $sess, $paths, $category, $video, $isAllowed, $videos){
             ?>
-            <body class="layout-fluid" style="background: black;">
-                <link rel="stylesheet" href="<?php Nav::echoURL($dir, 'assets/css/theme.css') ?>" type="text/css">
-                <script type="text/javascript" src="<?php Nav::echoURL($dir, 'assets/js/frontpage.js') ?>"></script>
+            	<body>
+		<div id="sidebar-bg">	
+            <?php Toolbar::initToolbarSKRN($dir, '', $sess) ?>
+            <nav id="sidebar-nav"><!-- Add class="sticky-sidebar-js" for auto-height sidebar -->
+            <ul id="vertical-sidebar-nav" class="sf-menu">
+              <li class="normal-item-pro">
+                <a href="dashboard-home.html">
+						<span class="icon-Old-TV"></span>
+                  TV Series
+                </a>
+              </li>
+              <li class="normal-item-pro">
+                <a href="dashboard-movies.html">
+						<span class="icon-Reel"></span>
+                  Movies
+                </a>
+              </li>
+              <li class="normal-item-pro current-menu-item">
+                <a href="dashboard-playlists.html">
+						<span class="icon-Movie"></span>
+                  Playlists
+                </a>
+              </li>
+              <li class="normal-item-pro">
+                <a href="dashboard-new-arrivals.html">
+						<span class="icon-Movie-Ticket"></span>
+                  New Arrivals
+                </a>
+              </li>
+              <li class="normal-item-pro">
+                <a href="dashboard-coming-soon.html">
+						<span class="icon-Clock"></span>
+                  Coming Soon
+                </a>
+              </li>
 
-                <!-- Pre Loader -->
-                <?php Preloader::initPreloader($dir) ?>
+            </ul>
+				<div class="clearfix"></div>
+		</nav>
+		    <main id="col-main">
+			
+			<div id="movie-detail-header-pro" style="background-image:url('https://i1.ytimg.com/vi/<?php echo $video->youtube_id ?>/mqdefault.jpg')">
+				
+				<div class="progression-studios-slider-more-options">
+					<i class="fas fa-ellipsis-h"></i>
+					<ul>
+						<li><a href="#!">Add to Favorites</a></li>
+						<li><a href="#!">Add to Watchlist</a></li>
+						<li><a href="#!">Add to Playlist</a></li>
+						<li><a href="#!">Share...</a></li>
+						<li><a href="#!">Write A Review</a></li>
+					</ul>
+				</div>
+				
+				<a class="movie-detail-header-play-btn afterglow" href="#VideoLightbox-1"><i class="fas fa-play"></i></a>
+				
+	         <video id="VideoLightbox-1" data-youtube-id="<?php echo $video->youtube_id ?>"  poster="https://i1.ytimg.com/vi/<?php echo $video->youtube_id ?>/mqdefault.jpg" width="960" height="540"></video>
+				
+				<div id="movie-detail-header-media">
+					<div class="dashboard-container">
+						<h5>บทเรียนต่อไป</h5>						
+						<div class="row">
+							<?php self::initCardSKRN($dir, $videos) ?>
+						</div><!-- close .row -->
+					</div><!-- close .dashboard-container -->
+				</div><!-- close #movie-detail-header-media -->
+				
+				<div id="movie-detail-gradient-pro"></div>
+			</div><!-- close #movie-detail-header-pro -->
+			
+			
+			<div id="movie-detail-rating">
+				<div class="dashboard-container">
+					<div class="row">
+						<div class="col-sm">
+							<h5>คะแนน <?php echo $video->title ?></h5>
+							
+							<div class="rating-pro">
+   							  <label>
+   							    <input type="radio" name="rating-pro" value="10" title="10 stars"> 10
+   							  </label>
+  							  <label>
+  							    <input type="radio" name="rating-pro" value="9" title="9 stars"> 9
+  							  </label>
+  							  <label>
+  							    <input type="radio" name="rating-pro" value="8" title="8 stars"> 8
+  							  </label>
+  							  <label>
+  							    <input type="radio" name="rating-pro" value="7" title="7 stars"> 7
+  							  </label>
+ 							  <label>
+ 							    <input type="radio" name="rating-pro" value="6" title="6 stars"> 6
+ 							  </label>
+							  <label>
+							    <input type="radio" name="rating-pro" value="5" title="5 stars"> 5
+							  </label>
+							  <label>
+							    <input type="radio" name="rating-pro" value="4" title="4 stars"> 4
+							  </label>
+							  <label>
+							    <input type="radio" name="rating-pro" value="3" title="3 stars"> 3
+							  </label>
+							  <label>
+							    <input type="radio" name="rating-pro" value="2" title="2 stars"> 2
+							  </label>
+							  <label>
+							    <input type="radio" name="rating-pro" value="1" title="1 star"> 1
+							  </label>
+							</div>
+							
+						</div>
+						<div class="col-sm">
+							<h6>User Rating</h6>
+					      <div
+					        class="circle-rating-pro"
+					        data-value="0.86"
+					        data-animation-start-value="0.86"
+					        data-size="40"
+					        data-thickness="3"
+					        data-fill="{
+					          &quot;color&quot;: &quot;#42b740&quot;
+					        }"
+					        data-empty-fill="#def6de"
+					        data-reverse="true"
+					      ><span style="color:#42b740;">8.6</span></div>
+							<div class="clearfix"></div>
+						</div>
+					</div><!-- close .row -->
+				</div><!-- close .dashboard-container -->
+			</div><!-- close #movie-detail-rating -->
+			
+			    <div class="dashboard-container">
+				
+				
+				    <div class="movie-details-section">
+				    	<h2><?php echo $video->title ?></h2>
+				    	<p><?php echo $video->content ?></p>
+				    </div><!-- close .movie-details-section -->
 
-                <!-- Header Layout -->
-                <div class="mdk-header-layout js-mdk-header-layout">
+				
+				
+			    </div><!-- close .dashboard-container -->
+		    </main>
+		
+		
+		</div>
+        <?php Script::initScript($dir) ?>
+                <?php Script::customScript($dir, 'common.js') ?>
+        <?php
+        }
 
-                    <!-- Header -->
-                    <?php Toolbar::initToolbar($dir, '', $sess) ?>
-                    <!-- // END Header -->
-
-                    <!-- Header Layout Content -->
-                    <div class="mdk-header-layout__content">
-
-                        <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
-                            <div class="mdk-drawer-layout__content page ">
-                                <div class="container-fluid page__container"> 
-                                    <!-- Navigation Paths -->
-                                    <?php Breadcrumb::initBreadcrumb($dir, $paths) ?>
-                                    <?php if($isAllowed){ ?>                               
-                                        <div class="row">
-                                            <div class="col-12 mb-4">
-                                                <iframe src="https://www.youtube.com/embed/<?php echo $video->youtube_id ?>?autoplay=0&showinfo=0&controls=0" width="100%" height="400" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-                                            </div>
-                                            <div class="col-12 text-muted">
-                                                <h3 class="text-light"><?php echo $video->title ?></h3>
-                                                <small><?php echo $video->date ?> - views:<?php echo $video->views ?></small>
-                                                <p><?php echo $video->content ?></p>
-                                            </div>
-                                        </div>
-                                    <?php }else{
-                                        Alert::initAlert($dir, "คุณต้องซื้อคอร์สใดคอร์สหนึ่งของเราก่อนจะใช้งานฟีเจอร์นี้ได้");
-                                    } ?>
-                                </div>
-                            </div>
-                            <?php //Sidemenu::initSideMenu($dir, $sess) ?>
-                        </div>
-                    </div>
-                </div>
-                <?php Script::initScript($dir) ?>
+        private static function initCardSKRN($dir, $videos){
+            foreach ($videos as $key => $value) {
+                if($key < 3){
+            ?>
+            <div class="col-6 col-md-4 col-lg-4">
+				<a class="movie-detail-media-link afterglow">
+					<div class="movie-detail-media-image">
+						<img src="https://i1.ytimg.com/vi/<?php echo $value->youtube_id ?>/mqdefault.jpg">
+						<span><i class="fas fa-play"></i></span>
+						<h6><?php echo $value->title ?></h6>
+					</div>
+				</a>
+			</div>
             <?php
+                }
+            }
         }
 
         
