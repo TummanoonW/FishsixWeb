@@ -25,8 +25,21 @@
             }
             break;
         case 'postComment':
+            $id = $io->id;
             $form = $io->post;
-            $result = FunForum::postComment($api, $form);
+            $form->forumID = $id;
+            $form->authorID = $auth->ID;
+
+            if($form->content == ""){
+                Nav::goBack();
+            }else{
+                $result = FunForum::postComment($api, $form);
+                if($result->success){
+                    Nav::goBack();
+                }else{
+                    ErrorPage::initPage($dir, $result);
+                }
+            }
             break;
         case 'upvotedownvote':
             $form = $io->post;
@@ -48,23 +61,28 @@
             break;
         case 'update':
                 $form = $io->post;
+            
+                if($form->thumbnail2 != ""){
+                    $form->thumbnail = $form->thumbnail2;
+                }else{
+                    if($_FILES['thumbnail']['error'] == 0){
+                        $file = new File($dir, 'uploads/forums/thumbnails/');
+                        $option = new FileOption();
+                        $option->set(
+                            TRUE,
+                            TRUE,
+                            TRUE,
+                            'thumb',
+                            1 * 1000 * 1000,
+                            ['jpg', 'jpeg', 'png', 'gif']
+                        );
 
-                if($_FILES['thumbnail']['error'] == 0){
-                    $file = new File($dir, 'uploads/forums/thumbnails/');
-                    $option = new FileOption();
-                    $option->set(
-                        TRUE,
-                        TRUE,
-                        TRUE,
-                        'thumb',
-                        1 * 1000 * 1000,
-                        ['jpg', 'jpeg', 'png', 'gif']
-                    );
-
-                    $result = $file->upload('thumbnail', $option);
-                    if($result->success) $form->thumbnail = $result->response->downloadURL;
+                        $result = $file->upload('thumbnail', $option);
+                        if($result->success) $form->thumbnail = $result->response->downloadURL;
+                        else $form->thumbnail = '';
+                    }
                 }
-                if($form->thumbnail == '') unset($form->thumbnail);
+                unset($form->thumbnail2);
               
                 if($sess->checkUserExisted()) $form->authorID = $auth->ID;                
                 
@@ -81,7 +99,7 @@
                     $result = FunForum::edit($api, $form->ID, $form);
                     if($result->success){
                         Nav::goto($dir, App::$pageMyForums);
-                        Console::log('Result', $result);
+                        Console::log('Result', $_FILES['thumbnail']);
                     }else{
                         ErrorPage::initPage($dir, $result);
                         Console::log('Result', $result);

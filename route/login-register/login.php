@@ -23,6 +23,8 @@
 
                     if($result->success){ //if the API return result
                         $auth = $result->response;
+                        $result = FunAuth::checkUnlockable($api, $auth->ID);
+                        $auth = $result->response;
                         $sess->logIn($auth); //save login data to Sess
                         Nav::gotoHome($dir); //redirect to profile page
                     }else{

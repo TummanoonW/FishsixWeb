@@ -98,6 +98,15 @@
                                                     </div>
 
                                                     <div class="form-group row">
+                                                            <label for="isHeader" class="col-sm-3 col-form-label form-label">วิดีโอที่แนะนำ</label>
+                                                            <div class="col-sm-8">
+                                                                <div class="input-group">
+                                                                <input name="isHeader" type="checkbox" id="isHeader" class="form-control" placeholder="กรอกหัวเรื่องวิดีโอ" <?php if(!$isNew){if($video->header == 1) echo 'checked="true"'; } ?>" value="วิดีโอที่แนะนำ">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
                                                         <div class="col-sm-8 offset-sm-3">
                                                             <div class="media align-items-center">
                                                                 <div class="media-left">

@@ -23,7 +23,7 @@
         else $query = "";
 
         if(isset($io->query->limit)) $limit = $io->query->limit;
-        else $limit = 20;
+        else $limit = 50;
 
         if($io->page == NULL){
             $c_page = 0;
@@ -43,6 +43,8 @@
 
         $result = FunBooking::getFilteredFull2($api, $filter);
         $bookings = $result->response;
+
+        Console::log("count", $count);
 
         $pages = Path::genPages($dir, App::$pageAdminManageBookings, $limit, $c_page, $count);
         $pages[$c_page]->active = TRUE;

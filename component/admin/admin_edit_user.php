@@ -100,8 +100,8 @@
                                                                                 <select name="type" id="type" class="form-control custom-select">
                                                                                      <option value="user" selected>ผู้ใช้ทั่วไป</option>
                                                                                      <option value="teacher">ครู</option>
-                                                                                     <option value="editor">แอดมิน</option>
-                                                                                     <option value="admin">ซุเปอร์แอดมิน</option>
+                                                                                     <option value="editor">ผู้ช่วยแอดมิน</option>
+                                                                                     <option value="admin">แอดมิน</option>
                                                                                  </select>
 <?php
                                                                         } 
@@ -310,6 +310,18 @@
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <input name="school" id="school" type="text" class="form-control" placeholder="กรอกโรงเรียนที่คุณเรียน" value="<?php if(!$isNew) echo $user->school ?>">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    
+                                                    <div class="form-group row">
+                                                        <label for="education" class="col-sm-3 col-form-label form-label">ระดับชั้นเรียน</label>
+                                                        <div class="col-sm-8">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <input name="education" id="education" type="text" class="form-control" placeholder="กรอกระดับชั้นเรียน" value="<?php if(!$isNew) echo $user->education ?>">
                                                                 </div>
                                                             </div>
                                                         </div>

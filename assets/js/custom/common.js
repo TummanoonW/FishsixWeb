@@ -57,7 +57,8 @@ function uploadToPicture(input, width, height, img_id, input_id) {
                 var dataurl = canvas.toDataURL('image/jpeg', 0.8);
 
                 $(img_id).attr('src', dataurl);    
-                $(input_id).val(dataurl);
+                //$(input_id).val(dataurl);
+                $(input_id).val('');
             }
         };
 

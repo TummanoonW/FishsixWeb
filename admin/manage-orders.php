@@ -37,7 +37,6 @@
             $c_page = $io->page;
         }
 
-
         $offset = ($c_page * $limit);        
 
         $filter = (object)array(

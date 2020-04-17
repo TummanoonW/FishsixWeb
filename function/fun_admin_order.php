@@ -8,14 +8,14 @@
         }
 
         public static function getFiltered2($api, $filter){
-            $url = $api->getURL(App::$apiAdminOrder, 'filter2', $filter);
-            $result = $api->get($url);
+            $url = $api->getURL(App::$apiAdminOrder, 'filter2', NULL);
+            $result = $api->post($url, $filter);
             return $result;
         }
 
         public static function countFiltered2($api, $filter){
-            $url = $api->getURL(App::$apiAdminOrder, 'countFiltered2', $filter);
-            $result = $api->get($url);
+            $url = $api->getURL(App::$apiAdminOrder, 'countFiltered2', NULL);
+            $result = $api->post($url, $filter);
             return $result;
         }
 

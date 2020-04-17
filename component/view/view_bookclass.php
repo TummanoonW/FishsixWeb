@@ -32,8 +32,13 @@
                                             <div class="media mb-headings align-items-center">
                                                 <div class="media-body">
                                                     <h1 class="h2">จองรอบเรียน <?php echo $course->title; ?></h1>
+                                                    <span class="text-secondary">
+                                                        <i class="fas fa-hourglass-half mr-2"></i>
+                                                        หมดอายุ <?php echo CustomDate::getDate($ownership->expiration)->format('d F, Y') ?>
+                                                    </span>
                                                 </div>
                                             </div>
+
                                             <form action="<?php Nav::echoURL($dir, App::$routeBookClass . "?m=book"); ?>" method="POST">
                                                 <table class="table table-nowrap mb-0 table--elevated">
                                                     <tbody>

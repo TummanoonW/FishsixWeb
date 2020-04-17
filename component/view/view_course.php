@@ -301,8 +301,13 @@
         }
 
         public static function initCommentItems($dir, $comments){
+            Console::log('cmm', $comments);
             foreach ($comments as $key => $c) {
                 $a = $c->auth;
+                if($a == NULL) $a = (object)array(
+                    'profile_pic' => '',
+                    'username' => 'นิรนาม'
+                );
                 ?>
                     <li class="list-group-item">
                         <div class="d-flex w-100 justify-content-between">

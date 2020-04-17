@@ -32,12 +32,12 @@
             $categories = $result->response;
 
             foreach ($categories as $key => $value) {
-                $result = FunVideoLib::getByCategoryIDLimit($api, $value->ID, 3);
+                $result = FunVideoLib::getByCategoryIDLimit($api, $value->ID, 4);
                 $videos = $result->response;
                 $value->videos = $videos;
             }
 
-            $result = FunVideoLib::getLatestLimit($api, 5);
+            $result = FunVideoLib::getHeader($api);
             $latest = $result->response; 
         }else{
             $categories = array();

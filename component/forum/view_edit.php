@@ -49,7 +49,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputDescription">เนื้อหา (ความยาวไม่เกิน 1000 ตัวอักษร)</label>
-                                                    <textarea value=" <?php if(!$isNew) echo $forum->content;?>" name="content" class="form-control" id="exampleInputDescription" placeholder="ใส่เนื้อหาของบทความ" rows="6" maxlength="1000"></textarea>
+                                                    <textarea name="content" class="form-control" id="exampleInputDescription" placeholder="ใส่เนื้อหาของบทความ" rows="6" maxlength="1000"><?php if(!$isNew) echo $forum->content;?></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputDescription">หมวดหมู่</label>
@@ -65,10 +65,11 @@
                                                         <img id="thumb" class="w-100 h-auto" src="<?php if(!$isNew) Asset::echoThumb($dir, $forum->thumbnail) ?>">
                                                     </label>
                                                     <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="thumbnail" name="thumbnail" accept="image/*" onchange="uploadToPicture(this, 720, 480, '#thumb', '#thumbnail')">
+                                                        <input type="file" class="custom-file-input" id="thumbnail" name="thumbnail" accept="image/*" onchange="uploadToPicture(this, 720, 480, '#thumb', '#thumbnail2')">
                                                         <label class="custom-file-label" for="thumbnail">อัพโหลดรูปภาพปก</label>
                                                     </div>
                                                 </div>
+                                                <input name="thumbnail2" style="visibility: collapse;" value="<?php if(!$isNew) echo $forum->thumbnail ?>">
                                                 <button type="submit" class="btn btn-success">โพสต์บทความ</button>
                                             </form>
                                         </div>

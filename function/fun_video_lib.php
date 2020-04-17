@@ -34,6 +34,12 @@
             return $result;
         }
 
+        public static function getHeader($api){
+            $url = $api->getURL(App::$apiVidLib, 'header', NULL);
+            $result = $api->get($url);
+            return $result;
+        }
+
         public static function getLatestLimit($api, $limit){
             $query = array('limit' => $limit);
             $url = $api->getURL(App::$apiVidLib, 'latestLimit', $query);

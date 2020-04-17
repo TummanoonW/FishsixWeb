@@ -1,5 +1,13 @@
 <?php
     class FunAuth{
+        public static function checkUnlockable($api, $id){
+            $query = (object)array(
+                'id' => $id
+            );
+            $url = $api->getURL(App::$apiAuth, 'checkUnlockable', $query);
+            $result = $api->get($url);
+            return $result;
+        }
         public static function getFull($api){
             $url = $api->getURL(App::$apiAuth, 'full', NULL);
             $result = $api->get($url);

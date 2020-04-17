@@ -3,65 +3,25 @@
         public static function initView($dir, $sess, $paths, $category, $videos, $isAllowed){
             ?>
             	<body>
-		<div id="sidebar-bg">
         <?php Toolbar::initToolbarSKRN($dir, '', $sess) ?>
-		<nav id="sidebar-nav"><!-- Add class="sticky-sidebar-js" for auto-height sidebar -->
-            <ul id="vertical-sidebar-nav" class="sf-menu">
-              <li class="normal-item-pro">
-                <a href="dashboard-home.html">
-						<span class="icon-Old-TV"></span>
-                  TV Series
-                </a>
-              </li>
-              <li class="normal-item-pro">
-                <a href="dashboard-movies.html">
-						<span class="icon-Reel"></span>
-                  Movies
-                </a>
-              </li>
-              <li class="normal-item-pro current-menu-item">
-                <a href="dashboard-playlists.html">
-						<span class="icon-Movie"></span>
-                  Playlists
-                </a>
-              </li>
-              <li class="normal-item-pro">
-                <a href="dashboard-new-arrivals.html">
-						<span class="icon-Movie-Ticket"></span>
-                  New Arrivals
-                </a>
-              </li>
-              <li class="normal-item-pro">
-                <a href="dashboard-coming-soon.html">
-						<span class="icon-Clock"></span>
-                  Coming Soon
-                </a>
-              </li>
 
-            </ul>
-				<div class="clearfix"></div>
-		</nav>
-	
-		<main id="col-main">
-			
-			
-			
+		<main>
 			<div class="flexslider progression-studios-dashboard-slider">
 		      <ul class="slides">
-					<li class="progression_studios_animate_in">
-						<div class="progression-studios-slider-dashboard-image-background" style="background-image:url(http://via.placeholder.com/1920x698);">
+					<li class="progression_studios_animate_left">
+						<div class="progression-studios-slider-dashboard-image-background" style="background-image:url(<?php Asset::echoImage($dir, 'assets/images/wallpaper.jpg') ?>);">
 							<div class="progression-studios-slider-display-table">
 								<div class="progression-studios-slider-vertical-align">
 								
 									<div class="container">
 										
 										<div class="progression-studios-slider-dashboard-caption-width">
-											<div class="progression-studios-slider-caption-align">
+											<div class="progression-studios-slider-caption-align" style="background: rgb(255, 255, 255, 0.9); padding: 32px;">
 											
-												<h2 class="light-fonts-pro"><a href="#!">เพลย์ลิสต์ของ<?php echo $category->title  ?></a></h2>
+												<h2><a href="#!">เพลย์ลิสต์ของ<?php echo $category->title  ?></a></h2>
 												<br>
-												<a class="btn btn-green-pro btn-slider-pro" href="#!"><i class="fas fa-plus"></i> Subscribe</a>
-												<div class="progression-studios-slider-more-options">
+												<a class="btn btn-green-pro btn-slider-pro" href="<?php Nav::echoURL($dir, App::$pageVideoView . "?id=" . $videos[0]->ID) ?>"><i class="fas fa-play"></i> เริ่มเล่น</a>
+												<!--<div class="progression-studios-slider-more-options">
 													<i class="fas fa-ellipsis-h"></i>
 													<ul>
 														<li><a href="#!">Add to Favorites</a></li>
@@ -70,12 +30,12 @@
 														<li><a href="#!">Share...</a></li>
 														<li><a href="#!">Write A Review</a></li>
 													</ul>
-												</div>
+												</div>-->
 												<div class="clearfix"></div>
 												<br>
-												<img src="images/demo/user-5.jpg" alt="Starring" class="created-by-avatar">
-												<h5 class="light-fonts-pro created-by-heading-pro">Created by: Richard S. Castellano</h5>
-												<h6 class="light-fonts-pro created-by-heading-pro">8 Movies, 18 hrs and 24 mins</h6>
+												<img src="<?php Asset::echoIcon($dir, '') ?>" alt="Starring" class="created-by-avatar">
+												<h5 class="created-by-heading-pro text-dark">จัดทำโดย: ทีมงาน Fishsix</h5>
+												<h6 class="created-by-heading-pro"><?php echo count($videos) ?> วิดีโอ</h6>
 
 
 											</div><!-- close .progression-studios-slider-caption-align -->
@@ -97,7 +57,7 @@
 			<div class="dashboard-container">
 				
 				<ul class="dashboard-sub-menu">
-					<li class="current"><a href="#!">เพลย์ลิสต์ของฉัน</a></li>
+					<li class="current"><a href="#!">เพลย์ลิสต์ของ<?php echo $category->title ?></a></li>
 					
 				</ul><!-- close .dashboard-sub-menu -->
 
@@ -106,14 +66,14 @@
 					
 				</div><!-- close .row -->
 				
-				<ul class="page-numbers">
+				<!--<ul class="page-numbers">
 					<li><a class="previous page-numbers" href="#!"><i class="fas fa-chevron-left"></i></a></li>
 					<li><span class="page-numbers current">1</span></li>
 					<li><a class="page-numbers" href="#!">2</a></li>
 					<li><a class="page-numbers" href="#!">3</a></li>
 					<li><a class="page-numbers" href="#!">4</a></li>
 					<li><a class="next page-numbers" href="#!"><i class="fas fa-chevron-right"></i></a></li>
-				</ul>
+				</ul>-->
 				
 						
 			</div><!-- close .dashboard-container -->
@@ -131,10 +91,12 @@
             ?>
             <div class="col-12 col-md-6 col-lg-4 col-xl-3">
 						<div class="item-playlist-container-skrn">
-							<a href="#!"><img src="https://i1.ytimg.com/vi/<?php echo $value->youtube_id ?>/mqdefault.jpg" alt="Listing"></a>
+							<a href="<?php Nav::echoURL($dir, App::$pageVideoView . "?id=" . $value->ID) ?>"><img src="https://i1.ytimg.com/vi/<?php echo $value->youtube_id ?>/mqdefault.jpg" alt="Listing"></a>
 							<div class="item-listing-text-skrn">
 								<div class="item-listing-text-skrn-vertical-align"><h6><a href="<?php Nav::echoURL($dir, App::$pageVideoView . "?id=" . $value->ID) ?>"><?php echo $value->title ?></a></h6>
-							    
+									<div>
+								  		<span style="color:#42b740;"><i class="far fa-eye mr-2"></i><?php echo $value->views ?></span>
+									</div>
 								</div><!-- close .item-listing-text-skrn-vertical-align -->
 							</div><!-- close .item-listing-text-skrn -->
 						</div><!-- close .item-playlist-container-skrn -->

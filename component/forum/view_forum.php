@@ -8,6 +8,11 @@
                 'forum' => $forum,
                 'myVote' => $myVote
             );
+            if($forum->author != NULL) $author = $forum->author;
+            else $author = (object)array(
+                'profile_pic' => '',
+                'username' => 'นิรนาม'
+            );
 ?>  
             <body class="layout-fluid">
                 <!-- Pre Loader -->
@@ -21,7 +26,7 @@
                     <!-- // END Header -->
 
                     <!-- Header Layout Content -->
-                    <div class="mdk-header-layout__content" style="padding-top: 64px">
+                <div class="mdk-header-layout__content" style="padding-top: 64px">
 
                     <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
                         <div class="mdk-drawer-layout__content page ">
@@ -47,11 +52,11 @@
                                             <div class="card card-body">
                                                 <div class="d-flex">
                                                     <a href="" class="avatar avatar-online mr-3">
-                                                        <img src="<?php Asset::echoIcon($dir, $forum->author->profile_pic) ?>" alt="<?php echo $forum->author->username ?>" class="avatar-img rounded-circle">
+                                                        <img src="<?php Asset::echoIcon($dir, $author->profile_pic) ?>" alt="<?php echo $author->username ?>" class="avatar-img rounded-circle">
                                                     </a>
                                                     <div class="flex">
                                                         <p class="d-flex align-items-center mb-2">
-                                                            <a href="#" class="text-body mr-2"><strong><?php $forum->author->username ?></strong></a>
+                                                            <a href="#" class="text-body mr-2"><strong><?php echo $author->username ?></strong></a>
                                                             <small class="text-muted"><?php echo $forum->date ?></small>
                                                         </p>
                                                         <p><?php echo $forum->content ?></p>
@@ -63,23 +68,23 @@
                                                 </div>
                                             </div>
                                             <?php if($sess->checkUserExisted()){ ?>
-                                                <div class="d-flex mb-4">
+                                                <form class="d-flex mb-4" action="<?php Nav::echoURL($dir, App::$routeForum . '?m=postComment&id=' . $id) ?>" method="POST">
                                                     <a href="#" class="avatar mr-3">
                                                         <img src="<?php Asset::echoIcon($dir, $auth->profile_pic) ?>" alt="" class="avatar-img rounded-circle">
                                                     </a>
                                                     <div class="flex">
                                                         <div class="form-group">
                                                             <label for="comment" class="form-label">แสดงความคิดเห็น</label>
-                                                            <textarea class="form-control" name="comment" id="comment" rows="3" placeholder="กรอกความคิดเห็นของคุณตรงนี้ ..."></textarea>
+                                                            <textarea class="form-control" name="content" id="comment" rows="3" placeholder="กรอกความคิดเห็นของคุณตรงนี้ ..."></textarea>
                                                         </div>
-                                                        <button onclick="postComment('#comment')" class="btn btn-success">ส่งความคิดเห็น</button>
+                                                        <button type="submit" class="btn btn-success">ส่งความคิดเห็น</button>
                                                     </div>
-                                                </div>
+                                                </form>
                                             <?php } ?>
                                             <div class="pt-3">
                                                 <h4 id="comment"><?php echo count($comments) ?> ความคิดเห็น</h4>
                                                 <div id="comments-sec">
-                                                    <?php self::initComments($dir, $comments, $sess) ?>
+                                                    <?php self::initComments($dir, $comments, $sess, $auth) ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -144,22 +149,23 @@
                         </div>
                     </div>
                 </div>
+                </div>
                 <?php Script::initScript($dir) ?>
-                
-                <script id="data"><?php echo json_encode($data) ?></script>
-
                 <?php Script::customScript($dir, 'common.js') ?>
+
+                <script id="data"><?php echo json_encode($data) ?></script>
                 <?php Script::customScript($dir, 'viewforum.js') ?>
                 
 <?php
         }
 
-        private static function initComments($dir, $comments, $sess){
+        private static function initComments($dir, $comments, $sess, $auth){
             foreach ($comments as $key => $value) {
-                if(isset($value->author)) $author = $value->author;
+                $id = $value->ID;
+                if($value->auth != NULL) $author = $value->auth;
                 else $author = (object)array(
                     'profile_pic' => '',
-                    'username' => 'ผู้ใช้ที่ไม่รู้จัก'
+                    'username' => 'นิรนาม'
                 );
 ?>
                 <div class="d-flex ml-1 mt-3 border rounded p-3 bg-light mb-3">
@@ -176,7 +182,7 @@
                                     <a href="#" onclick="confirmDelete('<?php Nav::echoURL($dir, App::$routeForum . '?m=deleteComment&id=' . $id) ?>')" class="text-black-50" style="text-decoration: underline;">ลบ</a>
                                 <?php } ?>
                             </div>
-                        <div>
+                        </div>
                         <span class="text-black-70"><?php echo $value->content ?></span><br>
                         <div class="d-flex align-items-center">
                             <small class="text-black-50 mr-2"><?php echo $value->date ?></small>

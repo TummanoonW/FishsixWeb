@@ -20,22 +20,26 @@
         if(isset($io->post->username)){
             $form = $io->post;
 
-            if($_FILES['profile_pic']['error'] == 0){
-                $file = new File($dir, 'uploads/profile_pics/');
-                $option = new FileOption();
-                $option->set(
-                    TRUE,
-                    TRUE,
-                    TRUE,
-                    "u_",
-                    1 * 1000 * 1000,
-                    ['jpg', 'jpeg', 'png', 'gif']
-                );
-                $result = $file->upload('profile_pic', $option);
-                if($result->success) $form->profile_pic = $result->response->downloadURL;
-                else $form->profile_pic = '';
+            if($form->profile_pic2 != ""){
+                $form->profile_pic = $form->profile_pic2;
+            }else{
+                if($_FILES['profile_pic']['error'] == 0){
+                    $file = new File($dir, 'uploads/profile_pics/');
+                    $option = new FileOption();
+                    $option->set(
+                        TRUE,
+                        TRUE,
+                        TRUE,
+                        "u_",
+                        1 * 1000 * 1000,
+                        ['jpg', 'jpeg', 'png', 'gif']
+                    );
+                    $result = $file->upload('profile_pic', $option);
+                    if($result->success) $form->profile_pic = $result->response->downloadURL;
+                    else $form->profile_pic = '';
+                }
             }
-
+            unset($form->profile_pic2);
 
             $result = FunAuth::editProfile($api, $form, $io->id);
 

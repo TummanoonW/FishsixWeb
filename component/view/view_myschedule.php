@@ -48,6 +48,7 @@
                                                     <th>วัน</th>
                                                     <th>คอร์ส</th>
                                                     <th>สาขา</th>
+                                                    <th>เรื่องที่เรียน</th>
                                                     <th>เริ่ม</th>
                                                     <th>จบ</th>
                                                 </tr>
@@ -67,6 +68,7 @@
                                                     <th>วันที่</th>
                                                     <th>คอร์ส</th>
                                                     <th>สาขา</th>
+                                                    <th>เรื่องที่เรียน</th>
                                                     <th>เริ่ม</th>
                                                     <th>จบ</th>
                                                 </tr>
@@ -243,6 +245,7 @@
                         <td><span><?php echo $day ?></span> </td>
                         <td><?php if(isset($course->title)) echo $course->title ?></td>
                         <td><a href="<?php if(isset($branch->ID)) Nav::echoURL($dir, App::$pageViewBranch . "?id=$branch->ID"); else echo "#" ?>"><?php if(isset($branch->title)) echo $branch->title ?></a></td>
+                        <td><?php echo $item->lesson ?></td>
                         <td><span><?php echo $sTime[0] . ":" . $sTime[1] ?></span></td> 
                         <td><span><?php echo $eTime[0] . ":" . $eTime[1] ?></span></td> 
                     </tr>
@@ -311,6 +314,7 @@
                         <td><span><?php echo $dDate[0] ?></span> </td> 
                         <td><?php echo $course->title ?></td>
                         <td><a href="<?php Nav::echoURL($dir, App::$pageViewBranch . "?id=$branch->ID") ?>"><?php echo $branch->title ?></a></td>
+                        <td><?php echo $item->lesson ?></td>
                         <td><span><?php echo $sTime[0] . ":" . $sTime[1] ?></span></td> 
                         <td><span><?php echo $eTime[0] . ":" . $eTime[1] ?></span></td> 
                     </tr>

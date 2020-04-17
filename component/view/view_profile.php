@@ -82,12 +82,12 @@
                                                                 </div>
                                                                 <div class="media-body">
                                                                     <div class="custom-file" style="width: auto;">
-                                                                        <input name="profile_pic" type="file" id="avatar" class="custom-file-input" accept="image/*" onchange="uploadToPicture(this, 128, 128, '#prof', '#profile_pic2')">
+                                                                        <input name="profile_pic" type="file" id="avatar" class="custom-file-input" accept="image/*" onchange="uploadToPicture(this, 128, 128, '#prof', '#profile_pic2')" value="<?php echo $auth->profile_pic ?>">
                                                                         <label for="avatar" class="custom-file-label">อัพโหลดไฟล์</label>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <!-- <input name="profile_pic2" id="profile_pic2" style="visibility: collapse;" value="<?php echo $auth->profile_pic ?>"> -->
+                                                            <input name="profile_pic2" id="profile_pic2" style="visibility: collapse;" value="<?php echo $auth->profile_pic ?>">
                                                         </div>
                                                     </div>
 
@@ -235,6 +235,17 @@
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <input name="school" id="school" type="text" class="form-control" placeholder="กรอกโรงเรียนที่คุณเรียน" value="<?php if(isset($user->school))echo $user->school ?>">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="education" class="col-sm-3 col-form-label form-label">ระดับชั้นเรียน</label>
+                                                        <div class="col-sm-8">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <input name="education" id="education" type="text" class="form-control" placeholder="กรอกระดับชั้นเรียน" value="<?php if(isset($user->education))echo $user->education ?>">
                                                                 </div>
                                                             </div>
                                                         </div>

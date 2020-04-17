@@ -140,6 +140,16 @@
                                     <input name="phone" id="phone" type="text" class="form-control" placeholder="123-456-7890" data-mask="000-000-0000" autocomplete="off" maxlength="12">
                                 </div>
 
+                                <div class="form-group">
+                                    <label class="form-label" for="guardianPhone">เบอร์โทรผู้ปกครอง:</label>
+                                    <input name="guardianPhone" id="guardianPhone" type="text" class="form-control" placeholder="123-456-7890" data-mask="000-000-0000" autocomplete="off" maxlength="12">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label" for="education">ระดับชั้นเรียน:</label>
+                                    <input name="education" id="education" type="text" class="form-control" placeholder="กรอกระดับชั้นเรียน">
+                                </div>
+
                                 <button type="submit" id="btn-register" class="btn btn-primary btn-block mb-3">สมัคร</button>
                                 <div class="form-group text-center mb-0">
                                     <div class="custom-control custom-checkbox">

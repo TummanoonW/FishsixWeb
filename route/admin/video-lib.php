@@ -16,6 +16,8 @@
         switch($io->method){
             case 'add':
                 $form = $io->post;
+                if(isset($form->isHeader))$form->header = 1;
+                else $form->header = 0;
                 $result = FunVideoLib::add($api, $form);
                 
                 if($result->success) Nav::goto($dir, App::$pageAdminManageVideos);
@@ -25,6 +27,8 @@
             case 'edit':
                 $form = $io->post;
                 $id = $form->ID;
+                if(isset($form->isHeader))$form->header = 1;
+                else $form->header = 0;
                 $result = FunVideoLib::edit($api, $id, $form);
 
                 if($result->success) Nav::goto($dir, App::$pageAdminManageVideos);

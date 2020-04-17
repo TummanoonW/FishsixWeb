@@ -68,4 +68,53 @@
 <?php
             }
         }
+
+        public static function initUserMenuSKRN($dir, $sess){
+            $auth = $sess->getAuth();
+
+            if($sess->checkUserExisted()){
+?>
+                <li class="nav-item dropdown ml-1 ml-md-3">
+                    <?php if($auth->profile_pic == ''){ ?>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img src="<?php Asset::echoIcon($dir, $auth->profile_pic) ?>" alt="Avatar" class="rounded-circle" width="40"></a>
+                    <?php }else{ ?>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img src="<?php echo $auth->profile_pic ?>" alt="Avatar" class="rounded-circle" width="40"></a>
+                    <?php } ?>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <!--<?php //if($sess->checkUserAdmin()){ ?>
+                            <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageAdminPanel) ?>">
+                                <i class="material-icons">apps</i> ระบบจัดการ
+                            </a>
+                        <?php //} 
+                            //if($sess->checkUserTeacher()){ 
+                        ?>
+                            <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageTeacherPanel); ?>">
+                                <i class="material-icons">class</i> ระบบการสอน
+                            </a>
+                        <?php
+                            //}
+                        ?>
+                        <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageMyCourses) ?>">
+                            <i class="material-icons">school</i> คอร์สของฉัน
+                        </a>
+                        <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageMyOrders) ?>">
+                            <i class="material-icons">all_inbox</i> คำสั่งซื้อของฉัน
+                        </a>
+                        <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageMySchedule); ?>">
+                            <i class="material-icons">schedule</i> ตารางเรียน
+                        </a> -->
+                        <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$pageProfile) ?>">
+                            <i class="far fa-edit"></i> แก้ไขบัญชี
+                        </a>
+                        <!--<a class="dropdown-item" href="student-profile.html">
+                            <i class="material-icons">person</i> Public Profile
+                        </a> -->
+                        <a class="dropdown-item" href="<?php Nav::echoURL($dir, App::$routeLogOut) ?>">
+                            <i class="fas fa-sign-out-alt"></i> ออกจากระบบ
+                        </a>
+                    </div>
+                </li>
+<?php
+            }
+        }
     }
