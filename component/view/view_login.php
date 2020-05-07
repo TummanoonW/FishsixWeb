@@ -56,14 +56,14 @@
                                     </div>
                                 </form>
 
-                                <div class="page-separator">
+                                <!--<div class="page-separator">
                                     <div class="page-separator__text">หรือ</div>
-                                </div>
+                                </div>-->
 
-                                <button onclick="popupGoogleSignIn()" class="btn btn-light btn-block">
+                                <!--<button onclick="popupGoogleSignIn()" class="btn btn-light btn-block">
                                     <span class="fab fa-google mr-2"></span>
                                     เข้าสู่ระบบด้วย บัญชี Google
-                                </button>
+                                </button>-->
                             </div>
                             <div class="card-footer text-center text-black-50">
                                 ยังไม่ได้เป็นสมาชิก? <a href="<?php Nav::echoURL($dir, App::$pageRegister) ?>">สมัครสมาชิก</a>

@@ -6,6 +6,7 @@
     Includer::include_view($dir, 'view_mycourses.php');
     Includer::include_fun($dir, 'fun_course.php');
     Includer::include_fun($dir, 'fun_ownership.php');
+    Includer::include_fun($dir, 'fun_auth.php');
 
     $sess = new Sess(); 
     $auth = $sess->getAuth(); 
@@ -15,6 +16,12 @@
     $io = new IO(); 
 
     if($sess->checkUserExisted()){
+        $result = FunAuth::checkUnlockable($api, $auth->ID);
+        $auth = $result->response;
+        $sess->logIn($auth); //save login data to Sess
+
+        Console::log('checkUnlock', $result);
+
         $paths = array(
             new Path(FALSE, 'หน้าหลัก', $dir),
             new Path(TRUE, 'คอร์สของฉัน', $dir . App::$pageMyCourses)

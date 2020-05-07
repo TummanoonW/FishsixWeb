@@ -26,14 +26,14 @@
                         </div>
                         <div class="card-body">
 
-                            <a href="#" class="btn btn-light btn-block">
+                            <!--<a href="#" class="btn btn-light btn-block">
                                 <span class="fab fa-google mr-2"></span>
                                 สมัครด้วยบัญชี Google
-                            </a>
+                            </a>-->
 
-                            <div class="page-separator">
+                            <!--<div class="page-separator">
                                 <div class="page-separator__text">หรือ</div>
-                            </div>
+                            </div>-->
 
                             <form action="<?php Nav::echoURL($dir, App::$routeRegister); ?>" method="POST">
                                 <div class="form-group">
@@ -73,9 +73,9 @@
                                     <small id="err-pass" class="text-danger">รหัสผ่านทั้ง 2 ช่องไม่ตรงกัน!</small>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" for="username">ชื่อผู้ใช้งาน:</label>
+                                    <label class="form-label" for="username">ชื่อผู้ใช้ (ชื่อเล่น):</label>
                                     <div class="input-group input-group-merge">
-                                        <input name="username" id="username" type="text" class="form-control form-control-prepended" placeholder="ชื่อผเล่นหรือชื่อผู้ใช้ (โปรดระบุเป็นภาษาไทย)" required>
+                                        <input name="username" id="username" type="text" class="form-control form-control-prepended" placeholder="ชื่อเล่นหรือชื่อผู้ใช้ (โปรดระบุเป็นภาษาไทย)" required>
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
                                                 <span class="fas fa-user"></span>
@@ -148,6 +148,16 @@
                                 <div class="form-group">
                                     <label class="form-label" for="education">ระดับชั้นเรียน:</label>
                                     <input name="education" id="education" type="text" class="form-control" placeholder="กรอกระดับชั้นเรียน">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label" for="howyouknowus">รู้จักเราจากช่องทางไหน:</label>
+                                    <input name="howyouknowus" id="howyouknowus" type="text" class="form-control" placeholder="กรอกคำตอบ">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label" for="whychooseus">ทำไมถึงเลือกเรียนกับเรา:</label>
+                                    <input name="whychooseus" id="whychooseus" type="text" class="form-control" placeholder="กรอกคำตอบ">
                                 </div>
 
                                 <button type="submit" id="btn-register" class="btn btn-primary btn-block mb-3">สมัคร</button>

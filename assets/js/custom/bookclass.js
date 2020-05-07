@@ -129,7 +129,7 @@ async function changeEventsWithBranches(schedules, classes, input) {
         obj = {
             eventID: element.class.ID + "@" + date,
             title: time,
-            used: 1,
+            used: 0,
             full: seats,
             start: date,
             startTime: element.class.startTime,

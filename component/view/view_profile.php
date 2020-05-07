@@ -61,7 +61,7 @@
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="username" class="col-sm-3 col-form-label form-label">ชื่อผู้ใช้</label>
+                                                        <label for="username" class="col-sm-3 col-form-label form-label">ชื่อผู้ใช้ (ชื่อเล่น)</label>
                                                         <div class="col-sm-8">
                                                             <div class="row">
                                                                 <div class="col-md-12">
@@ -246,6 +246,28 @@
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <input name="education" id="education" type="text" class="form-control" placeholder="กรอกระดับชั้นเรียน" value="<?php if(isset($user->education))echo $user->education ?>">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="howyouknowus" class="col-sm-3 col-form-label form-label">รู้จักเราจากช่องทางไหน:</label>
+                                                        <div class="col-sm-8">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <input name="howyouknowus" id="howyouknowus" type="text" class="form-control" placeholder="กรอกคำตอบ" value="<?php if(isset($user->howyouknowus))echo $user->howyouknowus ?>">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="whychooseus" class="col-sm-3 col-form-label form-label">ทำไมถึงเลือกเรียนกับเรา:</label>
+                                                        <div class="col-sm-8">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <input name="whychooseus" id="whychooseus" type="text" class="form-control" placeholder="กรอกคำตอบ" value="<?php if(isset($user->whychooseus))echo $user->whychooseus ?>">
                                                                 </div>
                                                             </div>
                                                         </div>

@@ -574,37 +574,36 @@ async function save() {
         const i = Number(value.dataset.i);
 
         lessons[i].i = index;
-        if (lessons[i].meta != "add" || lessons[i].meta != "delete") {
+        /*if (lessons[i].meta != "add" || lessons[i].meta != "delete" || lessons[i].meta == undefined) {
             lessons[i].meta = "edit";
-        }
+        }*/
 
     });
     packagesL.forEach((value, index) => {
         const i = Number(value.dataset.i);
 
-        console.log(i, packages[i]);
         packages[i].i = index;
-        if (packages[i].meta != "add" || packages[i].meta != "delete") {
+        /*if (packages[i].meta != "add" || packages[i].meta != "delete" || packages[i].meta == undefined) {
             packages[i].meta = "edit";
-        }
+        }*/
 
     });
     branchesL.forEach((value, index) => {
         const i = Number(value.dataset.i);
 
         branches[i].i = index;
-        if (branches[i].meta != "add" || branches[i].meta != "delete") {
+        /*if (branches[i].meta != "add" || branches[i].meta != "delete" || branches[i].meta == undefined) {
             branches[i].meta = "edit";
-        }
+        }*/
 
     });
     classesL.forEach((value, index) => {
         const i = Number(value.dataset.i);
 
         classes[i].i = index;
-        if (classes[i].meta != "add" || classes[i].meta != "delete") {
+        /*if (classes[i].meta != "add" || classes[i].meta != "delete" || classes[i] == undefined) {
             classes[i].meta = "edit";
-        }
+        }*/
 
     });
     await updateProgress(progress, 20);
